@@ -18,3 +18,5 @@ The app finds opportunities for you; you choose which ones to apply to. Keep Gma
 ---
 
 Setting up or maintaining the app? The [technical guide](docs/SETUP.md) has everything you need.
+
+Curious about what’s finished and what’s next? See the [feature checklist](FEATURE_CHECKLIST.md).
