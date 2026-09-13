@@ -43,6 +43,18 @@ def load_state(path: Path) -> dict:
     for key in ("url", "etag", "policy"):
         if key in state["source"] and not isinstance(state["source"][key], (str, type(None))):
             raise ValueError("Invalid source metadata")
+    sms = state.get("sms", {})
+    statuses = {"pending", "sending", "accepted", "delivered", "blocked", "uncertain"}
+    if not isinstance(sms, dict):
+        raise ValueError("Invalid SMS outbox")
+    for item in sms.values():
+        if (not isinstance(item, dict) or item.get("status") not in statuses
+                or not isinstance(item.get("body"), str)
+                or not isinstance(item.get("job_ids"), list)
+                or not isinstance(item.get("attempts"), int)
+                or item["attempts"] < 0
+                or (item["status"] == "accepted" and not isinstance(item.get("sid"), str))):
+            raise ValueError("Invalid SMS outbox item")
     return state
 
 

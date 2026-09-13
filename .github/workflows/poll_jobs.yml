@@ -1,6 +1,11 @@
 name: Poll jobs
 on:
   workflow_dispatch:
+    inputs:
+      test_sms:
+        description: Send the one-time SMS connection test
+        type: boolean
+        default: false
   schedule:
     - cron: '7,37 * * * *'
 permissions:
@@ -24,8 +29,20 @@ jobs:
       - name: Test
         run: python -m unittest discover -s tests -v
       - name: Poll
-        run: python -m src.main
+        env:
+          ACCOUNT_SID: ${{ secrets.ACCOUNT_SID }}
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER }}
+          TO_PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
+          TEST_SMS: ${{ inputs.test_sms || false }}
+        run: |
+          if [ "$TEST_SMS" = "true" ]; then
+            python -m src.main --sms --test-sms
+          else
+            python -m src.main --sms
+          fi
       - name: Persist state
+        if: ${{ !cancelled() }}
         run: |
           git add data/seen_jobs.json
           if git diff --cached --quiet; then
