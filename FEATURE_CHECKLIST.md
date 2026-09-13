@@ -10,7 +10,7 @@ A little roadmap for Bubu Jobs. Crossed-out items are finished; open boxes are i
 - [x] ~~Recognize common ATS platforms when a direct application URL is available.~~
 - [x] ~~Filter for relevant product roles and exclude obvious senior or unrelated jobs.~~
 - [x] ~~Remember seen jobs so the same listings don’t keep coming back.~~
-- [x] ~~Check every 30 minutes with GitHub Actions, with a manual run option too.~~
+- [x] ~~Check every 10 minutes with GitHub Actions, with a manual run option too.~~
 - [x] ~~Skip downloading and parsing the README when it hasn’t changed.~~
 - [x] ~~Keep job history and notification queues between scheduled runs.~~
 - [x] ~~Send email digests with job details and application links.~~
