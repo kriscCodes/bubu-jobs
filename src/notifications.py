@@ -149,12 +149,16 @@ def deliver(state: dict, path: Path, client: TwilioClient) -> None:
                 elif status in FAILED:
                     item["status"] = "pending" if item["attempts"] < MAX_ATTEMPTS else "blocked"
                     item["error"] = f"Twilio delivery {status}; code {receipt.get('error_code')}"
+                    if receipt.get("error_code") == 30034:
+                        state["sms_paused"] = "Twilio 30034: sender needs US A2P 10DLC registration"
                 elif status not in ACTIVE:
                     errors.append(f"SMS {key}: unrecognized delivery status")
                 # Keep the local accepted state while the carrier is processing it.
             except SmsError as error:
                 errors.append(f"SMS {key}: {error}")
     save_state(path, state)
+    if state.get("sms_paused"):
+        raise SmsError("SMS paused: " + state["sms_paused"] + "; jobs remain queued")
     for key, item in outbox.items():
         if item["status"] != "pending":
             continue
@@ -173,6 +177,8 @@ def deliver(state: dict, path: Path, client: TwilioClient) -> None:
             elif status in FAILED:
                 item["status"] = "pending" if item["attempts"] < MAX_ATTEMPTS else "blocked"
                 errors.append(f"SMS {key}: Twilio delivery {status}")
+                if receipt.get("error_code") == 30034:
+                    state["sms_paused"] = "Twilio 30034: sender needs US A2P 10DLC registration"
             else:
                 item["status"] = "accepted"
             item.pop("error", None)

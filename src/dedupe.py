@@ -43,6 +43,8 @@ def load_state(path: Path) -> dict:
     for key in ("url", "etag", "policy"):
         if key in state["source"] and not isinstance(state["source"][key], (str, type(None))):
             raise ValueError("Invalid source metadata")
+    if "sms_paused" in state and not isinstance(state["sms_paused"], str):
+        raise ValueError("Invalid SMS pause metadata")
     sms = state.get("sms", {})
     statuses = {"pending", "sending", "accepted", "delivered", "blocked", "uncertain"}
     if not isinstance(sms, dict):

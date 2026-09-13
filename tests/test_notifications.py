@@ -106,6 +106,16 @@ class SmsTests(unittest.TestCase):
             run(self.path, client=self.client)
         self.client.send.assert_called_once()
 
+    def test_unregistered_sender_pauses_all_sends(self):
+        enqueue(self.state, [], test=True)
+        deliver(self.state, self.path, self.client)
+        self.client.status.return_value = {"status": "undelivered", "error_code": 30034}
+        for _ in range(2):
+            with self.assertRaisesRegex(SmsError, "SMS paused"):
+                deliver(self.state, self.path, self.client)
+        self.assertEqual(self.client.send.call_count, 1)
+        self.assertIn("30034", load_state(self.path)["sms_paused"])
+
     def test_invalid_outbox_fails_closed(self):
         self.state["sms"] = {"bad": {"status": "anything"}}
         save_state(self.path, self.state)

@@ -1439,6 +1439,7 @@
       "status": "pending"
     }
   },
+  "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
     "etag": "\"9f6002a8374675ce0c5b2b794ca60858da29415eda063bb6355d5c9d4f2d2d37\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",

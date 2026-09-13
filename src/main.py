@@ -20,10 +20,12 @@ def policy_fingerprint() -> str:
 
 
 def run(state_path: Path, force: bool = False, client: TwilioClient | None = None,
-        test_sms: bool = False, retry_sms: str | None = None) -> None:
+        test_sms: bool = False, retry_sms: str | None = None, resume_sms: bool = False) -> None:
     with state_lock(state_path):
         state = load_state(state_path)
         if client:
+            if resume_sms:
+                state.pop("sms_paused", None)
             enqueue(state, [], test=test_sms)
             if retry_sms:
                 item = state["sms"].get(retry_sms)
@@ -78,15 +80,16 @@ def main() -> int:
     parser.add_argument("--sms", action="store_true", help="Send digests through Twilio")
     parser.add_argument("--test-sms", action="store_true", help="Queue a one-time connection test; implies --sms")
     parser.add_argument("--retry-sms", help="Explicitly retry a blocked/uncertain outbox ID; implies --sms")
+    parser.add_argument("--resume-sms", action="store_true", help="Resume paused SMS after fixing sender registration")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,
                         format="%(levelname)s: %(message)s")
     try:
         client = None
-        if args.sms or args.test_sms or args.retry_sms:
+        if args.sms or args.test_sms or args.retry_sms or args.resume_sms:
             load_dotenv(Path(__file__).resolve().parents[1] / ".env")
             client = TwilioClient.from_environment()
-        run(args.state, args.force, client, args.test_sms, args.retry_sms)
+        run(args.state, args.force, client, args.test_sms, args.retry_sms, args.resume_sms)
     except (OSError, ValueError, SmsError) as error:
         LOG.error("Poll failed: %s", error)
         return 1

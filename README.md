@@ -92,7 +92,7 @@ The `Job` dataclass is the boundary for new adapters under `src/sources/`. Keep 
 
 ## Verification
 
-Verified locally with Python 3.11: 35 standard-library unittest tests passed, including SMS queue persistence, no-backlog behavior, delivery receipts, bounded retries, uncertain sends, environment loading, and API error sanitization. Tests cover real-format parsing, company continuation, bracketed titles, malformed input, URL identity, atomic write failure, filtering, all six ATS platforms, HTTP retries, ETag handling, policy changes, and repeat runs.
+Verified locally with Python 3.11: 36 standard-library unittest tests passed, including SMS queue persistence, no-backlog behavior, delivery receipts, bounded retries, uncertain sends, environment loading, and API error sanitization. Tests cover real-format parsing, company continuation, bracketed titles, malformed input, URL identity, atomic write failure, filtering, all six ATS platforms, HTTP retries, ETag handling, policy changes, and repeat runs.
 
 Live run on 2026-09-13: 549 listings, 429 rejected, 120 new matches. The next conditional request returned unchanged. A forced repeat reported 120 already seen and no new matches. Counts are a snapshot of a changing upstream source.
 
@@ -136,3 +136,10 @@ python -m src.main --retry-sms OUTBOX_ID
 This requires the same up-to-date state as the scheduler; pull it first and avoid running local SMS concurrently with GitHub. It resets that item's attempt budget. If Twilio did send an uncertain message, reconcile the saved SID/status instead of resending.
 
 The outbox is atomically saved before sending and after the result. GitHub commits state even on ordinary failure. A runner crash/cancellation or rejected Git push before persistence can still cause duplicate messages on the next run; no exactly-once guarantee is made. Twilio trial/registration restrictions can prevent delivery even when credentials are valid. Consult [Twilio message statuses](https://www.twilio.com/docs/messaging/api/message-resource) and the sanitized error code in workflow logs.
+
+
+### Current SMS activation status
+
+The deployed test reached Twilio but its delivery receipt returned **30034 (unregistered US A2P 10DLC sender)**. Sending is paused in state; polling and queueing continue. The workflow reports the pause visibly, while its persistence step still commits job/queue updates. Credentials were accepted; a successful API submission did not mean delivery.
+
+Complete the sender registration in Twilio before resuming. Error 30034 automatically pauses further attempts. Once the sender is approved, use `--resume-sms` with current state (or have the maintainer clear `sms_paused` in the tracked JSON), then let the scheduler drain pending digests. Do not resume while registration is pending. See [Twilio error 30034](https://www.twilio.com/docs/api/errors/30034).
