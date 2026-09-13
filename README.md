@@ -1,4 +1,4 @@
-# Bubu Jobs
+# Bubu Jobs <3
 
 Hi Bubu, I hope you're doing okay. I built this out with codex to help you out. There's more stuff I wanna add but this is a good first draft. Turn gmail notifications on your phone for this. I'd also turn on zero2sudos ig story notifications since he has stuff sometimes as well. I have no idea how often this repo polls jobs and some of them aren't directly related they just happen to have product in them so just keep a look out for that until I implement the LLM features.
 
