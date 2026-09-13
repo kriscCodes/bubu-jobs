@@ -2,8 +2,8 @@ name: Poll jobs
 on:
   workflow_dispatch:
     inputs:
-      test_sms:
-        description: Send the one-time SMS connection test
+      test_email:
+        description: Send the one-time email connection test
         type: boolean
         default: false
   schedule:
@@ -30,16 +30,19 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Poll
         env:
-          ACCOUNT_SID: ${{ secrets.ACCOUNT_SID }}
-          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-          TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER }}
-          TO_PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
-          TEST_SMS: ${{ inputs.test_sms || false }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          TEST_EMAIL: ${{ inputs.test_email || false }}
         run: |
-          if [ "$TEST_SMS" = "true" ]; then
-            python -m src.main --sms --test-sms
+          if [ -z "$EMAIL_PASSWORD" ]; then
+            echo "::warning::EMAIL_PASSWORD is missing; saving pending emails without sending."
+            python -m src.main --queue-email
+            if [ "$TEST_EMAIL" = "true" ]; then exit 1; fi
+          elif [ "$TEST_EMAIL" = "true" ]; then
+            python -m src.main --email --test-email
           else
-            python -m src.main --sms
+            python -m src.main --email
           fi
       - name: Persist state
         if: ${{ !cancelled() }}

@@ -57,6 +57,18 @@ def load_state(path: Path) -> dict:
                 or item["attempts"] < 0
                 or (item["status"] == "accepted" and not isinstance(item.get("sid"), str))):
             raise ValueError("Invalid SMS outbox item")
+    if "email_migrated" in state and not isinstance(state["email_migrated"], bool):
+        raise ValueError("Invalid email migration flag")
+    outbox = state.get("email", {})
+    if not isinstance(outbox, dict):
+        raise ValueError("Invalid email outbox")
+    for item in outbox.values():
+        if (not isinstance(item, dict)
+                or item.get("status") not in {"pending", "sending", "submitted", "blocked", "uncertain"}
+                or not all(isinstance(item.get(field), str) for field in ("subject", "text", "html"))
+                or not isinstance(item.get("job_ids"), list)
+                or not isinstance(item.get("attempts"), int) or item["attempts"] < 0):
+            raise ValueError("Invalid email outbox item")
     return state
 
 

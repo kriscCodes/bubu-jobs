@@ -10,6 +10,9 @@ from .filters import is_relevant
 from .sources.jobright import fetch_readme, parse_readme
 from .notifications import TwilioClient, SmsError, load_dotenv, enqueue, deliver
 
+from .email_notifications import (GmailClient, EmailError, enqueue_email,
+                                  deliver_email, migrate_unsent_sms)
+
 LOG = logging.getLogger(__name__)
 
 
@@ -20,9 +23,23 @@ def policy_fingerprint() -> str:
 
 
 def run(state_path: Path, force: bool = False, client: TwilioClient | None = None,
-        test_sms: bool = False, retry_sms: str | None = None, resume_sms: bool = False) -> None:
+        test_sms: bool = False, retry_sms: str | None = None, resume_sms: bool = False,
+        email_client: GmailClient | None = None, queue_email: bool = False,
+        test_email: bool = False, retry_email: str | None = None) -> None:
     with state_lock(state_path):
         state = load_state(state_path)
+        email_enabled = email_client is not None or queue_email
+        if client and email_enabled:
+            raise ValueError("Choose email or SMS, not both")
+        if email_enabled:
+            enqueue_email(state, [], test=test_email)
+            migrate_unsent_sms(state)
+            if retry_email:
+                item = state["email"].get(retry_email)
+                if not item or item["status"] not in {"blocked", "uncertain"}:
+                    raise ValueError("Retry ID must identify a blocked or uncertain email")
+                item.update(status="pending", attempts=0)
+            save_state(state_path, state)
         if client:
             if resume_sms:
                 state.pop("sms_paused", None)
@@ -41,6 +58,8 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
             print("Upstream README unchanged; no new matches.")
             if client:
                 deliver(state, state_path, client)
+            if email_client:
+                deliver_email(state, state_path, email_client)
             return
         jobs = parse_readme(result.text)
         relevant = [job for job in jobs if is_relevant(job.title)]
@@ -66,7 +85,11 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
         print("\n".join(lines), flush=True)
         if client:
             enqueue(state, [asdict(job) for job in new])
+        if email_enabled:
+            enqueue_email(state, [asdict(job) for job in new])
         save_state(state_path, state)
+        if email_client:
+            deliver_email(state, state_path, email_client)
         if client:
             deliver(state, state_path, client)
         LOG.info("Saved %d newly discovered matches", len(new))
@@ -81,16 +104,27 @@ def main() -> int:
     parser.add_argument("--test-sms", action="store_true", help="Queue a one-time connection test; implies --sms")
     parser.add_argument("--retry-sms", help="Explicitly retry a blocked/uncertain outbox ID; implies --sms")
     parser.add_argument("--resume-sms", action="store_true", help="Resume paused SMS after fixing sender registration")
+    parser.add_argument("--email", action="store_true", help="Send Gmail email digests")
+    parser.add_argument("--queue-email", action="store_true", help="Queue email without credentials or sending")
+    parser.add_argument("--test-email", action="store_true", help="Queue one-time SMTP test; implies --email")
+    parser.add_argument("--retry-email", help="Retry a blocked/uncertain email after inspecting Sent mail")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,
                         format="%(levelname)s: %(message)s")
     try:
+        email_client = None
+        if args.email or args.test_email or args.retry_email:
+            load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+            email_client = GmailClient.from_environment()
+        if args.queue_email:
+            LOG.warning("Email queue-only mode: no messages will be sent")
         client = None
         if args.sms or args.test_sms or args.retry_sms or args.resume_sms:
             load_dotenv(Path(__file__).resolve().parents[1] / ".env")
             client = TwilioClient.from_environment()
-        run(args.state, args.force, client, args.test_sms, args.retry_sms, args.resume_sms)
-    except (OSError, ValueError, SmsError) as error:
+        run(args.state, args.force, client, args.test_sms, args.retry_sms, args.resume_sms,
+            email_client, args.queue_email, args.test_email, args.retry_email)
+    except (OSError, ValueError, SmsError, EmailError) as error:
         LOG.error("Poll failed: %s", error)
         return 1
     return 0

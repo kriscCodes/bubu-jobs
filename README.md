@@ -1,6 +1,6 @@
 # bubu-jobs
 
-A small Python 3.11+ job-alert pipeline. Its only source is the [Jobright Product Management new-grad README](https://github.com/jobright-ai/2026-Product-Management-New-Grad/blob/master/README.md). It prints newly discovered relevant jobs and persists their identities in JSON. The scraper needs no third-party packages. Optional Twilio SMS uses four environment settings; no database, LLM, or application automation is included.
+A small Python 3.11+ job-alert pipeline. Its only source is the [Jobright Product Management new-grad README](https://github.com/jobright-ai/2026-Product-Management-New-Grad/blob/master/README.md). It prints newly discovered relevant jobs and persists their identities in JSON. The scraper needs no third-party packages. Optional Gmail email uses three environment settings; no database, LLM, or application automation is included.
 
 ## Setup and local use
 
@@ -30,10 +30,10 @@ python -m src.main --state /tmp/bubu-test/seen_jobs.json
 
 1. Load state while holding an exclusive local lock.
 2. Fetch the raw README with a 30-second network timeout and at most three attempts. Retry transient connection errors and HTTP 429/500/502/503/504 with bounded backoff; honor numeric Retry-After up to 60 seconds.
-3. Send `If-None-Match` when a saved ETag is available. HTTP 304 skips downloading and parsing. SMS delivery status and pending messages are still processed when enabled. A server without ETags remains usable through normal fetch and deduplication.
+3. Send `If-None-Match` when a saved ETag is available. HTTP 304 skips downloading and parsing. Pending email messages are still processed when enabled. A server without ETags remains usable through normal fetch and deduplication.
 4. Parse the Markdown table using its column names. Carry `↳` forward only within the same table. Strip formatting, decode entities, handle escaped pipes, bracketed labels, and simple parenthesized URLs. A missing table or malformed listing fails the run without advancing state.
 5. Apply deterministic title filtering before deduplication and any future scoring.
-6. Print only new matches plus summary counts, then atomically save the updated jobs and source ETag together. With SMS enabled, queue the new jobs in the same transaction and process the SMS outbox, including on HTTP 304 runs.
+6. Print only new matches plus summary counts, then atomically save the updated jobs and source ETag together. With email enabled, queue new jobs in the same transaction and process the email outbox, including on HTTP 304 runs.
 
 Dates are preserved as supplied (for example `Sep 12`), without inventing a year. `work_model` is preserved from its table column. `source_url` means the listing link in the job-title cell; the upstream raw README URL is stored separately in source metadata. Canonical URLs are populated only when a direct non-Jobright link is provided in the title or an optional Apply/Application column. The adapter does not follow Jobright pages or crawl employers to discover hidden URLs.
 
@@ -63,7 +63,7 @@ Relevant duplicate rows within a single fetch count as already seen too. History
 
 Writes use a flushed temporary file and atomic replacement. Invalid JSON or unknown schema fails closed; restore a backup instead of silently discarding history. A local advisory lock serializes runs sharing a state path. Separate machines need shared storage or the workflow serialization below.
 
-Output is flushed before saving. A crash or failed state commit can cause a repeated alert on retry; this favors repetition over silent loss. Console output is not a transactional delivery system. SMS has a persistent outbox, but remote sends and Git commits cannot be atomic; this does not guarantee exactly-once notifications.
+Output is flushed before saving. A crash or failed state commit can cause a repeated alert on retry; this favors repetition over silent loss. Console output is not a transactional delivery system. Email has a persistent outbox, but remote sends and Git commits cannot be atomic; this does not guarantee exactly-once notifications.
 
 ## ATS detection
 
@@ -73,11 +73,11 @@ Output is flushed before saving. A crash or failed state commit can cause a repe
 
 Place the **contents of this project directory at your repository root**, including `.github` and the tracked `data/seen_jobs.json`. The workflow must be on the default branch. Enable Actions and allow the workflow's `contents: write` permission. Branch rules must permit this bot to push; otherwise the persistence step will fail visibly and the next run may repeat matches.
 
-`.github/workflows/poll_jobs.yml` supports manual `workflow_dispatch` and runs at minutes 7 and 37 of each hour (UTC). It installs dependencies, runs tests, runs the scraper with SMS enabled, and commits only changed state with `chore: update seen jobs`. There is no `push` trigger, so state commits cannot loop this workflow. It always checks out the default branch, including for manual runs, and serializes poll jobs with a shared concurrency group. GitHub schedules can be delayed and are not exact timers; see [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+`.github/workflows/poll_jobs.yml` supports manual `workflow_dispatch` and runs at minutes 7 and 37 of each hour (UTC). It installs dependencies, runs tests, runs the scraper with email enabled, and commits only changed state with `chore: update seen jobs`. There is no `push` trigger, so state commits cannot loop this workflow. It always checks out the default branch, including for manual runs, and serializes poll jobs with a shared concurrency group. GitHub schedules can be delayed and are not exact timers; see [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
 Runners are ephemeral: **persistence comes from the bot commit**, not the runner filesystem or a cache. The ETag and history are in the same tracked file, so both survive. If nothing changes, there is no commit. A final pull/rebase accommodates unrelated concurrent edits; conflicting state changes or blocked pushes fail instead of force-pushing. Avoid other writers to this state file during workflow runs. Commit-backed JSON is intended for modest personal usage and will grow over time.
 
-New matches appear in the Actions Poll step logs and produce SMS digests through the configured Twilio account. The Persist state step runs even after a polling/SMS error so failed delivery records survive; the workflow still reports failure. The scraper workflow has been deployed and successfully run on GitHub.
+New matches appear in the Actions Poll step logs and produce email digests through the configured Gmail account. If EMAIL_PASSWORD is missing, jobs are queued without sending. The Persist state step runs even after a polling/email error so failed delivery records survive; the workflow still reports failure on actual delivery errors. The scraper workflow has been deployed and successfully run on GitHub.
 
 ## Limitations and extension points
 
@@ -88,58 +88,65 @@ New matches appear in the Actions Poll step logs and produce SMS digests through
 - JSON history is unbounded, and Git history grows with state commits. Back up state and migrate storage when volume warrants it.
 - Windows needs a replacement lock implementation (or WSL).
 
-The `Job` dataclass is the boundary for new adapters under `src/sources/`. Keep source fetching/parsing separate from `filters.py`, `ats.py`, and `dedupe.py`. Future LLM scoring belongs after deterministic filters and discovery. Resume tailoring, LaTeX generation, PDF compilation, and ATS workflows should be separate consumers with explicit delivery state. Twilio delivery is isolated in `src/notifications.py`. Replace the isolated JSON storage functions with Supabase/Postgres when needed. None of these future integrations is implemented in v1.
+The `Job` dataclass is the boundary for new adapters under `src/sources/`. Keep source fetching/parsing separate from `filters.py`, `ats.py`, and `dedupe.py`. Future LLM scoring belongs after deterministic filters and discovery. Resume tailoring, LaTeX generation, PDF compilation, and ATS workflows should be separate consumers with explicit delivery state. Gmail delivery is isolated in `src/email_notifications.py`. The prior Twilio adapter remains available for explicit local use but is no longer called by the schedule. Replace the isolated JSON storage functions with Supabase/Postgres when needed. None of these future integrations is implemented in v1.
 
 ## Verification
 
-Verified locally with Python 3.11: 36 standard-library unittest tests passed, including SMS queue persistence, no-backlog behavior, delivery receipts, bounded retries, uncertain sends, environment loading, and API error sanitization. Tests cover real-format parsing, company continuation, bracketed titles, malformed input, URL identity, atomic write failure, filtering, all six ATS platforms, HTTP retries, ETag handling, policy changes, and repeat runs.
+Verified locally with Python 3.11: 50 standard-library unittest tests passed, including email MIME formatting, SMTP TLS/authentication, queue persistence, failed-SMS migration, no-backlog behavior, bounded retries, uncertain sends, environment loading, and API error sanitization. Tests cover real-format parsing, company continuation, bracketed titles, malformed input, URL identity, atomic write failure, filtering, all six ATS platforms, HTTP retries, ETag handling, policy changes, and repeat runs.
 
 Live run on 2026-09-13: 549 listings, 429 rejected, 120 new matches. The next conditional request returned unchanged. A forced repeat reported 120 already seen and no new matches. Counts are a snapshot of a changing upstream source.
 
 
-## Twilio SMS
+## Gmail email alerts
 
-The scheduled workflow enables SMS. Set these four **repository Actions secrets** (already configured for the deployed repository):
+Email replaces SMS in the scheduled workflow. No Twilio credentials or registration are needed. The old SMS state remains as history and is never sent by the schedule. Pending/blocked job alerts from that queue are migrated into email once; the original seen-job backlog and the SMS connection test are excluded.
 
-- `ACCOUNT_SID`
-- `AUTH_TOKEN`
-- `TWILIO_PHONE_NUMBER` (SMS-capable sender)
-- `TO_PHONE_NUMBER` (your recipient, verified in trial accounts)
+Set these **repository Actions secrets**:
 
-For local use, copy `.env.example` to `.env` and populate it. `.env` is Git-ignored. The loader supports literal `KEY=value` lines, optional matching quotes, and full-line comments; it performs no shell expansion or inline-comment processing. Existing process variables take precedence. Never commit credentials. Phone numbers use E.164 format (`+` and country code, no punctuation).
+| Secret | Purpose |
+| --- | --- |
+| `EMAIL_SENDER` | Gmail account used to send and sign in |
+| `EMAIL_RECIPIENT` | One destination email address; may equal the sender |
+| `EMAIL_PASSWORD` | Google App Password for the sender, not its normal account password |
 
-```sh
-python -m src.main --sms
-python -m src.main --test-sms
-```
+Sender and recipient are currently configured to the owner's Gmail account for testing. This chat's Gmail connector can send a manual test, but its authorization is not available to GitHub Actions. Create the sender's [Google App Password](https://myaccount.google.com/apppasswords) and save it as `EMAIL_PASSWORD`. Google requires [2-Step Verification for App Passwords](https://support.google.com/accounts/answer/185833); some account policies may prevent using them.
 
-`--test-sms` implies SMS and queues a **one-time** `test-v1` connection message. Repeating it with the same state will not send a second test. In GitHub Actions, manually run Poll jobs and check `test_sms` for the same behavior. Normal runs send nothing when no jobs are newly discovered and no retry is pending. Running without `--sms` retains console-only behavior; jobs seen in console-only runs are not backfilled into SMS later.
-
-Digests include the total new count, job names and links that fit within 900 characters, and a link to the private repository's Actions logs for the full list. One API message is attempted per run; longer texts can be billed as multiple SMS segments. The log URL in `digest_body()` targets this repository; change it if reusing the project elsewhere.
-
-The `sms` object in `seen_jobs.json` stores digest bodies, covered job IDs, attempt counts, Twilio message SIDs, and status. It never stores your token or phone numbers. Existing job history is left alone, so enabling SMS does not alert the backlog.
-
-- `pending`: waiting for a send attempt; at most one message is attempted each run.
-- `accepted`: Twilio accepted the request, **not confirmation of handset delivery**. Subsequent polls fetch its delivery status, including when upstream is unchanged.
-- `delivered`: Twilio reports delivery.
-- `blocked`: permanent API rejection or three failed attempts. Fix the account/number problem before manually retrying.
-- `uncertain`: a timed-out/interrupted POST might already have sent. Check Twilio Messaging logs before retrying to avoid duplicates.
-
-HTTP 429 and confirmed failed/undelivered receipts retry on later runs, up to three attempts. Other 4xx errors are blocked. POST network/5xx errors are uncertain and are not blindly retried. Read-only delivery checks retry on subsequent scheduled runs. Accepted messages without a final receipt remain accepted rather than being resent.
-
-After resolving a blocked failure, or confirming an uncertain message was not sent:
+For local use, add the same three variables to `.env` (see `.env.example`). `.env` is ignored by Git. The loader accepts literal `KEY=value`, optional matching quotes, and full-line comments; it performs no shell expansion. Existing process environment values win. Existing Twilio variables can remain in `.env` but are unused by email.
 
 ```sh
-python -m src.main --retry-sms OUTBOX_ID
+python -m src.main --queue-email  # Fetch and save pending email; no credentials needed
+python -m src.main --email        # Fetch and send at most one queued digest
+python -m src.main --test-email   # One-time SMTP connection test; implies email
 ```
 
-This requires the same up-to-date state as the scheduler; pull it first and avoid running local SMS concurrently with GitHub. It resets that item's attempt budget. If Twilio did send an uncertain message, reconcile the saved SID/status instead of resending.
+In Actions, run Poll jobs with `test_email` checked for the SMTP test. The saved `email.test-v1` record prevents repeated connection-test emails. A manual test sent through the chat Gmail connector is separate from this automated SMTP test.
 
-The outbox is atomically saved before sending and after the result. GitHub commits state even on ordinary failure. A runner crash/cancellation or rejected Git push before persistence can still cause duplicate messages on the next run; no exactly-once guarantee is made. Twilio trial/registration restrictions can prevent delivery even when credentials are valid. Consult [Twilio message statuses](https://www.twilio.com/docs/messaging/api/message-resource) and the sanitized error code in workflow logs.
+The workflow keeps collecting pending email if `EMAIL_PASSWORD` is missing, with a visible warning. A requested test fails visibly if the password is missing. Once configured, scheduled runs automatically send pending digests. With valid settings and nothing new or pending, no email is sent. Runs without any notification flag stay console-only and do not queue email.
 
+### Email contents and delivery
 
-### Current SMS activation status
+Each digest includes every matching job's company, title, location, work model, posted date, ATS, and application/listing URL. Both plain-text and escaped HTML versions are sent. Links are directly in the message; recipients do not need access to this private repository. HTML is generated from escaped source data. There is one recipient and at most one email submission per invocation.
 
-The deployed test reached Twilio but its delivery receipt returned **30034 (unregistered US A2P 10DLC sender)**. Sending is paused in state; polling and queueing continue. The workflow reports the pause visibly, while its persistence step still commits job/queue updates. Credentials were accepted; a successful API submission did not mean delivery.
+`email` in `data/seen_jobs.json` stores covered job IDs, rendered bodies, attempt count, and status. It stores no password and no recipient list. A submitted message's deterministic Message-ID includes the sender domain. Recipients and credentials are resolved at send time: changing settings also changes where still-pending emails go.
 
-Complete the sender registration in Twilio before resuming. Error 30034 automatically pauses further attempts. Once the sender is approved, use `--resume-sms` with current state (or have the maintainer clear `sms_paused` in the tracked JSON), then let the scheduler drain pending digests. Do not resume while registration is pending. See [Twilio error 30034](https://www.twilio.com/docs/api/errors/30034).
+- `pending`: waiting for a send or a later retry.
+- `sending`: saved immediately before SMTP; a process interrupted here becomes uncertain.
+- `submitted`: SMTP accepted it. This is not proof of inbox placement or reading. Bounces and spam placement are not monitored.
+- `blocked`: authentication/permanent rejection or three failed attempts.
+- `uncertain`: connection dropped during sending; check Sent mail before resending.
+
+SMTP uses `smtp.gmail.com:465` with verified TLS and a 30-second timeout. Temporary SMTP 4xx rejections and failures before sending retry on later runs, at most three attempts. Ambiguous send failures are held, not automatically repeated. A blocked/uncertain record stops further submissions until resolved. Diagnose without exposing passwords or server responses containing addresses.
+
+After fixing a blocked issue, or confirming an uncertain message was not sent:
+
+```sh
+python -m src.main --retry-email OUTBOX_ID
+```
+
+Pull current state first and avoid concurrent local/GitHub sending. The command resets the attempt budget for that entry. If the email was already sent, reconcile its state instead of retrying. Message-ID reuse can help diagnosis but is not a guaranteed server deduplication mechanism.
+
+Atomic local saves and bot commits preserve the queue during ordinary failures. A runner crash, cancellation, or failed Git push after SMTP acceptance can still cause repeats; remote SMTP and Git are not a single transaction. History grows over time.
+
+### Switching to a dedicated sender later
+
+Create the dedicated Gmail account, enable 2-Step Verification, and generate its own App Password. Replace `EMAIL_SENDER` and `EMAIL_PASSWORD` in repository secrets. Change `EMAIL_RECIPIENT` when ready to send to another person. No code changes are required. The current configuration only sends to the owner.
