@@ -20,15 +20,6 @@
       "status": "pending",
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Amazon\nTitle: Product Operations Coordinator, MGM+ Network Operations\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
-    },
-    "test-v1": {
-      "attempts": 1,
-      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] Email test</h1><p>This is a test of email alerts from your account to yourself. No application was submitted.</p><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
-      "job_ids": [],
-      "message_id": "<bubu-jobs-test-v1@gmail.com>",
-      "status": "submitted",
-      "subject": "[bubu-jobs] Email test",
-      "text": "[bubu-jobs] Email test\n\nThis is a test of email alerts from your account to yourself. No application was submitted.\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     }
   },
   "email_migrated": true,
