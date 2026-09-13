@@ -1424,11 +1424,12 @@
     "d85c5c5726e9e88b799310f17fa8a75e166a767389b15d3272b10a63879f9a80": {
       "attempts": 1,
       "body": "bubu-jobs: 1 new job match(es).\nAmazon: Product Operations Coordinator, MGM+ Network Operations\nhttps://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\nAll matches: https://github.com/kriscCodes/bubu-jobs/actions",
+      "error": "Twilio delivery undelivered; code 30034",
       "job_ids": [
         "c4b1240035b6d62cd04f591fa18f3e676c3c08e845c0331a1c66de0cae7aee06"
       ],
       "sid": "SMfb7e3eab18541b25471ded0ab2df2d0c",
-      "status": "accepted"
+      "status": "pending"
     },
     "test-v1": {
       "attempts": 1,
