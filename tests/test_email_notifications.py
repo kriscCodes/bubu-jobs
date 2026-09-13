@@ -121,7 +121,7 @@ class SmtpTests(unittest.TestCase):
         message = smtp.send_message.call_args.args[0]
         self.assertEqual(message['To'], 'recipient@gmail.com')
         self.assertEqual(message.get_content_type(), 'multipart/alternative')
-        self.assertEqual(result, '<bubu-jobs-test-v1@gmail.com>')
+        self.assertRegex(result, r'^<bubu-jobs-test-v1-[0-9a-f]{12}@gmail\.com>$')
         smtp.close.assert_called_once()
 
     @patch('src.email_notifications.smtplib.SMTP_SSL')

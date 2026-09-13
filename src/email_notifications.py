@@ -53,7 +53,8 @@ class GmailClient:
         message["To"] = self.recipient
         message["Subject"] = item["subject"]
         message["Date"] = formatdate(localtime=False)
-        message_id = f"<bubu-jobs-{key}@{self.sender.split('@')[1]}>"
+        sender_id = hashlib.sha256(self.sender.casefold().encode()).hexdigest()[:12]
+        message_id = f"<bubu-jobs-{key}-{sender_id}@{self.sender.split('@')[1]}>"
         message["Message-ID"] = message_id
         message.set_content(item["text"])
         message.add_alternative(item["html"], subtype="html")
