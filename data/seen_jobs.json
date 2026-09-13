@@ -418,6 +418,28 @@
       "title": "Associate Product Manager",
       "work_model": "On Site"
     },
+    "5715a6b79e407ba6f683a071a8e3700acfcda1e1355207df12f2315eeccc3e4d": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Veeva Systems",
+      "date_posted": "Sep 11",
+      "job_id": "5715a6b79e407ba6f683a071a8e3700acfcda1e1355207df12f2315eeccc3e4d",
+      "location": "Massachusetts - Boston",
+      "source_url": "https://jobright.ai/jobs/info/6a1d5934e24ef365258375c2",
+      "title": "Associate Product Manager - Vault CRM Suite",
+      "work_model": "Remote"
+    },
+    "5805d552234a2081a05db423246a46f65e075c6ce86beb08c8dba0a59c1f1dd4": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "HP",
+      "date_posted": "Sep 07",
+      "job_id": "5805d552234a2081a05db423246a46f65e075c6ce86beb08c8dba0a59c1f1dd4",
+      "location": "Fort Collins, CO, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a8e043325fc4e7ae3dbf480",
+      "title": "Software Product Manager Graduate Roles - HP Solutions (HPS)",
+      "work_model": "On Site"
+    },
     "597a01f9bec60398c96a7d6ff959a42434e0e83bfa54ea427789fcf669b86391": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1122,6 +1144,17 @@
       "title": "Creative Product Manager Graduate (Creative and Brand Innovation) - 2027 Start",
       "work_model": "On Site"
     },
+    "d2dfff0539a0571c4ae75f08fbda3ef55ed41ceb3bfe828c5a588443c319a961": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Goldman Sachs",
+      "date_posted": "Sep 11",
+      "job_id": "d2dfff0539a0571c4ae75f08fbda3ef55ed41ceb3bfe828c5a588443c319a961",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a872f50cde3717f9e9b0aa6",
+      "title": "Product Manager, Asset & Wealth Management, Private Wealth Management",
+      "work_model": "On Site"
+    },
     "d332ecb42379bced8104e5ccb8963ff2dc9ac0a64a9c4d10dddb77fc535785f1": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1322,7 +1355,7 @@
     }
   },
   "source": {
-    "etag": "\"8d801f8f8ce5943c7deeb6b69f00f7dc122f92e58501aa3ccb74e09c04145eb5\"",
+    "etag": "\"7851f3709da64883fd078b57fcfed30a80234a626a2a4e588fc61c5d222bd09d\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
