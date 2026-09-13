@@ -12,12 +12,13 @@
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: BNY\nTitle: Specialist, Product Management\nLocation: Lake Mary, FL, United States\nWork model: Hybrid\nDate posted: Sep 08\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa0236aa2266b538d22e5bd\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
     "d85c5c5726e9e88b799310f17fa8a75e166a767389b15d3272b10a63879f9a80": {
-      "attempts": 0,
+      "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Operations Coordinator, MGM+ Network Operations</h2><p><strong>Amazon</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
       "job_ids": [
         "c4b1240035b6d62cd04f591fa18f3e676c3c08e845c0331a1c66de0cae7aee06"
       ],
-      "status": "pending",
+      "message_id": "<bubu-jobs-d85c5c5726e9e88b799310f17fa8a75e166a767389b15d3272b10a63879f9a80-77020d7ef336@gmail.com>",
+      "status": "submitted",
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Amazon\nTitle: Product Operations Coordinator, MGM+ Network Operations\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
