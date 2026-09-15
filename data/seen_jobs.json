@@ -72,6 +72,18 @@
       "subject": "[bubu-jobs] 5 new job match(es)",
       "text": "[bubu-jobs] 5 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Worldpay\nTitle: Product Analyst - AML & Fraud/Credit\nLocation: Atlanta, GA, United States\nWork model: Hybrid\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa756ce930bff471a2a3227\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Atlanta, GA, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa74b1742411952ff9acdca\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Denver, CO, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa74b1042411952ff9acdbb\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Cincinnati, OH, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa748c2930bff471a2a311c\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Salt Lake City, UT, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa748bc930bff471a2a3110\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d2b34aff7f4b3f7119f0160fe0ad8e919a51e70d8b21526bf123aa057c35e604": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, University Graduate, 2027 Start</h2><p><strong>Google</strong><br>Mountain View, CA, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager Program</h2><p><strong>The Walt Disney Company</strong><br>Glendale, CA, United States · On Site</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "25c794362a76f0f87c5362daa26493f7c965eb438edace3b2ce14ae5820f923e",
+        "cd01c815da563707d69557c5c12abc0d99462d3e35aaa0f03e19c9bdf9851fa7"
+      ],
+      "message_id": "<bubu-jobs-d2b34aff7f4b3f7119f0160fe0ad8e919a51e70d8b21526bf123aa057c35e604-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Google\nTitle: Associate Product Manager, University Graduate, 2027 Start\nLocation: Mountain View, CA, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2\n\nCompany: The Walt Disney Company\nTitle: Associate Product Manager Program\nLocation: Glendale, CA, United States\nWork model: On Site\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d74e60ebdb59f3f2722c407b825cce6625bd88fadd6b6a1f3a6fc651cebbec26": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Specialist, Product Management</h2><p><strong>BNY</strong><br>Lake Mary, FL, United States · Hybrid</p><p>Posted: Sep 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa0236aa2266b538d22e5bd\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -291,6 +303,17 @@
       "location": "London, England, United Kingdom",
       "source_url": "https://jobright.ai/jobs/info/6aa5242042411952ff9a74b2",
       "title": "Product manager",
+      "work_model": "On Site"
+    },
+    "25c794362a76f0f87c5362daa26493f7c965eb438edace3b2ce14ae5820f923e": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "The Walt Disney Company",
+      "date_posted": "Sep 14",
+      "job_id": "25c794362a76f0f87c5362daa26493f7c965eb438edace3b2ce14ae5820f923e",
+      "location": "Glendale, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62",
+      "title": "Associate Product Manager Program",
       "work_model": "On Site"
     },
     "2910355911895d17473a3a52190d07d720323a6ad53bddc04a69981030fb1f72": {
@@ -1470,6 +1493,17 @@
       "title": "Specialist, Product Management",
       "work_model": "Hybrid"
     },
+    "cd01c815da563707d69557c5c12abc0d99462d3e35aaa0f03e19c9bdf9851fa7": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Google",
+      "date_posted": "Sep 15",
+      "job_id": "cd01c815da563707d69557c5c12abc0d99462d3e35aaa0f03e19c9bdf9851fa7",
+      "location": "Mountain View, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2",
+      "title": "Associate Product Manager, University Graduate, 2027 Start",
+      "work_model": "On Site"
+    },
     "ce60cc3dc4359324c32dc092c4ebeb2e4efad238213408106618ac0569425ba1": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1801,7 +1835,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"ee2d6caf34737d6076ba5a408e8edc7b5fe9d598226ecf30579954f1b67aa7e7\"",
+    "etag": "\"690821c2935b60cddfec4e690ea1986e6202b46cc32dac5af5795332df348e7e\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
