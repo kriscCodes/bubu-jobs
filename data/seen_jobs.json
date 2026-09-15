@@ -13,6 +13,19 @@
       "subject": "[bubu-jobs] 3 new job match(es)",
       "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: PIMCO\nTitle: Product Analyst\nLocation: Newport Beach, CA, United States\nWork model: On Site\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa841522ed333b4ea5ce3c9\n\nCompany: Lowe's Companies, Inc.\nTitle: Associate Product Manager - Launchpad\nLocation: Charlotte, NC, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa863cb2ed333b4ea5cf36c\n\nCompany: Broadridge\nTitle: Product Analyst (Hybrid)\nLocation: Newark, NJ, United States\nWork model: Hybrid\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa85c15930bff471a2a6ca2\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "3dfe36ef223dad813e4bc596ad1920ff6022bee36216e6b890092d810ddd42e0": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate-Digital Product Management</h2><p><strong>American Express</strong><br>Phoenix, AZ, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>Macy&#x27;s Retail Holdings, Inc.</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Analyst - ePrescribing Platform</h2><p><strong>DrFirst, Inc.</strong><br>United States · Remote</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "31f223849e96a6336c0017e14cb2cacd9ddf474d51ea8a17d52f069b528db348",
+        "62e814aab3dee990aa460629c4e68aa8ea90651324ef9b367febc67515d92458",
+        "f613f0a4ba64823d9bf726e92220a95d64f64c62240c0f0fe324ba0130553b98"
+      ],
+      "message_id": "<bubu-jobs-3dfe36ef223dad813e4bc596ad1920ff6022bee36216e6b890092d810ddd42e0-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: American Express\nTitle: Associate-Digital Product Management\nLocation: Phoenix, AZ, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa\n\nCompany: Macy's Retail Holdings, Inc.\nTitle: Product Analyst\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512\n\nCompany: DrFirst, Inc.\nTitle: Associate Product Analyst - ePrescribing Platform\nLocation: United States\nWork model: Remote\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "4604bf7a4708a0058ef3583e630c78175f1be5f2e30e8f07be984f46690f04f0": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager- WhatsApp</h2><p><strong>Ria Money Transfer</strong><br>Denver, CO, United States · Hybrid</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a83b3ef1081a745e9710c5c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Technical Product Analyst I-Image RPS</h2><p><strong>Deluxe</strong><br>United States · Remote</p><p>Posted: Sep 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa8ab2d3387a3d9b67d24b3\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -407,6 +420,17 @@
       "title": "Integration - Product Management",
       "work_model": "Hybrid"
     },
+    "31f223849e96a6336c0017e14cb2cacd9ddf474d51ea8a17d52f069b528db348": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Macy's Retail Holdings, Inc.",
+      "date_posted": "Sep 15",
+      "job_id": "31f223849e96a6336c0017e14cb2cacd9ddf474d51ea8a17d52f069b528db348",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512",
+      "title": "Product Analyst",
+      "work_model": "On Site"
+    },
     "3479b007c7b1218382736229ce683fc384709558e8eca83b2f758cc9a93d4547": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -769,6 +793,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa3dafbf3aa936e2cdae3e7",
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
       "work_model": "Hybrid"
+    },
+    "62e814aab3dee990aa460629c4e68aa8ea90651324ef9b367febc67515d92458": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "DrFirst, Inc.",
+      "date_posted": "Sep 15",
+      "job_id": "62e814aab3dee990aa460629c4e68aa8ea90651324ef9b367febc67515d92458",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850",
+      "title": "Associate Product Analyst - ePrescribing Platform",
+      "work_model": "Remote"
     },
     "63dcb472bca944bf27a4f6d9d1cb37851420e8922c0159838efe6c3efb14c178": {
       "ats": "Unknown",
@@ -1837,6 +1872,17 @@
       "title": "Entry Level Technical Product Manager - Austin, TX - 2027",
       "work_model": "Hybrid"
     },
+    "f613f0a4ba64823d9bf726e92220a95d64f64c62240c0f0fe324ba0130553b98": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "American Express",
+      "date_posted": "Sep 15",
+      "job_id": "f613f0a4ba64823d9bf726e92220a95d64f64c62240c0f0fe324ba0130553b98",
+      "location": "Phoenix, AZ, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa",
+      "title": "Associate-Digital Product Management",
+      "work_model": "Hybrid"
+    },
     "fc73224d785fdeeba134e4a9194a99a25bb6166159c5a356d805a6135c6c4e3a": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1893,7 +1939,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"c6619c862bcb9f4c6aba5fbf3f3bb0ae955795d6b30a4b958076b7c1bd141f22\"",
+    "etag": "\"bb27346f9bab6bba506905473309a995f00212036e7fdb24c0ca8527746fa8a6\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
