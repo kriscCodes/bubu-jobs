@@ -106,6 +106,20 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Amazon\nTitle: Product Operations Coordinator, MGM+ Network Operations\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "ff671fe29ddb65752ce8ef2b676c70caf10ed51cf5e3e06185d93ef637d6cd87": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Integration - Product Management</h2><p><strong>Trumid</strong><br>New York City, NY, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a567a30efb06a45240d600f\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager - Analyst / Associate</h2><p><strong>iCapital</strong><br>Salt Lake City, UT, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a8cabbacde3717f9e9be8d9\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry-Level Product Management Analyst - EviCore - Remote</h2><p><strong>The Cigna Group</strong><br>United States · Remote</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa94aea09ae03adcacdc95e\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry-Level Product Management Analyst - EviCore - Remote</h2><p><strong>Cigna Healthcare</strong><br>United States · Remote</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa95a2809ae03adcacdcf0d\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "317441518d03179abc4834fde4bc6dee504a2fa18ed0c9cb13969e285dd6ad88",
+        "8fa65e2dc9adf58cf43ca22f0df7e5d231cf4ec8e05955352f6acf297a87f296",
+        "9ccb002c35d0a51938377a319dc553d713c8bb36a516cd8c5e654f19d746127d",
+        "e39fd1021cdf7acb9c300da600292b267492c03b7c96d0caba2b0005ba010444"
+      ],
+      "message_id": "<bubu-jobs-ff671fe29ddb65752ce8ef2b676c70caf10ed51cf5e3e06185d93ef637d6cd87-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 4 new job match(es)",
+      "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Trumid\nTitle: Integration - Product Management\nLocation: New York City, NY, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a567a30efb06a45240d600f\n\nCompany: iCapital\nTitle: Product Manager - Analyst / Associate\nLocation: Salt Lake City, UT, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a8cabbacde3717f9e9be8d9\n\nCompany: The Cigna Group\nTitle: Entry-Level Product Management Analyst - EviCore - Remote\nLocation: United States\nWork model: Remote\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa94aea09ae03adcacdc95e\n\nCompany: Cigna Healthcare\nTitle: Entry-Level Product Management Analyst - EviCore - Remote\nLocation: United States\nWork model: Remote\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa95a2809ae03adcacdcf0d\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "test-v1": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] Email test</h1><p>This is a test of email alerts from your account to yourself. No application was submitted.</p><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -380,6 +394,17 @@
       "location": "Menlo Park, CA, United States",
       "source_url": "https://jobright.ai/jobs/info/6aa7ec82654b2a9424cf9cd6",
       "title": "Associate Product Manager (New Grad)",
+      "work_model": "Hybrid"
+    },
+    "317441518d03179abc4834fde4bc6dee504a2fa18ed0c9cb13969e285dd6ad88": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Trumid",
+      "date_posted": "Sep 15",
+      "job_id": "317441518d03179abc4834fde4bc6dee504a2fa18ed0c9cb13969e285dd6ad88",
+      "location": "New York City, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a567a30efb06a45240d600f",
+      "title": "Integration - Product Management",
       "work_model": "Hybrid"
     },
     "3479b007c7b1218382736229ce683fc384709558e8eca83b2f758cc9a93d4547": {
@@ -1119,6 +1144,17 @@
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
       "work_model": "Hybrid"
     },
+    "8fa65e2dc9adf58cf43ca22f0df7e5d231cf4ec8e05955352f6acf297a87f296": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "The Cigna Group",
+      "date_posted": "Sep 14",
+      "job_id": "8fa65e2dc9adf58cf43ca22f0df7e5d231cf4ec8e05955352f6acf297a87f296",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa94aea09ae03adcacdc95e",
+      "title": "Entry-Level Product Management Analyst - EviCore - Remote",
+      "work_model": "Remote"
+    },
     "91bb6b2c481dd5b12fb84b2e0fad18c2f35348a3f881a42196db6e59ab7dc237": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1183,6 +1219,17 @@
       "location": "Massachusetts - Boston",
       "source_url": "https://jobright.ai/jobs/info/6a0ad6e26186f46859892bff",
       "title": "Associate Product Manager - Vault CRM Suite",
+      "work_model": "Remote"
+    },
+    "9ccb002c35d0a51938377a319dc553d713c8bb36a516cd8c5e654f19d746127d": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Cigna Healthcare",
+      "date_posted": "Sep 14",
+      "job_id": "9ccb002c35d0a51938377a319dc553d713c8bb36a516cd8c5e654f19d746127d",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6aa95a2809ae03adcacdcf0d",
+      "title": "Entry-Level Product Management Analyst - EviCore - Remote",
       "work_model": "Remote"
     },
     "9d50f57e829dcd937dbd2290b4cf9a5d84ac7f29fbf9fcacd38e8ef929d63fd5": {
@@ -1669,6 +1716,17 @@
       "title": "Product Manager Graduate (Ads Interface Platform) - 2027 Start",
       "work_model": "On Site"
     },
+    "e39fd1021cdf7acb9c300da600292b267492c03b7c96d0caba2b0005ba010444": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "iCapital",
+      "date_posted": "Sep 15",
+      "job_id": "e39fd1021cdf7acb9c300da600292b267492c03b7c96d0caba2b0005ba010444",
+      "location": "Salt Lake City, UT, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a8cabbacde3717f9e9be8d9",
+      "title": "Product Manager - Analyst / Associate",
+      "work_model": "Hybrid"
+    },
     "e40725281b8e7eabac73ab0200d02f6e9e94c7053a56ec23d14624b1fbbc4fc2": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1835,7 +1893,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"690821c2935b60cddfec4e690ea1986e6202b46cc32dac5af5795332df348e7e\"",
+    "etag": "\"c6619c862bcb9f4c6aba5fbf3f3bb0ae955795d6b30a4b958076b7c1bd141f22\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
