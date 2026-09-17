@@ -243,6 +243,17 @@
       "subject": "[bubu-jobs] 3 new job match(es)",
       "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Siemens\nTitle: Product Manager, New Graduate (12-month contract)- Experience@Siemens\nLocation: Vaughan, ON, Canada\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa3910a959a10d7230d26fc\n\nCompany: PlanetArt\nTitle: Associate Product Manager, Mobile\nLocation: Calabasas, CA, United States\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a7e49cfe2030208f2768bbf\n\nCompany: American Express\nTitle: Associate-Digital Product Management\nLocation: Phoenix, AZ, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9f3f728e24cb38513d833\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "f6662747c08f3c509a77d38219c28256a0324b2314c18bb6edc3dbb88c2d83e6": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager (APM), New College Graduate Rotational Program, 2027</h2><p><strong>Visa</strong><br>Foster City, CA, United States · Hybrid</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aababd7f6bd9d2d17c1cf6f\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "d2decdfad9e011322c713a67524b0398afd12378f8db8763a40adcaa54d70263"
+      ],
+      "message_id": "<bubu-jobs-f6662747c08f3c509a77d38219c28256a0324b2314c18bb6edc3dbb88c2d83e6-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Visa\nTitle: Associate Product Manager (APM), New College Graduate Rotational Program, 2027\nLocation: Foster City, CA, United States\nWork model: Hybrid\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aababd7f6bd9d2d17c1cf6f\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "ff671fe29ddb65752ce8ef2b676c70caf10ed51cf5e3e06185d93ef637d6cd87": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Integration - Product Management</h2><p><strong>Trumid</strong><br>New York City, NY, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a567a30efb06a45240d600f\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager - Analyst / Associate</h2><p><strong>iCapital</strong><br>Salt Lake City, UT, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a8cabbacde3717f9e9be8d9\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry-Level Product Management Analyst - EviCore - Remote</h2><p><strong>The Cigna Group</strong><br>United States · Remote</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa94aea09ae03adcacdc95e\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry-Level Product Management Analyst - EviCore - Remote</h2><p><strong>Cigna Healthcare</strong><br>United States · Remote</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa95a2809ae03adcacdcf0d\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1930,6 +1941,17 @@
       "title": "Creative Product Manager Graduate (Creative and Brand Innovation) - 2027 Start",
       "work_model": "On Site"
     },
+    "d2decdfad9e011322c713a67524b0398afd12378f8db8763a40adcaa54d70263": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Visa",
+      "date_posted": "Sep 17",
+      "job_id": "d2decdfad9e011322c713a67524b0398afd12378f8db8763a40adcaa54d70263",
+      "location": "Foster City, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aababd7f6bd9d2d17c1cf6f",
+      "title": "Associate Product Manager (APM), New College Graduate Rotational Program, 2027",
+      "work_model": "Hybrid"
+    },
     "d2dfff0539a0571c4ae75f08fbda3ef55ed41ceb3bfe828c5a588443c319a961": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2327,7 +2349,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"0abcd343eb678bba1caf3041f8dca26904d039333a552c5c449868d3fa56c6e2\"",
+    "etag": "\"5f46d8d4fb3fd39e791162c4b5a9e3f4d1486d14f30b834b695aa7e1036ccfd3\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
