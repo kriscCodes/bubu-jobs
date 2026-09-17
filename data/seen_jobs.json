@@ -208,6 +208,17 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Amazon\nTitle: Product Operations Coordinator, MGM+ Network Operations\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "da67356f800343082315b1bf661d9e622abc01ecd458a5e4f4906e704ca0b0f2": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry Level Product Manager, IBM Power - Austin, TX - 2027</h2><p><strong>IBM</strong><br>Austin, TX, United States · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aab711a4be87a72913a4608\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "d3e3566cb060eee7f67f441f53a83e565baab463f9fac6071fd7dfc1b85ce3b6"
+      ],
+      "message_id": "<bubu-jobs-da67356f800343082315b1bf661d9e622abc01ecd458a5e4f4906e704ca0b0f2-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: IBM\nTitle: Entry Level Product Manager, IBM Power - Austin, TX - 2027\nLocation: Austin, TX, United States\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aab711a4be87a72913a4608\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "daf94905c0e2f4359f6d7a8baeb3aabdfa773b5308c85a0ee9a8c267ff20a7ea": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager, New Graduate (12-month contract)- Experience@Siemens</h2><p><strong>Siemens</strong><br>Vaughan, ON, Canada · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa3910a959a10d7230d26fc\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Mobile</h2><p><strong>PlanetArt</strong><br>Calabasas, CA, United States · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a7e49cfe2030208f2768bbf\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate-Digital Product Management</h2><p><strong>American Express</strong><br>Phoenix, AZ, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9f3f728e24cb38513d833\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1930,6 +1941,17 @@
       "title": "Product Manager",
       "work_model": "Remote"
     },
+    "d3e3566cb060eee7f67f441f53a83e565baab463f9fac6071fd7dfc1b85ce3b6": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "IBM",
+      "date_posted": "Sep 16",
+      "job_id": "d3e3566cb060eee7f67f441f53a83e565baab463f9fac6071fd7dfc1b85ce3b6",
+      "location": "Austin, TX, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aab711a4be87a72913a4608",
+      "title": "Entry Level Product Manager, IBM Power - Austin, TX - 2027",
+      "work_model": "Hybrid"
+    },
     "d3f72f45ba6d3777ad0d7d88ea8ebdb59b728ea23a547c8ce2a348c13eb97acc": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2283,7 +2305,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"24a3deb5b2b6e978afb6fcd89d7f3f4635a97ca478c89910e94bdffe18a37db9\"",
+    "etag": "\"0cc08032dc0014d0cbfe4dfa71388e8286323d56bdd168bf8fb3d5b65394b159\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
