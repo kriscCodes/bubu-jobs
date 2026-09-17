@@ -48,6 +48,19 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Bending Spoons\nTitle: Graduate product manager\nLocation: London, England, United Kingdom\nWork model: On Site\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aaac5cef6bd9d2d17c195da\n\nCompany: NJM Insurance Group\nTitle: Insurance Product Management Analyst, Associate - Hybrid\nLocation: Trenton, NJ, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aaad4c2c85610f4a4841f22\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "31a722122381d403aa38c2cdebfcea11a8fea4c6d717fcf2ca7669b3dd017965": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager (APM), New College Graduate Rotational Program, 2027</h2><p><strong>Visa</strong><br>Austin, TX, United States · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aab23aa8e1bf0f764af8b1f\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Prophia</strong><br>United States · Remote</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aab04aaf6bd9d2d17c1afa8\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Vena Solutions</strong><br>Canada · Remote</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a988ea2c8ed473c5c764ca7\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "3ab6afd4c90cb22bc8469a2004b8defba21bf893d8b03fe3e886a6712aa08cc7",
+        "eaaec1ad08f709acf57961647d910ac35045eed9507130da36936a588ecab14e",
+        "faffc7b7b12c7efa77b1040f0064536c6b7a25bb5907041b1edc64f7fa234dea"
+      ],
+      "message_id": "<bubu-jobs-31a722122381d403aa38c2cdebfcea11a8fea4c6d717fcf2ca7669b3dd017965-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Visa\nTitle: Associate Product Manager (APM), New College Graduate Rotational Program, 2027\nLocation: Austin, TX, United States\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aab23aa8e1bf0f764af8b1f\n\nCompany: Prophia\nTitle: Associate Product Manager\nLocation: United States\nWork model: Remote\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aab04aaf6bd9d2d17c1afa8\n\nCompany: Vena Solutions\nTitle: Associate Product Manager\nLocation: Canada\nWork model: Remote\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a988ea2c8ed473c5c764ca7\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "3dfe36ef223dad813e4bc596ad1920ff6022bee36216e6b890092d810ddd42e0": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate-Digital Product Management</h2><p><strong>American Express</strong><br>Phoenix, AZ, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>Macy&#x27;s Retail Holdings, Inc.</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Analyst - ePrescribing Platform</h2><p><strong>DrFirst, Inc.</strong><br>United States · Remote</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -662,6 +675,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a7da1d7ad9ff00c26ba85f3",
       "title": "Graduate Product Manager",
       "work_model": "On Site"
+    },
+    "3ab6afd4c90cb22bc8469a2004b8defba21bf893d8b03fe3e886a6712aa08cc7": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Visa",
+      "date_posted": "Sep 16",
+      "job_id": "3ab6afd4c90cb22bc8469a2004b8defba21bf893d8b03fe3e886a6712aa08cc7",
+      "location": "Austin, TX, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aab23aa8e1bf0f764af8b1f",
+      "title": "Associate Product Manager (APM), New College Graduate Rotational Program, 2027",
+      "work_model": "Hybrid"
     },
     "3d34c8d200870cd0cae268943c81f04743e03bb0b0ef92a4d860143725f100b5": {
       "ats": "Unknown",
@@ -2104,6 +2128,17 @@
       "title": "Associate Product Manager/Product Manager",
       "work_model": "On Site"
     },
+    "eaaec1ad08f709acf57961647d910ac35045eed9507130da36936a588ecab14e": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Vena Solutions",
+      "date_posted": "Sep 16",
+      "job_id": "eaaec1ad08f709acf57961647d910ac35045eed9507130da36936a588ecab14e",
+      "location": "Canada",
+      "source_url": "https://jobright.ai/jobs/info/6a988ea2c8ed473c5c764ca7",
+      "title": "Associate Product Manager",
+      "work_model": "Remote"
+    },
     "eeae76485a07c790eb404b94b2647c9689385966f992fbdb0cf8e476a1c191a2": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2158,6 +2193,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa",
       "title": "Associate-Digital Product Management",
       "work_model": "Hybrid"
+    },
+    "faffc7b7b12c7efa77b1040f0064536c6b7a25bb5907041b1edc64f7fa234dea": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Prophia",
+      "date_posted": "Sep 16",
+      "job_id": "faffc7b7b12c7efa77b1040f0064536c6b7a25bb5907041b1edc64f7fa234dea",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6aab04aaf6bd9d2d17c1afa8",
+      "title": "Associate Product Manager",
+      "work_model": "Remote"
     },
     "fb7cf846be554a1dbbcaa1d7dfa46dac99c1f009520066d5f194c2ee7e10a1e6": {
       "ats": "Unknown",
@@ -2237,7 +2283,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"7f104b4e6a058463d2af3b457d42044257e5e1d1e577fe5f534d3f14a82d38b9\"",
+    "etag": "\"24a3deb5b2b6e978afb6fcd89d7f3f4635a97ca478c89910e94bdffe18a37db9\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
