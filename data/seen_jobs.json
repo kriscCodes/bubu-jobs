@@ -346,6 +346,17 @@
       "subject": "[bubu-jobs] 3 new job match(es)",
       "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Johnson & Johnson MedTech\nTitle: Product Management Co-Op\nLocation: Danvers, MA, United States\nWork model: On Site\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae0720de327d3e210d4e26\n\nCompany: FDH Aero\nTitle: Associate Product Manager\nLocation: Valencia, CA, United States\nWork model: On Site\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae32833dbb1f8967cf03a7\n\nCompany: Roche\nTitle: Associate International Product Manager - Sequencing Systems Software\nLocation: United States\nWork model: Remote\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae0d422e757fcb5c8bae81\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d6956bc351c2df99d2112fd58647b6f8ae2c468560f606c13f5df4e78978c4b2": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">IT Product Manager, Finance</h2><p><strong>7 Brew Coffee</strong><br>Nashville, TN, United States · Remote</p><p>Posted: Sep 18 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaeb7b06956574eac8b9293\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "eb3f797125e2959c9be1090a39aea2bd12beeaa3c8b1d79e793c91f94caaf302"
+      ],
+      "message_id": "<bubu-jobs-d6956bc351c2df99d2112fd58647b6f8ae2c468560f606c13f5df4e78978c4b2-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: 7 Brew Coffee\nTitle: IT Product Manager, Finance\nLocation: Nashville, TN, United States\nWork model: Remote\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aaeb7b06956574eac8b9293\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d74e60ebdb59f3f2722c407b825cce6625bd88fadd6b6a1f3a6fc651cebbec26": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Specialist, Product Management</h2><p><strong>BNY</strong><br>Lake Mary, FL, United States · Hybrid</p><p>Posted: Sep 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa0236aa2266b538d22e5bd\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2640,6 +2651,17 @@
       "title": "Associate Product Manager",
       "work_model": "Remote"
     },
+    "eb3f797125e2959c9be1090a39aea2bd12beeaa3c8b1d79e793c91f94caaf302": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "7 Brew Coffee",
+      "date_posted": "Sep 18",
+      "job_id": "eb3f797125e2959c9be1090a39aea2bd12beeaa3c8b1d79e793c91f94caaf302",
+      "location": "Nashville, TN, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aaeb7b06956574eac8b9293",
+      "title": "IT Product Manager, Finance",
+      "work_model": "Remote"
+    },
     "eeae76485a07c790eb404b94b2647c9689385966f992fbdb0cf8e476a1c191a2": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2817,7 +2839,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"dacec47c187ad31f8ee9ee08aec48d858ef10b721b76ac5245658078c4fad097\"",
+    "etag": "\"671353430953318fac7f6968bafa0e399ca7069af70d3a6577e5915dc0e8bd72\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
