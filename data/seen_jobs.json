@@ -319,6 +319,19 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Google\nTitle: Associate Product Manager, University Graduate, 2027 Start\nLocation: Mountain View, CA, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2\n\nCompany: The Walt Disney Company\nTitle: Associate Product Manager Program\nLocation: Glendale, CA, United States\nWork model: On Site\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d2cbd1121ce0c11f1817b7402ce1033d7ded4b345704162b0f84847bc7699708": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Co-Op</h2><p><strong>Johnson &amp; Johnson MedTech</strong><br>Danvers, MA, United States · On Site</p><p>Posted: Sep 18 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aae0720de327d3e210d4e26\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>FDH Aero</strong><br>Valencia, CA, United States · On Site</p><p>Posted: Sep 18 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aae32833dbb1f8967cf03a7\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate International Product Manager - Sequencing Systems Software</h2><p><strong>Roche</strong><br>United States · Remote</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aae0d422e757fcb5c8bae81\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "149f7aa734221fc74d27974b281074f212a114ccc5e031abb38c6294a334c067",
+        "62c24a01a930beeaed5c4cff12205156d2cb04d145be8e97416be653c85b272b",
+        "9f2ff073219062dab8e534773972268684c036468f8c8e34ccc927932e84e776"
+      ],
+      "message_id": "<bubu-jobs-d2cbd1121ce0c11f1817b7402ce1033d7ded4b345704162b0f84847bc7699708-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Johnson & Johnson MedTech\nTitle: Product Management Co-Op\nLocation: Danvers, MA, United States\nWork model: On Site\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae0720de327d3e210d4e26\n\nCompany: FDH Aero\nTitle: Associate Product Manager\nLocation: Valencia, CA, United States\nWork model: On Site\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae32833dbb1f8967cf03a7\n\nCompany: Roche\nTitle: Associate International Product Manager - Sequencing Systems Software\nLocation: United States\nWork model: Remote\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae0d422e757fcb5c8bae81\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d74e60ebdb59f3f2722c407b825cce6625bd88fadd6b6a1f3a6fc651cebbec26": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Specialist, Product Management</h2><p><strong>BNY</strong><br>Lake Mary, FL, United States · Hybrid</p><p>Posted: Sep 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa0236aa2266b538d22e5bd\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -555,6 +568,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa3f453422289703bd64540",
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
       "work_model": "Hybrid"
+    },
+    "149f7aa734221fc74d27974b281074f212a114ccc5e031abb38c6294a334c067": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Johnson & Johnson MedTech",
+      "date_posted": "Sep 18",
+      "job_id": "149f7aa734221fc74d27974b281074f212a114ccc5e031abb38c6294a334c067",
+      "location": "Danvers, MA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aae0720de327d3e210d4e26",
+      "title": "Product Management Co-Op",
+      "work_model": "On Site"
     },
     "1657e8b4c31382ad1504966529cbf8058f854654ad7dfeb37d22336980fac3f0": {
       "ats": "Unknown",
@@ -1271,6 +1295,17 @@
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
       "work_model": "Hybrid"
     },
+    "62c24a01a930beeaed5c4cff12205156d2cb04d145be8e97416be653c85b272b": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Roche",
+      "date_posted": "Sep 17",
+      "job_id": "62c24a01a930beeaed5c4cff12205156d2cb04d145be8e97416be653c85b272b",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6aae0d422e757fcb5c8bae81",
+      "title": "Associate International Product Manager - Sequencing Systems Software",
+      "work_model": "Remote"
+    },
     "62e814aab3dee990aa460629c4e68aa8ea90651324ef9b367febc67515d92458": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1840,6 +1875,17 @@
       "job_id": "9d50f57e829dcd937dbd2290b4cf9a5d84ac7f29fbf9fcacd38e8ef929d63fd5",
       "location": "Memphis, TN, United States",
       "source_url": "https://jobright.ai/jobs/info/6aa59ca92ed333b4ea5c772d",
+      "title": "Associate Product Manager",
+      "work_model": "On Site"
+    },
+    "9f2ff073219062dab8e534773972268684c036468f8c8e34ccc927932e84e776": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "FDH Aero",
+      "date_posted": "Sep 18",
+      "job_id": "9f2ff073219062dab8e534773972268684c036468f8c8e34ccc927932e84e776",
+      "location": "Valencia, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aae32833dbb1f8967cf03a7",
       "title": "Associate Product Manager",
       "work_model": "On Site"
     },
@@ -2713,7 +2759,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"d5ce737eb048250f81f93728bf9147f7c91f403b899e3af1686a21e210c1cc48\"",
+    "etag": "\"0a23003295596a3dbd5e1b2bfc5859b0b2937d83bd2f2a4c00ffec63d84261f6\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
