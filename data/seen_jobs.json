@@ -261,6 +261,17 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Stanley Black & Decker, Inc.\nTitle: Associate Product Manager (Combo Kits - CRAFTSMAN)\nLocation: Towson, MD, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9bda56d0edc2d91b0b106\n\nCompany: Halma plc\nTitle: Associate Product Manager\nLocation: Garden Grove, CA, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9c0a3eff87f571fc9b349\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "941db908551945be70b911a6a070468192e498c0baabc4fa009b3935ac30a985": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager- Jazz Group</h2><p><strong>Exceleration Music</strong><br>United States · Remote</p><p>Posted: Sep 20 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "098d8a2e3a9a596a25e9593fa01772608f3c4099dbd1dd8bb0a94c1055248652"
+      ],
+      "message_id": "<bubu-jobs-941db908551945be70b911a6a070468192e498c0baabc4fa009b3935ac30a985-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Exceleration Music\nTitle: Product Manager- Jazz Group\nLocation: United States\nWork model: Remote\nDate posted: Sep 20\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "a88e364fe498859fd6f59ac5616c0358fa119d29802aabbd01337cf69b1f03f0": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Accenture Federal Services</strong><br>Washington, DC, United States · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaaa0aec85610f4a4840add\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Marketing</h2><p><strong>Edwards Lifesciences</strong><br>Mississauga, ON, Canada · On Site</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaa7af88e1bf0f764af4ed0\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Graduate Trainee Product Manager – Croatian Speaking</h2><p><strong>Saga plc.</strong><br>Folkestone, England, United Kingdom · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaa7af38e1bf0f764af4ebe\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -518,6 +529,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a2bfe1fc260bb1b8ae1405d",
       "title": "Associate Product Manager",
       "work_model": "On Site"
+    },
+    "098d8a2e3a9a596a25e9593fa01772608f3c4099dbd1dd8bb0a94c1055248652": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Exceleration Music",
+      "date_posted": "Sep 20",
+      "job_id": "098d8a2e3a9a596a25e9593fa01772608f3c4099dbd1dd8bb0a94c1055248652",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab015acde327d3e210d7611",
+      "title": "Product Manager- Jazz Group",
+      "work_model": "Remote"
     },
     "0ad4575a6a221e635b6b29c06c1745f1bf77f728ed7889ab41e682702c7000fd": {
       "ats": "Unknown",
@@ -2885,7 +2907,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"8dcffd1e968588a5c4df159db579becd7f2c6cc6d875c376a4514a0d0d8a3f5c\"",
+    "etag": "\"005eb5526f0d7c1a3ada4649504bdfca40f69fde001dc7877bb0469c6724c9f6\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
