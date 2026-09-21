@@ -2941,7 +2941,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"5c51c1f15d4f50c64c216088b7dd0897469202551e509090d1b8585f2a22f781\"",
+    "etag": "\"ca04886071ab1924ca0777cc4996ae0599207dd570798d0e9a1be8829e674a48\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
