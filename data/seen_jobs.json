@@ -260,6 +260,17 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: ASUS\nTitle: Product Manager Assistant\nLocation: City of Industry, CA, United States\nWork model: On Site\nDate posted: Sep 18\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aad7ea5de327d3e210d2b8d\n\nCompany: Kyndryl\nTitle: Associate Product Manager – Agentic Modernization\nLocation: Dallas, TX, United States\nWork model: Hybrid\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aad59563dbb1f8967cecf2b\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "7464bd04824f46d408a084a32e234eed8d716b744aedc73863a96c20522f0ffd": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager, Video Moderation, Platform Responsibility</h2><p><strong>TikTok</strong><br>San Jose, CA, United States · On Site</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab4a84de9a8f953ef830b29\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "f5a5cf0541692d42c094975bc7adf2549b75ab8a92d70752de24c8d05817af32"
+      ],
+      "message_id": "<bubu-jobs-7464bd04824f46d408a084a32e234eed8d716b744aedc73863a96c20522f0ffd-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: TikTok\nTitle: Product Manager, Video Moderation, Platform Responsibility\nLocation: San Jose, CA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab4a84de9a8f953ef830b29\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "75e66b37abbe7d24673f34812c7eb8feaa9bd2cd62c0d45f14c1826d1e0e4bb6": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 6 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Entry-Level TriZetto Product Management Analysts — PIM &amp; PXM</h2><p><strong>Cognizant</strong><br>Mesa, AZ, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9b2c66d0edc2d91b0ab59\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Loblaw Companies Limited</strong><br>Brampton, ON, Canada · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9ad27eff87f571fc9aa24\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">IT Project &amp; Product Manager (2027 Grads)</h2><p><strong>Procter &amp; Gamble</strong><br>Cincinnati, OH, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a8cb49c25fc4e7ae3dba0f9\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Rotational Product Manager</h2><p><strong>Zynga</strong><br>Austin, TX, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9a90810b1cd4f41606eea\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>Macy&#x27;s</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9925e6d0edc2d91b0a341\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager (Combo Kits - CRAFTSMAN)</h2><p><strong>Stanley Black &amp; Decker, Inc.</strong><br>Towson, MD, United States · Hybrid</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9b6baeff87f571fc9ae53\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -3229,6 +3240,17 @@
       "title": "Associate Product Manager",
       "work_model": "On Site"
     },
+    "f5a5cf0541692d42c094975bc7adf2549b75ab8a92d70752de24c8d05817af32": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "TikTok",
+      "date_posted": "Sep 23",
+      "job_id": "f5a5cf0541692d42c094975bc7adf2549b75ab8a92d70752de24c8d05817af32",
+      "location": "San Jose, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab4a84de9a8f953ef830b29",
+      "title": "Product Manager, Video Moderation, Platform Responsibility",
+      "work_model": "On Site"
+    },
     "f5d76f6e5043b5ba86135902fbe8e7d6054327d761e8bc0d4a2aaaba04c5c7b1": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3351,7 +3373,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"e51edd9042357fc57042cb214983b4ec2765d092c6de787d329a1325a7ef7525\"",
+    "etag": "\"745c1fe1ce0684ea2605bf2a98226b640762bfc0d726a62198f69970fe4146d8\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
