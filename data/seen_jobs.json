@@ -334,6 +334,18 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Stanley Black & Decker, Inc.\nTitle: Associate Product Manager (Combo Kits - CRAFTSMAN)\nLocation: Towson, MD, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9bda56d0edc2d91b0b106\n\nCompany: Halma plc\nTitle: Associate Product Manager\nLocation: Garden Grove, CA, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9c0a3eff87f571fc9b349\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "865d07d9cc8dc1e008831f67c16d1754c2ab1b7e540ae7e4e843d6336d5f9ded": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Human Capital - Product Operations Associate</h2><p><strong>The D. E. Shaw Group</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab51669c6fe0dec8119f4da\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Seasonal Product Operations Educator / Tanger Outlet Pop Up</h2><p><strong>lululemon</strong><br>Southaven, MS, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a986ac883fc633357631628\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "254a998fe35f66abcbf3b5d2a730240357e95badd10332506a1a442a78f08781",
+        "7e31ebe217dfb5f1ba3c7485ff0d93d2336b97d174cd723c5a0dfd577d75c065"
+      ],
+      "message_id": "<bubu-jobs-865d07d9cc8dc1e008831f67c16d1754c2ab1b7e540ae7e4e843d6336d5f9ded-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: The D. E. Shaw Group\nTitle: Human Capital - Product Operations Associate\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab51669c6fe0dec8119f4da\n\nCompany: lululemon\nTitle: Seasonal Product Operations Educator / Tanger Outlet Pop Up\nLocation: Southaven, MS, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a986ac883fc633357631628\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "8b6ea24ac2af81536337a31002c805b5ed65f94f6795bacad4da7ceccc5440e0": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Hive Models</h2><p><strong>Hive</strong><br>San Francisco, CA, United States · On Site</p><p>Posted: Sep 21 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a6269eef805ef6ff4232c23\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - Sports, Media, &amp; Marketing</h2><p><strong>Hive</strong><br>San Francisco, CA, United States · On Site</p><p>Posted: Sep 21 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a5e2b8527bf767ea68f50ec\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1016,6 +1028,17 @@
       "location": "London, England, United Kingdom",
       "source_url": "https://jobright.ai/jobs/info/6aa5242042411952ff9a74b2",
       "title": "Product manager",
+      "work_model": "On Site"
+    },
+    "254a998fe35f66abcbf3b5d2a730240357e95badd10332506a1a442a78f08781": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "lululemon",
+      "date_posted": "Sep 24",
+      "job_id": "254a998fe35f66abcbf3b5d2a730240357e95badd10332506a1a442a78f08781",
+      "location": "Southaven, MS, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a986ac883fc633357631628",
+      "title": "Seasonal Product Operations Educator / Tanger Outlet Pop Up",
       "work_model": "On Site"
     },
     "256ca9ab1e7f6f6f2a0397db82b06dccbcd6bf52f927cd0f4d7fa6a1cb86dc83": {
@@ -2029,6 +2052,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa3d08a626f9945308b3747",
       "title": "Product Manager",
       "work_model": "Remote"
+    },
+    "7e31ebe217dfb5f1ba3c7485ff0d93d2336b97d174cd723c5a0dfd577d75c065": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "The D. E. Shaw Group",
+      "date_posted": "Sep 24",
+      "job_id": "7e31ebe217dfb5f1ba3c7485ff0d93d2336b97d174cd723c5a0dfd577d75c065",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab51669c6fe0dec8119f4da",
+      "title": "Human Capital - Product Operations Associate",
+      "work_model": "On Site"
     },
     "7f9e8f23ba95850ffcbc40f7b99667ca2f3e961a183c4ebf0198d7a247c03e18": {
       "ats": "Unknown",
@@ -3373,7 +3407,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"745c1fe1ce0684ea2605bf2a98226b640762bfc0d726a62198f69970fe4146d8\"",
+    "etag": "\"431411a978042bf03578f522d93514582be4662180fc01409ee24e7fdfb352f1\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
