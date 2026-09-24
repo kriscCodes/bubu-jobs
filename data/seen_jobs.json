@@ -550,6 +550,17 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Disney Experiences\nTitle: Associate Product Manager (Project Hire)\nLocation: Orlando, FL, United States\nWork model: On Site\nDate posted: Sep 22\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab3632b762be1c53fc35e0c\n\nCompany: Tesco Ireland\nTitle: Technology – Product Management Graduate Scheme\nLocation: Welwyn Garden City, England, United Kingdom\nWork model: Hybrid\nDate posted: Sep 22\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab38694a353d86e6786f096\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "f1f84fa00f15ddf2782659e144ac01287a04dbe44fcb9222728991f21546cb8f": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Landis+Gyr</strong><br>Alpharetta, GA, United States · Hybrid</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab453a77bd081371331711d\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "69955f2e94a44d793834b65535552f72c7535759eab424677c5551c829ce2df1"
+      ],
+      "message_id": "<bubu-jobs-f1f84fa00f15ddf2782659e144ac01287a04dbe44fcb9222728991f21546cb8f-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Landis+Gyr\nTitle: Product Manager\nLocation: Alpharetta, GA, United States\nWork model: Hybrid\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab453a77bd081371331711d\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "f6662747c08f3c509a77d38219c28256a0324b2314c18bb6edc3dbb88c2d83e6": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager (APM), New College Graduate Rotational Program, 2027</h2><p><strong>Visa</strong><br>Foster City, CA, United States · Hybrid</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aababd7f6bd9d2d17c1cf6f\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1696,6 +1707,17 @@
       "location": "Miami, FL, United States",
       "source_url": "https://jobright.ai/jobs/info/6aa3e2ddf3aa936e2cdae6f7",
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
+      "work_model": "Hybrid"
+    },
+    "69955f2e94a44d793834b65535552f72c7535759eab424677c5551c829ce2df1": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Landis+Gyr",
+      "date_posted": "Sep 23",
+      "job_id": "69955f2e94a44d793834b65535552f72c7535759eab424677c5551c829ce2df1",
+      "location": "Alpharetta, GA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab453a77bd081371331711d",
+      "title": "Product Manager",
       "work_model": "Hybrid"
     },
     "6a826aa1a8d4254dfeec32af86705d0af8e59c7bc29d19058871f88317219672": {
@@ -3283,7 +3305,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"a0617c1b184b0c6e17bf9c2aae93e0540a521f01a688afe1da55e61424141b9f\"",
+    "etag": "\"0b1940a9e3a571ea16f6771b2ec5f6aac789568e90769cc4dc63efd25d5b1e21\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
