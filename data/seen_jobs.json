@@ -464,6 +464,19 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Zayo Group\nTitle: Product Management Specialist\nLocation: Denver, CO, United States\nWork model: On Site\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a4becec4f64ba41dcb5dc02\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d0d210ed4887aabff4b2b610d702a57480afbe0b0194a1d0865bb683a7b16f71": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Core Experience</h2><p><strong>UGLYCASH</strong><br>San Francisco, CA, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab55c97634ec6aa7c0ce867\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management &amp; Investor Relations – Real Assets, Analyst</h2><p><strong>Blue Owl Capital</strong><br>Chicago, Illinois, United States · Hybrid</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a54e5da81744f383a313c0a\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">2027 University Graduate - Product Manager</h2><p><strong>Adobe</strong><br>San Jose, CA, United States · On Site</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab54711b3db59402d0fbb0e\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "7aab3105cfac31e3993440f95ebd149304611aa122ef820463de7948303b4053",
+        "8b0db492788e2daa17aab5ec3d05d182608a4d88d83223546f4ce28f0b0136ad",
+        "e021ab00ad7afee236e47919facbdaf6578b79f7893a4ce14d3f270fb4ce3a6f"
+      ],
+      "message_id": "<bubu-jobs-d0d210ed4887aabff4b2b610d702a57480afbe0b0194a1d0865bb683a7b16f71-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: UGLYCASH\nTitle: Associate Product Manager, Core Experience\nLocation: San Francisco, CA, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab55c97634ec6aa7c0ce867\n\nCompany: Blue Owl Capital\nTitle: Product Management & Investor Relations – Real Assets, Analyst\nLocation: Chicago, Illinois, United States\nWork model: Hybrid\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a54e5da81744f383a313c0a\n\nCompany: Adobe\nTitle: 2027 University Graduate - Product Manager\nLocation: San Jose, CA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab54711b3db59402d0fbb0e\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d2b34aff7f4b3f7119f0160fe0ad8e919a51e70d8b21526bf123aa057c35e604": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, University Graduate, 2027 Start</h2><p><strong>Google</strong><br>Mountain View, CA, United States · On Site</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager Program</h2><p><strong>The Walt Disney Company</strong><br>Glendale, CA, United States · On Site</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2009,6 +2022,17 @@
       "title": "BUILD Leadership Program - Business Analyst / Tech Product Management Specialist",
       "work_model": "On Site"
     },
+    "7aab3105cfac31e3993440f95ebd149304611aa122ef820463de7948303b4053": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "UGLYCASH",
+      "date_posted": "Sep 24",
+      "job_id": "7aab3105cfac31e3993440f95ebd149304611aa122ef820463de7948303b4053",
+      "location": "San Francisco, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab55c97634ec6aa7c0ce867",
+      "title": "Associate Product Manager, Core Experience",
+      "work_model": "On Site"
+    },
     "7ae7328f8414e9406db82654c4c1abfd4ba87e398fe2fd434ad6b47e7c9bfa85": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2173,6 +2197,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa0384adbc0e60e37e0c030",
       "title": "Associate Product Manager - Co-op Student",
       "work_model": "Hybrid"
+    },
+    "8b0db492788e2daa17aab5ec3d05d182608a4d88d83223546f4ce28f0b0136ad": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Adobe",
+      "date_posted": "Sep 23",
+      "job_id": "8b0db492788e2daa17aab5ec3d05d182608a4d88d83223546f4ce28f0b0136ad",
+      "location": "San Jose, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab54711b3db59402d0fbb0e",
+      "title": "2027 University Graduate - Product Manager",
+      "work_model": "On Site"
     },
     "8c673876317fd3a986d0d1680d069bb99fba7d4ec242daf38247152a3ab6e38b": {
       "ats": "Unknown",
@@ -3043,6 +3078,17 @@
       "title": "Associate Product Manager – Agentic Modernization",
       "work_model": "On Site"
     },
+    "e021ab00ad7afee236e47919facbdaf6578b79f7893a4ce14d3f270fb4ce3a6f": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Blue Owl Capital",
+      "date_posted": "Sep 24",
+      "job_id": "e021ab00ad7afee236e47919facbdaf6578b79f7893a4ce14d3f270fb4ce3a6f",
+      "location": "Chicago, Illinois, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a54e5da81744f383a313c0a",
+      "title": "Product Management & Investor Relations – Real Assets, Analyst",
+      "work_model": "Hybrid"
+    },
     "e2125af27c972af3193bc2de5bfd47482a1d2127975a15147a9860638e879cd9": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3407,7 +3453,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"431411a978042bf03578f522d93514582be4662180fc01409ee24e7fdfb352f1\"",
+    "etag": "\"1bd90a9e753e0335d4c15aa17ae62eec22f3f4a11c9f3994d22fd5886ddf4308\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
