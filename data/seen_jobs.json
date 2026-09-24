@@ -138,6 +138,19 @@
       "subject": "[bubu-jobs] 3 new job match(es)",
       "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: American Express\nTitle: Associate-Digital Product Management\nLocation: Phoenix, AZ, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa978dd28e24cb38513a8aa\n\nCompany: Macy's Retail Holdings, Inc.\nTitle: Product Analyst\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512\n\nCompany: DrFirst, Inc.\nTitle: Associate Product Analyst - ePrescribing Platform\nLocation: United States\nWork model: Remote\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "3e7ff9435b2d93850ed343d2bed7e169454b95d6ad91b39461d900972f9751d2": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager, Video Moderation, Platform Responsibility</h2><p><strong>TikTok</strong><br>San Jose, CA, United States · On Site</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab4928def911c35dffa5a4c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager - Irving, TX</h2><p><strong>Nippon Sanso MATHESON</strong><br>Irving, TX, United States · On Site</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab468cf7bd081371331785f\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Landis+Gyr</strong><br>Alpharetta, GA, United States · On Site</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab4726a0e0ae54eeea488f5\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "106cb520b95480fe318ce443d90e6cdefc7550f5123117a0c97fcc7d635b8f52",
+        "4f69cde6dbe9a055656da0ea28e49625c58f555486cdfe133ec76241d708e96f",
+        "faad3a509dfad4adaed6acfb8274b37fd4f6b59d5850e8d30b001953c6f86e16"
+      ],
+      "message_id": "<bubu-jobs-3e7ff9435b2d93850ed343d2bed7e169454b95d6ad91b39461d900972f9751d2-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: TikTok\nTitle: Product Manager, Video Moderation, Platform Responsibility\nLocation: San Jose, CA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab4928def911c35dffa5a4c\n\nCompany: Nippon Sanso MATHESON\nTitle: Product Manager - Irving, TX\nLocation: Irving, TX, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab468cf7bd081371331785f\n\nCompany: Landis+Gyr\nTitle: Product Manager\nLocation: Alpharetta, GA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab4726a0e0ae54eeea488f5\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "4604bf7a4708a0058ef3583e630c78175f1be5f2e30e8f07be984f46690f04f0": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager- WhatsApp</h2><p><strong>Ria Money Transfer</strong><br>Denver, CO, United States · Hybrid</p><p>Posted: Sep 14 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a83b3ef1081a745e9710c5c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Technical Product Analyst I-Image RPS</h2><p><strong>Deluxe</strong><br>United States · Remote</p><p>Posted: Sep 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa8ab2d3387a3d9b67d24b3\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -761,6 +774,17 @@
       "location": "Danvers, MA, United States",
       "source_url": "https://jobright.ai/jobs/info/6aadd4903d96632d741afeb8",
       "title": "Product Management Co-Op",
+      "work_model": "On Site"
+    },
+    "106cb520b95480fe318ce443d90e6cdefc7550f5123117a0c97fcc7d635b8f52": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Landis+Gyr",
+      "date_posted": "Sep 23",
+      "job_id": "106cb520b95480fe318ce443d90e6cdefc7550f5123117a0c97fcc7d635b8f52",
+      "location": "Alpharetta, GA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab4726a0e0ae54eeea488f5",
+      "title": "Product Manager",
       "work_model": "On Site"
     },
     "10c56a3056cc4b9ed5b81017e371433f62e22b7d7a1358089de2c99aa9da03b3": {
@@ -1400,6 +1424,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aad8ba80ebc8fb2313ea38b",
       "title": "Associate International Product Manager - Sequencing System",
       "work_model": "Remote"
+    },
+    "4f69cde6dbe9a055656da0ea28e49625c58f555486cdfe133ec76241d708e96f": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Nippon Sanso MATHESON",
+      "date_posted": "Sep 23",
+      "job_id": "4f69cde6dbe9a055656da0ea28e49625c58f555486cdfe133ec76241d708e96f",
+      "location": "Irving, TX, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab468cf7bd081371331785f",
+      "title": "Product Manager - Irving, TX",
+      "work_model": "On Site"
     },
     "50560843ebd8b8704f6b16a9574c3611b65550733e3c70b630d4dfc354ec801d": {
       "ats": "Unknown",
@@ -3216,6 +3251,17 @@
       "title": "Associate-Digital Product Management",
       "work_model": "Hybrid"
     },
+    "faad3a509dfad4adaed6acfb8274b37fd4f6b59d5850e8d30b001953c6f86e16": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "TikTok",
+      "date_posted": "Sep 23",
+      "job_id": "faad3a509dfad4adaed6acfb8274b37fd4f6b59d5850e8d30b001953c6f86e16",
+      "location": "San Jose, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab4928def911c35dffa5a4c",
+      "title": "Product Manager, Video Moderation, Platform Responsibility",
+      "work_model": "On Site"
+    },
     "faffc7b7b12c7efa77b1040f0064536c6b7a25bb5907041b1edc64f7fa234dea": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3305,7 +3351,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"0b1940a9e3a571ea16f6771b2ec5f6aac789568e90769cc4dc63efd25d5b1e21\"",
+    "etag": "\"e51edd9042357fc57042cb214983b4ec2765d092c6de787d329a1325a7ef7525\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
