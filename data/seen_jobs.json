@@ -416,6 +416,18 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Kharon\nTitle: Associate Product Manager\nLocation: London, England, United Kingdom\nWork model: Hybrid\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aac00252e757fcb5c8b3279\n\nCompany: Equinix\nTitle: Product Management Associate\nLocation: Redwood City, CA, United States\nWork model: Remote\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aabfa0b2e757fcb5c8b3066\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "b5d2f9057fcf164cd3100fb35fbfc80f78b5e24b54fb6fc3070c3fc1dd571701": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Sensorex, Inc.</strong><br>Garden Grove, CA, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Assistant Product Manager</h2><p><strong>Spencer&#x27;s</strong><br>Egg Harbor Township, NJ, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab59a974873fd3fd852b013\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "2a08a6f435f8f54f96bf4ddcd78a804bbd42a9ce276acce9eec62995e3c0d300",
+        "588948b0de3bf36ea186057e0a1af679c6dfd0140e708e619459f3c55fb5e214"
+      ],
+      "message_id": "<bubu-jobs-b5d2f9057fcf164cd3100fb35fbfc80f78b5e24b54fb6fc3070c3fc1dd571701-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Sensorex, Inc.\nTitle: Associate Product Manager\nLocation: Garden Grove, CA, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c\n\nCompany: Spencer's\nTitle: Assistant Product Manager\nLocation: Egg Harbor Township, NJ, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab59a974873fd3fd852b013\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "b6ef9137bb576076719825e198417bec61b0b7578759ce157f3cfd3f5cfd3a74": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 5 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - AML &amp; Fraud/Credit</h2><p><strong>Worldpay</strong><br>Atlanta, GA, United States · Hybrid</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa756ce930bff471a2a3227\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - AML &amp; Fraud</h2><p><strong>Global Payments Inc.</strong><br>Atlanta, GA, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa74b1742411952ff9acdca\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - AML &amp; Fraud</h2><p><strong>Global Payments Inc.</strong><br>Denver, CO, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa74b1042411952ff9acdbb\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - AML &amp; Fraud</h2><p><strong>Global Payments Inc.</strong><br>Cincinnati, OH, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa748c2930bff471a2a311c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst - AML &amp; Fraud</h2><p><strong>Global Payments Inc.</strong><br>Salt Lake City, UT, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aa748bc930bff471a2a3110\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1113,6 +1125,17 @@
       "title": "Associate Product Manager - Vault CRM Suite",
       "work_model": "Remote"
     },
+    "2a08a6f435f8f54f96bf4ddcd78a804bbd42a9ce276acce9eec62995e3c0d300": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Sensorex, Inc.",
+      "date_posted": "Sep 24",
+      "job_id": "2a08a6f435f8f54f96bf4ddcd78a804bbd42a9ce276acce9eec62995e3c0d300",
+      "location": "Garden Grove, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c",
+      "title": "Associate Product Manager",
+      "work_model": "On Site"
+    },
     "2a787a995f125636506111fd2b7160bc22f70a2d5d64920b26ac902ddc122f26": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1628,6 +1651,17 @@
       "location": "Fort Collins, CO, United States",
       "source_url": "https://jobright.ai/jobs/info/6a8e043325fc4e7ae3dbf480",
       "title": "Software Product Manager Graduate Roles - HP Solutions (HPS)",
+      "work_model": "On Site"
+    },
+    "588948b0de3bf36ea186057e0a1af679c6dfd0140e708e619459f3c55fb5e214": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Spencer's",
+      "date_posted": "Sep 24",
+      "job_id": "588948b0de3bf36ea186057e0a1af679c6dfd0140e708e619459f3c55fb5e214",
+      "location": "Egg Harbor Township, NJ, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab59a974873fd3fd852b013",
+      "title": "Assistant Product Manager",
       "work_model": "On Site"
     },
     "597a01f9bec60398c96a7d6ff959a42434e0e83bfa54ea427789fcf669b86391": {
@@ -3523,7 +3557,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"4a192aebcafa6fd8abd5b32decd01ea5dbbc084164df2c5280bb18c8001aae67\"",
+    "etag": "\"15d8412e8a18082bbc0fe60d36ebe3cc0c3b043db74da17769776c807daa65e0\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
