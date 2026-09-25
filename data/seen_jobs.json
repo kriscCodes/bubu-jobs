@@ -543,6 +543,17 @@
       "subject": "[bubu-jobs] 7 new job match(es)",
       "text": "[bubu-jobs] 7 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Aligned AI\nTitle: Product Manager\nLocation: Salt Lake City, UT, United States\nWork model: Remote\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab436fe64816213f2d97de2\n\nCompany: Productive Playhouse\nTitle: Product Manager\nLocation: United Kingdom\nWork model: Remote\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab42df4d2f5fbd604be1f88\n\nCompany: Gallup\nTitle: Product Manager — Digital Commerce\nLocation: Omaha, NE, United States\nWork model: Hybrid\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab41f840e0ae54eeea46c8a\n\nCompany: Kodiak\nTitle: Product Strategy & Operations Associate\nLocation: Mountain View, CA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab41b2855e9168cf5ea4817\n\nCompany: American Express\nTitle: Campus Undergraduate Full-Time Associate - 2027 Digital Product Management, Enterprise Technology Services- New York, NY\nLocation: New York, NY, United States\nWork model: Hybrid\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a976553e4e60e4b8da5de12\n\nCompany: Kodiak\nTitle: Product Strategy & Operations Associate\nLocation: Mountain View, CA, United States\nWork model: On Site\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab40a3755e9168cf5ea40f1\n\nCompany: Walmart\nTitle: 2026 Intern Conversion: 2027 FT Product Manager II\nLocation: Bentonville, AR, United States\nWork model: On Site\nDate posted: Sep 22\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab42dfe64816213f2d97ad1\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d40824e859fb8dc8af70d8db51cf27797f9b81d443b02fd382a4ced502e5c47e": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager, New Products</h2><p><strong>Drive Medical</strong><br>Port Washington, NY, United States · Remote</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aae449d3dbb1f8967cf076a\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "089de3373ea24e584a21542e8735bb3d5ed2be9642d5877a5ad8e66d7f856784"
+      ],
+      "message_id": "<bubu-jobs-d40824e859fb8dc8af70d8db51cf27797f9b81d443b02fd382a4ced502e5c47e-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Drive Medical\nTitle: Product Manager, New Products\nLocation: Port Washington, NY, United States\nWork model: Remote\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aae449d3dbb1f8967cf076a\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d6956bc351c2df99d2112fd58647b6f8ae2c468560f606c13f5df4e78978c4b2": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">IT Product Manager, Finance</h2><p><strong>7 Brew Coffee</strong><br>Nashville, TN, United States · Remote</p><p>Posted: Sep 18 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaeb7b06956574eac8b9293\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -762,6 +773,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a527d218576ec69c014c2be",
       "title": "Associate Product Manager - AXS",
       "work_model": "On Site"
+    },
+    "089de3373ea24e584a21542e8735bb3d5ed2be9642d5877a5ad8e66d7f856784": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Drive Medical",
+      "date_posted": "Sep 24",
+      "job_id": "089de3373ea24e584a21542e8735bb3d5ed2be9642d5877a5ad8e66d7f856784",
+      "location": "Port Washington, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aae449d3dbb1f8967cf076a",
+      "title": "Product Manager, New Products",
+      "work_model": "Remote"
     },
     "09554a03731b43e8f312f47efec11827d12c69c5c189887135542ce10b664b59": {
       "ats": "Unknown",
@@ -3591,7 +3613,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"4d032af79adb91a0dc26154790a9d2ad931bc0ca3c898f4b7bfa7aeaf0e285a7\"",
+    "etag": "\"0e26c576b917ef28c6838cdb608ccf49305fa1d8f314089888432102f14cebd0\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
