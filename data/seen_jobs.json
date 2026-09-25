@@ -369,6 +369,18 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Exceleration Music\nTitle: Product Manager- Jazz Group\nLocation: United States\nWork model: Remote\nDate posted: Sep 20\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "9e9a68dbe09fdfe8d94127125af45a4307bf37535bcbea3a0812db64981ac541": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>IQVIA</strong><br>Columbia, MD, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab5f8904873fd3fd852c4c7\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Graduate - 2027</h2><p><strong>PentenAmio</strong><br>Tewkesbury, England, United Kingdom · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "44eadddb418b8a5791a0ae1c12b38c7481de418d54a762750dd04caa3297e6cf",
+        "ae55db28a6ec295bd3911611980f322a3e39f223d57c9cb42c21dbe09047149e"
+      ],
+      "message_id": "<bubu-jobs-9e9a68dbe09fdfe8d94127125af45a4307bf37535bcbea3a0812db64981ac541-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: IQVIA\nTitle: Product Analyst\nLocation: Columbia, MD, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab5f8904873fd3fd852c4c7\n\nCompany: PentenAmio\nTitle: Product Management Graduate - 2027\nLocation: Tewkesbury, England, United Kingdom\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "a2c817feccd89fa0c41dc981f3f71ab831c5656b140f74f9475496053fb7d259": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager, Intern</h2><p><strong>Tessera Labs</strong><br>San Jose Office (HQ) · Hybrid</p><p>Posted: Sep 23 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a265baa4239a43538883bb0\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1398,6 +1410,17 @@
       "location": "Irvine, California, United States",
       "source_url": "https://jobright.ai/jobs/info/69c624bb1b5ad0288737eef7",
       "title": "Product Operations Associate, Tier 1",
+      "work_model": "On Site"
+    },
+    "44eadddb418b8a5791a0ae1c12b38c7481de418d54a762750dd04caa3297e6cf": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "IQVIA",
+      "date_posted": "Sep 24",
+      "job_id": "44eadddb418b8a5791a0ae1c12b38c7481de418d54a762750dd04caa3297e6cf",
+      "location": "Columbia, MD, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab5f8904873fd3fd852c4c7",
+      "title": "Product Analyst",
       "work_model": "On Site"
     },
     "4595c6c8fd93f4eab84ad30a7658be219ee82fcfb23f4e926e55640188381eb2": {
@@ -2654,6 +2677,17 @@
       "title": "Associate Product Manager - Launchpad",
       "work_model": "On Site"
     },
+    "ae55db28a6ec295bd3911611980f322a3e39f223d57c9cb42c21dbe09047149e": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "PentenAmio",
+      "date_posted": "Sep 24",
+      "job_id": "ae55db28a6ec295bd3911611980f322a3e39f223d57c9cb42c21dbe09047149e",
+      "location": "Tewkesbury, England, United Kingdom",
+      "source_url": "https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666",
+      "title": "Product Management Graduate - 2027",
+      "work_model": "On Site"
+    },
     "b1a643f8a933beac3331910f028b9594c2547a316b391c3d52639752f7114efd": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3557,7 +3591,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"15d8412e8a18082bbc0fe60d36ebe3cc0c3b043db74da17769776c807daa65e0\"",
+    "etag": "\"4d032af79adb91a0dc26154790a9d2ad931bc0ca3c898f4b7bfa7aeaf0e285a7\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
