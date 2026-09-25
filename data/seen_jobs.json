@@ -576,6 +576,20 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: BNY\nTitle: Specialist, Product Management\nLocation: Lake Mary, FL, United States\nWork model: Hybrid\nDate posted: Sep 08\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa0236aa2266b538d22e5bd\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "d82307791c27d63b08a5c30f8b3f3e75f475f41e2ed04cd9050350357a9c9995": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Assoc Product Manager</h2><p><strong>H&amp;R Block</strong><br>Missouri, United States · Remote</p><p>Posted: Sep 25 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab68351b3db59402d100a65\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Ford Motor Company</strong><br>Dearborn, MI, United States · Hybrid</p><p>Posted: Sep 25 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab680ebc6fe0dec811a4f81\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Ford Pro</strong><br>Dearborn, MI, United States · Hybrid</p><p>Posted: Sep 25 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab680e94873fd3fd852d7a9\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Workday</strong><br>USA, OH, Mason, United States of America · Hybrid</p><p>Posted: Sep 25 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a4618034f64ba41dcb4fd12\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "9f4bf3f52058892666e17528af65e855d2f7a4405f8eb8eaa6a96467925beb9b",
+        "d00425b76ddcae64cc37ef7263408611e3e18169f4bb32600d887343c6611235",
+        "d72e290c9be0d445950e1f3f0b93caae557f0535d2d620c5fee5c4f497ca5d1b",
+        "fc04ec990140639b3bbd3a1311f6b555d6e2f660826d29e809eda6ad1b96deba"
+      ],
+      "message_id": "<bubu-jobs-d82307791c27d63b08a5c30f8b3f3e75f475f41e2ed04cd9050350357a9c9995-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 4 new job match(es)",
+      "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: H&R Block\nTitle: Assoc Product Manager\nLocation: Missouri, United States\nWork model: Remote\nDate posted: Sep 25\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab68351b3db59402d100a65\n\nCompany: Ford Motor Company\nTitle: Product Manager\nLocation: Dearborn, MI, United States\nWork model: Hybrid\nDate posted: Sep 25\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab680ebc6fe0dec811a4f81\n\nCompany: Ford Pro\nTitle: Product Manager\nLocation: Dearborn, MI, United States\nWork model: Hybrid\nDate posted: Sep 25\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab680e94873fd3fd852d7a9\n\nCompany: Workday\nTitle: Product Manager\nLocation: USA, OH, Mason, United States of America\nWork model: Hybrid\nDate posted: Sep 25\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a4618034f64ba41dcb4fd12\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "d85c5c5726e9e88b799310f17fa8a75e166a767389b15d3272b10a63879f9a80": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Operations Coordinator, MGM+ Network Operations</h2><p><strong>Amazon</strong><br>New York, NY, United States · On Site</p><p>Posted: Sep 13 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a9c9340dacf777321a8e7b8\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2578,6 +2592,17 @@
       "title": "Associate Product Manager I",
       "work_model": "Hybrid"
     },
+    "9f4bf3f52058892666e17528af65e855d2f7a4405f8eb8eaa6a96467925beb9b": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Ford Motor Company",
+      "date_posted": "Sep 25",
+      "job_id": "9f4bf3f52058892666e17528af65e855d2f7a4405f8eb8eaa6a96467925beb9b",
+      "location": "Dearborn, MI, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab680ebc6fe0dec811a4f81",
+      "title": "Product Manager",
+      "work_model": "Hybrid"
+    },
     "a16e7ba8e4f489aff52ff183b998218f7850c70230857d704c40ae850398d3bf": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3018,6 +3043,17 @@
       "title": "Creative Product Manager Graduate (Creative and Brand Innovation) - 2027 Start",
       "work_model": "On Site"
     },
+    "d00425b76ddcae64cc37ef7263408611e3e18169f4bb32600d887343c6611235": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Ford Pro",
+      "date_posted": "Sep 25",
+      "job_id": "d00425b76ddcae64cc37ef7263408611e3e18169f4bb32600d887343c6611235",
+      "location": "Dearborn, MI, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab680e94873fd3fd852d7a9",
+      "title": "Product Manager",
+      "work_model": "Hybrid"
+    },
     "d1a24a2117ca381a3842dad465fbc208f923db9dbad6f4b1d7762aaf8f90e477": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3149,6 +3185,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a8a7d40cde3717f9e9b9887",
       "title": "Associate Product Manager, Architectural Specialties Job Job Details / Armstrong World Industries",
       "work_model": "On Site"
+    },
+    "d72e290c9be0d445950e1f3f0b93caae557f0535d2d620c5fee5c4f497ca5d1b": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "H&R Block",
+      "date_posted": "Sep 25",
+      "job_id": "d72e290c9be0d445950e1f3f0b93caae557f0535d2d620c5fee5c4f497ca5d1b",
+      "location": "Missouri, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab68351b3db59402d100a65",
+      "title": "Assoc Product Manager",
+      "work_model": "Remote"
     },
     "dae12b6b1fcf66089fd26dcd5ba24eece365a46c2ad83e7afaaa52f4cf7f5a1d": {
       "ats": "Unknown",
@@ -3546,6 +3593,17 @@
       "title": "Rotational Product Manager - Canada",
       "work_model": "Hybrid"
     },
+    "fc04ec990140639b3bbd3a1311f6b555d6e2f660826d29e809eda6ad1b96deba": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Workday",
+      "date_posted": "Sep 25",
+      "job_id": "fc04ec990140639b3bbd3a1311f6b555d6e2f660826d29e809eda6ad1b96deba",
+      "location": "USA, OH, Mason, United States of America",
+      "source_url": "https://jobright.ai/jobs/info/6a4618034f64ba41dcb4fd12",
+      "title": "Product Manager",
+      "work_model": "Hybrid"
+    },
     "fc656ede23b4bd8236e78ce6d92eb87d7522c9300546f4fd6ce9b7bf0830f56d": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3613,7 +3671,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"0e26c576b917ef28c6838cdb608ccf49305fa1d8f314089888432102f14cebd0\"",
+    "etag": "\"7b593f38ec79da3eae34dc2c95fe8264d0d181581750b63c087d89584349d979\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
