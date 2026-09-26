@@ -206,6 +206,18 @@
       "subject": "[bubu-jobs] 4 new job match(es)",
       "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Arthrex\nTitle: Associate Product Manager, Global Endoscopy\nLocation: Naples, FL, United States\nWork model: On Site\nDate posted: Sep 19\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa7809382e82a31997c1f9f\n\nCompany: Instawork\nTitle: Product Operations Analyst\nLocation: San Francisco, CA, United States\nWork model: On Site\nDate posted: Sep 19\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a6ab634394f9d64d8be6ada\n\nCompany: Instawork\nTitle: Product Operations Analyst\nLocation: Chicago, IL, United States\nWork model: On Site\nDate posted: Sep 19\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a69694b2a5c103624db494d\n\nCompany: Boyd\nTitle: Junior Product Manager\nLocation: Billerica, Massachusetts, United States\nWork model: Hybrid\nDate posted: Sep 19\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a91f0a0d18f75674827acb2\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "5af64b87ac877b1f788327a5a218c0a5b989dc84a773b125761ca6aa826cd70d": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Osprey</h2><p><strong>Helen of Troy</strong><br>Cortez, CO, United States · Hybrid</p><p>Posted: Sep 26 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a7e149ae2030208f276785e\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Assistant Product Manager</h2><p><strong>Spencer&#x27;s</strong><br>Egg Harbor Township, NJ, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab75bcdba1c25652c612037\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "16fde97abb2e2dc0e556c4c8cbfbe69eed22cb131c8349fc6648c4a7f2a8b628",
+        "8f00dfebbb78de2b70ace304fe87b07c889a344ee22c4a097f688a1b231accf4"
+      ],
+      "message_id": "<bubu-jobs-5af64b87ac877b1f788327a5a218c0a5b989dc84a773b125761ca6aa826cd70d-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Helen of Troy\nTitle: Associate Product Manager, Osprey\nLocation: Cortez, CO, United States\nWork model: Hybrid\nDate posted: Sep 26\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a7e149ae2030208f276785e\n\nCompany: Spencer's\nTitle: Assistant Product Manager\nLocation: Egg Harbor Township, NJ, United States\nWork model: On Site\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ab75bcdba1c25652c612037\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "5fd7312ea53f3b6a276e64ec1024e971a565d2f97c5643f09b68532dfd841a24": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Technology – Product Management Graduate Scheme</h2><p><strong>Tesco</strong><br>Welwyn Garden City, England, United Kingdom · Hybrid</p><p>Posted: Sep 22 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab287911e4847ddae914a74\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager</h2><p><strong>Relay</strong><br>United States · Remote</p><p>Posted: Sep 22 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab272f4326574570a001001\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Engineering Co-op (Jan27-May27)</h2><p><strong>Emerson</strong><br>Shakopee, MN, United States · On Site</p><p>Posted: Sep 22 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a96257cc8763a3a87ffebf1\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1039,6 +1051,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa9925e6d0edc2d91b0a341",
       "title": "Product Analyst",
       "work_model": "On Site"
+    },
+    "16fde97abb2e2dc0e556c4c8cbfbe69eed22cb131c8349fc6648c4a7f2a8b628": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Helen of Troy",
+      "date_posted": "Sep 26",
+      "job_id": "16fde97abb2e2dc0e556c4c8cbfbe69eed22cb131c8349fc6648c4a7f2a8b628",
+      "location": "Cortez, CO, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a7e149ae2030208f276785e",
+      "title": "Associate Product Manager, Osprey",
+      "work_model": "Hybrid"
     },
     "171cd1d047874e39da7b27a5bb02c65697834e2470fc2f1f274ff394564dbec1": {
       "ats": "Unknown",
@@ -2558,6 +2581,17 @@
       "title": "Insurance Product Management Analyst, Associate - Hybrid",
       "work_model": "Hybrid"
     },
+    "8f00dfebbb78de2b70ace304fe87b07c889a344ee22c4a097f688a1b231accf4": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Spencer's",
+      "date_posted": "Sep 24",
+      "job_id": "8f00dfebbb78de2b70ace304fe87b07c889a344ee22c4a097f688a1b231accf4",
+      "location": "Egg Harbor Township, NJ, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ab75bcdba1c25652c612037",
+      "title": "Assistant Product Manager",
+      "work_model": "On Site"
+    },
     "8f22f5ef05e8d56bb702f86dc0b33b2172d2c4ccd6e5ed9d56ccdb62ec66fd68": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3879,7 +3913,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"f98d5ab2595fd8d35d1f20082a94600bbd9d8f62d65519522fe6281f021a5e08\"",
+    "etag": "\"817d516b29fa7a3a5fab7153aa9d2b5aaff78a8608d124de1dba4e23ac50be6f\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
