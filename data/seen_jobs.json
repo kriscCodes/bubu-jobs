@@ -702,6 +702,17 @@
       "subject": "[bubu-jobs] 3 new job match(es)",
       "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Siemens\nTitle: Product Manager, New Graduate (12-month contract)- Experience@Siemens\nLocation: Vaughan, ON, Canada\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa3910a959a10d7230d26fc\n\nCompany: PlanetArt\nTitle: Associate Product Manager, Mobile\nLocation: Calabasas, CA, United States\nWork model: Hybrid\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a7e49cfe2030208f2768bbf\n\nCompany: American Express\nTitle: Associate-Digital Product Management\nLocation: Phoenix, AZ, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9f3f728e24cb38513d833\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "dbab518ae61fc00164289dcb522a7f9186b36485029b9e627b372bcfb7ab25f9": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Assistant Product Manager, Fashion/Hair Accessory Category</h2><p><strong>Kiss Beauty Group</strong><br>USA, NY, Port Washington, HQ, United States of America · On Site</p><p>Posted: Sep 27 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a563fedf7517b519ad545dc\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "1103e5f8e9078e1a07a12b39dc84a36bf3e270ab3451acb91db43f9c7b3529d0"
+      ],
+      "message_id": "<bubu-jobs-dbab518ae61fc00164289dcb522a7f9186b36485029b9e627b372bcfb7ab25f9-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Kiss Beauty Group\nTitle: Assistant Product Manager, Fashion/Hair Accessory Category\nLocation: USA, NY, Port Washington, HQ, United States of America\nWork model: On Site\nDate posted: Sep 27\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a563fedf7517b519ad545dc\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "edf9dfb0927a6ac3ac47524f6f803000b310566013af37ead978fda1cf00ea43": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, New Grad</h2><p><strong>IXL Learning</strong><br>San Mateo, CA, United States · On Site</p><p>Posted: Sep 22 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a95ed5c3843db01599085af\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1007,6 +1018,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a457397c2d11a6a4666939d",
       "title": "Product Manager",
       "work_model": "Hybrid"
+    },
+    "1103e5f8e9078e1a07a12b39dc84a36bf3e270ab3451acb91db43f9c7b3529d0": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Kiss Beauty Group",
+      "date_posted": "Sep 27",
+      "job_id": "1103e5f8e9078e1a07a12b39dc84a36bf3e270ab3451acb91db43f9c7b3529d0",
+      "location": "USA, NY, Port Washington, HQ, United States of America",
+      "source_url": "https://jobright.ai/jobs/info/6a563fedf7517b519ad545dc",
+      "title": "Assistant Product Manager, Fashion/Hair Accessory Category",
+      "work_model": "On Site"
     },
     "11e35871543da1072e4da86ddca8f089d11cf7246a316dc43f48dba5ff5344e5": {
       "ats": "Unknown",
@@ -3935,7 +3957,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"7f0a0c53931b0a623f75ea42e99f170297737fb2f01d6b6427d3c4dc5d4635ed\"",
+    "etag": "\"5c63fb030e6cc437f03a8d18a5dccabf15bbd46b07d6c0cf0e9514f38e72d866\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
