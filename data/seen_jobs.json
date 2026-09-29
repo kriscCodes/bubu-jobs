@@ -464,6 +464,17 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Hive\nTitle: Associate Product Manager, Hive Models\nLocation: San Francisco, CA, United States\nWork model: On Site\nDate posted: Sep 21\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a6269eef805ef6ff4232c23\n\nCompany: Hive\nTitle: Product Analyst - Sports, Media, & Marketing\nLocation: San Francisco, CA, United States\nWork model: On Site\nDate posted: Sep 21\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a5e2b8527bf767ea68f50ec\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "8efe6bcc6f7262898e25ff3ac43b1af789df7f5aa97c27d9b1efb8d36b5c44f1": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Junior Product Manager</h2><p><strong>Boyd</strong><br>Billerica, Massachusetts, United States · Hybrid</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a91ef418e5968545337860f\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "d6872df7315dc2a3267cf5299dbb238e0a301b445f2ba3f3f0736636692a8020"
+      ],
+      "message_id": "<bubu-jobs-8efe6bcc6f7262898e25ff3ac43b1af789df7f5aa97c27d9b1efb8d36b5c44f1-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Boyd\nTitle: Junior Product Manager\nLocation: Billerica, Massachusetts, United States\nWork model: Hybrid\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a91ef418e5968545337860f\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "941db908551945be70b911a6a070468192e498c0baabc4fa009b3935ac30a985": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager- Jazz Group</h2><p><strong>Exceleration Music</strong><br>United States · Remote</p><p>Posted: Sep 20 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -3625,6 +3636,17 @@
       "title": "Product Analyst - AML & Fraud/Credit",
       "work_model": "Hybrid"
     },
+    "d6872df7315dc2a3267cf5299dbb238e0a301b445f2ba3f3f0736636692a8020": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Boyd",
+      "date_posted": "Sep 24",
+      "job_id": "d6872df7315dc2a3267cf5299dbb238e0a301b445f2ba3f3f0736636692a8020",
+      "location": "Billerica, Massachusetts, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a91ef418e5968545337860f",
+      "title": "Junior Product Manager",
+      "work_model": "Hybrid"
+    },
     "d72ae54a5c21f5aba936a4389e15ad60cb394745423105c5c163d8661e7f12b3": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -4143,7 +4165,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"e41222a532b9825c7bc7c25de621a6310c56b9c0475001f5e345ae88417bdf84\"",
+    "etag": "\"916c8055cdb6db9b9f2650c285f2e0ab3fb6ba856b693320e05cffd4bf38df9b\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
