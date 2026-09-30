@@ -509,6 +509,17 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Tessera Labs\nTitle: Product Manager, Intern\nLocation: San Jose Office (HQ)\nWork model: Hybrid\nDate posted: Sep 23\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a265baa4239a43538883bb0\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "a633677ef56c1007004e3ffb170f75bd4c90eb1463353f068050cab771d9f712": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Tech Product Manager</h2><p><strong>Optum</strong><br>United States · Remote</p><p>Posted: Sep 29 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abc321892b2612ef0f8d9c5\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "32ff8b8a1978c2e13f1adba3f1e8c1461439838547c9ad72f3391e27fef48edb"
+      ],
+      "message_id": "<bubu-jobs-a633677ef56c1007004e3ffb170f75bd4c90eb1463353f068050cab771d9f712-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Optum\nTitle: Associate Tech Product Manager\nLocation: United States\nWork model: Remote\nDate posted: Sep 29\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6abc321892b2612ef0f8d9c5\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "a8457dc7696164e58fb01322c961b6ae792848646fffbb9056714cdc89f2c01b": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager - AXS</h2><p><strong>AEG</strong><br>Los Angeles, CA, United States · On Site</p><p>Posted: Sep 21 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a527d218576ec69c014c2be\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1558,6 +1569,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa96b6f28e24cb38513a512",
       "title": "Product Analyst",
       "work_model": "On Site"
+    },
+    "32ff8b8a1978c2e13f1adba3f1e8c1461439838547c9ad72f3391e27fef48edb": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Optum",
+      "date_posted": "Sep 29",
+      "job_id": "32ff8b8a1978c2e13f1adba3f1e8c1461439838547c9ad72f3391e27fef48edb",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6abc321892b2612ef0f8d9c5",
+      "title": "Associate Tech Product Manager",
+      "work_model": "Remote"
     },
     "342f7b3ab7040dc743744787bc28195a89fc975f7213144c67d5fa15d1d21a43": {
       "ats": "Unknown",
@@ -4211,7 +4233,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"f6593469d20229fe1b3d1f6f71672c937ed945b1dfcfefae096fc18ce3f0896a\"",
+    "etag": "\"db574daf8e2ee26d25fd04c4d5ad9983d57b1289f81f6aa69236f0d3d8a5642d\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
