@@ -1,11 +1,16 @@
 {
-  "generated_at": "2026-09-30T17:21:32.903213+00:00",
+  "generated_at": "2026-09-30T17:29:11.500925+00:00",
   "total_jobs": 198,
   "relevant_jobs": 77,
-  "resolved": 7,
-  "unresolved": 70,
+  "resolved": 9,
+  "resolved_greenhouse": 7,
+  "resolved_workday": 2,
+  "unresolved": 68,
   "errors": 0,
-  "method": "greenhouse_api",
+  "methods": [
+    "greenhouse_api",
+    "workday_api"
+  ],
   "jobs": [
     {
       "company": "Deutsche Bank",
@@ -138,9 +143,9 @@
       "title": "Associate Product Manager Program",
       "location": "Glendale, CA, United States",
       "jobright_url": "https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62",
-      "resolved_ats_url": null,
-      "ats": "Unknown",
-      "status": "unresolved"
+      "resolved_ats_url": "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer/job/Glendale-CA-USA/Associate-Product-Manager-Program_10160554",
+      "ats": "Workday",
+      "status": "resolved"
     },
     {
       "company": "Databricks",
@@ -201,9 +206,9 @@
       "title": "Product Manager",
       "location": "San Francisco, CA, United States",
       "jobright_url": "https://jobright.ai/jobs/info/6ab0b718dd960b41564197ea",
-      "resolved_ats_url": null,
-      "ats": "Unknown",
-      "status": "unresolved"
+      "resolved_ats_url": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/Senior-Product-Manager--Privacy-Engineering_R171542",
+      "ats": "Workday",
+      "status": "resolved"
     },
     {
       "company": "Trepp, Inc.",

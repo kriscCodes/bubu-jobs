@@ -2,7 +2,11 @@
 
 This module searches public ATS (Applicant Tracking System) APIs to find direct
 apply links for jobs that only have Jobright wrapper URLs. It supports Greenhouse
-and falls back gracefully when no match is found.
+and Workday, falling back gracefully when no match is found.
+
+Resolution order:
+1. Greenhouse public API (boards-api.greenhouse.io)
+2. Workday CXS API (for companies with known configurations)
 """
 import hashlib
 import json
@@ -25,6 +29,16 @@ GREENHOUSE_API = "https://boards-api.greenhouse.io/v1/boards/{token}/jobs"
 CACHE_TTL_SECONDS = 86400 * 7  # Cache resolved URLs for 7 days
 REQUEST_TIMEOUT = 15
 RATE_LIMIT_DELAY = 0.5  # Seconds between API requests
+WORKDAY_PAGE_LIMIT = 20  # Workday API page size
+WORKDAY_MAX_PAGES = 15  # Max pages to fetch (300 jobs)
+
+# Known Workday configurations: company_name -> (subdomain, wd_number, site_name)
+# These are verified to have public CXS APIs accessible without authentication.
+WORKDAY_CONFIGS: dict[str, tuple[str, str, str]] = {
+    "Mastercard": ("mastercard", "wd1", "CorporateCareers"),
+    "The Walt Disney Company": ("disney", "wd5", "disneycareer"),
+    "Adobe": ("adobe", "wd5", "external_experienced"),
+}
 
 
 @dataclass(frozen=True)
@@ -71,6 +85,23 @@ def _fetch_json(url: str, timeout: int = REQUEST_TIMEOUT) -> dict | list | None:
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as e:
         LOG.debug("Failed to fetch %s: %s", url, e)
+        return None
+
+
+def _post_json(url: str, body: dict, timeout: int = REQUEST_TIMEOUT) -> dict | None:
+    """POST JSON to URL and return JSON response."""
+    headers = {
+        "User-Agent": "bubu-jobs/1.0",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
+    try:
+        data = json.dumps(body).encode("utf-8")
+        req = Request(url, data=data, headers=headers, method="POST")
+        with urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as e:
+        LOG.debug("Failed to POST %s: %s", url, e)
         return None
 
 
@@ -136,6 +167,103 @@ def search_greenhouse(company: str, title: str, location: str | None = None) -> 
                 )
         
         time.sleep(RATE_LIMIT_DELAY)
+    
+    return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+
+
+def _get_workday_config(company: str) -> tuple[str, str, str] | None:
+    """Get Workday configuration for a company if known."""
+    if company in WORKDAY_CONFIGS:
+        return WORKDAY_CONFIGS[company]
+    
+    normalized = normalize_company_name(company)
+    for known_company, config in WORKDAY_CONFIGS.items():
+        if normalize_company_name(known_company) == normalized:
+            return config
+    return None
+
+
+def search_workday(company: str, title: str, location: str | None = None) -> ResolvedUrl:
+    """Search Workday CXS API for a matching job.
+    
+    Args:
+        company: Company name (must have known Workday configuration)
+        title: Job title to match
+        location: Optional location for filtering
+    
+    Returns:
+        ResolvedUrl with the result
+    """
+    config = _get_workday_config(company)
+    if not config:
+        return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+    
+    subdomain, wd_num, site = config
+    base_url = f"https://{subdomain}.{wd_num}.myworkdayjobs.com"
+    cxs_url = f"{base_url}/wday/cxs/{subdomain}/{site}/jobs"
+    
+    LOG.debug("Searching Workday for %s at %s", company, cxs_url)
+    
+    all_jobs: list[dict] = []
+    offset = 0
+    
+    for _ in range(WORKDAY_MAX_PAGES):
+        body = {
+            "appliedFacets": {},
+            "limit": WORKDAY_PAGE_LIMIT,
+            "offset": offset,
+            "searchText": ""
+        }
+        
+        data = _post_json(cxs_url, body)
+        if not data:
+            break
+        
+        jobs = data.get("jobPostings", [])
+        if not jobs:
+            break
+        
+        all_jobs.extend(jobs)
+        total = data.get("total", 0)
+        offset += WORKDAY_PAGE_LIMIT
+        
+        if offset >= total:
+            break
+        
+        time.sleep(RATE_LIMIT_DELAY)
+    
+    if not all_jobs:
+        LOG.debug("No jobs found on Workday for %s", company)
+        return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+    
+    LOG.debug("Found %d Workday jobs for %s", len(all_jobs), company)
+    
+    best_match = None
+    best_score = 0.0
+    
+    for job in all_jobs:
+        wd_title = job.get("title", "")
+        score = title_similarity(title, wd_title)
+        
+        if location:
+            wd_location = job.get("locationsText", "")
+            if location.lower() in wd_location.lower():
+                score += 0.1
+        
+        if score > best_score:
+            best_score = score
+            best_match = job
+    
+    if best_match and best_score >= 0.35:
+        external_path = best_match.get("externalPath", "")
+        if external_path:
+            apply_url = f"{base_url}/en-US/{site}{external_path}"
+            return ResolvedUrl(
+                url=apply_url,
+                ats="Workday",
+                status="resolved",
+                method="workday_api"
+            )
     
     return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
 
@@ -216,7 +344,14 @@ class UrlResolver:
         LOG.debug("Resolving URL for %s - %s", company, title)
         
         try:
+            # Try Greenhouse first
             result = search_greenhouse(company, title, location)
+            
+            # If Greenhouse didn't resolve, try Workday
+            if result.status != "resolved":
+                workday_result = search_workday(company, title, location)
+                if workday_result.status == "resolved":
+                    result = workday_result
         except Exception as e:
             LOG.warning("Resolution error for %s - %s: %s", company, title, e)
             result = ResolvedUrl(url=None, ats="Unknown", status="error", method="none")

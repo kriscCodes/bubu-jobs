@@ -12,6 +12,8 @@ from src.resolver import (
     normalize_title,
     title_similarity,
     search_greenhouse,
+    search_workday,
+    _get_workday_config,
     CACHE_TTL_SECONDS,
 )
 
@@ -239,6 +241,163 @@ class UrlResolverTests(unittest.TestCase):
         self.assertEqual(len(results), 2)
         for job, result in results:
             self.assertEqual(result.status, "resolved")
+
+
+class WorkdayConfigTests(unittest.TestCase):
+    def test_known_companies(self):
+        """Known Workday companies should return their configuration."""
+        config = _get_workday_config("Mastercard")
+        self.assertIsNotNone(config)
+        self.assertEqual(config[0], "mastercard")  # subdomain
+        self.assertEqual(config[1], "wd1")  # wd_number
+        self.assertEqual(config[2], "CorporateCareers")  # site
+
+    def test_case_insensitive_lookup(self):
+        """Company lookup should work regardless of case variations."""
+        config = _get_workday_config("The Walt Disney Company")
+        self.assertIsNotNone(config)
+        self.assertEqual(config[0], "disney")
+
+    def test_unknown_company(self):
+        """Unknown companies should return None."""
+        config = _get_workday_config("UnknownCompany")
+        self.assertIsNone(config)
+
+
+class WorkdaySearchTests(unittest.TestCase):
+    @patch("src.resolver._post_json")
+    def test_search_success(self, mock_post):
+        """Workday search should find matching jobs."""
+        mock_post.return_value = {
+            "total": 100,
+            "jobPostings": [
+                {
+                    "title": "Associate Product Manager",
+                    "externalPath": "/job/NYC/Associate-PM_R-12345",
+                    "locationsText": "New York, NY",
+                },
+                {
+                    "title": "Software Engineer",
+                    "externalPath": "/job/SF/SWE_R-67890",
+                    "locationsText": "San Francisco, CA",
+                },
+            ]
+        }
+        
+        result = search_workday("Mastercard", "Associate Product Manager")
+        
+        self.assertEqual(result.status, "resolved")
+        self.assertIn("mastercard.wd1.myworkdayjobs.com", result.url)
+        self.assertIn("Associate-PM_R-12345", result.url)
+        self.assertEqual(result.ats, "Workday")
+        self.assertEqual(result.method, "workday_api")
+
+    @patch("src.resolver._post_json")
+    def test_search_no_matching_title(self, mock_post):
+        """Workday search should return unresolved if no title matches."""
+        mock_post.return_value = {
+            "total": 1,
+            "jobPostings": [
+                {
+                    "title": "Software Engineer",
+                    "externalPath": "/job/SF/SWE_R-67890",
+                }
+            ]
+        }
+        
+        result = search_workday("Mastercard", "Product Manager")
+        
+        self.assertEqual(result.status, "unresolved")
+
+    def test_search_unknown_company(self):
+        """Workday search should return unresolved for unknown companies."""
+        result = search_workday("UnknownCompany", "Product Manager")
+        
+        self.assertEqual(result.status, "unresolved")
+        self.assertIsNone(result.url)
+
+    @patch("src.resolver._post_json")
+    def test_search_api_failure(self, mock_post):
+        """Workday search should handle API failures gracefully."""
+        mock_post.return_value = None
+        
+        result = search_workday("Mastercard", "Product Manager")
+        
+        self.assertEqual(result.status, "unresolved")
+
+
+class WorkdayFallbackTests(unittest.TestCase):
+    @patch("src.resolver.search_workday")
+    @patch("src.resolver.search_greenhouse")
+    def test_workday_fallback_when_greenhouse_fails(self, mock_gh, mock_wd):
+        """Should try Workday when Greenhouse doesn't resolve."""
+        mock_gh.return_value = ResolvedUrl(
+            url=None, ats="Unknown", status="unresolved", method="none"
+        )
+        mock_wd.return_value = ResolvedUrl(
+            url="https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/PM_R-123",
+            ats="Workday",
+            status="resolved",
+            method="workday_api"
+        )
+        
+        resolver = UrlResolver()
+        result = resolver.resolve(
+            company="Mastercard",
+            title="Product Manager",
+            source_url="https://jobright.ai/jobs/info/abc123"
+        )
+        
+        self.assertEqual(result.status, "resolved")
+        self.assertEqual(result.ats, "Workday")
+        self.assertEqual(result.method, "workday_api")
+        mock_gh.assert_called_once()
+        mock_wd.assert_called_once()
+
+    @patch("src.resolver.search_workday")
+    @patch("src.resolver.search_greenhouse")
+    def test_greenhouse_takes_precedence(self, mock_gh, mock_wd):
+        """Should use Greenhouse result if it resolves."""
+        mock_gh.return_value = ResolvedUrl(
+            url="https://boards.greenhouse.io/test/jobs/123",
+            ats="Greenhouse",
+            status="resolved",
+            method="greenhouse_api"
+        )
+        
+        resolver = UrlResolver()
+        result = resolver.resolve(
+            company="TestCompany",
+            title="Product Manager",
+            source_url="https://jobright.ai/jobs/info/abc123"
+        )
+        
+        self.assertEqual(result.status, "resolved")
+        self.assertEqual(result.ats, "Greenhouse")
+        mock_gh.assert_called_once()
+        mock_wd.assert_not_called()
+
+    @patch("src.resolver.search_workday")
+    @patch("src.resolver.search_greenhouse")
+    def test_both_fail_returns_unresolved(self, mock_gh, mock_wd):
+        """Should return unresolved if both Greenhouse and Workday fail."""
+        mock_gh.return_value = ResolvedUrl(
+            url=None, ats="Unknown", status="unresolved", method="none"
+        )
+        mock_wd.return_value = ResolvedUrl(
+            url=None, ats="Unknown", status="unresolved", method="none"
+        )
+        
+        resolver = UrlResolver()
+        result = resolver.resolve(
+            company="TestCompany",
+            title="Product Manager",
+            source_url="https://jobright.ai/jobs/info/abc123"
+        )
+        
+        self.assertEqual(result.status, "unresolved")
+        mock_gh.assert_called_once()
+        mock_wd.assert_called_once()
 
 
 class CacheExpirationTests(unittest.TestCase):

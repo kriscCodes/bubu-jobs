@@ -41,6 +41,8 @@ def main() -> int:
     resolved_count = 0
     unresolved_count = 0
     error_count = 0
+    greenhouse_count = 0
+    workday_count = 0
     
     for original, resolved in zip(relevant_jobs, resolved_jobs):
         entry = {
@@ -55,6 +57,10 @@ def main() -> int:
         if resolved.canonical_apply_url and resolved.canonical_apply_url != original.source_url:
             entry["status"] = "resolved"
             resolved_count += 1
+            if resolved.ats == "Greenhouse":
+                greenhouse_count += 1
+            elif resolved.ats == "Workday":
+                workday_count += 1
         elif resolved.ats == "Unknown" and resolved.canonical_apply_url is None:
             entry["status"] = "unresolved"
             unresolved_count += 1
@@ -62,6 +68,10 @@ def main() -> int:
             if resolved.canonical_apply_url:
                 entry["status"] = "resolved"
                 resolved_count += 1
+                if resolved.ats == "Greenhouse":
+                    greenhouse_count += 1
+                elif resolved.ats == "Workday":
+                    workday_count += 1
             else:
                 entry["status"] = "unresolved"
                 unresolved_count += 1
@@ -77,9 +87,11 @@ def main() -> int:
         "total_jobs": len(all_jobs),
         "relevant_jobs": len(relevant_jobs),
         "resolved": resolved_count,
+        "resolved_greenhouse": greenhouse_count,
+        "resolved_workday": workday_count,
         "unresolved": unresolved_count,
         "errors": error_count,
-        "method": "greenhouse_api",
+        "methods": ["greenhouse_api", "workday_api"],
         "jobs": results,
     }
     
@@ -90,15 +102,23 @@ def main() -> int:
     print("\n=== SUMMARY ===")
     print(f"Total relevant jobs: {len(relevant_jobs)}")
     print(f"Resolved to ATS: {resolved_count}")
+    print(f"  - Greenhouse: {greenhouse_count}")
+    print(f"  - Workday: {workday_count}")
     print(f"Unresolved: {unresolved_count}")
     print(f"Errors: {error_count}")
     
-    if resolved_count > 0:
-        print("\n=== RESOLVED JOBS ===")
+    if greenhouse_count > 0:
+        print("\n=== GREENHOUSE RESOLVED ===")
         for r in results:
-            if r["status"] == "resolved":
+            if r["status"] == "resolved" and r["ats"] == "Greenhouse":
                 print(f"  {r['company']} - {r['title']}")
-                print(f"    ATS: {r['ats']}")
+                print(f"    URL: {r['resolved_ats_url']}")
+    
+    if workday_count > 0:
+        print("\n=== WORKDAY RESOLVED ===")
+        for r in results:
+            if r["status"] == "resolved" and r["ats"] == "Workday":
+                print(f"  {r['company']} - {r['title']}")
                 print(f"    URL: {r['resolved_ats_url']}")
     
     return 0
