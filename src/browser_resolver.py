@@ -1,8 +1,12 @@
 """Browser-based fallback resolver for jobs not resolved by API methods.
 
-This module uses Playwright to visit company career pages and attempt to find
-direct ATS apply URLs. It's designed as an optional fallback that can be run
-separately from the main poll cycle.
+This module uses Playwright to search for job postings via search engines,
+looking for direct ATS apply URLs. It's designed as an optional fallback
+that can be run separately from the main poll cycle.
+
+The primary approach is to search for "company + job title" on DuckDuckGo
+and look for ATS URLs in the search results. This mimics how a human would
+find the actual job posting.
 
 Usage:
     python -m src.browser_resolver [--cache-path PATH]
@@ -19,22 +23,36 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
-from urllib.parse import urlsplit
+from urllib.parse import quote_plus, urlsplit
 
 LOG = logging.getLogger(__name__)
 
 ATS_DOMAINS = {
     "greenhouse.io": "Greenhouse",
+    "boards.greenhouse.io": "Greenhouse",
+    "job-boards.greenhouse.io": "Greenhouse",
     "myworkdayjobs.com": "Workday",
     "myworkdaysite.com": "Workday",
     "lever.co": "Lever",
+    "jobs.lever.co": "Lever",
     "ashbyhq.com": "Ashby",
+    "jobs.ashbyhq.com": "Ashby",
     "icims.com": "iCIMS",
     "smartrecruiters.com": "SmartRecruiters",
+    "jobs.smartrecruiters.com": "SmartRecruiters",
 }
 
-RATE_LIMIT_DELAY = 2.0  # Seconds between browser requests
-BROWSER_TIMEOUT = 20000  # 20 seconds
+WRAPPER_DOMAINS = {
+    "jobright.ai",
+    "linkedin.com",
+    "indeed.com",
+    "glassdoor.com",
+    "ziprecruiter.com",
+}
+
+RATE_LIMIT_DELAY = 3.0  # Seconds between browser searches
+BROWSER_TIMEOUT = 25000  # 25 seconds
+SEARCH_RESULTS_WAIT = 2000  # 2 seconds to wait for search results
 
 
 @dataclass(frozen=True)
@@ -52,6 +70,30 @@ def _detect_ats_from_url(url: str) -> str | None:
     for domain, ats in ATS_DOMAINS.items():
         if host == domain or host.endswith("." + domain):
             return ats
+    return None
+
+
+def _is_wrapper_url(url: str) -> bool:
+    """Check if URL is from a job aggregator/wrapper site."""
+    host = (urlsplit(url).hostname or "").lower()
+    for domain in WRAPPER_DOMAINS:
+        if host == domain or host.endswith("." + domain):
+            return True
+    return False
+
+
+def _extract_job_id_from_url(url: str) -> str | None:
+    """Extract job ID from an ATS URL if present."""
+    patterns = [
+        r"/jobs?/(\d+)",
+        r"gh_jid=(\d+)",
+        r"job[_-]?id=([a-zA-Z0-9_-]+)",
+        r"/job/[^/]+/([a-zA-Z0-9_-]+)",
+    ]
+    for pat in patterns:
+        match = re.search(pat, url)
+        if match:
+            return match.group(1)
     return None
 
 
@@ -88,6 +130,202 @@ def _find_career_links(page) -> Iterator[str]:
                 pass
     except Exception:
         pass
+
+
+def _search_duckduckgo(page, company: str, title: str) -> BrowserResolvedUrl | None:
+    """Search DuckDuckGo for the job and look for ATS URLs in results.
+    
+    Uses JavaScript-enabled DuckDuckGo and interacts with the search box
+    to better mimic human behavior and avoid blocks.
+    
+    Args:
+        page: Playwright page object
+        company: Company name
+        title: Job title
+    
+    Returns:
+        BrowserResolvedUrl if an ATS URL is found, None otherwise
+    """
+    query = f'{company} {title} job apply'
+    
+    try:
+        LOG.debug("Searching DuckDuckGo: %s", query)
+        
+        page.goto("https://duckduckgo.com", wait_until="domcontentloaded", timeout=BROWSER_TIMEOUT)
+        page.wait_for_timeout(1000)
+        
+        search_box = page.locator('input[name="q"]').first
+        if search_box.is_visible():
+            search_box.fill(query)
+            search_box.press("Enter")
+            page.wait_for_timeout(SEARCH_RESULTS_WAIT)
+        else:
+            search_url = f"https://duckduckgo.com/?q={quote_plus(query)}&ia=web"
+            page.goto(search_url, wait_until="domcontentloaded", timeout=BROWSER_TIMEOUT)
+            page.wait_for_timeout(SEARCH_RESULTS_WAIT)
+        
+        result_links = page.locator("a[href]").all()
+        ats_candidates = []
+        
+        for link in result_links[:50]:
+            try:
+                href = link.get_attribute("href")
+                if not href:
+                    continue
+                
+                if href.startswith("//duckduckgo.com/l/"):
+                    import urllib.parse
+                    parsed = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
+                    uddg = parsed.get("uddg", [])
+                    if uddg:
+                        href = urllib.parse.unquote(uddg[0])
+                
+                if not href.startswith("http"):
+                    continue
+                
+                if _is_wrapper_url(href):
+                    continue
+                
+                ats = _detect_ats_from_url(href)
+                if ats:
+                    ats_candidates.append((href, ats))
+                    
+            except Exception:
+                continue
+        
+        if ats_candidates:
+            best_url, best_ats = ats_candidates[0]
+            LOG.info("Found ATS URL via search: %s (%s)", best_url, best_ats)
+            return BrowserResolvedUrl(
+                url=best_url,
+                ats=best_ats,
+                status="resolved",
+                method="browser_search"
+            )
+        
+        return None
+        
+    except Exception as e:
+        LOG.debug("DuckDuckGo search error: %s", e)
+        return None
+
+
+def _search_with_site_operator(page, company: str, title: str, 
+                                ats_domain: str) -> BrowserResolvedUrl | None:
+    """Search for job on a specific ATS domain using site: operator.
+    
+    Args:
+        page: Playwright page object
+        company: Company name  
+        title: Job title
+        ats_domain: ATS domain to search (e.g., "greenhouse.io")
+    
+    Returns:
+        BrowserResolvedUrl if found, None otherwise
+    """
+    query = f'site:{ats_domain} {company} "{title}"'
+    search_url = f"https://duckduckgo.com/?q={quote_plus(query)}&ia=web"
+    
+    try:
+        LOG.debug("Site search: %s", query)
+        page.goto(search_url, wait_until="domcontentloaded", timeout=BROWSER_TIMEOUT)
+        page.wait_for_timeout(SEARCH_RESULTS_WAIT)
+        
+        result_links = page.locator("a[href]").all()
+        
+        for link in result_links[:30]:
+            try:
+                href = link.get_attribute("href")
+                if not href:
+                    continue
+                
+                if href.startswith("//duckduckgo.com/l/"):
+                    import urllib.parse
+                    parsed = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
+                    uddg = parsed.get("uddg", [])
+                    if uddg:
+                        href = urllib.parse.unquote(uddg[0])
+                
+                if not href.startswith("http"):
+                    continue
+                
+                ats = _detect_ats_from_url(href)
+                if ats:
+                    job_id = _extract_job_id_from_url(href)
+                    if job_id:
+                        LOG.info("Found ATS URL via site search: %s", href)
+                        return BrowserResolvedUrl(
+                            url=href,
+                            ats=ats,
+                            status="resolved",
+                            method="browser_search"
+                        )
+            except Exception:
+                continue
+        
+        return None
+        
+    except Exception as e:
+        LOG.debug("Site search error for %s: %s", ats_domain, e)
+        return None
+
+
+def _search_bing(page, company: str, title: str) -> BrowserResolvedUrl | None:
+    """Search Bing for the job and look for ATS URLs in results.
+    
+    Bing tends to be more tolerant of automated searches than Google.
+    We extract actual URLs from the cite elements shown in results.
+    
+    Args:
+        page: Playwright page object
+        company: Company name
+        title: Job title
+    
+    Returns:
+        BrowserResolvedUrl if an ATS URL is found, None otherwise
+    """
+    query = f'{company} {title} job careers apply'
+    search_url = f"https://www.bing.com/search?q={quote_plus(query)}"
+    
+    try:
+        LOG.debug("Searching Bing: %s", query)
+        page.goto(search_url, wait_until="networkidle", timeout=BROWSER_TIMEOUT)
+        page.wait_for_timeout(1500)
+        
+        cite_elements = page.locator("li.b_algo cite").all()
+        
+        for cite in cite_elements[:15]:
+            try:
+                url_text = cite.inner_text().strip()
+                if not url_text:
+                    continue
+                
+                url_text = url_text.replace(" › ", "/").replace("›", "/")
+                
+                if not url_text.startswith("http"):
+                    url_text = "https://" + url_text
+                
+                if _is_wrapper_url(url_text):
+                    continue
+                
+                ats = _detect_ats_from_url(url_text)
+                if ats:
+                    LOG.info("Found ATS URL via Bing: %s (%s)", url_text, ats)
+                    return BrowserResolvedUrl(
+                        url=url_text,
+                        ats=ats,
+                        status="resolved",
+                        method="browser_search"
+                    )
+                    
+            except Exception:
+                continue
+        
+        return None
+        
+    except Exception as e:
+        LOG.debug("Bing search error: %s", e)
+        return None
 
 
 def _resolve_via_company_careers(page, company_url: str, title: str
@@ -238,6 +476,11 @@ class BrowserResolver:
                             location: str | None = None) -> BrowserResolvedUrl:
         """Attempt to resolve a job URL using browser automation.
         
+        Resolution order:
+        1. Search DuckDuckGo for "company + title + careers apply"
+        2. Site-specific searches on major ATS domains
+        3. Visit company careers page and look for ATS redirects
+        
         Args:
             company: Company name
             title: Job title
@@ -258,12 +501,13 @@ class BrowserResolver:
                 method="cache"
             )
         
-        LOG.debug("Browser resolving: %s - %s via %s", company, title, company_url)
+        LOG.info("Browser resolving: %s - %s", company, title)
         
         try:
             self._ensure_browser()
-            result = _resolve_via_company_careers(self._page, company_url, title)
             
+            # 1. Try general DuckDuckGo search first
+            result = _search_duckduckgo(self._page, company, title)
             if result and result.status == "resolved":
                 self._cache[key] = {
                     "url": result.url,
@@ -275,16 +519,64 @@ class BrowserResolver:
                 self._save_cache()
                 return result
             
+            time.sleep(1.5)
+            
+            # 2. Try Bing search
+            result = _search_bing(self._page, company, title)
+            if result and result.status == "resolved":
+                self._cache[key] = {
+                    "url": result.url,
+                    "ats": result.ats,
+                    "status": result.status,
+                    "method": result.method,
+                    "cached_at": time.time(),
+                }
+                self._save_cache()
+                return result
+            
+            time.sleep(1.5)
+            
+            # 3. Try site-specific searches on major ATS platforms
+            ats_domains = ["greenhouse.io", "lever.co", "myworkdayjobs.com"]
+            for ats_domain in ats_domains:
+                result = _search_with_site_operator(self._page, company, title, ats_domain)
+                if result and result.status == "resolved":
+                    self._cache[key] = {
+                        "url": result.url,
+                        "ats": result.ats,
+                        "status": result.status,
+                        "method": result.method,
+                        "cached_at": time.time(),
+                    }
+                    self._save_cache()
+                    return result
+                time.sleep(1.0)
+            
+            # 4. Fall back to career page navigation
+            if company_url:
+                result = _resolve_via_company_careers(self._page, company_url, title)
+                if result and result.status == "resolved":
+                    self._cache[key] = {
+                        "url": result.url,
+                        "ats": result.ats,
+                        "status": result.status,
+                        "method": result.method,
+                        "cached_at": time.time(),
+                    }
+                    self._save_cache()
+                    return result
+            
         except Exception as e:
             LOG.warning("Browser resolution error for %s: %s", company, e)
         
-        # Cache negative result
+        # Cache negative result with reason
         self._cache[key] = {
             "url": None,
             "ats": "Unknown",
             "status": "unresolved",
             "method": "none",
             "cached_at": time.time(),
+            "reason": "no_ats_url_found",
         }
         self._save_cache()
         
