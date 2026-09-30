@@ -13,7 +13,9 @@ from src.resolver import (
     title_similarity,
     search_greenhouse,
     search_workday,
+    search_ashby,
     _get_workday_config,
+    _get_ashby_slug,
     CACHE_TTL_SECONDS,
 )
 
@@ -398,6 +400,101 @@ class WorkdayFallbackTests(unittest.TestCase):
         self.assertEqual(result.status, "unresolved")
         mock_gh.assert_called_once()
         mock_wd.assert_called_once()
+
+
+class AshbyConfigTests(unittest.TestCase):
+    def test_known_companies(self):
+        """Known Ashby companies should return their slug."""
+        slug = _get_ashby_slug("Alchemy")
+        self.assertEqual(slug, "alchemy")
+
+    def test_unknown_company(self):
+        """Unknown companies should return None."""
+        slug = _get_ashby_slug("UnknownCompany")
+        self.assertIsNone(slug)
+
+
+class AshbySearchTests(unittest.TestCase):
+    @patch("src.resolver._fetch_json")
+    def test_search_success(self, mock_fetch):
+        """Ashby search should find matching jobs."""
+        mock_fetch.return_value = {
+            "jobs": [
+                {
+                    "title": "Associate Product Manager",
+                    "jobUrl": "https://jobs.ashbyhq.com/alchemy/12345",
+                    "location": "San Francisco, CA",
+                },
+                {
+                    "title": "Software Engineer",
+                    "jobUrl": "https://jobs.ashbyhq.com/alchemy/67890",
+                    "location": "New York, NY",
+                },
+            ]
+        }
+        
+        result = search_ashby("Alchemy", "Associate Product Manager")
+        
+        self.assertEqual(result.status, "resolved")
+        self.assertEqual(result.url, "https://jobs.ashbyhq.com/alchemy/12345")
+        self.assertEqual(result.ats, "Ashby")
+        self.assertEqual(result.method, "ashby_api")
+
+    def test_search_unknown_company(self):
+        """Ashby search should return unresolved for unknown companies."""
+        result = search_ashby("UnknownCompany", "Product Manager")
+        
+        self.assertEqual(result.status, "unresolved")
+        self.assertIsNone(result.url)
+
+    @patch("src.resolver._fetch_json")
+    def test_search_no_matching_title(self, mock_fetch):
+        """Ashby search should return unresolved if no title matches."""
+        mock_fetch.return_value = {
+            "jobs": [
+                {
+                    "title": "Software Engineer",
+                    "jobUrl": "https://jobs.ashbyhq.com/alchemy/67890",
+                }
+            ]
+        }
+        
+        result = search_ashby("Alchemy", "Product Manager")
+        
+        self.assertEqual(result.status, "unresolved")
+
+
+class AshbyFallbackTests(unittest.TestCase):
+    @patch("src.resolver.search_ashby")
+    @patch("src.resolver.search_workday")
+    @patch("src.resolver.search_greenhouse")
+    def test_ashby_fallback_when_others_fail(self, mock_gh, mock_wd, mock_ashby):
+        """Should try Ashby when Greenhouse and Workday don't resolve."""
+        mock_gh.return_value = ResolvedUrl(
+            url=None, ats="Unknown", status="unresolved", method="none"
+        )
+        mock_wd.return_value = ResolvedUrl(
+            url=None, ats="Unknown", status="unresolved", method="none"
+        )
+        mock_ashby.return_value = ResolvedUrl(
+            url="https://jobs.ashbyhq.com/test/123",
+            ats="Ashby",
+            status="resolved",
+            method="ashby_api"
+        )
+        
+        resolver = UrlResolver()
+        result = resolver.resolve(
+            company="Alchemy",
+            title="Product Manager",
+            source_url="https://jobright.ai/jobs/info/abc123"
+        )
+        
+        self.assertEqual(result.status, "resolved")
+        self.assertEqual(result.ats, "Ashby")
+        mock_gh.assert_called_once()
+        mock_wd.assert_called_once()
+        mock_ashby.assert_called_once()
 
 
 class CacheExpirationTests(unittest.TestCase):

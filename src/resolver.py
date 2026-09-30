@@ -26,6 +26,7 @@ from .ats import detect_ats
 LOG = logging.getLogger(__name__)
 
 GREENHOUSE_API = "https://boards-api.greenhouse.io/v1/boards/{token}/jobs"
+ASHBY_API = "https://api.ashbyhq.com/posting-api/job-board/{slug}"
 CACHE_TTL_SECONDS = 86400 * 7  # Cache resolved URLs for 7 days
 REQUEST_TIMEOUT = 15
 RATE_LIMIT_DELAY = 0.5  # Seconds between API requests
@@ -38,6 +39,12 @@ WORKDAY_CONFIGS: dict[str, tuple[str, str, str]] = {
     "Mastercard": ("mastercard", "wd1", "CorporateCareers"),
     "The Walt Disney Company": ("disney", "wd5", "disneycareer"),
     "Adobe": ("adobe", "wd5", "external_experienced"),
+}
+
+# Known Ashby configurations: company_name -> slug
+# These are verified to have public Ashby job boards.
+ASHBY_CONFIGS: dict[str, str] = {
+    "Alchemy": "alchemy",
 }
 
 
@@ -167,6 +174,75 @@ def search_greenhouse(company: str, title: str, location: str | None = None) -> 
                 )
         
         time.sleep(RATE_LIMIT_DELAY)
+    
+    return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+
+
+def _get_ashby_slug(company: str) -> str | None:
+    """Get Ashby slug for a company if known."""
+    if company in ASHBY_CONFIGS:
+        return ASHBY_CONFIGS[company]
+    
+    normalized = normalize_company_name(company)
+    for known_company, slug in ASHBY_CONFIGS.items():
+        if normalize_company_name(known_company) == normalized:
+            return slug
+    return None
+
+
+def search_ashby(company: str, title: str, location: str | None = None) -> ResolvedUrl:
+    """Search Ashby API for a matching job.
+    
+    Args:
+        company: Company name (must have known Ashby configuration)
+        title: Job title to match
+        location: Optional location for filtering
+    
+    Returns:
+        ResolvedUrl with the result
+    """
+    slug = _get_ashby_slug(company)
+    if not slug:
+        return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+    
+    url = ASHBY_API.format(slug=slug)
+    data = _fetch_json(url)
+    
+    if not data or not isinstance(data, dict):
+        return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+    
+    jobs = data.get("jobs", [])
+    if not jobs:
+        LOG.debug("No jobs found on Ashby for %s", company)
+        return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
+    
+    LOG.debug("Found %d Ashby jobs for %s", len(jobs), company)
+    
+    best_match = None
+    best_score = 0.0
+    
+    for job in jobs:
+        ashby_title = job.get("title", "")
+        score = title_similarity(title, ashby_title)
+        
+        if location:
+            ashby_location = job.get("location", "")
+            if location.lower() in ashby_location.lower():
+                score += 0.1
+        
+        if score > best_score:
+            best_score = score
+            best_match = job
+    
+    if best_match and best_score >= 0.35:
+        job_url = best_match.get("jobUrl")
+        if job_url:
+            return ResolvedUrl(
+                url=job_url,
+                ats="Ashby",
+                status="resolved",
+                method="ashby_api"
+            )
     
     return ResolvedUrl(url=None, ats="Unknown", status="unresolved", method="none")
 
@@ -352,6 +428,12 @@ class UrlResolver:
                 workday_result = search_workday(company, title, location)
                 if workday_result.status == "resolved":
                     result = workday_result
+            
+            # If still not resolved, try Ashby
+            if result.status != "resolved":
+                ashby_result = search_ashby(company, title, location)
+                if ashby_result.status == "resolved":
+                    result = ashby_result
         except Exception as e:
             LOG.warning("Resolution error for %s - %s: %s", company, title, e)
             result = ResolvedUrl(url=None, ats="Unknown", status="error", method="none")

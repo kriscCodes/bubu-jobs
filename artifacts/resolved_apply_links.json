@@ -1,16 +1,22 @@
 {
-  "generated_at": "2026-09-30T17:29:11.500925+00:00",
+  "generated_at": "2026-09-30T17:45:08.519497+00:00",
   "total_jobs": 198,
   "relevant_jobs": 77,
-  "resolved": 9,
+  "resolved": 10,
   "resolved_greenhouse": 7,
   "resolved_workday": 2,
-  "unresolved": 68,
+  "resolved_ashby": 1,
+  "resolved_browser": 0,
+  "unresolved": 67,
   "errors": 0,
   "methods": [
     "greenhouse_api",
-    "workday_api"
+    "workday_api",
+    "ashby_api",
+    "browser_careers",
+    "browser_redirect"
   ],
+  "browser_enabled": true,
   "jobs": [
     {
       "company": "Deutsche Bank",
@@ -19,6 +25,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa02a5ba2266b538d22e7ca",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -28,6 +35,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abc1beb3217d1d13329d2d1",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -37,6 +45,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abd043a372c01f6cd71de05",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -46,6 +55,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e7e51b56bea5779c063ac",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -55,6 +65,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e7e470cd4a070325805df",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -64,6 +75,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9708e5b22f636c81415778",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -73,6 +85,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a84f9b8c1a3fd7120f74106",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -82,6 +95,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e7e56e51a1e18a240e3b7",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -91,6 +105,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e7e42b56bea5779c063a7",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -100,6 +115,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abcc3c34ac55253f5d5a5ad",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -109,6 +125,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a84f9b158ded76ad8fea2cf",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -118,6 +135,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abc9579639bf40e93d36a56",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -127,6 +145,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abc321892b2612ef0f8d9c5",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -136,6 +155,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a54e5da81744f383a313c0a",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -145,6 +165,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62",
       "resolved_ats_url": "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer/job/Glendale-CA-USA/Associate-Product-Manager-Program_10160554",
       "ats": "Workday",
+      "method": "workday_api",
       "status": "resolved"
     },
     {
@@ -154,6 +175,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a5908d5c8e3a473cb8a4916",
       "resolved_ats_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -163,6 +185,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a98527bc8ed473c5c7634bc",
       "resolved_ats_url": "https://careers.roblox.com/jobs/8143976?gh_jid=8143976",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -172,6 +195,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a8613c52f4f0014cae27fe9",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -181,6 +205,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab322bf326574570a004f86",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -190,6 +215,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -199,6 +225,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9e29e227c94c3d5a1cb5f9",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -208,6 +235,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab0b718dd960b41564197ea",
       "resolved_ats_url": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/Senior-Product-Manager--Privacy-Engineering_R171542",
       "ats": "Workday",
+      "method": "workday_api",
       "status": "resolved"
     },
     {
@@ -217,6 +245,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa084953b5aa83237b09a98",
       "resolved_ats_url": "https://www.trepp.com/joining-trepp?gh_jid=8187266",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -226,6 +255,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa9a90810b1cd4f41606eea",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -235,6 +265,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aaa06b510b1cd4f41609856",
       "resolved_ats_url": "https://job-boards.greenhouse.io/zyngacareers/jobs/5708014004",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -244,6 +275,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -253,6 +285,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a96a957246d697dcee00ea7",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -262,6 +295,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7f600aad9ff00c26badce0",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -271,6 +305,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e7e560cd4a070325805e2",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -280,6 +315,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7da1d7ad9ff00c26ba85f3",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -287,9 +323,10 @@
       "title": "Associate Product Manager",
       "location": "Waterloo, ON, Canada",
       "jobright_url": "https://jobright.ai/jobs/info/6abb25203db4ca81fc7c6f44",
-      "resolved_ats_url": null,
-      "ats": "Unknown",
-      "status": "unresolved"
+      "resolved_ats_url": "https://jobs.ashbyhq.com/alchemy/e25f2923-33ce-45cb-a967-0cdb53b2c8b8",
+      "ats": "Ashby",
+      "method": "ashby_api",
+      "status": "resolved"
     },
     {
       "company": "Landis+Gyr",
@@ -298,6 +335,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abb0a4a3db4ca81fc7c5a0b",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -307,6 +345,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abc3091d6acfd3dd29fcae2",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -316,6 +355,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abaeb59ee0b348be729c360",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -325,6 +365,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abac06b7220f52e62ae8090",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -334,6 +375,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab285b81e4847ddae914a2c",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -343,6 +385,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aba8192ee0b348be7299db6",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -352,6 +395,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa7ec82654b2a9424cf9cd6",
       "resolved_ats_url": "https://boards.greenhouse.io/robinhood/jobs/8199973?t=gh_src=&gh_jid=8199973",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -361,6 +405,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abb286ebe5f1e9325119dbd",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -370,6 +415,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abaec977220f52e62ae8fd2",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -379,6 +425,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abab136ee0b348be729aed4",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -388,6 +435,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abab158be5f1e9325116d65",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -397,6 +445,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab307ae78c69ff506c42190",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -406,6 +455,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a563fedf7517b519ad545dc",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -415,6 +465,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aaac5cef6bd9d2d17c195da",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -424,6 +475,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7e149ae2030208f276785e",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -433,6 +485,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab6ceae62bb1fbd451dbf4d",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -442,6 +495,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab6bdef634ec6aa7c0d4527",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -451,6 +505,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab700a039fd8792cb73d189",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -460,6 +515,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab68351b3db59402d100a65",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -469,6 +525,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a4618034f64ba41dcb4fd12",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -478,6 +535,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab6a3cbc6fe0dec811a5ca0",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -487,6 +545,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9adde4d5ff1f3f1c39b867",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -496,6 +555,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a457397c2d11a6a4666939d",
       "resolved_ats_url": "https://job-boards.greenhouse.io/alarmcom/jobs/8612482002",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -505,6 +565,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a7dcbdbe2030208f2765ec2",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -514,6 +575,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab69e824873fd3fd852e1ba",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -523,6 +585,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a99a2ffad752e2ad5500cfb",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -532,6 +595,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa5547e654b2a9424cf3e18",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -541,6 +605,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab58382c6fe0dec811a178e",
       "resolved_ats_url": "https://job-boards.greenhouse.io/8451/jobs/8843248002",
       "ats": "Greenhouse",
+      "method": "greenhouse_api",
       "status": "resolved"
     },
     {
@@ -550,6 +615,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aa5f3282ed333b4ea5c8aa9",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -559,6 +625,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a91ef418e5968545337860f",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -568,6 +635,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aae449d3dbb1f8967cf076a",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -577,6 +645,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab5865ed85922de20ce19bd",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -586,6 +655,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -595,6 +665,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9c5863a7ba386c5d66e424",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -604,6 +675,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -613,6 +685,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab58e6a9d4843569fe4aa62",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -622,6 +695,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab582189d4843569fe4a152",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -631,6 +705,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6abc6c4d73339662c772405e",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -640,6 +715,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab56aa1b3db59402d0fc830",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -649,6 +725,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9e29bc75edfa11b47106ba",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -658,6 +735,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab51669c6fe0dec8119f4da",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -667,6 +745,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a9e340f2c964816f65ebf25",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -676,6 +755,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6a988ea2c8ed473c5c764ca7",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -685,6 +765,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6aab711a4be87a72913a4608",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -694,6 +775,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab4a84de9a8f953ef830b29",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     },
     {
@@ -703,6 +785,7 @@
       "jobright_url": "https://jobright.ai/jobs/info/6ab468cf7bd081371331785f",
       "resolved_ats_url": null,
       "ats": "Unknown",
+      "method": "none",
       "status": "unresolved"
     }
   ]
