@@ -15,3 +15,21 @@ class AtsTests(unittest.TestCase):
             with self.subTest(host=host):
                 self.assertEqual(detect_ats(f"https://{host}/jobs/123"), expected)
         self.assertEqual(detect_ats("https://example.com/?next=jobs.lever.co"), "Unknown")
+
+    def test_custom_domain_greenhouse(self):
+        """Greenhouse hosted on custom company domains with gh_jid parameter."""
+        urls = [
+            "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
+            "https://careers.roblox.com/jobs/8143976?gh_jid=8143976",
+            "https://www.trepp.com/joining-trepp?gh_jid=8187266",
+        ]
+        for url in urls:
+            with self.subTest(url=url):
+                self.assertEqual(detect_ats(url), "Greenhouse")
+
+    def test_query_param_not_spoofable(self):
+        """Ensure domain detection takes precedence for actual ATS domains."""
+        self.assertEqual(
+            detect_ats("https://boards.greenhouse.io/jobs/123?gh_jid=456"),
+            "Greenhouse"
+        )

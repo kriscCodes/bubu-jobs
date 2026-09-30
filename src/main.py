@@ -7,7 +7,7 @@ from pathlib import Path
 from . import config
 from .dedupe import load_state, save_state, state_lock
 from .filters import is_relevant
-from .sources.jobright import fetch_readme, parse_readme
+from .sources.jobright import fetch_readme, parse_readme, resolve_jobs
 from .notifications import TwilioClient, SmsError, load_dotenv, enqueue, deliver
 
 from .email_notifications import (GmailClient, EmailError, enqueue_email,
@@ -16,16 +16,19 @@ from .email_notifications import (GmailClient, EmailError, enqueue_email,
 LOG = logging.getLogger(__name__)
 
 
-def policy_fingerprint() -> str:
+def policy_fingerprint(resolve_urls: bool = False) -> str:
     # Bump parser version when normalization/parsing semantics change.
-    value = ["parser-v1", config.ACCEPTED_TITLE_KEYWORDS, config.REJECTED_TITLE_KEYWORDS]
+    # Bump resolver version when URL resolution logic changes.
+    value = ["parser-v1", "resolver-v1" if resolve_urls else None,
+             config.ACCEPTED_TITLE_KEYWORDS, config.REJECTED_TITLE_KEYWORDS]
     return hashlib.sha256(json.dumps(value).encode()).hexdigest()
 
 
 def run(state_path: Path, force: bool = False, client: TwilioClient | None = None,
         test_sms: bool = False, retry_sms: str | None = None, resume_sms: bool = False,
         email_client: GmailClient | None = None, queue_email: bool = False,
-        test_email: bool = False, retry_email: str | None = None) -> None:
+        test_email: bool = False, retry_email: str | None = None,
+        resolve_urls: bool = False, resolver_cache_path: Path | None = None) -> None:
     with state_lock(state_path):
         state = load_state(state_path)
         email_enabled = email_client is not None or queue_email
@@ -50,7 +53,7 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
                     raise ValueError("Retry ID must identify a blocked or uncertain SMS")
                 item.update(status="pending", attempts=0)
             save_state(state_path, state)
-        policy = policy_fingerprint()
+        policy = policy_fingerprint(resolve_urls)
         cached = state["source"]
         use_cache = not force and cached.get("url") == config.RAW_URL and cached.get("policy") == policy
         result = fetch_readme(cached.get("etag") if use_cache else None)
@@ -63,6 +66,9 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
             return
         jobs = parse_readme(result.text)
         relevant = [job for job in jobs if is_relevant(job.title)]
+        if resolve_urls:
+            LOG.info("Resolving URLs for %d relevant jobs...", len(relevant))
+            relevant = resolve_jobs(relevant, cache_path=resolver_cache_path)
         new = []
         already_seen = 0
         for job in relevant:
@@ -108,6 +114,10 @@ def main() -> int:
     parser.add_argument("--queue-email", action="store_true", help="Queue email without credentials or sending")
     parser.add_argument("--test-email", action="store_true", help="Queue one-time SMTP test; implies --email")
     parser.add_argument("--retry-email", help="Retry a blocked/uncertain email after inspecting Sent mail")
+    parser.add_argument("--resolve-urls", action="store_true",
+                        help="Resolve Jobright wrapper URLs to direct ATS apply URLs")
+    parser.add_argument("--resolver-cache", type=Path, default=config.STATE_PATH.parent / "resolver_cache.json",
+                        help="Path to resolver cache file")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,
                         format="%(levelname)s: %(message)s")
@@ -123,7 +133,8 @@ def main() -> int:
             load_dotenv(Path(__file__).resolve().parents[1] / ".env")
             client = TwilioClient.from_environment()
         run(args.state, args.force, client, args.test_sms, args.retry_sms, args.resume_sms,
-            email_client, args.queue_email, args.test_email, args.retry_email)
+            email_client, args.queue_email, args.test_email, args.retry_email,
+            args.resolve_urls, args.resolver_cache if args.resolve_urls else None)
     except (OSError, ValueError, SmsError, EmailError) as error:
         LOG.error("Poll failed: %s", error)
         return 1

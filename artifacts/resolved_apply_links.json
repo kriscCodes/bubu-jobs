@@ -1,0 +1,704 @@
+{
+  "generated_at": "2026-09-30T17:21:32.903213+00:00",
+  "total_jobs": 198,
+  "relevant_jobs": 77,
+  "resolved": 7,
+  "unresolved": 70,
+  "errors": 0,
+  "method": "greenhouse_api",
+  "jobs": [
+    {
+      "company": "Deutsche Bank",
+      "title": "BIN Sponsorship Product Analyst",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa02a5ba2266b538d22e7ca",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Empower",
+      "title": "Product Manager - Advisor Experience",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abc1beb3217d1d13329d2d1",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Principality Building Society",
+      "title": "Assistant Product Manager",
+      "location": "Cardiff, Wales, United Kingdom",
+      "jobright_url": "https://jobright.ai/jobs/info/6abd043a372c01f6cd71de05",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Ads Interface Platform) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e7e51b56bea5779c063ac",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Ads Interface Platform) - 2027 Start",
+      "location": "Seattle, WA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e7e470cd4a070325805df",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "POI Content Product Manager Graduate (TikTok Local Services) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9708e5b22f636c81415778",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Creative Product Operations Graduate (International Advertising - Creative and Brand Innovation) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a84f9b8c1a3fd7120f74106",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Signal and Identity Product) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e7e56e51a1e18a240e3b7",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Sales and Operations Management Platform) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e7e42b56bea5779c063a7",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "EMS Management & Consultants, Inc.",
+      "title": "Associate Product Manager",
+      "location": "Clemmons, NC, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abcc3c34ac55253f5d5a5ad",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Content and Service, Search Ads) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a84f9b158ded76ad8fea2cf",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Lenovo",
+      "title": "Mobile Software Product Manager - Global Future Leaders (2027)",
+      "location": "Chicago, IL, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abc9579639bf40e93d36a56",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Optum",
+      "title": "Associate Tech Product Manager",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abc321892b2612ef0f8d9c5",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Blue Owl Capital",
+      "title": "Product Management & Investor Relations – Real Assets, Analyst",
+      "location": "Chicago, Illinois, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a54e5da81744f383a313c0a",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "The Walt Disney Company",
+      "title": "Associate Product Manager Program",
+      "location": "Glendale, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Databricks",
+      "title": "Associate Product Manager, New Grad (2027 Start)",
+      "location": "Bellevue, WA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a5908d5c8e3a473cb8a4916",
+      "resolved_ats_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "Roblox",
+      "title": "[2027] Associate Product Manager, Early Career",
+      "location": "San Mateo, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a98527bc8ed473c5c7634bc",
+      "resolved_ats_url": "https://careers.roblox.com/jobs/8143976?gh_jid=8143976",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "Procter & Gamble",
+      "title": "Digital Product Manager - Airtable",
+      "location": "Cincinnati, OH, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a8613c52f4f0014cae27fe9",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Mastercard",
+      "title": "Associate Product Specialist, Product Management, Launch Program 2027 - United States",
+      "location": "O'Fallon, MO, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab322bf326574570a004f86",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Google",
+      "title": "Associate Product Manager, University Graduate, 2027 Start",
+      "location": "Mountain View, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa9021d83a6750b1adfa9a2",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "IBM",
+      "title": "Entry Level Technical Product Manager - Austin, TX - 2027",
+      "location": "Austin, TX, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9e29e227c94c3d5a1cb5f9",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Adobe",
+      "title": "Product Manager",
+      "location": "San Francisco, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab0b718dd960b41564197ea",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Trepp, Inc.",
+      "title": "Product Management Analyst",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa084953b5aa83237b09a98",
+      "resolved_ats_url": "https://www.trepp.com/joining-trepp?gh_jid=8187266",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "Zynga",
+      "title": "Rotational Product Manager - United States",
+      "location": "Austin, TX, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa9a90810b1cd4f41606eea",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Zynga",
+      "title": "Rotational Product Manager - Canada",
+      "location": "San Mateo, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aaa06b510b1cd4f41609856",
+      "resolved_ats_url": "https://job-boards.greenhouse.io/zyngacareers/jobs/5708014004",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "DrFirst, Inc.",
+      "title": "Associate Product Analyst - ePrescribing Platform",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a5bbf7a856af468ab00d850",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "GEO Content Product Manager Graduate (TikTok Local Services) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a96a957246d697dcee00ea7",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Global Product Strategy & Operation Graduate (Scaled Growth ) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7f600aad9ff00c26badce0",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager Graduate (Content and Service Ads) - 2027 Start",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e7e560cd4a070325805e2",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "One Big Circle Ltd",
+      "title": "Graduate Product Manager",
+      "location": "Bristol, England, United Kingdom",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7da1d7ad9ff00c26ba85f3",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Alchemy",
+      "title": "Associate Product Manager",
+      "location": "Waterloo, ON, Canada",
+      "jobright_url": "https://jobright.ai/jobs/info/6abb25203db4ca81fc7c6f44",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Landis+Gyr",
+      "title": "Product Manager Job Details / Landis+Gyr",
+      "location": "Alpharetta, GA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abb0a4a3db4ca81fc7c5a0b",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "IQVIA",
+      "title": "Product Analyst",
+      "location": "Columbia, MD, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abc3091d6acfd3dd29fcae2",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Questrade Financial Group",
+      "title": "Associate Product Manager",
+      "location": "North York, ON, Canada",
+      "jobright_url": "https://jobright.ai/jobs/info/6abaeb59ee0b348be729c360",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Williams-Sonoma, Inc.",
+      "title": "Assistant, Digital Product Operations - Pottery Barn Teen",
+      "location": "San Francisco, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abac06b7220f52e62ae8090",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "AAR",
+      "title": "Product Strategy Analyst III",
+      "location": "Wood Dale, IL, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab285b81e4847ddae914a2c",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Ralph Lauren",
+      "title": "Product Management Associate, Polo Women's Wovens",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aba8192ee0b348be7299db6",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Robinhood",
+      "title": "Associate Product Manager (New Grad)",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa7ec82654b2a9424cf9cd6",
+      "resolved_ats_url": "https://boards.greenhouse.io/robinhood/jobs/8199973?t=gh_src=&gh_jid=8199973",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "Questrade Financial Group",
+      "title": "Associate Product Manager",
+      "location": "Toronto, ON, Canada",
+      "jobright_url": "https://jobright.ai/jobs/info/6abb286ebe5f1e9325119dbd",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "UnitedHealth Group",
+      "title": "Associate Tech Product Manager",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abaec977220f52e62ae8fd2",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "M&T Bank",
+      "title": "2027 Management Development Program - IS Forward Deployed Product Analyst (Wilmington, DE)",
+      "location": "Wilmington, DE, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abab136ee0b348be729aed4",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "M&T Bank",
+      "title": "2027 Management Development Program - IS Forward Deployed Product Analyst (Wilmington, DE)",
+      "location": "Wilmington, DE, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abab158be5f1e9325116d65",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Adobe",
+      "title": "2027 MBA University Graduate - Product Manager",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab307ae78c69ff506c42190",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Kiss Beauty Group",
+      "title": "Assistant Product Manager, Fashion/Hair Accessory Category",
+      "location": "USA, NY, Port Washington, HQ, United States of America",
+      "jobright_url": "https://jobright.ai/jobs/info/6a563fedf7517b519ad545dc",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Bending Spoons",
+      "title": "Graduate product manager",
+      "location": "London, England, United Kingdom",
+      "jobright_url": "https://jobright.ai/jobs/info/6aaac5cef6bd9d2d17c195da",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Helen of Troy",
+      "title": "Associate Product Manager, Osprey",
+      "location": "Cortez, CO, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7e149ae2030208f276785e",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Docusign",
+      "title": "Product Manager",
+      "location": "San Francisco, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab6ceae62bb1fbd451dbf4d",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Docusign",
+      "title": "Product Manager",
+      "location": "San Francisco, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab6bdef634ec6aa7c0d4527",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "McGraw Hill",
+      "title": "Product Operations Specialist",
+      "location": "Chicago, IL, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab700a039fd8792cb73d189",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "H&R Block",
+      "title": "Assoc Product Manager",
+      "location": "Missouri, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab68351b3db59402d100a65",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Workday",
+      "title": "Product Manager",
+      "location": "USA, OH, Mason, United States of America",
+      "jobright_url": "https://jobright.ai/jobs/info/6a4618034f64ba41dcb4fd12",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Cover Genius",
+      "title": "Associate Insurance Product Manager",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab6a3cbc6fe0dec811a5ca0",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Ralph Lauren",
+      "title": "Product Management Assistant, RRL",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9adde4d5ff1f3f1c39b867",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Alarm.com",
+      "title": "Product Manager",
+      "location": "Tysons, VA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a457397c2d11a6a4666939d",
+      "resolved_ats_url": "https://job-boards.greenhouse.io/alarmcom/jobs/8612482002",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "BRG",
+      "title": "Junior Product Manager",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a7dcbdbe2030208f2765ec2",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Kharon",
+      "title": "Associate Product Manager",
+      "location": "London, England, United Kingdom",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab69e824873fd3fd852e1ba",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Deluxe",
+      "title": "Technical Product Analyst I - Image RPS",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a99a2ffad752e2ad5500cfb",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Emerson",
+      "title": "Product Management Engineer",
+      "location": "Shakopee, MN, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa5547e654b2a9424cf3e18",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "84.51˚",
+      "title": "Product Manager- Data Domain (P4410)",
+      "location": "Cincinnati, OH, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab58382c6fe0dec811a178e",
+      "resolved_ats_url": "https://job-boards.greenhouse.io/8451/jobs/8843248002",
+      "ats": "Greenhouse",
+      "status": "resolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager (Multiple Positions)",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aa5f3282ed333b4ea5c8aa9",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Boyd",
+      "title": "Junior Product Manager",
+      "location": "Billerica, Massachusetts, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a91ef418e5968545337860f",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Drive Medical",
+      "title": "Product Manager, New Products",
+      "location": "Port Washington, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aae449d3dbb1f8967cf076a",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Spencer's",
+      "title": "Assistant Product Manager",
+      "location": "Egg Harbor Township, NJ, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab5865ed85922de20ce19bd",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "PentenAmio",
+      "title": "Product Management Graduate - 2027",
+      "location": "Tewkesbury, England, United Kingdom",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Drive Medical",
+      "title": "Product Manager, New Products",
+      "location": "Port Washington, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9c5863a7ba386c5d66e424",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Sensorex, Inc.",
+      "title": "Associate Product Manager",
+      "location": "Garden Grove, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Indeed",
+      "title": "Product Manager I - Internal Only",
+      "location": "United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab58e6a9d4843569fe4aa62",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Nippon Sanso MATHESON",
+      "title": "Product Manager - Irving, TX",
+      "location": "Irving, TX, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab582189d4843569fe4a152",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Spencer's",
+      "title": "Assistant Product Manager",
+      "location": "Egg Harbor Township, NJ, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6abc6c4d73339662c772405e",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Cohen & Steers",
+      "title": "Summer Associate, Product Strategy & Development",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab56aa1b3db59402d0fc830",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "IBM",
+      "title": "Entry Level Product Manager - RTP - 2027",
+      "location": "Research Triangle Park, North Carolina, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9e29bc75edfa11b47106ba",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "The D. E. Shaw Group",
+      "title": "Human Capital - Product Operations Associate",
+      "location": "New York, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab51669c6fe0dec8119f4da",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "IBM",
+      "title": "Product Manager",
+      "location": "Armonk, NY, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6a9e340f2c964816f65ebf25",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Vena Solutions",
+      "title": "Associate Product Manager",
+      "location": "Canada",
+      "jobright_url": "https://jobright.ai/jobs/info/6a988ea2c8ed473c5c764ca7",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "IBM",
+      "title": "Entry Level Product Manager, IBM Power - Austin, TX - 2027",
+      "location": "Austin, TX, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6aab711a4be87a72913a4608",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "TikTok",
+      "title": "Product Manager, Video Moderation, Platform Responsibility",
+      "location": "San Jose, CA, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab4a84de9a8f953ef830b29",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    },
+    {
+      "company": "Nippon Sanso MATHESON",
+      "title": "Product Manager - Irving, TX",
+      "location": "Irving, TX, United States",
+      "jobright_url": "https://jobright.ai/jobs/info/6ab468cf7bd081371331785f",
+      "resolved_ats_url": null,
+      "ats": "Unknown",
+      "status": "unresolved"
+    }
+  ]
+}

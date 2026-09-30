@@ -4,5 +4,6 @@ __pycache__/
 .env
 data/*.lock
 data/.seen-*
+data/resolver_cache.json
 
 .DS_Store
