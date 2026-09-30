@@ -45,7 +45,9 @@ def get_company_urls() -> dict[str, str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Resolve Jobright URLs to ATS apply links")
     parser.add_argument("--browser", action="store_true",
-                        help="Enable browser-based fallback for unresolved jobs")
+                        help="Enable browser-based search fallback for unresolved jobs")
+    parser.add_argument("--jobright-browser", action="store_true",
+                        help="Enable Jobright browser fallback (requires JOBRIGHT_EMAIL/PASSWORD)")
     args = parser.parse_args()
     
     print("Fetching live Jobright README...")
@@ -106,6 +108,58 @@ def main() -> int:
             except ImportError:
                 print("  WARNING: Playwright not available, skipping browser fallback")
     
+    # Jobright browser fallback (visits Jobright pages directly)
+    jobright_browser_resolved = {}
+    jobright_browser_stats = {"login_required": 0, "cloudflare_blocked": 0, "resolved": 0}
+    
+    if args.jobright_browser:
+        # Re-check what's still unresolved after browser fallback
+        still_unresolved = [(orig, res) for orig, res in zip(relevant_jobs, resolved_jobs)
+                           if res.canonical_apply_url is None and orig.job_id not in browser_resolved]
+        
+        if still_unresolved:
+            print(f"\nJobright browser fallback for {len(still_unresolved)} unresolved jobs...")
+            try:
+                from src.jobright_browser import JobrightBrowserResolver, extract_job_id
+                
+                jobright_resolver = JobrightBrowserResolver(cache_path=cache_path)
+                print(f"  Credentials available: {jobright_resolver.has_credentials}")
+                
+                for i, (orig, _) in enumerate(still_unresolved):
+                    job_id = extract_job_id(orig.source_url)
+                    if not job_id:
+                        continue
+                    
+                    result = jobright_resolver.resolve_via_jobright(
+                        job_id=job_id,
+                        company=orig.company,
+                        title=orig.title,
+                    )
+                    
+                    if result.status == "resolved":
+                        jobright_browser_resolved[orig.job_id] = result
+                        jobright_browser_stats["resolved"] += 1
+                        print(f"  Jobright resolved: {orig.company} - {orig.title}")
+                    elif result.status == "login_required":
+                        jobright_browser_stats["login_required"] += 1
+                        if i == 0:  # Only show blocker once
+                            print(f"  Login required: {result.blocker_details}")
+                    elif result.status == "cloudflare_blocked":
+                        jobright_browser_stats["cloudflare_blocked"] += 1
+                        print(f"  Cloudflare blocked: {orig.company}")
+                    
+                    if (i + 1) % 10 == 0:
+                        print(f"  Progress: {i + 1}/{len(still_unresolved)}")
+                    
+                    # Stop if login required and no credentials
+                    if result.status == "login_required" and not jobright_resolver.has_credentials:
+                        print("  Stopping: login required and no credentials available")
+                        break
+                
+                jobright_resolver.close()
+            except ImportError:
+                print("  WARNING: Playwright not available, skipping Jobright browser fallback")
+    
     results = []
     resolved_count = 0
     unresolved_count = 0
@@ -115,9 +169,12 @@ def main() -> int:
     ashby_count = 0
     browser_count = 0
     
+    jobright_browser_count = 0
+    
     for original, resolved in zip(relevant_jobs, resolved_jobs):
         # Check if browser resolved this job
         browser_result = browser_resolved.get(original.job_id)
+        jobright_result = jobright_browser_resolved.get(original.job_id)
         
         entry = {
             "company": resolved.company,
@@ -129,8 +186,16 @@ def main() -> int:
             "method": "api",
         }
         
-        # Use browser result if API didn't resolve
-        if browser_result and browser_result.status == "resolved":
+        # Use Jobright browser result first (most direct method)
+        if jobright_result and jobright_result.status == "resolved":
+            entry["resolved_ats_url"] = jobright_result.url
+            entry["ats"] = jobright_result.ats
+            entry["method"] = jobright_result.method
+            entry["status"] = "resolved"
+            resolved_count += 1
+            jobright_browser_count += 1
+        # Then check browser search result
+        elif browser_result and browser_result.status == "resolved":
             entry["resolved_ats_url"] = browser_result.url
             entry["ats"] = browser_result.ats
             entry["method"] = browser_result.method
@@ -181,11 +246,17 @@ def main() -> int:
         "resolved_greenhouse": greenhouse_count,
         "resolved_workday": workday_count,
         "resolved_ashby": ashby_count,
-        "resolved_browser": browser_count,
+        "resolved_browser_search": browser_count,
+        "resolved_jobright_browser": jobright_browser_count,
         "unresolved": unresolved_count,
         "errors": error_count,
-        "methods": ["greenhouse_api", "workday_api", "ashby_api", "browser_careers", "browser_redirect"],
-        "browser_enabled": args.browser,
+        "methods": [
+            "greenhouse_api", "workday_api", "ashby_api",
+            "browser_search", "browser_jobright_manual_apply"
+        ],
+        "browser_search_enabled": args.browser,
+        "jobright_browser_enabled": args.jobright_browser,
+        "jobright_browser_stats": jobright_browser_stats if args.jobright_browser else None,
         "jobs": results,
     }
     
@@ -199,9 +270,16 @@ def main() -> int:
     print(f"  - Greenhouse API: {greenhouse_count}")
     print(f"  - Workday API: {workday_count}")
     print(f"  - Ashby API: {ashby_count}")
-    print(f"  - Browser: {browser_count}")
+    print(f"  - Browser Search: {browser_count}")
+    print(f"  - Jobright Browser: {jobright_browser_count}")
     print(f"Unresolved: {unresolved_count}")
     print(f"Errors: {error_count}")
+    
+    if args.jobright_browser and jobright_browser_stats:
+        print("\n=== JOBRIGHT BROWSER STATS ===")
+        print(f"  Login required (no credentials): {jobright_browser_stats['login_required']}")
+        print(f"  Cloudflare blocked: {jobright_browser_stats['cloudflare_blocked']}")
+        print(f"  Resolved: {jobright_browser_stats['resolved']}")
     
     if greenhouse_count > 0:
         print("\n=== GREENHOUSE RESOLVED ===")

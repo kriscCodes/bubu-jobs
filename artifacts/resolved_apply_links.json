@@ -1,22 +1,29 @@
 {
-  "generated_at": "2026-09-30T18:06:51.809565+00:00",
+  "generated_at": "2026-09-30T18:15:37.531262+00:00",
   "total_jobs": 196,
   "relevant_jobs": 75,
   "resolved": 10,
   "resolved_greenhouse": 7,
   "resolved_workday": 2,
   "resolved_ashby": 1,
-  "resolved_browser": 0,
+  "resolved_browser_search": 0,
+  "resolved_jobright_browser": 0,
   "unresolved": 65,
   "errors": 0,
   "methods": [
     "greenhouse_api",
     "workday_api",
     "ashby_api",
-    "browser_careers",
-    "browser_redirect"
+    "browser_search",
+    "browser_jobright_manual_apply"
   ],
-  "browser_enabled": false,
+  "browser_search_enabled": false,
+  "jobright_browser_enabled": true,
+  "jobright_browser_stats": {
+    "login_required": 1,
+    "cloudflare_blocked": 0,
+    "resolved": 0
+  },
   "jobs": [
     {
       "company": "Deutsche Bank",
@@ -769,32 +776,21 @@
       "status": "unresolved"
     }
   ],
-  "browser_search_analysis": {
-    "attempted": true,
-    "search_engines_tried": [
-      "DuckDuckGo",
-      "Bing"
+  "jobright_browser_auth_info": {
+    "authentication_required": true,
+    "blocker_url": "https://jobright.ai/jobs/info/<job_id>",
+    "blocker_type": "login_required",
+    "required_credentials": [
+      "JOBRIGHT_EMAIL",
+      "JOBRIGHT_PASSWORD"
     ],
-    "search_engine_limitations": {
-      "DuckDuckGo": "Blocks automated requests, returns homepage instead of search results",
-      "Bing": "Returns results but site: operator is unreliable, job postings poorly indexed"
-    },
-    "reasons_unresolved": [
-      "Most companies use proprietary career systems (TikTok, IBM, Google, etc.)",
-      "Search engines do not effectively index individual job postings",
-      "Job posting URLs change frequently",
-      "Many companies require authentication to view job details"
+    "setup_instructions": [
+      "1. Create a Jobright account at https://jobright.ai",
+      "2. Set environment variables:",
+      "   export JOBRIGHT_EMAIL=\"your-email@example.com\"",
+      "   export JOBRIGHT_PASSWORD=\"your-password\"",
+      "3. Run: python scripts/resolve_live_jobs.py --jobright-browser"
     ],
-    "companies_with_proprietary_systems": [
-      "TikTok (lifeattiktok.com)",
-      "IBM (ibm.com/careers)",
-      "Google (careers.google.com)",
-      "Lenovo (jobs.lenovo.com)",
-      "Docusign (careers.docusign.com)",
-      "Deutsche Bank (careers.db.com)",
-      "UnitedHealth Group / Optum (careers.unitedhealthgroup.com)",
-      "Procter & Gamble (pgcareers.com)"
-    ],
-    "conclusion": "API-based resolution via Greenhouse, Workday, and Ashby public APIs achieves 13% resolution rate. Browser-based search cannot improve this because most unresolved companies use proprietary career systems that are not indexed by search engines."
+    "note": "Without credentials, the Jobright browser method cannot access apply URLs because Jobright hides them behind authentication."
   }
 }
