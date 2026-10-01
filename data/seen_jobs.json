@@ -618,6 +618,18 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Principality Building Society\nTitle: Assistant Product Manager\nLocation: Cardiff, Wales, United Kingdom\nWork model: Hybrid\nDate posted: Sep 30\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6abd043a372c01f6cd71de05\n\nCompany: EMS Management & Consultants, Inc.\nTitle: Associate Product Manager\nLocation: Clemmons, NC, United States\nWork model: Remote\nDate posted: Sep 30\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6abcc3c34ac55253f5d5a5ad\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "c983f327da961a8ab8a654c50f8c4503ffa49e407a31cf4ba4cb78b9847c649d": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Loblaw Companies Limited</strong><br>Brampton, ON, Canada · On Site</p><p>Posted: Sep 30 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abd8688372c01f6cd72106b\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">API Product Manager</h2><p><strong>VantageScore®</strong><br>San Francisco, CA, United States · Hybrid</p><p>Posted: Sep 30 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a6968612a5c103624db4903\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "0d6d4b2e5773aa7e6f142e0d20ac8eaf985a373e1f238eaa38602bf1168b984c",
+        "1935ae6d05a340603d49942a478ced92e1ec6ee0f113c1cf37b6fb0d0693ceb2"
+      ],
+      "message_id": "<bubu-jobs-c983f327da961a8ab8a654c50f8c4503ffa49e407a31cf4ba4cb78b9847c649d-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Loblaw Companies Limited\nTitle: Associate Product Manager\nLocation: Brampton, ON, Canada\nWork model: On Site\nDate posted: Sep 30\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6abd8688372c01f6cd72106b\n\nCompany: VantageScore®\nTitle: API Product Manager\nLocation: San Francisco, CA, United States\nWork model: Hybrid\nDate posted: Sep 30\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a6968612a5c103624db4903\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "cc26a383e52eaa08cfa5d87a814eca862e2cd2541d0ba551b4fe28c975ffc393": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Specialist</h2><p><strong>Zayo Group</strong><br>CO - Denver, United States of America · On Site</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a4becec4f64ba41dcb5dc02\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1132,6 +1144,17 @@
       "title": "Product Management Co-Op",
       "work_model": "On Site"
     },
+    "0d6d4b2e5773aa7e6f142e0d20ac8eaf985a373e1f238eaa38602bf1168b984c": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Loblaw Companies Limited",
+      "date_posted": "Sep 30",
+      "job_id": "0d6d4b2e5773aa7e6f142e0d20ac8eaf985a373e1f238eaa38602bf1168b984c",
+      "location": "Brampton, ON, Canada",
+      "source_url": "https://jobright.ai/jobs/info/6abd8688372c01f6cd72106b",
+      "title": "Associate Product Manager",
+      "work_model": "On Site"
+    },
     "106cb520b95480fe318ce443d90e6cdefc7550f5123117a0c97fcc7d635b8f52": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1262,6 +1285,17 @@
       "location": "Boston, MA, United States, US",
       "source_url": "https://jobright.ai/jobs/info/6a2ace2ed3ec8317fe1451ef",
       "title": "Fund Product Analyst",
+      "work_model": "Hybrid"
+    },
+    "1935ae6d05a340603d49942a478ced92e1ec6ee0f113c1cf37b6fb0d0693ceb2": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "VantageScore®",
+      "date_posted": "Sep 30",
+      "job_id": "1935ae6d05a340603d49942a478ced92e1ec6ee0f113c1cf37b6fb0d0693ceb2",
+      "location": "San Francisco, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6a6968612a5c103624db4903",
+      "title": "API Product Manager",
       "work_model": "Hybrid"
     },
     "1b0043d50405bb9d9944051c6bd1b22960fc1375786818c01377345beb126770": {
@@ -4301,7 +4335,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"26210ae9c6c594af0cc918f75060a355da4f74155835c239ae37d5a717656207\"",
+    "etag": "\"5e5814f2b197a1f5b077a606faa9c215b9f4e994fd6df2c638c0079b20478b8a\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
