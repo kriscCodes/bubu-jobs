@@ -2,7 +2,8 @@ import html
 import logging
 import re
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from urllib.parse import urlsplit
@@ -10,6 +11,7 @@ from ..config import RAW_URL, TIMEOUT_SECONDS, MAX_ATTEMPTS
 from ..ats import detect_ats
 from ..dedupe import job_id, normalize_url
 from ..models import Job
+from ..resolver import UrlResolver
 
 LOG = logging.getLogger(__name__)
 LINK = re.compile(r"\[((?:[^\[\]]|\[[^\[\]]*\])+)\]\((https?://(?:[^\s()]|\([^()]*\))+)(?:\s+\"[^\"]*\")?\)")
@@ -106,3 +108,55 @@ def parse_readme(text: str) -> list[Job]:
     if not found_table:
         raise ValueError("Expected job table not found; upstream schema may have changed")
     return jobs
+
+
+def resolve_jobs(jobs: list[Job], cache_path: Path | None = None,
+                 rate_limit: float = 0.5) -> list[Job]:
+    """Resolve Jobright wrapper URLs to direct ATS apply URLs.
+    
+    Args:
+        jobs: List of Job objects to resolve
+        cache_path: Path to cache file for resolved URLs
+        rate_limit: Delay between API calls in seconds
+    
+    Returns:
+        List of Job objects with resolved canonical_apply_url where possible
+    """
+    resolver = UrlResolver(cache_path=cache_path)
+    resolved_jobs = []
+    
+    for i, job in enumerate(jobs):
+        if job.canonical_apply_url is not None:
+            resolved_jobs.append(job)
+            continue
+        
+        if i > 0:
+            time.sleep(rate_limit)
+        
+        result = resolver.resolve(
+            company=job.company,
+            title=job.title,
+            source_url=job.source_url,
+            location=job.location,
+        )
+        
+        if result.status == "resolved" and result.url:
+            new_job = Job(
+                company=job.company,
+                title=job.title,
+                location=job.location,
+                work_model=job.work_model,
+                date_posted=job.date_posted,
+                source_url=job.source_url,
+                canonical_apply_url=result.url,
+                ats=result.ats,
+                job_id=job_id(job.company, job.title, job.location, result.url),
+            )
+            resolved_jobs.append(new_job)
+            LOG.info("Resolved %s - %s: %s", job.company, job.title, result.url)
+        else:
+            resolved_jobs.append(job)
+            if result.status == "error":
+                LOG.warning("Failed to resolve %s - %s: %s", job.company, job.title, result.status)
+    
+    return resolved_jobs
