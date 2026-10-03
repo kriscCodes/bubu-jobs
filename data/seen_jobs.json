@@ -631,6 +631,17 @@
       "subject": "[bubu-jobs] 5 new job match(es)",
       "text": "[bubu-jobs] 5 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Worldpay\nTitle: Product Analyst - AML & Fraud/Credit\nLocation: Atlanta, GA, United States\nWork model: Hybrid\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa756ce930bff471a2a3227\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Atlanta, GA, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa74b1742411952ff9acdca\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Denver, CO, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa74b1042411952ff9acdbb\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Cincinnati, OH, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa748c2930bff471a2a311c\n\nCompany: Global Payments Inc.\nTitle: Product Analyst - AML & Fraud\nLocation: Salt Lake City, UT, United States\nWork model: On Site\nDate posted: Sep 13\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa748bc930bff471a2a3110\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "b9a416ea278e063827377e90ed01c3c135f5cbf65a23cf9447570e6ae73c40a0": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Loan Platforms Product Manager</h2><p><strong>S&amp;P Global</strong><br>Dallas, TX, United States · On Site</p><p>Posted: Oct 02 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac127df4ac55253f5d6a0c2\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "e3db2b907b40460dcd735b084602e749a3162c99d9e574630119602de7fae5fc"
+      ],
+      "message_id": "<bubu-jobs-b9a416ea278e063827377e90ed01c3c135f5cbf65a23cf9447570e6ae73c40a0-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: S&P Global\nTitle: Loan Platforms Product Manager\nLocation: Dallas, TX, United States\nWork model: On Site\nDate posted: Oct 02\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac127df4ac55253f5d6a0c2\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "bc708a3b99c3cb36cb3154cbc74f45d69e8940c1dea15cc8447d2c35101a0f33": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager (APM), New College Graduate Rotational Program, 2027</h2><p><strong>Visa</strong><br>Foster City, CA, United States · Hybrid</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aab922af6bd9d2d17c1cc30\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -4330,6 +4341,17 @@
       "title": "Product Manager - Analyst / Associate",
       "work_model": "Hybrid"
     },
+    "e3db2b907b40460dcd735b084602e749a3162c99d9e574630119602de7fae5fc": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "S&P Global",
+      "date_posted": "Oct 02",
+      "job_id": "e3db2b907b40460dcd735b084602e749a3162c99d9e574630119602de7fae5fc",
+      "location": "Dallas, TX, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac127df4ac55253f5d6a0c2",
+      "title": "Loan Platforms Product Manager",
+      "work_model": "On Site"
+    },
     "e40725281b8e7eabac73ab0200d02f6e9e94c7053a56ec23d14624b1fbbc4fc2": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -4727,7 +4749,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"a120ff6ae5f45e211d6b1323c392f88d6ed4df8265aa55c24ff281cee439bc91\"",
+    "etag": "\"6c8cfb060b0822925bfedd30e45e652784f35f03cf4b4bf94744aaa28dde33d6\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
