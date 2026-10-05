@@ -960,6 +960,19 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Visa\nTitle: Associate Product Manager (APM), New College Graduate Rotational Program, 2027\nLocation: Foster City, CA, United States\nWork model: Hybrid\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aababd7f6bd9d2d17c1cf6f\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "fc56ccdf3b4e0dce34fd063c643550b5168c564179d3b563f0e8d8ee20e4d4d2": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 3 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Specialist</h2><p><strong>Salesforce</strong><br>San Francisco, CA, United States · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac3d725064da25272e0fb32\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager — Digital Commerce</h2><p><strong>Gallup</strong><br>Omaha Riverfront · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac3c7db064da25272e0f447\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Ria Money Transfer</strong><br>Denver, CO, United States · Hybrid</p><p>Posted: Oct 04 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac3f10e8ff3fb9b3bc831ad\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "10de2a04a57f87be8ddf2a2a4ed71e68751bac949473572495595ffeb8516d5b",
+        "920b352c28822b5a4edaa17f27eb59f8b643d4528df6b9a6a921cc87ae7457ea",
+        "b219ad12831977c3a47a7bd1476916d28f98971352ffa976aed778784d4ca508"
+      ],
+      "message_id": "<bubu-jobs-fc56ccdf3b4e0dce34fd063c643550b5168c564179d3b563f0e8d8ee20e4d4d2-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 3 new job match(es)",
+      "text": "[bubu-jobs] 3 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Salesforce\nTitle: Product Management Specialist\nLocation: San Francisco, CA, United States\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac3d725064da25272e0fb32\n\nCompany: Gallup\nTitle: Product Manager — Digital Commerce\nLocation: Omaha Riverfront\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac3c7db064da25272e0f447\n\nCompany: Ria Money Transfer\nTitle: Associate Product Manager\nLocation: Denver, CO, United States\nWork model: Hybrid\nDate posted: Oct 04\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac3f10e8ff3fb9b3bc831ad\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "fdbefe32ede9710dd88241889c98df1924531d0f7f2b7892a08abfc1e1c2290c": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Web</h2><p><strong>PlanetArt</strong><br>Calabasas, CA, United States · Hybrid</p><p>Posted: Sep 28 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abaed65be5f1e93251182de\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Questrade Financial Group</strong><br>North York, ON, Canada · Hybrid</p><p>Posted: Sep 28 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abaeb59ee0b348be729c360\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Web</h2><p><strong>PlanetArt</strong><br>Calabasas, California, United States · Hybrid</p><p>Posted: Sep 27 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abaf48d1acb8fc6f09c274b\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Tech Product Manager</h2><p><strong>UnitedHealth Group</strong><br>United States · Remote</p><p>Posted: Sep 27 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6abaec977220f52e62ae8fd2\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1326,6 +1339,17 @@
       "location": "Nashville, TN, United States",
       "source_url": "https://jobright.ai/jobs/info/6aa3ecfbf7baf881567cc22a",
       "title": "Converge Life Sciences - GTM Product Strategy Analyst - Innovation_Delivery_Transformation",
+      "work_model": "Hybrid"
+    },
+    "10de2a04a57f87be8ddf2a2a4ed71e68751bac949473572495595ffeb8516d5b": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Ria Money Transfer",
+      "date_posted": "Oct 04",
+      "job_id": "10de2a04a57f87be8ddf2a2a4ed71e68751bac949473572495595ffeb8516d5b",
+      "location": "Denver, CO, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac3f10e8ff3fb9b3bc831ad",
+      "title": "Associate Product Manager",
       "work_model": "Hybrid"
     },
     "10e98ce27b699b5e290efaa3bfa9dc36c354cd73a2c39e52d496fc152b40e012": {
@@ -3275,6 +3299,17 @@
       "title": "Specialist, Product Management",
       "work_model": "Hybrid"
     },
+    "920b352c28822b5a4edaa17f27eb59f8b643d4528df6b9a6a921cc87ae7457ea": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Gallup",
+      "date_posted": "Oct 05",
+      "job_id": "920b352c28822b5a4edaa17f27eb59f8b643d4528df6b9a6a921cc87ae7457ea",
+      "location": "Omaha Riverfront",
+      "source_url": "https://jobright.ai/jobs/info/6ac3c7db064da25272e0f447",
+      "title": "Product Manager — Digital Commerce",
+      "work_model": "Hybrid"
+    },
     "928297f801b969ca31320feff628d3cbfd112469428ad2231a82fddc89d95054": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3659,6 +3694,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a9708e5b22f636c81415778",
       "title": "POI Content Product Manager Graduate (TikTok Local Services) - 2027 Start",
       "work_model": "On Site"
+    },
+    "b219ad12831977c3a47a7bd1476916d28f98971352ffa976aed778784d4ca508": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Salesforce",
+      "date_posted": "Oct 05",
+      "job_id": "b219ad12831977c3a47a7bd1476916d28f98971352ffa976aed778784d4ca508",
+      "location": "San Francisco, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac3d725064da25272e0fb32",
+      "title": "Product Management Specialist",
+      "work_model": "Hybrid"
     },
     "b30619f7a3186a0002fd0892287d3e16e134654721ab51f67c2ff0da0979af54": {
       "ats": "Unknown",
@@ -4783,7 +4829,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"8c38019c74d0a6a82cba4e611407a194fdb41254257e971c6b5444b104ccceac\"",
+    "etag": "\"38e4ead5d4bd69f514e4b77a24fa7c178e664e7737474970be8fdae1e9912a9e\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
