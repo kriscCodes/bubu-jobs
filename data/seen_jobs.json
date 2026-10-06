@@ -616,6 +616,18 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Kharon\nTitle: Associate Product Manager\nLocation: London, England, United Kingdom\nWork model: Hybrid\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aac00252e757fcb5c8b3279\n\nCompany: Equinix\nTitle: Product Management Associate\nLocation: Redwood City, CA, United States\nWork model: Remote\nDate posted: Sep 17\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aabfa0b2e757fcb5c8b3066\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "b596530ee019c4110fb7ad65385e952ae70d622600d207abae7658137219b8ef": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Technical Product Manager(BlackRock)</h2><p><strong>ScoutBetter</strong><br>New York, NY, United States · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac406ca064da25272e10ae0\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate, Product Manager (Integrated Analytics)</h2><p><strong>Munich Re</strong><br>New York, NY, United States · On Site</p><p>Posted: Oct 04 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac40be1064da25272e10e4e\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "69059eb8c9870f0c388019cee232a412b3b7d0a22a3e529ec5bc19121a8c7ddc",
+        "fb19dc3e52f503173cdad0571735f1a680f466cdb2062913dd901369d2833067"
+      ],
+      "message_id": "<bubu-jobs-b596530ee019c4110fb7ad65385e952ae70d622600d207abae7658137219b8ef-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: ScoutBetter\nTitle: Technical Product Manager(BlackRock)\nLocation: New York, NY, United States\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac406ca064da25272e10ae0\n\nCompany: Munich Re\nTitle: Associate, Product Manager (Integrated Analytics)\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Oct 04\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac40be1064da25272e10e4e\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "b5d2f9057fcf164cd3100fb35fbfc80f78b5e24b54fb6fc3070c3fc1dd571701": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Sensorex, Inc.</strong><br>Garden Grove, CA, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab59bca4873fd3fd852b06c\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Assistant Product Manager</h2><p><strong>Spencer&#x27;s</strong><br>Egg Harbor Township, NJ, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab59a974873fd3fd852b013\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2627,6 +2639,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa0d6e3500b01124c77b0df",
       "title": "Associate Technical Product Manager",
       "work_model": "Remote"
+    },
+    "69059eb8c9870f0c388019cee232a412b3b7d0a22a3e529ec5bc19121a8c7ddc": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "ScoutBetter",
+      "date_posted": "Oct 05",
+      "job_id": "69059eb8c9870f0c388019cee232a412b3b7d0a22a3e529ec5bc19121a8c7ddc",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac406ca064da25272e10ae0",
+      "title": "Technical Product Manager(BlackRock)",
+      "work_model": "Hybrid"
     },
     "691b771ae6fc03a44f510f37a40d46bd07b305aaee70363020d6135cf63c7e9e": {
       "ats": "Unknown",
@@ -4740,6 +4763,17 @@
       "title": "Associate Product Manager",
       "work_model": "Remote"
     },
+    "fb19dc3e52f503173cdad0571735f1a680f466cdb2062913dd901369d2833067": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Munich Re",
+      "date_posted": "Oct 04",
+      "job_id": "fb19dc3e52f503173cdad0571735f1a680f466cdb2062913dd901369d2833067",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac40be1064da25272e10e4e",
+      "title": "Associate, Product Manager (Integrated Analytics)",
+      "work_model": "On Site"
+    },
     "fb7cf846be554a1dbbcaa1d7dfa46dac99c1f009520066d5f194c2ee7e10a1e6": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -4829,7 +4863,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"38e4ead5d4bd69f514e4b77a24fa7c178e664e7737474970be8fdae1e9912a9e\"",
+    "etag": "\"dbfdd93d81ac0512e7b03e21213eba49638e1f5ee963bc7d5fca1b4c341713c5\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
