@@ -399,6 +399,18 @@
       "subject": "[bubu-jobs] 6 new job match(es)",
       "text": "[bubu-jobs] 6 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Cognizant\nTitle: Entry-Level TriZetto Product Management Analysts — PIM & PXM\nLocation: Mesa, AZ, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9b2c66d0edc2d91b0ab59\n\nCompany: Loblaw Companies Limited\nTitle: Associate Product Manager\nLocation: Brampton, ON, Canada\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9ad27eff87f571fc9aa24\n\nCompany: Procter & Gamble\nTitle: IT Project & Product Manager (2027 Grads)\nLocation: Cincinnati, OH, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a8cb49c25fc4e7ae3dba0f9\n\nCompany: Zynga\nTitle: Rotational Product Manager\nLocation: Austin, TX, United States\nWork model: Hybrid\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9a90810b1cd4f41606eea\n\nCompany: Macy's\nTitle: Product Analyst\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Sep 15\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9925e6d0edc2d91b0a341\n\nCompany: Stanley Black & Decker, Inc.\nTitle: Associate Product Manager (Combo Kits - CRAFTSMAN)\nLocation: Towson, MD, United States\nWork model: Hybrid\nDate posted: Sep 14\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aa9b6baeff87f571fc9ae53\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "774ca61bd147d63f0465ec277acbc0a7df4b17a5cfba61499079d8603ef94ea6": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate, Product Manager (Integrated Analytics) Job Details / Munich Re Careers</h2><p><strong>Munich Re</strong><br>New York, NY, United States · On Site</p><p>Posted: Oct 06 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac4ed0c4ac55253f5d73985\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Alternative Investment Product Analyst</h2><p><strong>RBC</strong><br>Minneapolis, MN, United States · On Site</p><p>Posted: Oct 06 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aba990bd2914e9273eec28b\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "6ce0d4d7e4f83f1a5c7dbd80474fb31e206bcc7f6cf42a47c5bfafe7c8cf9851",
+        "b82e8395e6955a250aacbbed655dce6e6e5a23363077a2145713a1d11ce6ec87"
+      ],
+      "message_id": "<bubu-jobs-774ca61bd147d63f0465ec277acbc0a7df4b17a5cfba61499079d8603ef94ea6-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Munich Re\nTitle: Associate, Product Manager (Integrated Analytics) Job Details / Munich Re Careers\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Oct 06\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac4ed0c4ac55253f5d73985\n\nCompany: RBC\nTitle: Alternative Investment Product Analyst\nLocation: Minneapolis, MN, United States\nWork model: On Site\nDate posted: Oct 06\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aba990bd2914e9273eec28b\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "7a793ea649f94e2774d5ec01fa18e973844e8db742eec45c29b2e26fd50c2f6d": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>Plymouth Rock Assurance</strong><br>Woodbridge, NJ, United States · On Site</p><p>Posted: Sep 18 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aad53de0ebc8fb2313e8d6d\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2775,6 +2787,17 @@
       "title": "Associate Product Manager (Project Hire)",
       "work_model": "On Site"
     },
+    "6ce0d4d7e4f83f1a5c7dbd80474fb31e206bcc7f6cf42a47c5bfafe7c8cf9851": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Munich Re",
+      "date_posted": "Oct 06",
+      "job_id": "6ce0d4d7e4f83f1a5c7dbd80474fb31e206bcc7f6cf42a47c5bfafe7c8cf9851",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac4ed0c4ac55253f5d73985",
+      "title": "Associate, Product Manager (Integrated Analytics) Job Details / Munich Re Careers",
+      "work_model": "On Site"
+    },
     "6e52b9b30d9cb3b96529cd2694e00142ebc5e65efb6ce3118691f64a510515d9": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3841,6 +3864,17 @@
       "source_url": "https://jobright.ai/jobs/info/6ab6a3cbc6fe0dec811a5ca0",
       "title": "Associate Insurance Product Manager",
       "work_model": "Remote"
+    },
+    "b82e8395e6955a250aacbbed655dce6e6e5a23363077a2145713a1d11ce6ec87": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "RBC",
+      "date_posted": "Oct 06",
+      "job_id": "b82e8395e6955a250aacbbed655dce6e6e5a23363077a2145713a1d11ce6ec87",
+      "location": "Minneapolis, MN, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aba990bd2914e9273eec28b",
+      "title": "Alternative Investment Product Analyst",
+      "work_model": "On Site"
     },
     "ba81059cea129ac98a4d27876f712bdbcb9bc785f4cd4b9cc065f4c7264f7b03": {
       "ats": "Unknown",
@@ -4921,7 +4955,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"bbcf09bab2e7d9cc8e9c80fb9e8002ebe8d7ed73f92bf1ee4d8435ea9db11642\"",
+    "etag": "\"42b77c221590c635e9c7d6f4fce511bdf9d2f4b2537312b342d224ef8f15c0dc\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
