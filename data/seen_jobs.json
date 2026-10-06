@@ -645,6 +645,17 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Base Career\nTitle: Associate Product Manager\nLocation: Brampton, ON, Canada\nWork model: On Site\nDate posted: Oct 03\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac1b56fd9621c5b283997b2\n\nCompany: S&P Global\nTitle: Loan Platforms Product Manager\nLocation: Dallas, TX, United States\nWork model: On Site\nDate posted: Oct 02\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac124640e027c0f3b3a24bf\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "aef546965f8f05cd14aaf87f5a12b8753346fd5db65ca84ad144fd547e3423af": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Technical Product Manager, Aladdin Product Management - Analyst</h2><p><strong>BlackRock</strong><br>New York, NY, United States · Hybrid</p><p>Posted: Oct 01 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac54391372c01f6cd738925\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "1508b6cd8ade6911626c69dd28e7abd4438f6def3da9522b05e64f33ad2d35cb"
+      ],
+      "message_id": "<bubu-jobs-aef546965f8f05cd14aaf87f5a12b8753346fd5db65ca84ad144fd547e3423af-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 1 new job match(es)",
+      "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: BlackRock\nTitle: Technical Product Manager, Aladdin Product Management - Analyst\nLocation: New York, NY, United States\nWork model: Hybrid\nDate posted: Oct 01\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac54391372c01f6cd738925\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "b11d2e1ced52d9038612c4f302eb33bbff7515441a3c349b6a4e87f891615c7e": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Kharon</strong><br>London, England, United Kingdom · Hybrid</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aac00252e757fcb5c8b3279\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Associate</h2><p><strong>Equinix</strong><br>Redwood City, CA, United States · Remote</p><p>Posted: Sep 17 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aabfa0b2e757fcb5c8b3066\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1481,6 +1492,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aae0720de327d3e210d4e26",
       "title": "Product Management Co-Op",
       "work_model": "On Site"
+    },
+    "1508b6cd8ade6911626c69dd28e7abd4438f6def3da9522b05e64f33ad2d35cb": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "BlackRock",
+      "date_posted": "Oct 01",
+      "job_id": "1508b6cd8ade6911626c69dd28e7abd4438f6def3da9522b05e64f33ad2d35cb",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac54391372c01f6cd738925",
+      "title": "Technical Product Manager, Aladdin Product Management - Analyst",
+      "work_model": "Hybrid"
     },
     "1586d01d8045964f644c239008a075c7d612955d3fc50291991df650468728dc": {
       "ats": "Unknown",
@@ -5025,7 +5047,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"8c2500a98f243125a83cdf8e2d4825ac64f78b717791808f773155f92c430bd0\"",
+    "etag": "\"ed8873dc6b3bb0c6746bf33fd0705047e65a3974553a522230ba6aeddb07c32d\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
