@@ -511,6 +511,20 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Boyd\nTitle: Junior Product Manager\nLocation: Billerica, Massachusetts, United States\nWork model: Hybrid\nDate posted: Sep 24\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a91ef418e5968545337860f\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "8fb5681a805474d0e3819b035473e3ec434f6ace74c7265d84b877f7ae34aaf9": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Data Product Manager</h2><p><strong>Aristocrat Interactive</strong><br>Tennessee Main Office, US · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a10bbec69bd827926af02b9\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Data Product Manager</h2><p><strong>Aristocrat Interactive</strong><br>Austin, US · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a10bbee69bd827926af02be\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Data Product Manager</h2><p><strong>Aristocrat Interactive</strong><br>Boston, MA, US · Hybrid</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a10bbec69bd827926af02bc\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager I</h2><p><strong>B. Braun Medical Inc. (US)</strong><br>Bethlehem, PA, United States · On Site</p><p>Posted: Oct 05 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac47007064da25272e12dd6\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "5f7e0a9d16118364be37c104e1b848f797e0368340648e49f0531112b081d5a5",
+        "9cfdbbe3c14cfbd981290bf3696f7ea3159afe27251e7e9367764a18361627da",
+        "a23dd26dc904e5fa91a71c50843d831abb57a5c46eb4e90a3b486ff2b19bcbdd",
+        "f7c23bd37f4021763152e27bc0328657d0135f4df382fa0ad0bb4fc755f678c6"
+      ],
+      "message_id": "<bubu-jobs-8fb5681a805474d0e3819b035473e3ec434f6ace74c7265d84b877f7ae34aaf9-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 4 new job match(es)",
+      "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Tennessee Main Office, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbec69bd827926af02b9\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Austin, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbee69bd827926af02be\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Boston, MA, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbec69bd827926af02bc\n\nCompany: B. Braun Medical Inc. (US)\nTitle: Associate Product Manager I\nLocation: Bethlehem, PA, United States\nWork model: On Site\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac47007064da25272e12dd6\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "941db908551945be70b911a6a070468192e498c0baabc4fa009b3935ac30a985": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager- Jazz Group</h2><p><strong>Exceleration Music</strong><br>United States · Remote</p><p>Posted: Sep 20 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -2508,6 +2522,17 @@
       "title": "Fund Product Analyst",
       "work_model": "Hybrid"
     },
+    "5f7e0a9d16118364be37c104e1b848f797e0368340648e49f0531112b081d5a5": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Aristocrat Interactive",
+      "date_posted": "Oct 05",
+      "job_id": "5f7e0a9d16118364be37c104e1b848f797e0368340648e49f0531112b081d5a5",
+      "location": "Tennessee Main Office, US",
+      "source_url": "https://jobright.ai/jobs/info/6a10bbec69bd827926af02b9",
+      "title": "Data Product Manager",
+      "work_model": "Hybrid"
+    },
     "610533ddefb66a4b41fafd9369c539add23dcc12efc07068c1376530608d6a3e": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3476,6 +3501,17 @@
       "title": "Entry-Level Product Management Analyst - EviCore - Remote",
       "work_model": "Remote"
     },
+    "9cfdbbe3c14cfbd981290bf3696f7ea3159afe27251e7e9367764a18361627da": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Aristocrat Interactive",
+      "date_posted": "Oct 05",
+      "job_id": "9cfdbbe3c14cfbd981290bf3696f7ea3159afe27251e7e9367764a18361627da",
+      "location": "Boston, MA, US",
+      "source_url": "https://jobright.ai/jobs/info/6a10bbec69bd827926af02bc",
+      "title": "Data Product Manager",
+      "work_model": "Hybrid"
+    },
     "9d50f57e829dcd937dbd2290b4cf9a5d84ac7f29fbf9fcacd38e8ef929d63fd5": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -3540,6 +3576,17 @@
       "location": "Denver, CO, United States",
       "source_url": "https://jobright.ai/jobs/info/6a4becec4f64ba41dcb5dc02",
       "title": "Product Management Specialist",
+      "work_model": "On Site"
+    },
+    "a23dd26dc904e5fa91a71c50843d831abb57a5c46eb4e90a3b486ff2b19bcbdd": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "B. Braun Medical Inc. (US)",
+      "date_posted": "Oct 05",
+      "job_id": "a23dd26dc904e5fa91a71c50843d831abb57a5c46eb4e90a3b486ff2b19bcbdd",
+      "location": "Bethlehem, PA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac47007064da25272e12dd6",
+      "title": "Associate Product Manager I",
       "work_model": "On Site"
     },
     "a4165018c4f88ea1ca15f7154c77ac98385f776d228ac86263183620c2f74e1d": {
@@ -4730,6 +4777,17 @@
       "title": "Summer Associate, Product Strategy & Development",
       "work_model": "On Site"
     },
+    "f7c23bd37f4021763152e27bc0328657d0135f4df382fa0ad0bb4fc755f678c6": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Aristocrat Interactive",
+      "date_posted": "Oct 05",
+      "job_id": "f7c23bd37f4021763152e27bc0328657d0135f4df382fa0ad0bb4fc755f678c6",
+      "location": "Austin, US",
+      "source_url": "https://jobright.ai/jobs/info/6a10bbee69bd827926af02be",
+      "title": "Data Product Manager",
+      "work_model": "Hybrid"
+    },
     "f83a461fe0454b3528b1ad2b5e1850c09e89fad832462d65365880d770ed236d": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -4863,7 +4921,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"dbfdd93d81ac0512e7b03e21213eba49638e1f5ee963bc7d5fca1b4c341713c5\"",
+    "etag": "\"bbcf09bab2e7d9cc8e9c80fb9e8002ebe8d7ed73f92bf1ee4d8435ea9db11642\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
