@@ -586,6 +586,18 @@
       "subject": "[bubu-jobs] 2 new job match(es)",
       "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Silk & Snow\nTitle: Coordinator, Product Operations\nLocation: Toronto, ON, Canada\nWork model: Hybrid\nDate posted: Oct 02\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac057f3064da25272e08ca6\n\nCompany: Salesforce\nTitle: Associate Product Manager (starting summer 2027)\nLocation: San Francisco, CA, United States\nWork model: Hybrid\nDate posted: Oct 01\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac04940d9621c5b2839731e\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "9b4767f1aaa81f9b43b793f2cd0aacaed0734208d570cbd0be714a45aa4dead1": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Xactware Product Manager I</h2><p><strong>Verisk</strong><br>Lehi, UT, United States · Hybrid</p><p>Posted: Oct 07 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac6b2d4064da25272e1be51\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Early Career, Associate Product Manager (2027)</h2><p><strong>Figma</strong><br>San Francisco, CA, United States · Hybrid</p><p>Posted: Oct 07 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac693534ac55253f5d7af0d\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "2826e942507ef3cc30a753fe89939d20d5f41dc67842a9258be96096f1fca1ec",
+        "48f4a89744e5f3399a99d6317a9298455b676cc3949e91de690002ba29367102"
+      ],
+      "message_id": "<bubu-jobs-9b4767f1aaa81f9b43b793f2cd0aacaed0734208d570cbd0be714a45aa4dead1-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 2 new job match(es)",
+      "text": "[bubu-jobs] 2 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Verisk\nTitle: Xactware Product Manager I\nLocation: Lehi, UT, United States\nWork model: Hybrid\nDate posted: Oct 07\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac6b2d4064da25272e1be51\n\nCompany: Figma\nTitle: Early Career, Associate Product Manager (2027)\nLocation: San Francisco, CA, United States\nWork model: Hybrid\nDate posted: Oct 07\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac693534ac55253f5d7af0d\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "9e9a68dbe09fdfe8d94127125af45a4307bf37535bcbea3a0812db64981ac541": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Analyst</h2><p><strong>IQVIA</strong><br>Columbia, MD, United States · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab5f8904873fd3fd852c4c7\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Graduate - 2027</h2><p><strong>PentenAmio</strong><br>Tewkesbury, England, United Kingdom · On Site</p><p>Posted: Sep 24 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab5dee3634ec6aa7c0d1666\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1823,6 +1835,17 @@
       "title": "Associate Product Manager Program",
       "work_model": "On Site"
     },
+    "2826e942507ef3cc30a753fe89939d20d5f41dc67842a9258be96096f1fca1ec": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Verisk",
+      "date_posted": "Oct 07",
+      "job_id": "2826e942507ef3cc30a753fe89939d20d5f41dc67842a9258be96096f1fca1ec",
+      "location": "Lehi, UT, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac6b2d4064da25272e1be51",
+      "title": "Xactware Product Manager I",
+      "work_model": "Hybrid"
+    },
     "2910355911895d17473a3a52190d07d720323a6ad53bddc04a69981030fb1f72": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2240,6 +2263,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa9ad27eff87f571fc9aa24",
       "title": "Associate Product Manager",
       "work_model": "On Site"
+    },
+    "48f4a89744e5f3399a99d6317a9298455b676cc3949e91de690002ba29367102": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Figma",
+      "date_posted": "Oct 07",
+      "job_id": "48f4a89744e5f3399a99d6317a9298455b676cc3949e91de690002ba29367102",
+      "location": "San Francisco, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac693534ac55253f5d7af0d",
+      "title": "Early Career, Associate Product Manager (2027)",
+      "work_model": "Hybrid"
     },
     "49960b98d4b9853a64483feb27e3c8007b12244d06c3cc7a9997cc83c03485f4": {
       "ats": "Unknown",
@@ -5069,7 +5103,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"661e78b001414ee56729d9a140ae1d726d5a544706cbb26d4027688c293f72a5\"",
+    "etag": "\"d71749371db777559aa6dda9da6576b37ffc20b216dafee280a30fc760c28600\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
