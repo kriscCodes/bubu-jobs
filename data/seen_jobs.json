@@ -119,6 +119,20 @@
       "subject": "[bubu-jobs] 1 new job match(es)",
       "text": "[bubu-jobs] 1 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Five Star Bank\nTitle: Deposit Product Analyst\nLocation: Rochester, NY, United States\nWork model: On Site\nDate posted: Sep 16\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a93b2b93603630099198b68\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "21558316c11458874dc09d73a46f3f987e9344e75c70c411ff723c841ddf7469": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 4 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Funnel Leasing</strong><br>United States · Remote</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac91771af788e6ad3b59cea\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Funnel Leasing</strong><br>United States · Remote</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac9118bfcdafb60c6a4a9ce\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Management Executive</h2><p><strong>Eakin Healthcare</strong><br>Coleraine, Northern Ireland, United Kingdom · Hybrid</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac8fef7fcdafb60c6a4a2f7\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager</h2><p><strong>Clerkie</strong><br>United States · Remote</p><p>Posted: Oct 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6a42ec626a9c2774b3fa7d9f\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "0bbe5712813f27840ead65af54c84cd83a9b26db290e6765ae7867f03e9c4319",
+        "27497d7306cf532bcab25c41228307ba1193ee7420d4d9f1de047f7c46c555e4",
+        "54ce15ba0fb298036d43e5412c61a8a9d05ee96408425a89c8fdb65aa91ebc82",
+        "c4ef017ea862e48c963b8340fcdeb472a75534e7d51b5eb95228404ce8167763"
+      ],
+      "message_id": "<bubu-jobs-21558316c11458874dc09d73a46f3f987e9344e75c70c411ff723c841ddf7469-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 4 new job match(es)",
+      "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Funnel Leasing\nTitle: Associate Product Manager\nLocation: United States\nWork model: Remote\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac91771af788e6ad3b59cea\n\nCompany: Funnel Leasing\nTitle: Associate Product Manager\nLocation: United States\nWork model: Remote\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac9118bfcdafb60c6a4a9ce\n\nCompany: Eakin Healthcare\nTitle: Product Management Executive\nLocation: Coleraine, Northern Ireland, United Kingdom\nWork model: Hybrid\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac8fef7fcdafb60c6a4a2f7\n\nCompany: Clerkie\nTitle: Associate Product Manager\nLocation: United States\nWork model: Remote\nDate posted: Oct 08\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a42ec626a9c2774b3fa7d9f\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "2571ee2ff98aad05ace19ccfed989f36dc58f6167f30a59eaf672c039ee3fd03": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 2 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Graduate product manager</h2><p><strong>Bending Spoons</strong><br>London, England, United Kingdom · On Site</p><p>Posted: Sep 16 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaac5cef6bd9d2d17c195da\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Insurance Product Management Analyst, Associate - Hybrid</h2><p><strong>NJM Insurance Group</strong><br>Trenton, NJ, United States · Hybrid</p><p>Posted: Sep 15 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aaad4c2c85610f4a4841f22\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1437,6 +1451,17 @@
       "title": "Mobile Software Product Manager - Global Future Leaders (2027)",
       "work_model": "On Site"
     },
+    "0bbe5712813f27840ead65af54c84cd83a9b26db290e6765ae7867f03e9c4319": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Funnel Leasing",
+      "date_posted": "Oct 09",
+      "job_id": "0bbe5712813f27840ead65af54c84cd83a9b26db290e6765ae7867f03e9c4319",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac9118bfcdafb60c6a4a9ce",
+      "title": "Associate Product Manager",
+      "work_model": "Remote"
+    },
     "0bf2041e78102c7134a88dad2cdab0ce73fbd524971e789102d7b7ac5d5402af": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -1898,6 +1923,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa8ee5a6d0edc2d91b07f62",
       "title": "Associate Product Manager Program",
       "work_model": "On Site"
+    },
+    "27497d7306cf532bcab25c41228307ba1193ee7420d4d9f1de047f7c46c555e4": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Eakin Healthcare",
+      "date_posted": "Oct 09",
+      "job_id": "27497d7306cf532bcab25c41228307ba1193ee7420d4d9f1de047f7c46c555e4",
+      "location": "Coleraine, Northern Ireland, United Kingdom",
+      "source_url": "https://jobright.ai/jobs/info/6ac8fef7fcdafb60c6a4a2f7",
+      "title": "Product Management Executive",
+      "work_model": "Hybrid"
     },
     "2826e942507ef3cc30a753fe89939d20d5f41dc67842a9258be96096f1fca1ec": {
       "ats": "Unknown",
@@ -2536,6 +2572,17 @@
       "source_url": "https://jobright.ai/jobs/info/6aa1759e500b01124c77cc09",
       "title": "Associate Product Manager",
       "work_model": "On Site"
+    },
+    "54ce15ba0fb298036d43e5412c61a8a9d05ee96408425a89c8fdb65aa91ebc82": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Clerkie",
+      "date_posted": "Oct 08",
+      "job_id": "54ce15ba0fb298036d43e5412c61a8a9d05ee96408425a89c8fdb65aa91ebc82",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6a42ec626a9c2774b3fa7d9f",
+      "title": "Associate Product Manager",
+      "work_model": "Remote"
     },
     "551699834cd310ab580fc705f96e1bb963e91d30f3d7a16da8cf780f7e0a6408": {
       "ats": "Unknown",
@@ -4330,6 +4377,17 @@
       "title": "Associate Product Manager, Architectural Specialties Job",
       "work_model": "On Site"
     },
+    "c4ef017ea862e48c963b8340fcdeb472a75534e7d51b5eb95228404ce8167763": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Funnel Leasing",
+      "date_posted": "Oct 09",
+      "job_id": "c4ef017ea862e48c963b8340fcdeb472a75534e7d51b5eb95228404ce8167763",
+      "location": "United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac91771af788e6ad3b59cea",
+      "title": "Associate Product Manager",
+      "work_model": "Remote"
+    },
     "c512e5efa32707df2a9b0626eb97245ed49ed836ed8abfa9a177bf21e97903dc": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -5321,7 +5379,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"3eb68b5462bf563b51435264dde3e8aa5a82b888a762f14477a7f5be76267be6\"",
+    "etag": "\"9b26768871560b317ce0d7b459de0feea08c3f008d923e3f000f7c703a032274\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
