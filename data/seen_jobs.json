@@ -611,6 +611,21 @@
       "subject": "[bubu-jobs] 4 new job match(es)",
       "text": "[bubu-jobs] 4 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Tennessee Main Office, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbec69bd827926af02b9\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Austin, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbee69bd827926af02be\n\nCompany: Aristocrat Interactive\nTitle: Data Product Manager\nLocation: Boston, MA, US\nWork model: Hybrid\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6a10bbec69bd827926af02bc\n\nCompany: B. Braun Medical Inc. (US)\nTitle: Associate Product Manager I\nLocation: Bethlehem, PA, United States\nWork model: On Site\nDate posted: Oct 05\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac47007064da25272e12dd6\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
     },
+    "90a29901c3b2b7b33ce7b254001c419f8b1c566f9332b8b780da04c61f775ceb": {
+      "attempts": 1,
+      "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 5 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Provincial Product Analyst</h2><p><strong>Allstate Canada</strong><br>Ontario, Canada · Remote</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac9788afe8f33a85d503fec\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Junior Product Manager</h2><p><strong>Sun Hydraulics</strong><br>San Diego, CA, United States · On Site</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac9537ac3a8af9c54a0a4a6\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Junior Product Manager</h2><p><strong>Enovation Controls</strong><br>San Diego, CA, United States · On Site</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac952c46355f8776ff18932\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Associate Product Manager, Equities</h2><p><strong>Invesco</strong><br>New York, NY, United States · On Site</p><p>Posted: Oct 09 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6aac877295c707f49dff1aa5\">View job / apply</a></div><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Provincial Product Analyst</h2><p><strong>Allstate</strong><br>Toronto, ON, Canada · Remote</p><p>Posted: Oct 08 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ac9494efcdafb60c6a4bac4\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
+      "job_ids": [
+        "1dbffede4ce97be830c6850fbbba0a3871b6d60462c22f19d3eea6eb5fa0a4ab",
+        "3a1920ad09948fed1cfad96ea300fbc6729a89570b201cba6dded54316b56cea",
+        "4d39e716094fcc429daea48ee26ef8d36fb39d7089b811e21c35d6d7465b113f",
+        "6057f8a2ade9ee8f83ca95b0db5b6dea379b8685f1da689eaf1255c1b6f04e57",
+        "97d8cd4496b0f0f2549ce30a4606bca91bb89cb676606acf05de5cb24518f15b"
+      ],
+      "message_id": "<bubu-jobs-90a29901c3b2b7b33ce7b254001c419f8b1c566f9332b8b780da04c61f775ceb-77020d7ef336@gmail.com>",
+      "status": "submitted",
+      "subject": "[bubu-jobs] 5 new job match(es)",
+      "text": "[bubu-jobs] 5 new job match(es)\n\nNew Product Management matches from the Jobright README:\n\nCompany: Allstate Canada\nTitle: Provincial Product Analyst\nLocation: Ontario, Canada\nWork model: Remote\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac9788afe8f33a85d503fec\n\nCompany: Sun Hydraulics\nTitle: Junior Product Manager\nLocation: San Diego, CA, United States\nWork model: On Site\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac9537ac3a8af9c54a0a4a6\n\nCompany: Enovation Controls\nTitle: Junior Product Manager\nLocation: San Diego, CA, United States\nWork model: On Site\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac952c46355f8776ff18932\n\nCompany: Invesco\nTitle: Associate Product Manager, Equities\nLocation: New York, NY, United States\nWork model: On Site\nDate posted: Oct 09\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6aac877295c707f49dff1aa5\n\nCompany: Allstate\nTitle: Provincial Product Analyst\nLocation: Toronto, ON, Canada\nWork model: Remote\nDate posted: Oct 08\nATS: Unknown\nApply: https://jobright.ai/jobs/info/6ac9494efcdafb60c6a4bac4\n\nYou receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
+    },
     "941db908551945be70b911a6a070468192e498c0baabc4fa009b3935ac30a985": {
       "attempts": 1,
       "html": "<html><body style=\"font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222\"><h1 style=\"font-size:24px\">[bubu-jobs] 1 new job match(es)</h1><p>New Product Management matches from the Jobright README:</p><div style=\"border-top:1px solid #ddd;padding:16px 0\"><h2 style=\"font-size:18px;margin:0 0 8px\">Product Manager- Jazz Group</h2><p><strong>Exceleration Music</strong><br>United States · Remote</p><p>Posted: Sep 20 · ATS: Unknown</p><a href=\"https://jobright.ai/jobs/info/6ab015acde327d3e210d7611\">View job / apply</a></div><p style=\"color:#666;font-size:12px\">You receive this digest only when new relevant jobs are discovered (or a saved delivery retries).</p></body></html>",
@@ -1792,6 +1807,17 @@
       "title": "Entry-Level TriZetto Product Management Analysts — PIM & PXM",
       "work_model": "On Site"
     },
+    "1dbffede4ce97be830c6850fbbba0a3871b6d60462c22f19d3eea6eb5fa0a4ab": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Enovation Controls",
+      "date_posted": "Oct 09",
+      "job_id": "1dbffede4ce97be830c6850fbbba0a3871b6d60462c22f19d3eea6eb5fa0a4ab",
+      "location": "San Diego, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac952c46355f8776ff18932",
+      "title": "Junior Product Manager",
+      "work_model": "On Site"
+    },
     "1dc76018018844101ecaa130ed8d4bed76ba4f141484fcb58d78eb1f46696757": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2221,6 +2247,17 @@
       "title": "Associate Product Manager, Private Passport",
       "work_model": "On Site"
     },
+    "3a1920ad09948fed1cfad96ea300fbc6729a89570b201cba6dded54316b56cea": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Sun Hydraulics",
+      "date_posted": "Oct 09",
+      "job_id": "3a1920ad09948fed1cfad96ea300fbc6729a89570b201cba6dded54316b56cea",
+      "location": "San Diego, CA, United States",
+      "source_url": "https://jobright.ai/jobs/info/6ac9537ac3a8af9c54a0a4a6",
+      "title": "Junior Product Manager",
+      "work_model": "On Site"
+    },
     "3a4134b09fc14f4ac3cfba5881717b3676d2dc5b9422d06f23c4c807495b7990": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -2495,6 +2532,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a98527bc8ed473c5c7634bc",
       "title": "[2027] Associate Product Manager, Early Career",
       "work_model": "Hybrid"
+    },
+    "4d39e716094fcc429daea48ee26ef8d36fb39d7089b811e21c35d6d7465b113f": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Allstate Canada",
+      "date_posted": "Oct 09",
+      "job_id": "4d39e716094fcc429daea48ee26ef8d36fb39d7089b811e21c35d6d7465b113f",
+      "location": "Ontario, Canada",
+      "source_url": "https://jobright.ai/jobs/info/6ac9788afe8f33a85d503fec",
+      "title": "Provincial Product Analyst",
+      "work_model": "Remote"
     },
     "4f42e0635b7fbaa6614d658fed7fdea2051a595a5a314e15063c36992831c82d": {
       "ats": "Unknown",
@@ -2814,6 +2862,17 @@
       "source_url": "https://jobright.ai/jobs/info/6a10bbec69bd827926af02b9",
       "title": "Data Product Manager",
       "work_model": "Hybrid"
+    },
+    "6057f8a2ade9ee8f83ca95b0db5b6dea379b8685f1da689eaf1255c1b6f04e57": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Invesco",
+      "date_posted": "Oct 09",
+      "job_id": "6057f8a2ade9ee8f83ca95b0db5b6dea379b8685f1da689eaf1255c1b6f04e57",
+      "location": "New York, NY, United States",
+      "source_url": "https://jobright.ai/jobs/info/6aac877295c707f49dff1aa5",
+      "title": "Associate Product Manager, Equities",
+      "work_model": "On Site"
     },
     "610533ddefb66a4b41fafd9369c539add23dcc12efc07068c1376530608d6a3e": {
       "ats": "Unknown",
@@ -3770,6 +3829,17 @@
       "location": "United States",
       "source_url": "https://jobright.ai/jobs/info/6a99a2ffad752e2ad5500cfb",
       "title": "Technical Product Analyst I - Image RPS",
+      "work_model": "Remote"
+    },
+    "97d8cd4496b0f0f2549ce30a4606bca91bb89cb676606acf05de5cb24518f15b": {
+      "ats": "Unknown",
+      "canonical_apply_url": null,
+      "company": "Allstate",
+      "date_posted": "Oct 08",
+      "job_id": "97d8cd4496b0f0f2549ce30a4606bca91bb89cb676606acf05de5cb24518f15b",
+      "location": "Toronto, ON, Canada",
+      "source_url": "https://jobright.ai/jobs/info/6ac9494efcdafb60c6a4bac4",
+      "title": "Provincial Product Analyst",
       "work_model": "Remote"
     },
     "985861acd7b0ba658b6059a3a907d74c4c4f89fec60b4a682c8cf25a3d2a8192": {
@@ -5379,7 +5449,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"9b26768871560b317ce0d7b459de0feea08c3f008d923e3f000f7c703a032274\"",
+    "etag": "\"993c40d1081251bc975d42de82df756f209bf438a1e4392c58b1c6818a704f5e\"",
     "policy": "00a850f202c2f6051430391487739ddf1ed33bbc5aad5dc2e946787f28009231",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
