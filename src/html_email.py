@@ -179,35 +179,24 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs") -> str:
                 <!-- Main container 560px -->
                 <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" class="wrapper" style="max-width:560px;width:100%;">
                     
-                    <!-- Hero Header with Panda -->
+                    <!-- Panda Hero Image -->
                     <tr>
                         <td>
-                            <!--[if gte mso 9]>
-                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:560px;height:140px;">
-                                <v:fill type="frame" src="{panda_url}" color="{COLORS['primary']}" />
-                                <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
-                            <![endif]-->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{COLORS['primary']};background-image:url('{panda_url}');background-repeat:no-repeat;background-position:right center;background-size:140px auto;border-radius:16px 16px 0 0;">
+                            <img src="{panda_url}" alt="Bubu the Panda - Your Job Hunting Buddy" width="560" style="display:block;width:100%;max-width:560px;height:auto;border-radius:16px 16px 0 0;" />
+                        </td>
+                    </tr>
+                    
+                    <!-- Header Text -->
+                    <tr>
+                        <td>
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{COLORS['primary']};">
                                 <tr>
-                                    <td class="hero-cell" style="padding:28px 24px;">
-                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                                <td style="vertical-align:middle;">
-                                                    <h1 style="color:{COLORS['white']};margin:0 0 6px 0;font-size:24px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.2);">🎋 {_escape(subject)}</h1>
-                                                    <p style="color:rgba(255,255,255,0.95);margin:0;font-size:14px;">{num_jobs} new posting{"s" if num_jobs != 1 else ""} • {timestamp}</p>
-                                                </td>
-                                                <td style="width:100px;text-align:right;vertical-align:middle;">
-                                                    <img src="{panda_url}" alt="🐼" width="80" height="80" style="width:80px;height:80px;border-radius:50%;border:3px solid rgba(255,255,255,0.4);">
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td class="hero-cell" style="padding:20px 24px;text-align:center;">
+                                        <h1 style="color:{COLORS['white']};margin:0 0 6px 0;font-size:24px;font-weight:700;">🎋 {_escape(subject)}</h1>
+                                        <p style="color:rgba(255,255,255,0.95);margin:0;font-size:14px;">{num_jobs} new posting{"s" if num_jobs != 1 else ""} • {timestamp}</p>
                                     </td>
                                 </tr>
                             </table>
-                            <!--[if gte mso 9]>
-                                </v:textbox>
-                            </v:rect>
-                            <![endif]-->
                         </td>
                     </tr>
                     
