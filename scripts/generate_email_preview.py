@@ -2,7 +2,7 @@
 """Generate email preview artifacts (HTML files and screenshots).
 
 This script renders the sample email to HTML and captures screenshots
-at desktop and mobile widths, including a Gmail-stripped version.
+at desktop and mobile widths.
 
 Usage:
     python scripts/generate_email_preview.py [--output-dir /path/to/output]
@@ -28,8 +28,8 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     artifacts = {}
     
-    # Normal version (with background image)
-    html_content, text_content = render_sample_email_for_preview(simulate_gmail=False)
+    # Render email
+    html_content, text_content = render_sample_email_for_preview()
     
     html_path = output_dir / "email_preview.html"
     html_path.write_text(html_content, encoding="utf-8")
@@ -41,20 +41,13 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
     print(f"Wrote plain text: {text_path}")
     artifacts["text"] = text_path
     
-    # Gmail-stripped version (no background images)
-    gmail_html, _ = render_sample_email_for_preview(simulate_gmail=True)
-    gmail_html_path = output_dir / "email_preview_gmail.html"
-    gmail_html_path.write_text(gmail_html, encoding="utf-8")
-    print(f"Wrote Gmail-stripped HTML: {gmail_html_path}")
-    artifacts["gmail_html"] = gmail_html_path
-    
     try:
         from playwright.sync_api import sync_playwright
         
         with sync_playwright() as p:
             browser = p.chromium.launch()
             
-            # Desktop screenshot (normal version)
+            # Desktop screenshot
             desktop_page = browser.new_page(viewport={"width": 700, "height": 1200})
             desktop_page.set_content(html_content)
             desktop_page.wait_for_load_state("networkidle")
@@ -64,7 +57,7 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
             artifacts["desktop_png"] = desktop_screenshot
             desktop_page.close()
             
-            # Mobile screenshot (normal version)
+            # Mobile screenshot
             mobile_page = browser.new_page(viewport={"width": 375, "height": 812})
             mobile_page.set_content(html_content)
             mobile_page.wait_for_load_state("networkidle")
@@ -73,16 +66,6 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
             print(f"Wrote mobile screenshot: {mobile_screenshot}")
             artifacts["mobile_png"] = mobile_screenshot
             mobile_page.close()
-            
-            # Gmail-stripped desktop screenshot
-            gmail_page = browser.new_page(viewport={"width": 700, "height": 1200})
-            gmail_page.set_content(gmail_html)
-            gmail_page.wait_for_load_state("networkidle")
-            gmail_screenshot = output_dir / "email_preview_gmail.png"
-            gmail_page.screenshot(path=str(gmail_screenshot), full_page=True)
-            print(f"Wrote Gmail screenshot: {gmail_screenshot}")
-            artifacts["gmail_png"] = gmail_screenshot
-            gmail_page.close()
             
             browser.close()
             
