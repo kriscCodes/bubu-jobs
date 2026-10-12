@@ -363,7 +363,7 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     html_body_cid, text_body = render_sample_email_for_preview(use_cid=True)
     html_body_hosted, _ = render_sample_email_for_preview(use_cid=False)
     item = {
-        "subject": "[bubu-jobs] Design Preview Test",
+        "subject": "[TEST v5] New PM Jobs - Bubu Jobs",
         "text": text_body,
         "html": html_body_hosted,
         "html_cid": html_body_cid,
