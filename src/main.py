@@ -11,7 +11,7 @@ from .sources.jobright import fetch_readme, parse_readme, resolve_jobs
 from .notifications import TwilioClient, SmsError, load_dotenv, enqueue, deliver
 
 from .email_notifications import (GmailClient, EmailError, enqueue_email,
-                                  deliver_email, migrate_unsent_sms)
+                                  deliver_email, migrate_unsent_sms, send_test_email_to)
 
 LOG = logging.getLogger(__name__)
 
@@ -113,6 +113,7 @@ def main() -> int:
     parser.add_argument("--email", action="store_true", help="Send Gmail email digests")
     parser.add_argument("--queue-email", action="store_true", help="Queue email without credentials or sending")
     parser.add_argument("--test-email", action="store_true", help="Queue one-time SMTP test; implies --email")
+    parser.add_argument("--test-to", metavar="EMAIL", help="Send a single design test email to this address only; implies --email")
     parser.add_argument("--retry-email", help="Retry a blocked/uncertain email after inspecting Sent mail")
     parser.add_argument("--resolve-urls", action="store_true",
                         help="Resolve Jobright wrapper URLs to direct ATS apply URLs")
@@ -123,9 +124,16 @@ def main() -> int:
                         format="%(levelname)s: %(message)s")
     try:
         email_client = None
-        if args.email or args.test_email or args.retry_email:
+        if args.email or args.test_email or args.retry_email or args.test_to:
             load_dotenv(Path(__file__).resolve().parents[1] / ".env")
             email_client = GmailClient.from_environment()
+        
+        # Handle --test-to: send a single design test email and exit
+        if args.test_to:
+            send_test_email_to(args.test_to, email_client)
+            print(f"Test email sent to {args.test_to}")
+            return 0
+        
         if args.queue_email:
             LOG.warning("Email queue-only mode: no messages will be sent")
         client = None
