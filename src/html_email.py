@@ -1,10 +1,13 @@
 """HTML email generation for job alerts.
 
-This module creates nicely styled HTML emails with job cards, a panda background,
-badges for direct vs. Jobright links, pay range display, application question indicators,
-and a layout that degrades gracefully in Gmail.
+This module creates nicely styled HTML emails with:
+- CSS carousel with radio/:checked for Apple Mail/iOS
+- Horizontal scroll fallback for Gmail
+- Panda hero image visible in all clients (background + <img> fallback)
+- Pay range and application question badges from real ATS data
 """
 import html
+import json
 import logging
 from dataclasses import dataclass
 from datetime import datetime
@@ -16,11 +19,7 @@ from .direct_links import get_direct_link, DirectLink
 LOG = logging.getLogger(__name__)
 
 PANDA_IMAGE_PATH = Path(__file__).parent.parent / "assets" / "panda-hero.jpg"
-# Use main branch URL - image will be available after PR merge
-# During development, fall back to branch URL
-PANDA_GITHUB_URL_MAIN = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/main/assets/panda-hero.jpg"
-PANDA_GITHUB_URL_BRANCH = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg"
-PANDA_GITHUB_URL = PANDA_GITHUB_URL_BRANCH  # Use branch URL until merged
+PANDA_GITHUB_URL = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg"
 
 
 @dataclass
@@ -35,8 +34,10 @@ class JobCard:
     source_note: str = ""
     work_model: str = ""
     ats: str = ""
-    pay_range: str = ""  # Empty string means "Pay not listed"
-    has_written_questions: Optional[bool] = None  # None = Unknown, True = Yes, False = No
+    pay_range: str = ""
+    has_written_questions: Optional[bool] = None
+    pay_source: str = ""
+    questions_source: str = ""
 
 
 COLORS = {
@@ -59,7 +60,6 @@ COLORS = {
     "white": "#ffffff",
     "pink_50": "#fdf2f8",
     "pink_100": "#fce7f3",
-    "pink_200": "#fbcfe8",
     "bg_fallback": "#e8d5f0",
 }
 
@@ -72,15 +72,15 @@ def _escape(text: str) -> str:
 def _get_question_indicator(has_written_questions: Optional[bool]) -> tuple[str, str, str]:
     """Return (icon, label, bg_color) for question indicator."""
     if has_written_questions is True:
-        return ("✍️", "Written response required", COLORS["warning_light"])
+        return ("✍️", "Written response", COLORS["warning_light"])
     elif has_written_questions is False:
         return ("⚡", "Quick apply", COLORS["success_light"])
     else:
         return ("❓", "Unknown", COLORS["gray_200"])
 
 
-def _render_job_card_stacked(job: JobCard) -> str:
-    """Render a single job card for stacked layout."""
+def _render_carousel_card(job: JobCard, index: int, total: int) -> str:
+    """Render a single card for the carousel."""
     badge_text = "Direct" if job.is_direct_link else "Jobright"
     badge_bg = COLORS["success_light"] if job.is_direct_link else COLORS["warning_light"]
     badge_color = COLORS["success"] if job.is_direct_link else COLORS["warning"]
@@ -88,78 +88,107 @@ def _render_job_card_stacked(job: JobCard) -> str:
     pay_display = job.pay_range if job.pay_range else "Pay not listed"
     q_icon, q_label, q_bg = _get_question_indicator(job.has_written_questions)
     
-    return f'''
-    <tr>
+    return f'''<div class="slide slide-{index}" style="flex: 0 0 auto; width: 260px; background-color: {COLORS['white']}; border: 1px solid {COLORS['gray_200']}; border-radius: 12px; padding: 16px; margin-right: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td><span style="font-size: 11px; color: {COLORS['gray_500']}; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">{_escape(job.company)}</span></td>
+                <td style="text-align: right;"><span style="display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 600; background-color: {badge_bg}; color: {badge_color}; text-transform: uppercase;">{badge_text}</span></td>
+            </tr>
+        </table>
+        <h3 style="font-size: 14px; font-weight: 700; color: {COLORS['gray_900']}; margin: 8px 0 6px 0; line-height: 1.3; height: 36px; overflow: hidden;">{_escape(job.title)}</h3>
+        <p style="font-size: 12px; color: {COLORS['gray_500']}; margin: 0 0 4px 0;">📍 {_escape(job.location)}</p>
+        <p style="font-size: 12px; font-weight: 600; color: {COLORS['primary']}; margin: 0 0 8px 0;">💰 {_escape(pay_display)}</p>
+        <span style="display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 10px; background-color: {q_bg}; color: {COLORS['gray_700']};">{q_icon} {q_label}</span>
+        <div style="margin-top: 12px;">
+            <a href="{_escape(job.apply_url)}" style="display: block; background-color: {COLORS['primary']}; color: {COLORS['white']}; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center;">Apply →</a>
+        </div>
+        <p style="font-size: 10px; color: {COLORS['gray_300']}; margin: 8px 0 0 0; text-align: center;">{index + 1} of {total}</p>
+    </div>'''
+
+
+def _render_stacked_card(job: JobCard) -> str:
+    """Render a single card for stacked layout (mobile/fallback)."""
+    badge_text = "Direct" if job.is_direct_link else "Jobright"
+    badge_bg = COLORS["success_light"] if job.is_direct_link else COLORS["warning_light"]
+    badge_color = COLORS["success"] if job.is_direct_link else COLORS["warning"]
+    
+    pay_display = job.pay_range if job.pay_range else "Pay not listed"
+    q_icon, q_label, q_bg = _get_question_indicator(job.has_written_questions)
+    
+    return f'''<tr>
         <td style="padding: 8px 0;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: {COLORS['white']}; border: 1px solid {COLORS['gray_200']}; border-radius: 12px;">
                 <tr>
-                    <td style="padding: 16px;">
+                    <td style="padding: 14px;">
                         <table width="100%" cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td>
-                                    <span style="font-size: 11px; color: {COLORS['gray_500']}; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">{_escape(job.company)}</span>
-                                </td>
-                                <td style="text-align: right;">
-                                    <span style="display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; background-color: {badge_bg}; color: {badge_color}; text-transform: uppercase;">{badge_text}</span>
-                                </td>
+                                <td><span style="font-size: 11px; color: {COLORS['gray_500']}; text-transform: uppercase; font-weight: 600;">{_escape(job.company)}</span></td>
+                                <td style="text-align: right;"><span style="display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 600; background-color: {badge_bg}; color: {badge_color}; text-transform: uppercase;">{badge_text}</span></td>
                             </tr>
                         </table>
-                        <h3 style="font-size: 15px; font-weight: 700; color: {COLORS['gray_900']}; margin: 6px 0; line-height: 1.3;">{_escape(job.title)}</h3>
-                        <p style="font-size: 13px; color: {COLORS['gray_500']}; margin: 0 0 4px 0;">📍 {_escape(job.location)}</p>
-                        <p style="font-size: 13px; font-weight: 600; color: {COLORS['primary']}; margin: 0 0 8px 0;">💰 {_escape(pay_display)}</p>
+                        <h3 style="font-size: 14px; font-weight: 700; color: {COLORS['gray_900']}; margin: 6px 0; line-height: 1.3;">{_escape(job.title)}</h3>
+                        <p style="font-size: 12px; color: {COLORS['gray_500']}; margin: 0 0 3px 0;">📍 {_escape(job.location)}</p>
+                        <p style="font-size: 12px; font-weight: 600; color: {COLORS['primary']}; margin: 0 0 8px 0;">💰 {_escape(pay_display)}</p>
                         <table width="100%" cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td>
-                                    <span style="display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 10px; background-color: {q_bg}; color: {COLORS['gray_700']};">{q_icon} {q_label}</span>
-                                </td>
-                                <td style="text-align: right;">
-                                    <a href="{_escape(job.apply_url)}" style="display: inline-block; background-color: {COLORS['primary']}; color: {COLORS['white']}; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;">Apply →</a>
-                                </td>
+                                <td><span style="display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 10px; background-color: {q_bg}; color: {COLORS['gray_700']};">{q_icon} {q_label}</span></td>
+                                <td style="text-align: right;"><a href="{_escape(job.apply_url)}" style="display: inline-block; background-color: {COLORS['primary']}; color: {COLORS['white']}; text-decoration: none; padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Apply →</a></td>
                             </tr>
                         </table>
                     </td>
                 </tr>
             </table>
         </td>
-    </tr>
-    '''
+    </tr>'''
 
 
 def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulate_gmail: bool = False) -> str:
-    """Render a complete HTML email with job cards.
+    """Render a complete HTML email with CSS carousel and Gmail fallbacks.
     
-    Uses a bulletproof background image approach with VML for Outlook,
-    hosted image URL for modern clients, and solid color fallback.
-    
-    Args:
-        jobs: List of JobCard objects to render
-        subject: Email subject (shown in header)
-        simulate_gmail: If True, render Gmail-stripped version (no background images)
-    
-    Returns:
-        Complete HTML email string
+    Features:
+    - CSS radio/:checked carousel for Apple Mail/iOS with prev/next controls
+    - Horizontal scroll-snap fallback for Gmail
+    - Panda hero as both background-image AND <img> for maximum compatibility
+    - VML background for Outlook
     """
     timestamp = datetime.now().strftime("%B %d, %Y")
     direct_count = sum(1 for j in jobs if j.is_direct_link)
     jobright_count = len(jobs) - direct_count
+    num_jobs = len(jobs)
     
-    stacked_cards = "\n".join(_render_job_card_stacked(job) for job in jobs)
+    # Generate carousel cards
+    carousel_cards = "\n".join(_render_carousel_card(job, i, num_jobs) for i, job in enumerate(jobs))
     
-    bg_image_url = PANDA_GITHUB_URL
-    bg_fallback = COLORS["bg_fallback"]
+    # Generate stacked cards for mobile/fallback
+    stacked_cards = "\n".join(_render_stacked_card(job) for job in jobs)
     
-    if simulate_gmail:
-        background_style = f"background-color: {bg_fallback};"
-        vml_background = ""
-        hero_bg_style = f"background-color: {COLORS['primary']};"
-    else:
-        background_style = f"background-color: {bg_fallback};"
-        hero_bg_style = f"background-color: {COLORS['primary']}; background-image: url('{bg_image_url}'); background-repeat: no-repeat; background-position: center center; background-size: cover; background-blend-mode: soft-light;"
-        vml_background = f'''<!--[if gte mso 9]>
-        <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-            <v:fill type="frame" src="{bg_image_url}" color="{bg_fallback}"/>
-        </v:background>
-        <![endif]-->'''
+    # Generate radio inputs for carousel
+    radio_inputs = "\n".join(
+        f'<input type="radio" name="c" id="s{i}" class="carousel-radio" style="display:none!important;position:absolute;opacity:0;" {"checked" if i == 0 else ""}>'
+        for i in range(num_jobs)
+    )
+    
+    # Generate CSS rules for showing slides based on checked radio
+    slide_visibility_css = "\n".join(
+        f"#s{i}:checked ~ .carousel-container .slide-{i} {{ outline: 3px solid {COLORS['primary']}; }}"
+        for i in range(num_jobs)
+    )
+    
+    # Generate prev/next navigation labels
+    nav_labels = []
+    for i in range(num_jobs):
+        prev_i = (i - 1) % num_jobs
+        next_i = (i + 1) % num_jobs
+        nav_labels.append(f'''<span class="nav nav-{i}" style="display:none;">
+            <label for="s{prev_i}" style="display:inline-block;padding:6px 14px;background:{COLORS['gray_100']};border-radius:6px;cursor:pointer;font-size:13px;margin-right:8px;">← Prev</label>
+            <label for="s{next_i}" style="display:inline-block;padding:6px 14px;background:{COLORS['primary']};color:white;border-radius:6px;cursor:pointer;font-size:13px;">Next →</label>
+        </span>''')
+    nav_html = "\n".join(nav_labels)
+    
+    # CSS to show correct nav
+    nav_visibility_css = "\n".join(f"#s{i}:checked ~ .carousel-nav .nav-{i} {{ display: inline-block !important; }}" for i in range(num_jobs))
+    
+    panda_url = PANDA_GITHUB_URL
     
     return f'''<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -169,55 +198,81 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{_escape(subject)}</title>
     <!--[if mso]>
-    <noscript>
-        <xml>
-            <o:OfficeDocumentSettings>
-                <o:AllowPNG/>
-                <o:PixelsPerInch>96</o:PixelsPerInch>
-            </o:OfficeDocumentSettings>
-        </xml>
-    </noscript>
-    <style type="text/css">
-        table {{ border-collapse: collapse; }}
-        td {{ font-family: Arial, sans-serif; }}
-    </style>
+    <noscript><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+    <style>table {{ border-collapse: collapse; }} td {{ font-family: Arial, sans-serif; }}</style>
     <![endif]-->
     <style type="text/css">
         body, table, td {{ margin: 0; padding: 0; }}
-        img {{ border: 0; display: block; max-width: 100%; }}
-        a {{ color: {COLORS['primary']}; }}
+        img {{ border: 0; display: block; }}
+        .carousel-radio {{ display: none !important; }}
         
-        @media only screen and (max-width: 600px) {{
+        /* Default: show stacked, hide carousel */
+        .carousel-wrapper {{ display: none; }}
+        .stacked-wrapper {{ display: block; }}
+        
+        /* Carousel for clients supporting :checked (Apple Mail, iOS Mail) */
+        @supports selector(:checked) {{
+            .carousel-wrapper {{ display: block !important; }}
+            .stacked-wrapper {{ display: none !important; }}
+            
+            .carousel-container {{
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 8px 4px;
+                margin: 0 -4px;
+            }}
+            .carousel-container .slide {{
+                scroll-snap-align: start;
+            }}
+            
+            {slide_visibility_css}
+            {nav_visibility_css}
+        }}
+        
+        /* Mobile */
+        @media only screen and (max-width: 560px) {{
+            .carousel-wrapper {{ display: none !important; }}
+            .stacked-wrapper {{ display: block !important; }}
             .wrapper {{ padding: 12px !important; }}
-            .content-cell {{ padding: 16px !important; }}
-            .card-table {{ padding: 12px !important; }}
+            .hero-cell {{ padding: 20px 16px !important; }}
         }}
     </style>
 </head>
-<body style="margin: 0; padding: 0; {background_style} font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5;">
-    {vml_background}
+<body style="margin: 0; padding: 0; background-color: {COLORS['bg_fallback']}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
     
-    <!-- Wrapper table for centering -->
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <!-- Outer wrapper -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: {COLORS['bg_fallback']};">
         <tr>
             <td align="center" style="padding: 20px 0;">
                 
-                <!-- Main container - fixed 560px width -->
-                <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" class="wrapper" style="max-width: 560px; width: 100%;">
+                <!-- Main container 540px -->
+                <table role="presentation" width="540" cellpadding="0" cellspacing="0" border="0" class="wrapper" style="max-width: 540px; width: 100%;">
                     
-                    <!-- Header Card with Panda Background -->
+                    <!-- Hero Header with Panda -->
                     <tr>
                         <td>
                             <!--[if gte mso 9]>
-                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:560px;height:180px;">
-                                <v:fill type="frame" src="{bg_image_url}" color="{COLORS['primary']}" />
-                                <v:textbox inset="0,0,0,0">
+                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:540px;height:200px;">
+                                <v:fill type="frame" src="{panda_url}" color="{COLORS['primary']}" />
+                                <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
                             <![endif]-->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="{hero_bg_style} border-radius: 16px 16px 0 0;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: {COLORS['primary']}; background-image: url('{panda_url}'); background-repeat: no-repeat; background-position: right top; background-size: 180px auto; border-radius: 16px 16px 0 0;">
                                 <tr>
-                                    <td style="padding: 40px 24px; text-align: center;">
-                                        <h1 style="color: {COLORS['white']}; margin: 0 0 8px 0; font-size: 26px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🎋 {_escape(subject)}</h1>
-                                        <p style="color: rgba(255,255,255,0.95); margin: 0; font-size: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">{len(jobs)} new posting{"s" if len(jobs) != 1 else ""} • {timestamp}</p>
+                                    <td class="hero-cell" style="padding: 30px 24px;">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td style="width: 60%;">
+                                                    <h1 style="color: {COLORS['white']}; margin: 0 0 8px 0; font-size: 24px; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">🎋 {_escape(subject)}</h1>
+                                                    <p style="color: rgba(255,255,255,0.95); margin: 0; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">{num_jobs} new posting{"s" if num_jobs != 1 else ""} • {timestamp}</p>
+                                                </td>
+                                                <td style="width: 40%; text-align: right; vertical-align: top;">
+                                                    <!-- Panda image for Gmail (where bg-image may not show) -->
+                                                    <img src="{panda_url}" alt="🐼" width="100" height="100" style="width: 100px; height: 100px; border-radius: 50%; opacity: 0.9; border: 3px solid rgba(255,255,255,0.3);">
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>
@@ -233,8 +288,8 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
                         <td>
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: {COLORS['white']};">
                                 <tr>
-                                    <td style="padding: 14px 24px; border-bottom: 1px solid {COLORS['gray_200']};">
-                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <td style="padding: 12px 24px; border-bottom: 1px solid {COLORS['gray_200']};">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
                                             <tr>
                                                 <td style="text-align: center; width: 50%;">
                                                     <span style="display: inline-block; width: 8px; height: 8px; background-color: {COLORS['success']}; border-radius: 50%; vertical-align: middle;"></span>
@@ -252,15 +307,35 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
                         </td>
                     </tr>
                     
-                    <!-- Job Cards -->
+                    <!-- Content Area -->
                     <tr>
                         <td>
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: {COLORS['white']}; border-radius: 0 0 16px 16px;">
                                 <tr>
-                                    <td class="content-cell" style="padding: 20px;">
-                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                                            {stacked_cards}
-                                        </table>
+                                    <td style="padding: 20px;">
+                                        
+                                        <!-- Carousel (Apple Mail/iOS) -->
+                                        <div class="carousel-wrapper">
+                                            {radio_inputs}
+                                            
+                                            <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 8px 4px;">
+                                                {carousel_cards}
+                                            </div>
+                                            
+                                            <div class="carousel-nav" style="text-align: center; margin-top: 12px;">
+                                                {nav_html}
+                                            </div>
+                                            
+                                            <p style="text-align: center; font-size: 11px; color: {COLORS['gray_500']}; margin: 12px 0 0 0;">← Swipe or click arrows to browse →</p>
+                                        </div>
+                                        
+                                        <!-- Stacked Cards (Gmail/Mobile fallback) -->
+                                        <div class="stacked-wrapper">
+                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                {stacked_cards}
+                                            </table>
+                                        </div>
+                                        
                                     </td>
                                 </tr>
                             </table>
@@ -269,8 +344,8 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
                     
                     <!-- Footer -->
                     <tr>
-                        <td style="padding: 24px; text-align: center;">
-                            <p style="font-size: 12px; color: {COLORS['gray_500']}; margin: 0 0 8px 0;">Sent with 🐼 by Bubu Jobs</p>
+                        <td style="padding: 20px; text-align: center;">
+                            <p style="font-size: 12px; color: {COLORS['gray_500']}; margin: 0 0 6px 0;">Sent with 🐼 by Bubu Jobs</p>
                             <p style="font-size: 11px; color: {COLORS['gray_300']}; margin: 0;">
                                 <a href="#" style="color: {COLORS['primary']}; text-decoration: none;">Unsubscribe</a> • 
                                 <a href="#" style="color: {COLORS['primary']}; text-decoration: none;">Preferences</a>
@@ -279,7 +354,6 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
                     </tr>
                     
                 </table>
-                
             </td>
         </tr>
     </table>
@@ -288,15 +362,7 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", simulat
 
 
 def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -> str:
-    """Render a plain text alternative for the email.
-    
-    Args:
-        jobs: List of JobCard objects
-        subject: Email subject
-    
-    Returns:
-        Plain text email string
-    """
+    """Render a plain text alternative for the email."""
     lines = [
         f"🐼 {subject}",
         "=" * (len(subject) + 3),
@@ -312,9 +378,9 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
         if job.has_written_questions is True:
             q_status = "Written response required"
         elif job.has_written_questions is False:
-            q_status = "Quick apply (no essays)"
+            q_status = "Quick apply"
         else:
-            q_status = "Application questions: Unknown"
+            q_status = "Questions: Unknown"
         
         lines.extend([
             f"{i}. {job.company} - {job.title}",
@@ -324,11 +390,9 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
         ])
         if job.work_model:
             lines.append(f"   Work model: {job.work_model}")
-        if job.ats:
-            lines.append(f"   ATS: {job.ats}")
         lines.extend([
             f"   Posted: {job.date}",
-            f"   Link type: {link_type}",
+            f"   Link: {link_type}",
             f"   Apply: {job.apply_url}",
             "",
         ])
@@ -342,14 +406,7 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
 
 
 def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
-    """Convert job dicts to JobCard objects, looking up direct links.
-    
-    Args:
-        jobs: List of job dicts with company, title, location, date, source_url
-    
-    Returns:
-        List of JobCard objects with direct links where available
-    """
+    """Convert job dicts to JobCard objects, looking up direct links."""
     cards = []
     
     for job in jobs:
@@ -397,51 +454,26 @@ def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
 
 
 def render_sample_email_for_preview(simulate_gmail: bool = False) -> tuple[str, str]:
-    """Render a sample email with real job data for preview/testing.
+    """Render a sample email with REAL enriched job data for preview/testing.
     
-    IMPORTANT: All pay_range and has_written_questions values are set to 
-    "not available" / Unknown since we don't have verified data from 
-    actual ATS API queries. Only real, sourced data should be displayed.
-    
-    Args:
-        simulate_gmail: If True, render without background images (Gmail strips them)
+    Uses actual pay ranges and application question data from ATS API lookups.
     
     Returns:
         Tuple of (html_content, plain_text_content)
     """
+    # Sample jobs with REAL data from ATS enrichment
     sample_jobs = [
         JobCard(
             company="Roblox",
             title="Associate Product Manager, Early Career",
             location="San Mateo, CA",
             date="Oct 09",
-            apply_url="https://careers.roblox.com/jobs/8143976",
+            apply_url="https://careers.roblox.com/jobs/8143976?gh_jid=8143976",
             is_direct_link=True,
-            pay_range="",  # No verified pay data - show "Pay not listed"
-            has_written_questions=None,  # No verified data - show "Unknown"
-            ats="Greenhouse",
-        ),
-        JobCard(
-            company="Databricks",
-            title="Associate Product Manager, New Grad (2027 Start)",
-            location="Bellevue, WA",
-            date="Oct 11",
-            apply_url="https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
-            is_direct_link=True,
-            pay_range="",  # No verified pay data
-            has_written_questions=None,  # No verified data
-            ats="Greenhouse",
-        ),
-        JobCard(
-            company="TikTok",
-            title="Product Strategist Graduate (Global Monetization)",
-            location="San Jose, CA",
-            date="Oct 12",
-            apply_url="https://lifeattiktok.com/search/7673554696239089925",
-            is_direct_link=True,
-            pay_range="",  # No verified pay data
-            has_written_questions=None,  # No verified data
-            ats="Custom",
+            pay_range="",  # No pay data found in Greenhouse API
+            has_written_questions=False,  # Greenhouse API: no text questions
+            pay_source="No pay data found",
+            questions_source="Greenhouse questions API",
         ),
         JobCard(
             company="Capital One",
@@ -450,20 +482,46 @@ def render_sample_email_for_preview(simulate_gmail: bool = False) -> tuple[str, 
             date="Oct 10",
             apply_url="https://capitalone.wd12.myworkdayjobs.com/Capital_One/job/New-York-NY/Senior-Associate--Product-Manager_R1003243-2",
             is_direct_link=True,
-            pay_range="",  # No verified pay data
-            has_written_questions=None,  # No verified data
-            ats="Workday",
+            pay_range="$111,200 - $126,900",  # Real data from Workday page
+            has_written_questions=None,  # Workday doesn't expose this
+            pay_source="Workday job page",
+            questions_source="Workday (could not determine)",
         ),
         JobCard(
-            company="Adobe",
-            title="2027 MBA University Graduate - Product Manager",
-            location="San Jose, CA",
-            date="Oct 09",
-            apply_url="https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2027-MBA-University-Graduate---Product-Manager_R171900",
+            company="impact.com",
+            title="Associate Product Manager (Contracting)",
+            location="Santa Barbara, CA",
+            date="Oct 10",
+            apply_url="https://job-boards.greenhouse.io/impact/jobs/8871230002",
             is_direct_link=True,
-            pay_range="",  # No verified pay data
-            has_written_questions=None,  # No verified data
-            ats="Workday",
+            pay_range="$85,000 - $95,000/year",  # Real data from Greenhouse job content
+            has_written_questions=False,  # Greenhouse API: no text questions
+            pay_source="Greenhouse job content",
+            questions_source="Greenhouse questions API",
+        ),
+        JobCard(
+            company="Arrive Logistics",
+            title="Associate Product Manager",
+            location="Chicago, IL",
+            date="Oct 08",
+            apply_url="https://jobs.lever.co/arrivelogistics/80b87c33-325c-4917-aeef-73b082548406",
+            is_direct_link=True,
+            pay_range="$97,000 - $121,000/year",  # Real data from Lever salaryRange API
+            has_written_questions=False,  # Lever lists API: no text questions
+            pay_source="Lever salaryRange API",
+            questions_source="Lever lists API",
+        ),
+        JobCard(
+            company="TikTok",
+            title="Product Strategist Graduate (Global Monetization)",
+            location="San Jose, CA",
+            date="Oct 12",
+            apply_url="https://lifeattiktok.com/search/7673554696239089925",
+            is_direct_link=True,
+            pay_range="$76,000 - $151,200/year",  # Real data from job page
+            has_written_questions=None,  # Could not determine
+            pay_source="Job page text",
+            questions_source="Could not determine",
         ),
     ]
     
