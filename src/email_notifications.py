@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from email.message import EmailMessage
 from email.utils import formatdate
 from pathlib import Path
+from typing import Optional
 
 from .dedupe import save_state
 
@@ -47,10 +48,11 @@ class GmailClient:
         return cls(validate_address(values[0], names[0]), validate_address(values[1], names[1]),
                    values[2].replace(" ", ""))
 
-    def send(self, item: dict, key: str) -> str:
+    def send(self, item: dict, key: str, override_recipient: Optional[str] = None) -> str:
+        recipient = override_recipient or self.recipient
         message = EmailMessage()
         message["From"] = self.sender
-        message["To"] = self.recipient
+        message["To"] = recipient
         message["Subject"] = item["subject"]
         message["Date"] = formatdate(localtime=False)
         sender_id = hashlib.sha256(self.sender.casefold().encode()).hexdigest()[:12]
@@ -68,7 +70,7 @@ class GmailClient:
             refused = smtp.send_message(message)
             if refused:
                 raise EmailError("SMTP refused the recipient")
-            return message_id  # SMTP accepted; not a read receipt or delivery guarantee.
+            return message_id
         except smtplib.SMTPAuthenticationError:
             raise EmailError("Gmail authentication failed; check EMAIL_SENDER and its App Password") from None
         except smtplib.SMTPRecipientsRefused as error:
@@ -82,7 +84,6 @@ class GmailClient:
                              retryable=not sending, uncertain=sending) from None
         finally:
             if smtp is not None:
-                # Closing must not turn an already accepted message into a failed send.
                 try:
                     smtp.close()
                 except OSError:
@@ -90,29 +91,71 @@ class GmailClient:
 
 
 def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
+    """Render email digest with styled HTML and direct links.
+    
+    Uses the direct_links module to find verified apply URLs when available,
+    falling back to Jobright URLs otherwise. Includes pay range and application
+    question indicators when available.
+    """
+    from .html_email import JobCard, render_html_email, render_plain_text_email, render_sample_email_for_preview
+    from .direct_links import get_direct_link
+    
     subject = "[bubu-jobs] Email test" if test else f"[bubu-jobs] {len(jobs)} new job match(es)"
-    intro = ("This is a test of email alerts from your account to yourself. No application was submitted."
-             if test else "New Product Management matches from the Jobright README:")
-    text = [subject, "", intro]
+    
+    if test:
+        html_body, text_body = render_sample_email_for_preview()
+        return subject, text_body, html_body
+    
     cards = []
     for job in jobs:
-        url = job.get("canonical_apply_url") or job["source_url"]
-        lines = [f"Company: {job['company']}", f"Title: {job['title']}",
-                 f"Location: {job['location']}", f"Work model: {job['work_model']}",
-                 f"Date posted: {job['date_posted']}", f"ATS: {job['ats']}", f"Apply: {url}"]
-        text.extend(["", *lines])
-        e = html.escape
-        cards.append(f'<div style="border-top:1px solid #ddd;padding:16px 0">'
-                     f'<h2 style="font-size:18px;margin:0 0 8px">{e(job["title"])}</h2>'
-                     f'<p><strong>{e(job["company"])}</strong><br>{e(job["location"])} · {e(job["work_model"])}</p>'
-                     f'<p>Posted: {e(job["date_posted"])} · ATS: {e(job["ats"])}</p>'
-                     f'<a href="{e(url, quote=True)}">View job / apply</a></div>')
-    footer = "You receive this digest only when new relevant jobs are discovered (or a saved delivery retries)."
-    text.extend(["", footer])
-    body = (f'<html><body style="font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:24px;color:#222">'
-            f'<h1 style="font-size:24px">{html.escape(subject)}</h1><p>{html.escape(intro)}</p>'
-            + "".join(cards) + f'<p style="color:#666;font-size:12px">{footer}</p></body></html>')
-    return subject, "\n".join(text), body
+        company = job.get("company", "")
+        title = job.get("title", "")
+        location = job.get("location", "")
+        date_posted = job.get("date_posted", "")
+        fallback_url = job.get("canonical_apply_url") or job.get("source_url", "")
+        
+        try:
+            direct_link = get_direct_link(company, title, location)
+        except Exception:
+            direct_link = None
+        
+        work_model = job.get("work_model", "")
+        ats = job.get("ats", "")
+        pay_range = job.get("pay_range", "")
+        has_written_questions = job.get("has_written_questions")
+        
+        if direct_link:
+            cards.append(JobCard(
+                company=company,
+                title=title,
+                location=location,
+                date=date_posted,
+                apply_url=direct_link.direct_url,
+                is_direct_link=True,
+                source_note=direct_link.note,
+                work_model=work_model,
+                ats=ats,
+                pay_range=pay_range,
+                has_written_questions=has_written_questions,
+            ))
+        else:
+            cards.append(JobCard(
+                company=company,
+                title=title,
+                location=location,
+                date=date_posted,
+                apply_url=fallback_url,
+                is_direct_link=False,
+                work_model=work_model,
+                ats=ats,
+                pay_range=pay_range,
+                has_written_questions=has_written_questions,
+            ))
+    
+    text_body = render_plain_text_email(cards, subject)
+    html_body = render_html_email(cards, subject)
+    
+    return subject, text_body, html_body
 
 
 def enqueue_email(state: dict, jobs: list[dict], test: bool = False) -> None:
@@ -170,3 +213,35 @@ def deliver_email(state: dict, path: Path, client: GmailClient) -> None:
         save_state(path, state)
         LOG.warning("Email %s submitted to SMTP (attempt %d)", key, item["attempts"])
         return
+
+
+def send_test_email_to(recipient: str, client: GmailClient) -> str:
+    """Send a single test email with sample job data to a specific recipient.
+    
+    This is for testing the email design without affecting the normal outbox.
+    
+    Args:
+        recipient: Email address to send to
+        client: Configured GmailClient
+    
+    Returns:
+        Message ID of the sent email
+    
+    Raises:
+        EmailError: If sending fails
+    """
+    from .html_email import render_sample_email_for_preview
+    
+    validate_address(recipient, "test recipient")
+    
+    html_body, text_body = render_sample_email_for_preview()
+    item = {
+        "subject": "[bubu-jobs] Design Preview Test",
+        "text": text_body,
+        "html": html_body,
+    }
+    
+    LOG.info("Sending test email to %s", recipient)
+    message_id = client.send(item, "design-test-v1", override_recipient=recipient)
+    LOG.info("Test email sent: %s", message_id)
+    return message_id
