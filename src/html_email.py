@@ -20,6 +20,7 @@ LOG = logging.getLogger(__name__)
 
 PANDA_IMAGE_PATH = Path(__file__).parent.parent / "assets" / "panda-hero.jpg"
 PANDA_GITHUB_URL = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg"
+PANDA_CID = "panda-hero"  # Content-ID for inline attachment
 
 
 @dataclass
@@ -131,14 +132,20 @@ def _render_job_row(job: JobCard) -> str:
 </tr>'''
 
 
-def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs") -> str:
+def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", use_cid: bool = False) -> str:
     """Render a complete HTML email with a vertical list of job rows.
     
     Features:
     - Clean vertical list layout (one row per job, full width)
-    - Panda hero header with both background-image and inline <img>
+    - Panda hero image (CID attachment for email, hosted URL for preview)
     - Table-based layout with inline styles for Gmail compatibility
     - No JavaScript, no CSS pseudo-selectors
+    
+    Args:
+        jobs: List of JobCard objects to render
+        subject: Email subject line
+        use_cid: If True, use cid:panda-hero for image (for real email sending).
+                 If False, use hosted GitHub URL (for browser preview).
     """
     timestamp = datetime.now().strftime("%B %d, %Y")
     direct_count = sum(1 for j in jobs if j.is_direct_link)
@@ -146,7 +153,7 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs") -> str:
     num_jobs = len(jobs)
     
     job_rows = "\n".join(_render_job_row(job) for job in jobs)
-    panda_url = PANDA_GITHUB_URL
+    panda_url = f"cid:{PANDA_CID}" if use_cid else PANDA_GITHUB_URL
     
     return f'''<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -354,8 +361,12 @@ def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
     return cards
 
 
-def render_sample_email_for_preview() -> tuple[str, str]:
+def render_sample_email_for_preview(use_cid: bool = False) -> tuple[str, str]:
     """Render a sample email with REAL enriched job data for preview/testing.
+    
+    Args:
+        use_cid: If True, use cid:panda-hero for image (for real email).
+                 If False, use hosted GitHub URL (for browser preview).
     
     Returns:
         Tuple of (html_content, plain_text_content)
@@ -423,7 +434,7 @@ def render_sample_email_for_preview() -> tuple[str, str]:
         ),
     ]
     
-    html_content = render_html_email(sample_jobs, "New PM Jobs")
+    html_content = render_html_email(sample_jobs, "New PM Jobs", use_cid=use_cid)
     text_content = render_plain_text_email(sample_jobs, "New PM Jobs")
     
     return html_content, text_content

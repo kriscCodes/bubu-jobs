@@ -14,6 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.html_email import render_sample_email_for_preview
+from src.email_notifications import generate_test_eml
 
 
 def generate_previews(output_dir: Path) -> dict[str, Path]:
@@ -28,18 +29,37 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     artifacts = {}
     
-    # Render email
-    html_content, text_content = render_sample_email_for_preview()
+    # Render email with hosted URL (for browser preview)
+    html_content, text_content = render_sample_email_for_preview(use_cid=False)
     
     html_path = output_dir / "email_preview.html"
     html_path.write_text(html_content, encoding="utf-8")
-    print(f"Wrote HTML: {html_path}")
+    print(f"Wrote HTML (hosted URL): {html_path}")
     artifacts["html"] = html_path
     
     text_path = output_dir / "email_preview.txt"
     text_path.write_text(text_content, encoding="utf-8")
     print(f"Wrote plain text: {text_path}")
     artifacts["text"] = text_path
+    
+    # Render email with CID reference (as sent)
+    html_content_cid, _ = render_sample_email_for_preview(use_cid=True)
+    
+    html_cid_path = output_dir / "email_preview_cid.html"
+    html_cid_path.write_text(html_content_cid, encoding="utf-8")
+    print(f"Wrote HTML (CID reference): {html_cid_path}")
+    artifacts["html_cid"] = html_cid_path
+    
+    # Generate complete RFC822 .eml file
+    eml_content, _ = generate_test_eml(
+        recipient="krisc2004@gmail.com",
+        subject="[TEST v4] New PM Jobs - Bubu Jobs",
+    )
+    
+    eml_path = output_dir / "test_message.eml"
+    eml_path.write_text(eml_content, encoding="utf-8")
+    print(f"Wrote EML (RFC822): {eml_path}")
+    artifacts["eml"] = eml_path
     
     try:
         from playwright.sync_api import sync_playwright

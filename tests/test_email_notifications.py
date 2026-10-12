@@ -10,7 +10,9 @@ from unittest.mock import MagicMock, patch
 
 from src.dedupe import empty_state, load_state, save_state
 from src.email_notifications import (EmailError, GmailClient, deliver_email, enqueue_email,
-                                     migrate_unsent_sms, render_digest)
+                                     migrate_unsent_sms, render_digest, build_mime_message_with_cid,
+                                     generate_test_eml)
+from src.html_email import PANDA_CID, PANDA_IMAGE_PATH
 from src.main import run
 from src.sources.jobright import FetchResult, parse_readme
 from test_jobright import HEADER, ROW
@@ -110,7 +112,8 @@ class SmtpTests(unittest.TestCase):
         self.item = {'subject': 'Test', 'text': 'Plain text', 'html': '<p>HTML</p>'}
 
     @patch('src.email_notifications.smtplib.SMTP_SSL')
-    def test_tls_auth_and_multipart(self, factory):
+    def test_tls_auth_and_multipart_with_cid(self, factory):
+        """Default send uses multipart/related with CID attachment."""
         smtp = factory.return_value
         smtp.send_message.return_value = {}
         result = self.client.send(self.item, 'test-v1')
@@ -120,7 +123,7 @@ class SmtpTests(unittest.TestCase):
         smtp.login.assert_called_once_with('sender@gmail.com', 'secret')
         message = smtp.send_message.call_args.args[0]
         self.assertEqual(message['To'], 'recipient@gmail.com')
-        self.assertEqual(message.get_content_type(), 'multipart/alternative')
+        self.assertEqual(message.get_content_type(), 'multipart/related')
         self.assertRegex(result, r'^<bubu-jobs-test-v1-[0-9a-f]{12}@gmail\.com>$')
         smtp.close.assert_called_once()
 
@@ -154,3 +157,100 @@ class SmtpTests(unittest.TestCase):
         os.environ['EMAIL_RECIPIENT'] = 'me@gmail.com\nBcc: other@gmail.com'
         with self.assertRaises(ValueError):
             GmailClient.from_environment()
+
+
+class MimeStructureTests(unittest.TestCase):
+    """Tests for multipart/related MIME structure with CID inline attachment."""
+    
+    def test_build_mime_message_structure(self):
+        """Verify the MIME structure is multipart/related with correct parts."""
+        msg = build_mime_message_with_cid(
+            sender="sender@example.com",
+            recipient="recipient@example.com",
+            subject="Test Subject",
+            text_body="Plain text body",
+            html_body='<html><body><img src="cid:panda-hero" /></body></html>',
+            message_id="<test-123@example.com>",
+        )
+        
+        self.assertEqual(msg.get_content_type(), "multipart/related")
+        self.assertEqual(msg["From"], "sender@example.com")
+        self.assertEqual(msg["To"], "recipient@example.com")
+        self.assertEqual(msg["Subject"], "Test Subject")
+        self.assertEqual(msg["Message-ID"], "<test-123@example.com>")
+        
+        payloads = msg.get_payload()
+        self.assertGreaterEqual(len(payloads), 2)
+        
+        alt_part = payloads[0]
+        self.assertEqual(alt_part.get_content_type(), "multipart/alternative")
+        
+        alt_payloads = alt_part.get_payload()
+        self.assertEqual(len(alt_payloads), 2)
+        self.assertEqual(alt_payloads[0].get_content_type(), "text/plain")
+        self.assertEqual(alt_payloads[1].get_content_type(), "text/html")
+        self.assertIn("Plain text body", alt_payloads[0].get_payload(decode=True).decode())
+        self.assertIn("cid:panda-hero", alt_payloads[1].get_payload(decode=True).decode())
+        
+        if PANDA_IMAGE_PATH.exists():
+            image_part = payloads[1]
+            self.assertEqual(image_part.get_content_type(), "image/jpeg")
+            self.assertEqual(image_part["Content-ID"], f"<{PANDA_CID}>")
+            self.assertIn("inline", image_part.get("Content-Disposition", ""))
+    
+    def test_generate_test_eml_produces_valid_rfc822(self):
+        """Verify generate_test_eml produces valid RFC822 message."""
+        eml_content, html_content = generate_test_eml(
+            recipient="test@example.com",
+            subject="[TEST v4] New PM Jobs - Bubu Jobs",
+        )
+        
+        self.assertIn("From: noreply@bubu-jobs.local", eml_content)
+        self.assertIn("To: test@example.com", eml_content)
+        self.assertIn("Subject: [TEST v4] New PM Jobs - Bubu Jobs", eml_content)
+        self.assertIn("Content-Type: multipart/related", eml_content)
+        self.assertIn("Content-Type: multipart/alternative", eml_content)
+        self.assertIn("Content-Type: text/plain", eml_content)
+        self.assertIn("Content-Type: text/html", eml_content)
+        
+        self.assertIn(f"cid:{PANDA_CID}", html_content)
+        self.assertIn("New PM Jobs", html_content)
+        
+        if PANDA_IMAGE_PATH.exists():
+            self.assertIn("Content-Type: image/jpeg", eml_content)
+            self.assertIn(f"Content-ID: <{PANDA_CID}>", eml_content)
+    
+    @patch('src.email_notifications.smtplib.SMTP_SSL')
+    def test_send_with_cid_creates_multipart_related(self, factory):
+        """Verify GmailClient.send with use_cid=True creates multipart/related."""
+        smtp = factory.return_value
+        smtp.send_message.return_value = {}
+        client = GmailClient('sender@gmail.com', 'recipient@gmail.com', 'secret')
+        item = {
+            'subject': 'Test',
+            'text': 'Plain text',
+            'html': '<p>HTML with hosted URL</p>',
+            'html_cid': '<p>HTML with <img src="cid:panda-hero" /></p>',
+        }
+        
+        client.send(item, 'test-cid', use_cid=True)
+        
+        message = smtp.send_message.call_args.args[0]
+        self.assertEqual(message.get_content_type(), "multipart/related")
+    
+    @patch('src.email_notifications.smtplib.SMTP_SSL')
+    def test_send_without_cid_creates_multipart_alternative(self, factory):
+        """Verify GmailClient.send with use_cid=False creates multipart/alternative."""
+        smtp = factory.return_value
+        smtp.send_message.return_value = {}
+        client = GmailClient('sender@gmail.com', 'recipient@gmail.com', 'secret')
+        item = {
+            'subject': 'Test',
+            'text': 'Plain text',
+            'html': '<p>HTML</p>',
+        }
+        
+        client.send(item, 'test-no-cid', use_cid=False)
+        
+        message = smtp.send_message.call_args.args[0]
+        self.assertEqual(message.get_content_type(), "multipart/alternative")
