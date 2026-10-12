@@ -1,1 +1,6 @@
-# Runtime and tests use only the Python 3.11+ standard library.
+# Core dependencies
+requests>=2.28.0
+
+# Development/testing (optional)
+pytest>=7.0.0
+playwright>=1.40.0  # for email preview screenshots

@@ -1,0 +1,245 @@
+{
+  "https://lifeattiktok.com/search/7673554696239089925": {
+    "pay_range": "$76000 - $151200 annually",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://www.deshaw.com/careers/human-capital-product-operations-associate-6062": {
+    "pay_range": "$75,000 to $90,000",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://jobs.bendingspoons.com/positions/6a7c11c253e80da9f6c76ffc": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002": {
+    "pay_range": null,
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://careers.loblaw.ca/associate-product-manager/job/R2000713373": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://jobs.lever.co/veeva/20ac0b20-911a-46b7-a4b6-1399fe293625": {
+    "pay_range": null,
+    "has_written_questions": false,
+    "source": "lever",
+    "questions_source": "Lever lists API"
+  },
+  "https://entegris.wd1.myworkdayjobs.com/EntegrisCareers/job/Colorado-Springs-CO/Product-Associate-Co-Op_REQ-14443": {
+    "pay_range": "$20-$30",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://www.disneycareers.com/en/job/glendale/associate-product-manager-program/391/100651632256": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://capitalone.wd12.myworkdayjobs.com/Capital_One/job/New-York-NY/Senior-Associate--Product-Manager---Business-Cards---Payments_R1003243-2": {
+    "pay_range": "$111,200 - $126,900",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/Senior-Associate--Product-Manager--Global-Payment-Network_R246342": {
+    "pay_range": "$101,100 - $115,400",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://job-boards.greenhouse.io/impact/jobs/8871230002": {
+    "pay_range": "$85,000 \u2013 $95,000 per year",
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "pay_source": "Greenhouse job content",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://job-boards.greenhouse.io/instawork/jobs/4583589006": {
+    "pay_range": "$80,000 - $100,000",
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "pay_source": "Greenhouse job content",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://job-boards.greenhouse.io/instawork/jobs/4583588006": {
+    "pay_range": "$80,000 - $100,000",
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "pay_source": "Greenhouse job content",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://www.careers.jnj.com/en/jobs/r-096757/product-management-co-op/": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://boydcorp.wd12.myworkdayjobs.com/en-US/Boyd_Careers/job/Billerica/Junior-Product-Manager_R-103234-1": {
+    "pay_range": "$90,000 - $130,000",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://careers.roblox.com/jobs/8143976?gh_jid=8143976": {
+    "pay_range": null,
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2027-MBA-University-Graduate---Product-Manager_R171900": {
+    "pay_range": "$105,300 - $205,150 annually",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://job-boards.greenhouse.io/openeye/jobs/8116408002": {
+    "pay_range": "$25.00 - $40.00 per hour",
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "pay_source": "Greenhouse job content",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://invesco.wd1.myworkdayjobs.com/IVZ/job/New-York-New-York/Assoc-Product-Mgr-EM-Equities_R-15536": {
+    "pay_range": "110,000 - 116,000 USD",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/Senior-Associate--Product-Manager---Card-Capabilities--Business-Cards---Payments-_R247042-1": {
+    "pay_range": "$111,200 - $126,900",
+    "has_written_questions": null,
+    "source": "workday",
+    "pay_source": "Workday job page",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3648a7d8-007d-4c74-b5b2-82f5563f80f7&ccId=19000101_000001&type=MP&lang=en_US&jobId=9205981988186_1": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://apply.workable.com/j/29F2E095A4": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://careers.hrblock.com/accelerate-program-sign-up/jobs/76931?lang=en-us": {
+    "pay_range": "$34.52 - $51.78/Hr",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://careers.victoriassecret.com/en/job/23769228/associate-product-developer-lingerie-apparel-new-york-ny/": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://eakinhealthcare.bamboohr.com/careers/222": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=030385b6-b9d3-4793-bd14-f4571196a104&ccId=19000101_000001&type=MP&lang=en_US&jobId=9201566241565_1": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://job-boards.greenhouse.io/verse/jobs/5448559008": {
+    "pay_range": "$130,000-$200,000",
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "pay_source": "Greenhouse job content",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://careers-drfirst.icims.com/jobs/2374/associate-product-analyst---eprescribing-platform/job": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://lifeattiktok.com/search/7673194618236078341": {
+    "pay_range": "$122574 - $184000 annually",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://allstate.wd5.myworkdayjobs.com/allstate_careers/job/CAN---ON-GTA-Remote/Provincial-Product-Analyst_R35634": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "workday",
+    "questions_source": "Workday (could not determine)"
+  },
+  "https://jobs.geogroup.com/jobs/21553": {
+    "pay_range": "0 - 0 USD",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://careers.na.panasonic.com/jobs/51582": {
+    "pay_range": "$67,000 - $75,000",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  },
+  "https://careers.ibm.com/careers/JobDetail?jobId=134884": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://job-boards.greenhouse.io/8451/jobs/8843248002": {
+    "pay_range": null,
+    "has_written_questions": false,
+    "source": "greenhouse",
+    "questions_source": "Greenhouse questions API"
+  },
+  "https://jobs.siemens.com/en_US/externaljobs/JobDetail/516036": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://jobs.lever.co/arrivelogistics/80b87c33-325c-4917-aeef-73b082548406": {
+    "pay_range": "$97,000 - $121,000/year",
+    "has_written_questions": false,
+    "source": "lever",
+    "pay_source": "Lever salaryRange API",
+    "questions_source": "Lever lists API"
+  },
+  "http://getfiber.ai/careers?gh_jid=5176565007": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "greenhouse"
+  },
+  "https://careers.ibm.com/careers/JobDetail?jobId=131067": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://careers.ibm.com/careers/JobDetail?jobId=131035": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://careers.ibm.com/careers/JobDetail?jobId=131031": {
+    "pay_range": null,
+    "has_written_questions": null,
+    "source": "generic"
+  },
+  "https://lifeattiktok.com/search/7688558723866151221": {
+    "pay_range": "$151200 - $295200 annually",
+    "has_written_questions": null,
+    "source": "generic",
+    "pay_source": "Job page text"
+  }
+}
