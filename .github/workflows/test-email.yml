@@ -1,12 +1,6 @@
 name: Test email design
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - cursor/resolve-ats-urls-56c4
-    paths:
-      - '.github/workflows/test-email.yml'
-      - '.github/test-email-trigger'
 jobs:
   send-test:
     runs-on: ubuntu-latest
