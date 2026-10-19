@@ -3,6 +3,7 @@ import unittest
 
 from src.html_email import (
     JobCard,
+    PANDA_GITHUB_URL,
     render_html_email,
     render_plain_text_email,
     create_job_cards_from_jobs,
@@ -61,6 +62,7 @@ class RenderHtmlEmailTests(unittest.TestCase):
                 date="Oct 12",
                 apply_url="https://databricks.com/careers/apply",
                 is_direct_link=True,
+                source="simplify",
             ),
             JobCard(
                 company="Unknown Corp",
@@ -69,6 +71,7 @@ class RenderHtmlEmailTests(unittest.TestCase):
                 date="Oct 11",
                 apply_url="https://jobright.ai/jobs/info/123",
                 is_direct_link=False,
+                source="jobright",
             ),
         ]
     
@@ -104,6 +107,15 @@ class RenderHtmlEmailTests(unittest.TestCase):
     def test_contains_jobright_badge(self):
         html = render_html_email(self.test_cards, "Test")
         self.assertIn("Jobright", html)
+    
+    def test_contains_source_and_posted_date(self):
+        html = render_html_email(self.test_cards, "Test")
+        self.assertIn("SimplifyJobs", html)
+        self.assertIn("Oct 12", html)
+        self.assertIn("Oct 11", html)
+        self.assertIn(PANDA_GITHUB_URL, html)
+        self.assertIn("/main/assets/panda-hero.jpg", PANDA_GITHUB_URL)
+        self.assertNotIn("cursor/resolve-ats-urls-56c4", html)
     
     def test_contains_inline_styles(self):
         html = render_html_email(self.test_cards, "Test")

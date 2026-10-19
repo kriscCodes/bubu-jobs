@@ -25,9 +25,9 @@ A little roadmap for Bubu Jobs. Crossed-out items are finished; open boxes are i
 - [ ] Set Bubu’s email as the recipient and test an alert with her.
 - [ ] Tune the title filters after reviewing the matches we receive.
 - [ ] Add preferences for location, remote/hybrid work, and graduation year.
-- [ ] Pull in more jobs from different sites and company career pages.
-- [ ] Normalize jobs from every source into the same format.
-- [ ] Recognize the same job across different sources, even when the links differ.
+- [x] ~~Pull in more jobs from different sites and company career pages.~~ (SimplifyJobs primary, FindYourRoleFirst secondary, Jobright third)
+- [x] ~~Normalize jobs from every source into the same format.~~
+- [x] ~~Recognize the same job across different sources, even when the links differ.~~ (normalized apply URL, then company + title)
 - [x] ~~Find direct company application links where available.~~ (Greenhouse API resolution for companies with public boards; see `src/resolver.py`)
 - [ ] Retrieve full job descriptions for better matching and resume tailoring.
 - [ ] Flag closed or expired listings when the source provides that information.

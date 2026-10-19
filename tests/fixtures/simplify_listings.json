@@ -1,0 +1,98 @@
+[
+  {
+    "id": "fresh-us-apm",
+    "company_name": "Figma",
+    "title": "Associate Product Manager",
+    "category": "Software",
+    "locations": ["SF"],
+    "url": "https://boards.greenhouse.io/figma/jobs/6180116004?utm_source=simplify&ref=board",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  },
+  {
+    "id": "senior-associate-us",
+    "company_name": "LSEG",
+    "title": "Senior Associate Product Manager - Enterprise AI",
+    "category": "Quant",
+    "locations": ["NYC"],
+    "url": "https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/New-York-City-United-States/Senior-Associate-Product-Manager_R0112268-1/apply",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1791900000,
+    "date_updated": 1791900000
+  },
+  {
+    "id": "inactive",
+    "company_name": "Hidden Co",
+    "title": "Associate Product Manager",
+    "category": "Product",
+    "locations": ["Austin, TX"],
+    "url": "https://jobs.ashbyhq.com/hidden/inactive",
+    "active": false,
+    "is_visible": true,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  },
+  {
+    "id": "invisible",
+    "company_name": "Ghost Co",
+    "title": "Associate Product Manager",
+    "category": "Product",
+    "locations": ["Austin, TX"],
+    "url": "https://jobs.ashbyhq.com/ghost/invisible",
+    "active": true,
+    "is_visible": false,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  },
+  {
+    "id": "old-posting",
+    "company_name": "Old Co",
+    "title": "Associate Product Manager",
+    "category": "Product",
+    "locations": ["Austin, TX"],
+    "url": "https://jobs.ashbyhq.com/old/too-old",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1789000000,
+    "date_updated": 1792000000
+  },
+  {
+    "id": "uk-only",
+    "company_name": "Wise",
+    "title": "Graduate Product Analyst",
+    "category": "AI/ML/Data",
+    "locations": ["London, UK"],
+    "url": "https://jobs.smartrecruiters.com/Wise/uk-only",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  },
+  {
+    "id": "senior-pm",
+    "company_name": "BigCo",
+    "title": "Senior Product Manager",
+    "category": "Product",
+    "locations": ["San Mateo, CA"],
+    "url": "https://jobs.ashbyhq.com/bigco/senior",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  },
+  {
+    "id": "non-pm",
+    "company_name": "Citizens",
+    "title": "Software Engineer 1",
+    "category": "Product",
+    "locations": ["Johnston, RI"],
+    "url": "https://jobs.ashbyhq.com/citizens/swe",
+    "active": true,
+    "is_visible": true,
+    "date_posted": 1791390000,
+    "date_updated": 1791390000
+  }
+]

@@ -85,20 +85,28 @@ class SmsTests(unittest.TestCase):
         self.assertEqual(self.client.send.call_count, 1)
         self.assertEqual(len(self.state["sms"]), 2)
 
+    @patch("src.main.fetch_entry_level")
+    @patch("src.main.fetch_listings")
     @patch("src.main.fetch_readme")
-    def test_existing_jobs_excluded_and_new_jobs_queued(self, fetch):
+    def test_existing_jobs_excluded_and_new_jobs_queued(self, fetch, fetch_simplify, fetch_fyrf):
+        fetch_simplify.return_value = FetchResult(None, None)
+        fetch_fyrf.return_value = FetchResult(None, None)
         fetch.return_value = FetchResult(HEADER + ROW, "v1")
         with redirect_stdout(io.StringIO()):
             run(self.path)
             run(self.path, client=self.client)
         self.client.send.assert_not_called()
-        fetch.return_value = FetchResult(HEADER + ROW.replace("/123", "/456"), "v2")
+        fetch.return_value = FetchResult(HEADER + ROW.replace("Acme", "Globex").replace("/123", "/456"), "v2")
         with redirect_stdout(io.StringIO()):
             run(self.path, client=self.client)
         self.client.send.assert_called_once()
 
+    @patch("src.main.fetch_entry_level")
+    @patch("src.main.fetch_listings")
     @patch("src.main.fetch_readme")
-    def test_unchanged_source_still_processes_queue(self, fetch):
+    def test_unchanged_source_still_processes_queue(self, fetch, fetch_simplify, fetch_fyrf):
+        fetch_simplify.return_value = FetchResult(None, None)
+        fetch_fyrf.return_value = FetchResult(None, None)
         enqueue(self.state, [], test=True)
         save_state(self.path, self.state)
         fetch.return_value = FetchResult(None, "v1")

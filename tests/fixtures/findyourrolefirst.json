@@ -1,0 +1,58 @@
+{
+  "updated": "2026-10-19T17:31:44Z",
+  "site": "https://findyourrolefirst.click",
+  "tracks": {
+    "product": {
+      "label": "Product management",
+      "jobs": [
+        {
+          "title": "Associate Product Manager, Peripheral Intervention",
+          "company": "BD",
+          "location": "USA IL Vernon Hills (+1 more)",
+          "posted": "2026-10-14T00:00:00Z",
+          "url": "https://bdx.wd1.myworkdayjobs.com/external_career_site_usa/job/USA-IL---Vernon-Hills/Associate-Product-Manager--Peripheral-Intervention_R-556765"
+        },
+        {
+          "title": "Associate Product Manager (Hardware)",
+          "company": "Lumafield",
+          "location": "Boston, MA",
+          "posted": "2026-10-13T15:42:36Z",
+          "url": "https://jobs.lever.co/lumafield/b3eb6e02-0b51-420c-b708-61ed81d93220/apply"
+        },
+        {
+          "title": "Product Owner I (Entry-Level)",
+          "company": "PDI Technologies",
+          "location": "Alpharetta, GA",
+          "posted": "2026-10-13T20:08:48Z",
+          "url": "https://jobs.lever.co/pditechnologies/ba03923d-fb60-4203-b85e-5e18bc046a04/apply"
+        },
+        {
+          "title": "Associate Product Manager",
+          "company": "Abroad Co",
+          "location": "London, UK",
+          "posted": "2026-10-13T00:00:00Z",
+          "url": "https://jobs.lever.co/abroad/uk-only"
+        },
+        {
+          "title": "Senior Product Manager",
+          "company": "Nope",
+          "location": "New York, NY, USA",
+          "posted": "2026-10-16T00:00:00Z",
+          "url": "https://jobs.lever.co/nope/senior"
+        }
+      ]
+    },
+    "data": {
+      "label": "Data",
+      "jobs": [
+        {
+          "title": "Associate Product Manager",
+          "company": "ShouldNotSee",
+          "location": "Austin, TX",
+          "posted": "2026-10-19T00:00:00Z",
+          "url": "https://jobs.lever.co/other-track/apm"
+        }
+      ]
+    }
+  }
+}

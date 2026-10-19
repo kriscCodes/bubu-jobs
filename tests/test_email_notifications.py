@@ -85,8 +85,12 @@ class EmailTests(unittest.TestCase):
             deliver_email(self.state, self.path, self.client)
         self.client.send.assert_not_called()
 
+    @patch('src.main.fetch_entry_level')
+    @patch('src.main.fetch_listings')
     @patch('src.main.fetch_readme')
-    def test_queue_without_credentials_then_send_on_304(self, fetch):
+    def test_queue_without_credentials_then_send_on_304(self, fetch, fetch_simplify, fetch_fyrf):
+        fetch_simplify.return_value = FetchResult(None, None)
+        fetch_fyrf.return_value = FetchResult(None, None)
         fetch.return_value = FetchResult(HEADER + ROW, 'v1')
         with redirect_stdout(io.StringIO()):
             run(self.path, queue_email=True)

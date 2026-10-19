@@ -7,19 +7,24 @@ This module creates nicely styled HTML emails with:
 - Table-based layout with inline styles for Gmail compatibility
 """
 import html
-import json
 import logging
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from .direct_links import get_direct_link, DirectLink
+from urllib.parse import urlsplit
+
+from .config import SOURCE_LABELS, SOURCE_JOBRIGHT
+from .direct_links import get_direct_link
 
 LOG = logging.getLogger(__name__)
 
 PANDA_IMAGE_PATH = Path(__file__).parent.parent / "assets" / "panda-hero.jpg"
-PANDA_GITHUB_URL = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg"
+PANDA_GITHUB_URL = "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/main/assets/panda-hero.jpg"
+LEGACY_PANDA_GITHUB_URLS = (
+    "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg",
+)
 PANDA_CID = "panda-hero"  # Content-ID for inline attachment
 
 
@@ -39,6 +44,7 @@ class JobCard:
     has_written_questions: Optional[bool] = None
     pay_source: str = ""
     questions_source: str = ""
+    source: str = ""
 
 
 COLORS = {
@@ -77,9 +83,31 @@ def _get_question_badge(has_written_questions: Optional[bool]) -> tuple[str, str
         return ("❓", "Unknown", COLORS["gray_200"])
 
 
+def _source_label(source: str) -> str:
+    if not source:
+        return ""
+    return SOURCE_LABELS.get(source, source)
+
+
+def _is_jobright_url(url: str) -> bool:
+    host = (urlsplit(url or "").hostname or "").lower()
+    return host == "jobright.ai" or host.endswith(".jobright.ai")
+
+
 def _render_job_row(job: JobCard) -> str:
     """Render a single job as a full-width row."""
     direct_badge = f'<span style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;background-color:{COLORS["success_light"]};color:{COLORS["success"]};text-transform:uppercase;margin-left:8px;">DIRECT</span>' if job.is_direct_link else ''
+    source_label = _source_label(job.source)
+    source_badge = (
+        f'<span style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;'
+        f'background-color:{COLORS["primary_light"]};color:{COLORS["primary_dark"]};text-transform:uppercase;'
+        f'margin-left:8px;">{_escape(source_label)}</span>'
+        if source_label else ""
+    )
+    posted = _escape(job.date) if job.date else ""
+    location_line = f"📍 {_escape(job.location)}"
+    if posted:
+        location_line += f" · {posted}"
     
     pay_display = job.pay_range if job.pay_range else "Pay not listed"
     q_icon, q_label, q_bg = _get_question_badge(job.has_written_questions)
@@ -89,11 +117,12 @@ def _render_job_row(job: JobCard) -> str:
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{COLORS['white']};border:1px solid {COLORS['gray_200']};border-radius:12px;">
             <tr>
                 <td style="padding:16px;">
-                    <!-- Row 1: Company + Direct badge -->
+                    <!-- Row 1: Company + source / Direct badges -->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td>
                                 <span style="font-size:12px;color:{COLORS['gray_500']};text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">{_escape(job.company)}</span>
+                                {source_badge}
                                 {direct_badge}
                             </td>
                         </tr>
@@ -102,11 +131,11 @@ def _render_job_row(job: JobCard) -> str:
                     <!-- Row 2: Job title -->
                     <h3 style="font-size:16px;font-weight:700;color:{COLORS['gray_900']};margin:8px 0 10px 0;line-height:1.4;">{_escape(job.title)}</h3>
                     
-                    <!-- Row 3: Location + Pay -->
+                    <!-- Row 3: Location + posted date + Pay -->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:12px;">
                         <tr>
                             <td style="width:50%;vertical-align:top;">
-                                <span style="font-size:13px;color:{COLORS['gray_500']};">📍 {_escape(job.location)}</span>
+                                <span style="font-size:13px;color:{COLORS['gray_500']};">{location_line}</span>
                             </td>
                             <td style="width:50%;vertical-align:top;text-align:right;">
                                 <span style="font-size:13px;font-weight:600;color:{COLORS['primary']};">💰 {_escape(pay_display)}</span>
@@ -149,7 +178,11 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", use_cid
     """
     timestamp = datetime.now().strftime("%B %d, %Y")
     direct_count = sum(1 for j in jobs if j.is_direct_link)
-    jobright_count = len(jobs) - direct_count
+    source_counts: dict[str, int] = {}
+    for job in jobs:
+        label = _source_label(job.source) or ("Jobright" if _is_jobright_url(job.apply_url) else "Other")
+        source_counts[label] = source_counts.get(label, 0) + 1
+    source_summary = " · ".join(f"{count} {label}" for label, count in source_counts.items())
     num_jobs = len(jobs)
     
     job_rows = "\n".join(_render_job_row(job) for job in jobs)
@@ -221,7 +254,7 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", use_cid
                                                 </td>
                                                 <td style="text-align:center;width:50%;">
                                                     <span style="display:inline-block;width:8px;height:8px;background-color:{COLORS['warning']};border-radius:50%;vertical-align:middle;"></span>
-                                                    <span style="font-size:13px;color:{COLORS['gray_700']};margin-left:6px;vertical-align:middle;">{jobright_count} Jobright</span>
+                                                    <span style="font-size:13px;color:{COLORS['gray_700']};margin-left:6px;vertical-align:middle;">{_escape(source_summary)}</span>
                                                 </td>
                                             </tr>
                                         </table>
@@ -276,7 +309,8 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
     ]
     
     for i, job in enumerate(jobs, 1):
-        link_type = "Direct" if job.is_direct_link else "Jobright"
+        source_label = _source_label(job.source) or ("Jobright" if _is_jobright_url(job.apply_url) else "listing")
+        link_type = "Direct" if job.is_direct_link else source_label
         pay_display = job.pay_range if job.pay_range else "Pay not listed"
         
         if job.has_written_questions is True:
@@ -293,6 +327,7 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
             f"   Pay: {pay_display}",
             f"   {q_status}",
             f"   Link type: {link_type}",
+            f"   Source: {source_label}",
         ])
         if job.work_model:
             lines.append(f"   Work model: {job.work_model}")
@@ -321,42 +356,32 @@ def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
         company = job.get("company", "")
         title = job.get("title", "")
         location = job.get("location", "")
-        date = job.get("date", "")
-        fallback_url = job.get("source_url", job.get("jobright_url", ""))
+        date = job.get("date") or job.get("date_posted", "")
+        fallback_url = job.get("canonical_apply_url") or job.get("source_url", job.get("jobright_url", ""))
         work_model = job.get("work_model", "")
         ats = job.get("ats", "")
         pay_range = job.get("pay_range", "")
         has_written_questions = job.get("has_written_questions")
+        source = job.get("source") or SOURCE_JOBRIGHT
         
         direct_link = get_direct_link(company, title, location)
+        apply_url = direct_link.direct_url if direct_link else fallback_url
+        is_direct = bool(direct_link) or not _is_jobright_url(apply_url)
         
-        if direct_link:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date,
-                apply_url=direct_link.direct_url,
-                is_direct_link=True,
-                source_note=direct_link.note,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
-        else:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date,
-                apply_url=fallback_url,
-                is_direct_link=False,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
+        cards.append(JobCard(
+            company=company,
+            title=title,
+            location=location,
+            date=date,
+            apply_url=apply_url,
+            is_direct_link=is_direct,
+            source_note=direct_link.note if direct_link else "",
+            work_model=work_model,
+            ats=ats,
+            pay_range=pay_range,
+            has_written_questions=has_written_questions,
+            source=source,
+        ))
     
     return cards
 
@@ -373,64 +398,59 @@ def render_sample_email_for_preview(use_cid: bool = False) -> tuple[str, str]:
     """
     sample_jobs = [
         JobCard(
-            company="Roblox",
-            title="Associate Product Manager, Early Career",
-            location="San Mateo, CA",
-            date="Oct 09",
-            apply_url="https://careers.roblox.com/jobs/8143976?gh_jid=8143976",
+            company="Google",
+            title="Product Manager I, Ads Sellside Apps",
+            location="Mountain View, CA, USA",
+            date="Oct 16",
+            apply_url="https://www.google.com/about/careers/applications/jobs/results/98591892920246982",
             is_direct_link=True,
+            source="findyourrolefirst",
+            pay_range="",
+            has_written_questions=None,
+        ),
+        JobCard(
+            company="Microsoft",
+            title="Product Manager",
+            location="Remote in USA",
+            date="Oct 15",
+            apply_url="https://apply.careers.microsoft.com/careers/job/1970393557027388",
+            is_direct_link=True,
+            source="simplify",
+            pay_range="",
+            has_written_questions=None,
+        ),
+        JobCard(
+            company="LSEG",
+            title="Senior Associate Product Manager - Enterprise AI",
+            location="NYC",
+            date="Oct 13",
+            apply_url="https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/New-York-City-United-States/Senior-Associate-Product-Manager--Enterprise-AI_R0124288",
+            is_direct_link=True,
+            source="simplify",
+            pay_range="",
+            has_written_questions=None,
+        ),
+        JobCard(
+            company="Natera",
+            title="(Associate) Product Manager, Organ Health",
+            location="Austin, TX",
+            date="Oct 13",
+            apply_url="https://job-boards.greenhouse.io/natera/jobs/6217258004",
+            is_direct_link=True,
+            source="findyourrolefirst",
             pay_range="",
             has_written_questions=False,
-            pay_source="No pay data found",
-            questions_source="Greenhouse questions API",
         ),
         JobCard(
-            company="Capital One",
-            title="Senior Associate, Product Manager - Business Cards",
-            location="New York, NY",
-            date="Oct 10",
-            apply_url="https://capitalone.wd12.myworkdayjobs.com/Capital_One/job/New-York-NY/Senior-Associate--Product-Manager_R1003243-2",
-            is_direct_link=True,
-            pay_range="$111,200 - $126,900",
-            has_written_questions=None,
-            pay_source="Workday job page",
-            questions_source="Workday (could not determine)",
-        ),
-        JobCard(
-            company="impact.com",
-            title="Associate Product Manager (Contracting)",
-            location="Santa Barbara, CA",
-            date="Oct 10",
-            apply_url="https://job-boards.greenhouse.io/impact/jobs/8871230002",
-            is_direct_link=True,
-            pay_range="$85,000 - $95,000/year",
-            has_written_questions=False,
-            pay_source="Greenhouse job content",
-            questions_source="Greenhouse questions API",
-        ),
-        JobCard(
-            company="Arrive Logistics",
+            company="Figma",
             title="Associate Product Manager",
-            location="Chicago, IL",
-            date="Oct 08",
-            apply_url="https://jobs.lever.co/arrivelogistics/80b87c33-325c-4917-aeef-73b082548406",
+            location="SF",
+            date="Oct 7",
+            apply_url="https://boards.greenhouse.io/figma/jobs/6180116004",
             is_direct_link=True,
-            pay_range="$97,000 - $121,000/year",
+            source="simplify",
+            pay_range="",
             has_written_questions=False,
-            pay_source="Lever salaryRange API",
-            questions_source="Lever lists API",
-        ),
-        JobCard(
-            company="TikTok",
-            title="Product Strategist Graduate (Global Monetization)",
-            location="San Jose, CA",
-            date="Oct 12",
-            apply_url="https://lifeattiktok.com/search/7673554696239089925",
-            is_direct_link=True,
-            pay_range="$76,000 - $151,200/year",
-            has_written_questions=None,
-            pay_source="Job page text",
-            questions_source="Could not determine",
         ),
     ]
     

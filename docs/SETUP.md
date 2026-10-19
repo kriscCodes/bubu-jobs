@@ -1,6 +1,12 @@
 # bubu-jobs
 
-A small Python 3.11+ job-alert pipeline. Its only source is the [Jobright Product Management new-grad README](https://github.com/jobright-ai/2026-Product-Management-New-Grad/blob/master/README.md). It prints newly discovered relevant jobs and persists their identities in JSON. The scraper needs no third-party packages. Optional Gmail email uses three environment settings; no database, LLM, or application automation is included.
+A small Python 3.11+ job-alert pipeline. It pulls from three sources, in order:
+
+1. **SimplifyJobs** `listings.json` (primary): https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json
+2. **FindYourRoleFirst** public entry-level JSON (secondary, fail-soft): https://findyourrolefirst.click/api/public/entry-level
+3. **Jobright** Product Management new-grad README (third): https://github.com/jobright-ai/2026-Product-Management-New-Grad/blob/master/README.md
+
+It prints newly discovered relevant jobs and persists their identities in JSON. Optional Gmail email uses three environment settings; no database, LLM, or application automation is included.
 
 ## Setup and local use
 
@@ -29,19 +35,28 @@ python -m src.main --state /tmp/bubu-test/seen_jobs.json
 ## Pipeline
 
 1. Load state while holding an exclusive local lock.
-2. Fetch the raw README with a 30-second network timeout and at most three attempts. Retry transient connection errors and HTTP 429/500/502/503/504 with bounded backoff; honor numeric Retry-After up to 60 seconds.
-3. Send `If-None-Match` when a saved ETag is available. HTTP 304 skips downloading and parsing. Pending email messages are still processed when enabled. A server without ETags remains usable through normal fetch and deduplication.
-4. Parse the Markdown table using its column names. Carry `↳` forward only within the same table. Strip formatting, decode entities, handle escaped pipes, bracketed labels, and simple parenthesized URLs. A missing table or malformed listing fails the run without advancing state.
-5. Apply deterministic title filtering before deduplication and any future scoring.
-6. Print only new matches plus summary counts, then atomically save the updated jobs and source ETag together. With email enabled, queue new jobs in the same transaction and process the email outbox, including on HTTP 304 runs.
+2. Fetch each source with a network timeout (90 seconds for the ~13MB SimplifyJobs JSON, 30 seconds otherwise) and at most three attempts. Retry transient connection errors and HTTP 429/500/502/503/504 with bounded backoff; honor numeric Retry-After up to 60 seconds. Send `If-None-Match` and `If-Modified-Since` when saved validators exist. HTTP 304 skips downloading and parsing that source. FindYourRoleFirst is fail-soft: a request or schema error is logged and the run continues with the other sources. SimplifyJobs and Jobright still fail closed.
+3. Parse SimplifyJobs rows where `active && is_visible`, `date_posted` is within the last 14 days, the title passes the PM filters (matched across every category; `category == "Product"` is not trusted), and at least one location is in the US. Parse FindYourRoleFirst `tracks.product.jobs[]` with the same title + US filters. Parse the Jobright Markdown table using its column names as before.
+4. Apply deterministic title filtering again, then **dedupe across sources**. Identity is the normalized apply URL (lowercase host, drop `utm_*` / `ref`, strip a trailing `/apply`); if that does not match, fall back to normalized company + title. The first source in the order above wins.
+5. Print only new matches plus summary counts, then atomically save the updated jobs and per-source ETags together. With email enabled, queue new jobs in the same transaction and process the email outbox, including on all-304 runs.
 
-Dates are preserved as supplied (for example `Sep 12`), without inventing a year. `work_model` is preserved from its table column. `source_url` means the listing link in the job-title cell; the upstream raw README URL is stored separately in source metadata. Canonical URLs are populated only when a direct non-Jobright link is provided in the title or an optional Apply/Application column. The adapter does not follow Jobright pages or crawl employers to discover hidden URLs.
+### First-run suppression (do not flood on deploy)
+
+Adding a source must not mass-email the current backlog.
+
+- Anything already stored in `data/seen_jobs.json` stays seen. Matching uses the same normalized apply URL **or** company + title keys, so a SimplifyJobs ATS link that is the same role as an older Jobright row is not re-emailed.
+- **Brand-new sources only** (SimplifyJobs and FindYourRoleFirst, the first time each one successfully downloads): listings with `date_posted` older than about 3 days are written into `seen_jobs.json` and counted as `First-run seeded`, but they are **not** queued for email. Listings from the last ~3 days can still alert, unless they already match a seen job.
+- Jobright is not a new source; it does not use the 3-day seed. After a source’s first successful download, `state.sources.<name>.seeded` is set and later runs alert normally.
+
+Dates from JSON sources are rendered from their unix/ISO timestamps (for example `Oct 15`). Jobright dates are preserved as supplied. `source_url` is the listing/apply link from that source. Canonical URLs are the direct ATS link when the source already provides one; Jobright wrappers remain unresolved unless `--resolve-urls` is used.
 
 ## Filtering
 
 Edit `ACCEPTED_TITLE_KEYWORDS` and `REJECTED_TITLE_KEYWORDS` in `src/config.py`. These are literal phrases, not regular expressions. Matching ignores case and punctuation, normalizes Unicode and whitespace, and requires whole words. For example, `PRODUCT-MANAGER` matches `product manager`; `product managerial` does not.
 
-A rejected phrase always wins; otherwise a title must contain an accepted phrase. Defaults favor product manager, analyst, operations, strategy, and management titles. Rejection terms include the requested bad matches plus common seniority markers (`sr`, `staff`, `vp`, `head of`, `leader`). This is intentionally a transparent heuristic: `Principal Accounts` could cause a false negative, and a generic Product Manager title could still require significant experience. No geographic, eligibility, graduation-year, salary, or description-level inference is performed.
+A rejected phrase always wins; otherwise a title must contain an accepted phrase. Defaults favor product manager, analyst, operations, strategy, and management titles. Rejection terms include the requested bad matches plus common seniority markers (`sr`, `staff`, `vp`, `head of`, `leader`). **Exception:** `Senior Associate` / `Sr Associate` is stripped before the `senior`/`sr` check so entry-level titles at Capital One, LSEG, and Amex still match, while `Senior Product Manager`, `Sr PM`, Lead, Principal, and Director do not.
+
+SimplifyJobs and FindYourRoleFirst also require at least one US location. Jobright is not US-filtered (it remains the legacy third source). This is intentionally a transparent heuristic: `Principal Accounts` could cause a false negative, and a generic Product Manager title could still require significant experience. No eligibility, graduation-year, salary, or description-level inference is performed.
 
 Keyword changes automatically invalidate the ETag optimization so unchanged upstream content is re-evaluated. Rejected jobs are not marked seen, allowing them to become new matches after a policy change. If changing parser or normalization semantics, bump the parser version in `policy_fingerprint()` or run with `--force`.
 
@@ -53,11 +68,16 @@ Keyword changes automatically invalidate the ETag optimization so unchanged upst
 {
   "version": 1,
   "source": {"url": "raw README URL", "etag": "HTTP validator", "policy": "filter fingerprint"},
-  "jobs": {"sha256 job_id": {"company": "...", "title": "..."}}
+  "sources": {
+    "simplify": {"url": "...", "etag": "...", "policy": "...", "seeded": true},
+    "findyourrolefirst": {"url": "...", "etag": "...", "seeded": true},
+    "jobright": {"url": "...", "etag": "...", "policy": "..."}
+  },
+  "jobs": {"sha256 job_id": {"company": "...", "title": "...", "source": "simplify"}}
 }
 ```
 
-Each stored job includes all fields from the `Job` dataclass. The SHA-256 identity hashes a JSON array containing normalized company, title, location, and canonical-or-source URL. Text identity ignores case and repeated whitespace. URL normalization removes fragments and known tracking parameters, sorts query parameters, and preserves significant query IDs and path case. Date and work model do not affect identity.
+`source` remains the Jobright cache for backward compatibility. `sources` holds per-source ETags, Last-Modified validators, and the first-run `seeded` flag. Each stored job includes all fields from the `Job` dataclass, including `source` and `date_posted_ts` when known. The SHA-256 identity hashes a JSON array containing normalized company, title, location, and canonical-or-source URL. **Alerting** additionally treats a job as already seen when its normalized apply URL **or** its normalized company + title matches any stored job. URL normalization for that match lowercases the host, drops `utm_*` / `ref`, and strips a trailing `/apply`. Date and work model do not affect identity.
 
 Relevant duplicate rows within a single fetch count as already seen too. History is retained when listings disappear; reappearing identical listings do not alert again. Different Jobright listing IDs remain different identities even if the visible text is identical. Location aliases are not merged.
 
@@ -82,8 +102,8 @@ New matches appear in the Actions Poll step logs and produce email digests throu
 ## Limitations and extension points
 
 - The repository controls freshness and retention. Listings added and removed between polls can be missed. A listing disappearing does not mark a job closed.
-- The parser targets this source's Markdown schema, not arbitrary Markdown or HTML tables. Format changes fail visibly and leave the prior ETag available for retry.
-- Jobright links usually conceal the employer ATS; canonical apply URLs remain null when unavailable.
+- SimplifyJobs and Jobright parsers fail visibly on schema changes and leave the prior ETag available for retry. FindYourRoleFirst logs a warning and is skipped.
+- Jobright links usually conceal the employer ATS; canonical apply URLs remain null when unavailable. The newer JSON sources usually already provide direct ATS URLs.
 - Title filtering cannot establish actual new-grad eligibility. Review matches before acting.
 - JSON history is unbounded, and Git history grows with state commits. Back up state and migrate storage when volume warrants it.
 - Windows needs a replacement lock implementation (or WSL).

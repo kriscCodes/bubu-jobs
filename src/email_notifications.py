@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Optional
 
 from .dedupe import save_state
-from .html_email import PANDA_IMAGE_PATH, PANDA_CID
+from .html_email import PANDA_IMAGE_PATH, PANDA_CID, PANDA_GITHUB_URL, LEGACY_PANDA_GITHUB_URLS
 
 LOG = logging.getLogger(__name__)
 MAX_ATTEMPTS = 3
@@ -163,10 +163,9 @@ class GmailClient:
             if "html_cid" in item:
                 html_body = item["html_cid"]
             else:
-                html_body = item["html"].replace(
-                    "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg",
-                    f"cid:{PANDA_CID}"
-                )
+                html_body = item["html"]
+                for hosted in (PANDA_GITHUB_URL, *LEGACY_PANDA_GITHUB_URLS):
+                    html_body = html_body.replace(hosted, f"cid:{PANDA_CID}")
             message = build_mime_message_with_cid(
                 sender=self.sender,
                 recipient=recipient,
@@ -219,10 +218,11 @@ def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
     """Render email digest with styled HTML and direct links.
     
     Uses the direct_links module to find verified apply URLs when available,
-    falling back to Jobright URLs otherwise. Includes pay range and application
-    question indicators when available.
+    falling back to each job's canonical or source URL. Includes source name,
+    posted date, pay range, and application question indicators when available.
     """
-    from .html_email import JobCard, render_html_email, render_plain_text_email, render_sample_email_for_preview
+    from .html_email import (JobCard, render_html_email, render_plain_text_email,
+                            render_sample_email_for_preview, _is_jobright_url)
     from .direct_links import get_direct_link
     
     subject = "[bubu-jobs] Email test" if test else f"[bubu-jobs] {len(jobs)} new job match(es)"
@@ -248,34 +248,24 @@ def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
         ats = job.get("ats", "")
         pay_range = job.get("pay_range", "")
         has_written_questions = job.get("has_written_questions")
+        source = job.get("source", "")
+        apply_url = direct_link.direct_url if direct_link else fallback_url
+        is_direct = bool(direct_link) or not _is_jobright_url(apply_url)
         
-        if direct_link:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date_posted,
-                apply_url=direct_link.direct_url,
-                is_direct_link=True,
-                source_note=direct_link.note,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
-        else:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date_posted,
-                apply_url=fallback_url,
-                is_direct_link=False,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
+        cards.append(JobCard(
+            company=company,
+            title=title,
+            location=location,
+            date=date_posted,
+            apply_url=apply_url,
+            is_direct_link=is_direct,
+            source_note=direct_link.note if direct_link else "",
+            work_model=work_model,
+            ats=ats,
+            pay_range=pay_range,
+            has_written_questions=has_written_questions,
+            source=source,
+        ))
     
     text_body = render_plain_text_email(cards, subject)
     html_body = render_html_email(cards, subject)
