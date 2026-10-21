@@ -85,8 +85,12 @@ class EmailTests(unittest.TestCase):
             deliver_email(self.state, self.path, self.client)
         self.client.send.assert_not_called()
 
+    @patch('src.main.fetch_entry_level')
+    @patch('src.main.fetch_listings')
     @patch('src.main.fetch_readme')
-    def test_queue_without_credentials_then_send_on_304(self, fetch):
+    def test_queue_without_credentials_then_send_on_304(self, fetch, fetch_simplify, fetch_fyrf):
+        fetch_simplify.return_value = FetchResult(None, None)
+        fetch_fyrf.return_value = FetchResult(None, None)
         fetch.return_value = FetchResult(HEADER + ROW, 'v1')
         with redirect_stdout(io.StringIO()):
             run(self.path, queue_email=True)
@@ -154,9 +158,50 @@ class SmtpTests(unittest.TestCase):
                              'EMAIL_PASSWORD': 'abcd efgh ijkl mnop'}, clear=True)
     def test_settings_and_header_injection(self):
         self.assertEqual(GmailClient.from_environment().password, 'abcdefghijklmnop')
+        self.assertEqual(GmailClient.from_environment().bcc, ())
         os.environ['EMAIL_RECIPIENT'] = 'me@gmail.com\nBcc: other@gmail.com'
         with self.assertRaises(ValueError):
             GmailClient.from_environment()
+
+    @patch.dict(os.environ, {'EMAIL_SENDER': 'me@gmail.com', 'EMAIL_RECIPIENT': 'me@gmail.com',
+                             'EMAIL_PASSWORD': 'secret',
+                             'EMAIL_BCC': 'krisc2004@gmail.com, copy@example.com'}, clear=True)
+    def test_from_environment_parses_comma_separated_bcc(self):
+        client = GmailClient.from_environment()
+        self.assertEqual(client.bcc, ('krisc2004@gmail.com', 'copy@example.com'))
+
+    @patch('src.email_notifications.smtplib.SMTP_SSL')
+    def test_bcc_is_in_envelope_and_absent_from_headers(self, factory):
+        smtp = factory.return_value
+        smtp.send_message.return_value = {}
+        client = GmailClient(
+            'sender@gmail.com', 'recipient@gmail.com', 'secret',
+            bcc=('krisc2004@gmail.com',),
+        )
+        client.send(self.item, 'alert-v1')
+        call = smtp.send_message.call_args
+        message = call.args[0]
+        to_addrs = call.kwargs['to_addrs']
+        self.assertEqual(to_addrs, ['recipient@gmail.com', 'krisc2004@gmail.com'])
+        self.assertEqual(message['To'], 'recipient@gmail.com')
+        self.assertIsNone(message['Cc'])
+        self.assertIsNone(message['Bcc'])
+        for key, value in message.items():
+            self.assertNotIn('krisc2004@gmail.com', str(value), msg=key)
+
+    @patch('src.email_notifications.smtplib.SMTP_SSL')
+    def test_test_to_does_not_bcc(self, factory):
+        smtp = factory.return_value
+        smtp.send_message.return_value = {}
+        client = GmailClient(
+            'sender@gmail.com', 'recipient@gmail.com', 'secret',
+            bcc=('krisc2004@gmail.com',),
+        )
+        client.send(self.item, 'design-test-v1', override_recipient='krisc2004@gmail.com',
+                    include_bcc=False)
+        call = smtp.send_message.call_args
+        self.assertNotIn('to_addrs', call.kwargs)
+        self.assertEqual(call.args[0]['To'], 'krisc2004@gmail.com')
 
 
 class MimeStructureTests(unittest.TestCase):

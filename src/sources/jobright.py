@@ -2,14 +2,13 @@ import html
 import logging
 import re
 import time
-from dataclasses import dataclass, replace
+from dataclasses import replace
 from pathlib import Path
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 from urllib.parse import urlsplit
-from ..config import RAW_URL, TIMEOUT_SECONDS, MAX_ATTEMPTS
+from ..config import RAW_URL, SOURCE_JOBRIGHT
 from ..ats import detect_ats
 from ..dedupe import job_id, normalize_url
+from ..http import FetchResult, conditional_get
 from ..models import Job
 from ..resolver import UrlResolver
 
@@ -18,36 +17,8 @@ LINK = re.compile(r"\[((?:[^\[\]]|\[[^\[\]]*\])+)\]\((https?://(?:[^\s()]|\([^()
 HEADERS = ("company", "job title", "location", "work model", "date posted")
 
 
-@dataclass(frozen=True)
-class FetchResult:
-    text: str | None
-    etag: str | None
-
-
-def fetch_readme(etag: str | None = None) -> FetchResult:
-    headers = {"User-Agent": "bubu-jobs/1.0", "Accept": "text/plain"}
-    if etag:
-        headers["If-None-Match"] = etag
-    for attempt in range(MAX_ATTEMPTS):
-        try:
-            with urlopen(Request(RAW_URL, headers=headers), timeout=TIMEOUT_SECONDS) as response:
-                return FetchResult(response.read().decode("utf-8"), response.headers.get("ETag"))
-        except HTTPError as error:
-            if error.code == 304:
-                if not etag:
-                    raise ValueError("Unexpected 304 without a cached ETag") from error
-                return FetchResult(None, etag)
-            if error.code not in {429, 500, 502, 503, 504} or attempt == MAX_ATTEMPTS - 1:
-                raise
-            retry_after = error.headers.get("Retry-After", "")
-            delay = min(int(retry_after), 60) if retry_after.isdigit() else 2 ** attempt
-        except (URLError, TimeoutError, ConnectionError):
-            if attempt == MAX_ATTEMPTS - 1:
-                raise
-            delay = 2 ** attempt
-        LOG.warning("README request failed; retrying in %s seconds", delay)
-        time.sleep(delay)
-    raise RuntimeError("Unreachable retry state")
+def fetch_readme(etag: str | None = None, last_modified: str | None = None) -> FetchResult:
+    return conditional_get(RAW_URL, etag=etag, last_modified=last_modified, accept="text/plain")
 
 
 def clean(value: str) -> str:
@@ -102,7 +73,8 @@ def parse_readme(text: str) -> list[Job]:
             title, location = values["job title"], values["location"]
             jobs.append(Job(company, title, location, values["work model"], values["date posted"],
                             source, canonical, detect_ats(canonical or source),
-                            job_id(company, title, location, canonical or source)))
+                            job_id(company, title, location, canonical or source),
+                            SOURCE_JOBRIGHT, None))
         except (ValueError, IndexError) as error:
             raise ValueError(f"Malformed job row at line {number}: {error}") from error
     if not found_table:
@@ -141,13 +113,8 @@ def resolve_jobs(jobs: list[Job], cache_path: Path | None = None,
         )
         
         if result.status == "resolved" and result.url:
-            new_job = Job(
-                company=job.company,
-                title=job.title,
-                location=job.location,
-                work_model=job.work_model,
-                date_posted=job.date_posted,
-                source_url=job.source_url,
+            new_job = replace(
+                job,
                 canonical_apply_url=result.url,
                 ats=result.ats,
                 job_id=job_id(job.company, job.title, job.location, result.url),

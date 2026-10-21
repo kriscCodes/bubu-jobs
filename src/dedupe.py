@@ -10,25 +10,57 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import fcntl
 
 
+TRACKING_PARAMS = frozenset({"fbclid", "gclid", "ref"})
+
+
+def _normalized_text(value: str) -> str:
+    return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+
 def normalize_url(url: str) -> str:
     parts = urlsplit(url.strip())
     if parts.scheme.lower() not in {"http", "https"} or not parts.hostname or parts.username:
         raise ValueError("Expected an absolute HTTP(S) job URL")
     query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
-             if not k.lower().startswith("utm_") and k.lower() not in {"fbclid", "gclid"}]
+             if not k.lower().startswith("utm_") and k.lower() not in TRACKING_PARAMS]
+    path = parts.path.rstrip("/") or "/"
     return urlunsplit((parts.scheme.lower(), parts.netloc.lower(),
-                       parts.path.rstrip("/") or "/", urlencode(sorted(query)), ""))
+                       path, urlencode(sorted(query)), ""))
+
+
+def normalize_apply_url(url: str) -> str:
+    """Cross-source apply URL key: lowercase host, drop utm_*/ref, strip trailing /apply."""
+    normalized = normalize_url(url)
+    parts = urlsplit(normalized)
+    path = parts.path
+    if path.lower().endswith("/apply"):
+        path = path[:-6].rstrip("/") or "/"
+    host = (parts.hostname or "").lower()
+    netloc = host if not parts.port else f"{host}:{parts.port}"
+    return urlunsplit((parts.scheme, netloc, path, parts.query, ""))
+
+
+def company_title_key(company: str, title: str) -> str:
+    return "\0".join((_normalized_text(company), _normalized_text(title)))
+
+
+def apply_url_key(url: str | None) -> str | None:
+    if not url:
+        return None
+    try:
+        return normalize_apply_url(url)
+    except ValueError:
+        return None
 
 
 def job_id(company: str, title: str, location: str, url: str) -> str:
-    fields = [" ".join(unicodedata.normalize("NFKC", s).casefold().split())
-              for s in (company, title, location)]
+    fields = [_normalized_text(s) for s in (company, title, location)]
     fields.append(normalize_url(url))  # URL paths and IDs remain case-sensitive.
     return hashlib.sha256(json.dumps(fields, ensure_ascii=False).encode()).hexdigest()
 
 
 def empty_state() -> dict:
-    return {"version": 1, "source": {}, "jobs": {}}
+    return {"version": 1, "source": {}, "sources": {}, "jobs": {}}
 
 
 def load_state(path: Path) -> dict:
@@ -57,6 +89,10 @@ def load_state(path: Path) -> dict:
                 or item["attempts"] < 0
                 or (item["status"] == "accepted" and not isinstance(item.get("sid"), str))):
             raise ValueError("Invalid SMS outbox item")
+    if "sources" in state:
+        if not isinstance(state["sources"], dict) or any(
+                not isinstance(meta, dict) for meta in state["sources"].values()):
+            raise ValueError("Invalid per-source metadata")
     if "email_migrated" in state and not isinstance(state["email_migrated"], bool):
         raise ValueError("Invalid email migration flag")
     outbox = state.get("email", {})
@@ -99,3 +135,51 @@ def state_lock(path: Path) -> Iterator[None]:
             yield
         finally:
             fcntl.flock(lock, fcntl.LOCK_UN)
+
+
+def build_seen_index(jobs: dict) -> dict[str, set[str]]:
+    """Index stored jobs by id, normalized apply URL, and company+title."""
+    index: dict[str, set[str]] = {"ids": set(jobs), "urls": set(), "titles": set()}
+    for job in jobs.values():
+        remember_stored_job(job, index)
+    return index
+
+
+def remember_stored_job(job: dict, index: dict[str, set[str]]) -> None:
+    job_id_value = job.get("job_id")
+    if isinstance(job_id_value, str):
+        index["ids"].add(job_id_value)
+    for field in ("canonical_apply_url", "source_url"):
+        key = apply_url_key(job.get(field))
+        if key:
+            index["urls"].add(key)
+    index["titles"].add(company_title_key(job.get("company", ""), job.get("title", "")))
+
+
+def remember_job(job, index: dict[str, set[str]]) -> None:
+    index["ids"].add(job.job_id)
+    url_key = apply_url_key(job.canonical_apply_url) or apply_url_key(job.source_url)
+    if url_key:
+        index["urls"].add(url_key)
+    index["titles"].add(company_title_key(job.company, job.title))
+
+
+def is_seen_job(job, index: dict[str, set[str]]) -> bool:
+    if job.job_id in index["ids"]:
+        return True
+    url_key = apply_url_key(job.canonical_apply_url) or apply_url_key(job.source_url)
+    if url_key and url_key in index["urls"]:
+        return True
+    return company_title_key(job.company, job.title) in index["titles"]
+
+
+def dedupe_jobs(jobs: list) -> list:
+    """Keep the first job for each normalized apply URL, else company+title."""
+    index: dict[str, set[str]] = {"ids": set(), "urls": set(), "titles": set()}
+    unique = []
+    for job in jobs:
+        if is_seen_job(job, index):
+            continue
+        remember_job(job, index)
+        unique.append(job)
+    return unique

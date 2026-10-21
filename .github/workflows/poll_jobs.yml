@@ -33,6 +33,7 @@ jobs:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_BCC: krisc2004@gmail.com
           TEST_EMAIL: ${{ inputs.test_email || false }}
         run: |
           if [ -z "$EMAIL_PASSWORD" ]; then

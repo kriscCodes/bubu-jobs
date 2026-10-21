@@ -30,7 +30,7 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
     artifacts = {}
     
     # Render email with hosted URL (for browser preview)
-    html_content, text_content = render_sample_email_for_preview(use_cid=False)
+    html_content, text_content = render_sample_email_for_preview(use_cid=False, screen=True)
     
     html_path = output_dir / "email_preview.html"
     html_path.write_text(html_content, encoding="utf-8")
@@ -43,7 +43,7 @@ def generate_previews(output_dir: Path) -> dict[str, Path]:
     artifacts["text"] = text_path
     
     # Render email with CID reference (as sent)
-    html_content_cid, _ = render_sample_email_for_preview(use_cid=True)
+    html_content_cid, _ = render_sample_email_for_preview(use_cid=True, screen=True)
     
     html_cid_path = output_dir / "email_preview_cid.html"
     html_cid_path.write_text(html_content_cid, encoding="utf-8")

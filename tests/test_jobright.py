@@ -52,7 +52,7 @@ class ParserTests(unittest.TestCase):
 
 
 class FetchTests(unittest.TestCase):
-    @patch("src.sources.jobright.urlopen")
+    @patch("src.http.urlopen")
     def test_etag_and_timeout(self, open_url):
         response = MagicMock()
         response.read.return_value = b"README"
@@ -64,13 +64,13 @@ class FetchTests(unittest.TestCase):
         self.assertEqual(open_url.call_args.args[0].get_header("If-none-match"), '"old"')
         self.assertEqual(open_url.call_args.kwargs["timeout"], 30)
 
-    @patch("src.sources.jobright.urlopen")
+    @patch("src.http.urlopen")
     def test_not_modified(self, open_url):
         open_url.side_effect = HTTPError("url", 304, "unchanged", {}, None)
         self.assertIsNone(fetch_readme('"old"').text)
 
-    @patch("src.sources.jobright.time.sleep")
-    @patch("src.sources.jobright.urlopen")
+    @patch("src.http.time.sleep")
+    @patch("src.http.urlopen")
     def test_bounded_retries(self, open_url, sleep):
         for error in (URLError("offline"), HTTPError("url", 503, "busy", {}, None)):
             open_url.reset_mock()
@@ -79,7 +79,7 @@ class FetchTests(unittest.TestCase):
                 fetch_readme()
             self.assertEqual(open_url.call_count, 3)
 
-    @patch("src.sources.jobright.urlopen")
+    @patch("src.http.urlopen")
     def test_no_retry_on_404(self, open_url):
         open_url.side_effect = HTTPError("url", 404, "missing", {}, None)
         with self.assertRaises(HTTPError):

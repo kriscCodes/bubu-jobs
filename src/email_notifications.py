@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Optional
 
 from .dedupe import save_state
-from .html_email import PANDA_IMAGE_PATH, PANDA_CID
+from .html_email import PANDA_IMAGE_PATH, PANDA_CID, PANDA_GITHUB_URL, LEGACY_PANDA_GITHUB_URLS
 
 LOG = logging.getLogger(__name__)
 MAX_ATTEMPTS = 3
@@ -125,11 +125,31 @@ def validate_address(value: str, setting: str) -> str:
     return value
 
 
+def parse_bcc_addresses(value: str | None) -> tuple[str, ...]:
+    """Parse optional comma-separated EMAIL_BCC. Empty/unset is no BCC."""
+    if not value or not str(value).strip():
+        return ()
+    seen: set[str] = set()
+    addresses: list[str] = []
+    for part in str(value).split(","):
+        part = part.strip()
+        if not part:
+            continue
+        address = validate_address(part, "EMAIL_BCC")
+        key = address.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        addresses.append(address)
+    return tuple(addresses)
+
+
 @dataclass(frozen=True, repr=False)
 class GmailClient:
     sender: str
     recipient: str
     password: str
+    bcc: tuple[str, ...] = ()
 
     @classmethod
     def from_environment(cls) -> "GmailClient":
@@ -138,10 +158,21 @@ class GmailClient:
         missing = [name for name, value in zip(names, values) if not value]
         if missing:
             raise ValueError("Missing email settings: " + ", ".join(missing))
-        return cls(validate_address(values[0], names[0]), validate_address(values[1], names[1]),
-                   values[2].replace(" ", ""))
+        return cls(
+            validate_address(values[0], names[0]),
+            validate_address(values[1], names[1]),
+            values[2].replace(" ", ""),
+            parse_bcc_addresses(os.environ.get("EMAIL_BCC")),
+        )
 
-    def send(self, item: dict, key: str, override_recipient: Optional[str] = None, use_cid: bool = True) -> str:
+    def send(
+        self,
+        item: dict,
+        key: str,
+        override_recipient: Optional[str] = None,
+        use_cid: bool = True,
+        include_bcc: bool = True,
+    ) -> str:
         """Send an email with the panda image as CID inline attachment.
         
         Args:
@@ -150,6 +181,8 @@ class GmailClient:
             override_recipient: Send to this address instead of default recipient
             use_cid: If True, build multipart/related with CID attachment.
                      If False, use simple multipart/alternative.
+            include_bcc: If False (used by --test-to), skip EMAIL_BCC so the
+                     design-test is not duplicated. Real poller sends keep True.
         
         Returns:
             Message-ID of sent email
@@ -163,10 +196,9 @@ class GmailClient:
             if "html_cid" in item:
                 html_body = item["html_cid"]
             else:
-                html_body = item["html"].replace(
-                    "https://raw.githubusercontent.com/kriscCodes/bubu-jobs/cursor/resolve-ats-urls-56c4/assets/panda-hero.jpg",
-                    f"cid:{PANDA_CID}"
-                )
+                html_body = item["html"]
+                for hosted in (PANDA_GITHUB_URL, *LEGACY_PANDA_GITHUB_URLS):
+                    html_body = html_body.replace(hosted, f"cid:{PANDA_CID}")
             message = build_mime_message_with_cid(
                 sender=self.sender,
                 recipient=recipient,
@@ -192,7 +224,17 @@ class GmailClient:
                                     context=ssl.create_default_context())
             smtp.login(self.sender, self.password)
             sending = True
-            refused = smtp.send_message(message)
+            send_kwargs: dict = {}
+            if include_bcc and not override_recipient and self.bcc:
+                envelope = [recipient]
+                seen = {recipient.casefold()}
+                for address in self.bcc:
+                    if address.casefold() not in seen:
+                        envelope.append(address)
+                        seen.add(address.casefold())
+                if len(envelope) > 1:
+                    send_kwargs["to_addrs"] = envelope
+            refused = smtp.send_message(message, **send_kwargs)
             if refused:
                 raise EmailError("SMTP refused the recipient")
             return message_id
@@ -219,10 +261,11 @@ def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
     """Render email digest with styled HTML and direct links.
     
     Uses the direct_links module to find verified apply URLs when available,
-    falling back to Jobright URLs otherwise. Includes pay range and application
-    question indicators when available.
+    falling back to each job's canonical or source URL. Includes source name,
+    posted date, pay range, and application question indicators when available.
     """
-    from .html_email import JobCard, render_html_email, render_plain_text_email, render_sample_email_for_preview
+    from .html_email import (JobCard, render_html_email, render_plain_text_email,
+                            render_sample_email_for_preview, _is_jobright_url)
     from .direct_links import get_direct_link
     
     subject = "[bubu-jobs] Email test" if test else f"[bubu-jobs] {len(jobs)} new job match(es)"
@@ -248,34 +291,25 @@ def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
         ats = job.get("ats", "")
         pay_range = job.get("pay_range", "")
         has_written_questions = job.get("has_written_questions")
+        source = job.get("source", "")
+        apply_url = direct_link.direct_url if direct_link else fallback_url
+        is_direct = bool(direct_link) or not _is_jobright_url(apply_url)
         
-        if direct_link:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date_posted,
-                apply_url=direct_link.direct_url,
-                is_direct_link=True,
-                source_note=direct_link.note,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
-        else:
-            cards.append(JobCard(
-                company=company,
-                title=title,
-                location=location,
-                date=date_posted,
-                apply_url=fallback_url,
-                is_direct_link=False,
-                work_model=work_model,
-                ats=ats,
-                pay_range=pay_range,
-                has_written_questions=has_written_questions,
-            ))
+        cards.append(JobCard(
+            company=company,
+            title=title,
+            location=location,
+            date=date_posted,
+            apply_url=apply_url,
+            is_direct_link=is_direct,
+            source_note=direct_link.note if direct_link else "",
+            work_model=work_model,
+            ats=ats,
+            pay_range=pay_range,
+            has_written_questions=has_written_questions,
+            source=source,
+            entry_level=job.get("entry_level", ""),
+        ))
     
     text_body = render_plain_text_email(cards, subject)
     html_body = render_html_email(cards, subject)
@@ -356,12 +390,22 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     Raises:
         EmailError: If sending fails
     """
-    from .html_email import render_sample_email_for_preview
-    
+    from .html_email import cards_from_results, render_html_email, render_plain_text_email
+    from .sample_jobs import sample_job_list, screen_sample_jobs
+
     validate_address(recipient, "test recipient")
-    
-    html_body_cid, text_body = render_sample_email_for_preview(use_cid=True)
-    html_body_hosted, _ = render_sample_email_for_preview(use_cid=False)
+
+    kept, results = screen_sample_jobs(sample_job_list())
+    LOG.info(
+        "Test email sample after JD filters: %s",
+        ", ".join(f"{job.company} ({job.title})" for job in kept) or "none",
+    )
+    for item in results:
+        LOG.info("Sample %s: %s (%s) bucket=%s", item.job.company, item.action, item.reason, item.bucket)
+    cards = cards_from_results(results)
+    html_body_cid = render_html_email(cards, "New PM Jobs", use_cid=True)
+    html_body_hosted = render_html_email(cards, "New PM Jobs", use_cid=False)
+    text_body = render_plain_text_email(cards, "New PM Jobs")
     item = {
         "subject": "[TEST v5] New PM Jobs - Bubu Jobs",
         "text": text_body,
@@ -370,6 +414,8 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     }
     
     LOG.info("Sending test email to %s with CID panda attachment", recipient)
-    message_id = client.send(item, "design-test-v1", override_recipient=recipient, use_cid=True)
+    message_id = client.send(
+        item, "design-test-v1", override_recipient=recipient, use_cid=True, include_bcc=False,
+    )
     LOG.info("Test email sent: %s", message_id)
     return message_id
