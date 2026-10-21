@@ -1,6 +1,11 @@
 name: Test email design
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - cursor/better-job-sources-ed1a
+    paths:
+      - '.github/test-email-trigger'
 jobs:
   send-test:
     runs-on: ubuntu-latest
