@@ -346,12 +346,22 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     Raises:
         EmailError: If sending fails
     """
-    from .html_email import render_sample_email_for_preview
-    
+    from .html_email import cards_from_jobs, render_html_email, render_plain_text_email
+    from .sample_jobs import sample_job_list, screen_sample_jobs
+
     validate_address(recipient, "test recipient")
-    
-    html_body_cid, text_body = render_sample_email_for_preview(use_cid=True)
-    html_body_hosted, _ = render_sample_email_for_preview(use_cid=False)
+
+    kept, results = screen_sample_jobs(sample_job_list())
+    LOG.info(
+        "Test email sample after JD filters: %s",
+        ", ".join(f"{job.company} ({job.title})" for job in kept) or "none",
+    )
+    for item in results:
+        LOG.info("Sample %s: %s (%s)", item.job.company, item.action, item.reason)
+    cards = cards_from_jobs(kept)
+    html_body_cid = render_html_email(cards, "New PM Jobs", use_cid=True)
+    html_body_hosted = render_html_email(cards, "New PM Jobs", use_cid=False)
+    text_body = render_plain_text_email(cards, "New PM Jobs")
     item = {
         "subject": "[TEST v5] New PM Jobs - Bubu Jobs",
         "text": text_body,

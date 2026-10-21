@@ -28,7 +28,9 @@ from .dedupe import (
 )
 from .filters import is_relevant
 from .http import FetchResult
+from .listing_filters import KEEP_UNVERIFIABLE, apply_url, screen_candidates
 from .models import Job
+from .sample_jobs import FALLBACKS, decide_from_snapshot, sample_job_list
 from .notifications import TwilioClient, SmsError, load_dotenv, enqueue, deliver
 from .sources.findyourrolefirst import fetch_entry_level, parse_entry_level
 from .sources.jobright import fetch_readme, parse_readme, resolve_jobs
@@ -170,15 +172,33 @@ def classify_jobs(jobs: list[Job], state: dict, now_ts: int,
     return new, already_seen, seeded
 
 
+def audit_acceptance_jobs() -> list[str]:
+    """Live-check the five fixture URLs without writing state."""
+    from .posting_fetch import PostingClient
+
+    lines = ["", "ACCEPTANCE AUDIT (live, no state writes):"]
+    client = PostingClient()
+    for job in sample_job_list():
+        result = screen_candidates([job], client=client)[2][0]
+        note = ""
+        if result.action == KEEP_UNVERIFIABLE:
+            fallback = FALLBACKS.get(apply_url(job))
+            if fallback is not None:
+                result = decide_from_snapshot(job, fallback)
+                note = " [fallback snapshot]"
+        lines.append(f"{job.company}: {result.action} ({result.reason}{note})")
+    return lines
+
+
 def run(state_path: Path, force: bool = False, client: TwilioClient | None = None,
         test_sms: bool = False, retry_sms: str | None = None, resume_sms: bool = False,
         email_client: GmailClient | None = None, queue_email: bool = False,
         test_email: bool = False, retry_email: str | None = None,
         resolve_urls: bool = False, resolver_cache_path: Path | None = None,
-        now_ts: int | None = None) -> None:
+        now_ts: int | None = None, dry_run: bool = False) -> None:
     with state_lock(state_path):
         state = load_state(state_path)
-        email_enabled = email_client is not None or queue_email
+        email_enabled = (email_client is not None or queue_email) and not dry_run
         if client and email_enabled:
             raise ValueError("Choose email or SMS, not both")
         if email_enabled:
@@ -190,7 +210,7 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
                     raise ValueError("Retry ID must identify a blocked or uncertain email")
                 item.update(status="pending", attempts=0)
             save_state(state_path, state)
-        if client:
+        if client and not dry_run:
             if resume_sms:
                 state.pop("sms_paused", None)
             enqueue(state, [], test=test_sms)
@@ -206,6 +226,11 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
         jobs, downloaded, downloaded_new_sources = collect_jobs(state, force, policy, clock)
         if not downloaded:
             print("Upstream sources unchanged; no new matches.")
+            if dry_run:
+                print("\n".join(["JD checked 0", "Dropped closed 0",
+                                 "Dropped not entry-level 0", "Unverifiable kept 0"]), flush=True)
+                print("\n".join(audit_acceptance_jobs()), flush=True)
+                return
             if client:
                 deliver(state, state_path, client)
             if email_client:
@@ -220,6 +245,7 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
         new, already_seen, seeded = classify_jobs(titled, state, clock, first_run_sources)
         for name in downloaded_new_sources:
             _source_slot(state, name)["seeded"] = True
+        kept, jd_stats, _jd_results = screen_candidates(new)
         by_source: dict[str, int] = {}
         for job in relevant:
             by_source[job.source] = by_source.get(job.source, 0) + 1
@@ -229,27 +255,33 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
         lines = [f"Found {len(jobs)} listings", f"Rejected {len(jobs) - len(titled)}",
                  f"Deduped to {len(relevant)} ({source_summary})",
                  f"Already seen {already_seen}",
-                 f"First-run seeded {seeded}", "", "NEW MATCHES:"]
-        for job in new:
+                 f"First-run seeded {seeded}",
+                 *jd_stats.summary_lines(), "", "NEW MATCHES:"]
+        for job in kept:
             lines.extend(["", "[NEW]", f"Company: {job.company}", f"Title: {job.title}",
                           f"Location: {job.location}", f"Work Model: {job.work_model}",
                           f"Date Posted: {job.date_posted}", f"ATS: {job.ats}",
                           f"Source: {SOURCE_LABELS.get(job.source, job.source)}",
                           f"Apply: {job.canonical_apply_url or job.source_url}"])
-        if not new:
+        if not kept:
             lines.append("None.")
         # Print before marking seen: failures may repeat alerts, never silently lose them.
+        # Closed / not-entry-level jobs were already written to state by classify_jobs.
         print("\n".join(lines), flush=True)
+        if dry_run:
+            print("\n".join(audit_acceptance_jobs()), flush=True)
+            LOG.info("Dry run: skipped email/SMS and did not write seen_jobs.json")
+            return
         if client:
-            enqueue(state, [asdict(job) for job in new])
+            enqueue(state, [asdict(job) for job in kept])
         if email_enabled:
-            enqueue_email(state, [asdict(job) for job in new])
+            enqueue_email(state, [asdict(job) for job in kept])
         save_state(state_path, state)
         if email_client:
             deliver_email(state, state_path, email_client)
         if client:
             deliver(state, state_path, client)
-        LOG.info("Saved %d newly discovered matches (%d first-run seeded)", len(new), seeded)
+        LOG.info("Saved %d newly discovered matches (%d first-run seeded)", len(kept), seeded)
 
 
 def main() -> int:
@@ -270,6 +302,8 @@ def main() -> int:
                         help="Resolve Jobright wrapper URLs to direct ATS apply URLs")
     parser.add_argument("--resolver-cache", type=Path, default=config.STATE_PATH.parent / "resolver_cache.json",
                         help="Path to resolver cache file")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Fetch and filter, but do not send email or write seen_jobs.json")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,
                         format="%(levelname)s: %(message)s")
@@ -293,7 +327,8 @@ def main() -> int:
             client = TwilioClient.from_environment()
         run(args.state, args.force, client, args.test_sms, args.retry_sms, args.resume_sms,
             email_client, args.queue_email, args.test_email, args.retry_email,
-            args.resolve_urls, args.resolver_cache if args.resolve_urls else None)
+            args.resolve_urls, args.resolver_cache if args.resolve_urls else None,
+            dry_run=args.dry_run)
     except (OSError, ValueError, SmsError, EmailError) as error:
         LOG.error("Poll failed: %s", error)
         return 1

@@ -27,6 +27,12 @@ SOURCE_LABELS = {
 MAX_LISTING_AGE_DAYS = 14
 FIRST_RUN_SEED_DAYS = 3
 
+# Live posting checks (still-open + entry-level) for jobs about to be emailed.
+POSTING_TIMEOUT_SECONDS = 12
+POSTING_MAX_WORKERS = 3
+ENTRY_LEVEL_MAX_REQUIRED_YEARS = 2  # drop when required/minimum years are 3+
+PLAUSIBLE_EXPERIENCE_YEARS_MAX = 20
+
 # Phrases match whole words, ignoring case, punctuation and whitespace.
 ACCEPTED_TITLE_KEYWORDS = (
     "associate product manager", "product manager", "junior product manager",

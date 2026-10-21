@@ -26,9 +26,10 @@ Options:
 python -m src.main --verbose
 python -m src.main --force
 python -m src.main --state /tmp/bubu-test/seen_jobs.json
+python -m src.main --dry-run --force --verbose
 ```
 
-`--force` bypasses the conditional fetch, but still deduplicates jobs. `--state` selects an independent state file. The default state path is relative to the project, not the caller's working directory. Run as a module (`python -m src.main`). Logs go to stderr; counts and new job details go to stdout. Failures return a nonzero exit code.
+`--force` bypasses the conditional fetch, but still deduplicates jobs. `--state` selects an independent state file. `--dry-run` fetches and filters (including live posting checks) but does not send email or write `seen_jobs.json`. The default state path is relative to the project, not the caller's working directory. Run as a module (`python -m src.main`). Logs go to stderr; counts and new job details go to stdout. Failures return a nonzero exit code.
 
 **Delivered state:** the included JSON contains previously discovered matches and is updated by GitHub Actions. To experience a fresh first run, use a separate `--state` path. To intentionally forget history, back up and delete `data/seen_jobs.json`; the next run will report every currently relevant listing as new.
 
@@ -38,7 +39,7 @@ python -m src.main --state /tmp/bubu-test/seen_jobs.json
 2. Fetch each source with a network timeout (90 seconds for the ~13MB SimplifyJobs JSON, 30 seconds otherwise) and at most three attempts. Retry transient connection errors and HTTP 429/500/502/503/504 with bounded backoff; honor numeric Retry-After up to 60 seconds. Send `If-None-Match` and `If-Modified-Since` when saved validators exist. HTTP 304 skips downloading and parsing that source. FindYourRoleFirst is fail-soft: a request or schema error is logged and the run continues with the other sources. SimplifyJobs and Jobright still fail closed.
 3. Parse SimplifyJobs rows where `active && is_visible`, `date_posted` is within the last 14 days, the title passes the PM filters (matched across every category; `category == "Product"` is not trusted), and at least one location is in the US. Parse FindYourRoleFirst `tracks.product.jobs[]` with the same title + US filters. Parse the Jobright Markdown table using its column names as before.
 4. Apply deterministic title filtering again, then **dedupe across sources**. Identity is the normalized apply URL (lowercase host, drop `utm_*` / `ref`, strip a trailing `/apply`); if that does not match, fall back to normalized company + title. The first source in the order above wins.
-5. Print only new matches plus summary counts, then atomically save the updated jobs and per-source ETags together. With email enabled, queue new jobs in the same transaction and process the email outbox, including on all-304 runs.
+5. For each job about to be emailed, fetch the direct posting (ATS JSON APIs when possible) and drop it if it is closed or if required qualifications ask for 3+ years. Preferred/nice-to-have years do not disqualify. Fetch failures (timeouts, Cloudflare, Jobright wrappers) fail-open: the job is kept and logged as unverifiable. Dropped jobs are still marked seen. Print new matches plus summary counts (`JD checked`, `Dropped closed`, `Dropped not entry-level`, `Unverifiable kept`), then atomically save the updated jobs and per-source ETags together. With email enabled, queue surviving jobs in the same transaction and process the email outbox, including on all-304 runs.
 
 ### First-run suppression (do not flood on deploy)
 
@@ -56,7 +57,7 @@ Edit `ACCEPTED_TITLE_KEYWORDS` and `REJECTED_TITLE_KEYWORDS` in `src/config.py`.
 
 A rejected phrase always wins; otherwise a title must contain an accepted phrase. Defaults favor product manager, analyst, operations, strategy, and management titles. Rejection terms include the requested bad matches plus common seniority markers (`sr`, `staff`, `vp`, `head of`, `leader`). **Exception:** `Senior Associate` / `Sr Associate` is stripped before the `senior`/`sr` check so entry-level titles at Capital One, LSEG, and Amex still match, while `Senior Product Manager`, `Sr PM`, Lead, Principal, and Director do not.
 
-SimplifyJobs and FindYourRoleFirst also require at least one US location. Jobright is not US-filtered (it remains the legacy third source). This is intentionally a transparent heuristic: `Principal Accounts` could cause a false negative, and a generic Product Manager title could still require significant experience. No eligibility, graduation-year, salary, or description-level inference is performed.
+SimplifyJobs and FindYourRoleFirst also require at least one US location. Jobright is not US-filtered (it remains the legacy third source). After title matching, each new alert is checked against the live posting: HTTP 404/410, ATS “job not found”, a redirect to the company jobs board, or copy such as “no longer accepting applications” drops it as closed. A rule-based (not LLM) read of the description drops roles whose **required / minimum / basic** qualifications ask for 3+ years (`3 years`, `3+`, `three years`, `3-5 years`) or that the ATS tags Mid/Senior. Preferred years do not disqualify. `Senior Associate` and explicit early-career / new-grad / APM / rotation programs are kept. Titles alone do not decide. There is still no graduation-year or salary filter.
 
 Keyword changes automatically invalidate the ETag optimization so unchanged upstream content is re-evaluated. Rejected jobs are not marked seen, allowing them to become new matches after a policy change. If changing parser or normalization semantics, bump the parser version in `policy_fingerprint()` or run with `--force`.
 

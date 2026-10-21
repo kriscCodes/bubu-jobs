@@ -386,75 +386,40 @@ def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
     return cards
 
 
-def render_sample_email_for_preview(use_cid: bool = False) -> tuple[str, str]:
-    """Render a sample email with REAL enriched job data for preview/testing.
-    
-    Args:
-        use_cid: If True, use cid:panda-hero for image (for real email).
-                 If False, use hosted GitHub URL (for browser preview).
-    
-    Returns:
-        Tuple of (html_content, plain_text_content)
+def cards_from_jobs(jobs) -> list[JobCard]:
+    """Build email cards from Job dataclasses (used by the screened sample)."""
+    cards: list[JobCard] = []
+    for job in jobs:
+        url = getattr(job, "canonical_apply_url", None) or getattr(job, "source_url", "")
+        cards.append(JobCard(
+            company=job.company,
+            title=job.title,
+            location=job.location,
+            date=job.date_posted,
+            apply_url=url,
+            is_direct_link=not _is_jobright_url(url),
+            source=job.source,
+            work_model=job.work_model,
+            ats=job.ats,
+        ))
+    return cards
+
+
+def render_sample_email_for_preview(use_cid: bool = False, screen: bool = False) -> tuple[str, str]:
+    """Render a sample email with REAL jobs from SimplifyJobs / FindYourRoleFirst.
+
+    When ``screen`` is True, the still-open and entry-level filters run on the
+    sample (live fetch, with bundled snapshots if a fetch is unverifiable) so
+    closed or 3+ year roles such as Natera and Google are omitted.
     """
-    sample_jobs = [
-        JobCard(
-            company="Google",
-            title="Product Manager I, Ads Sellside Apps",
-            location="Mountain View, CA, USA",
-            date="Oct 16",
-            apply_url="https://www.google.com/about/careers/applications/jobs/results/98591892920246982",
-            is_direct_link=True,
-            source="findyourrolefirst",
-            pay_range="",
-            has_written_questions=None,
-        ),
-        JobCard(
-            company="Microsoft",
-            title="Product Manager",
-            location="Remote in USA",
-            date="Oct 15",
-            apply_url="https://apply.careers.microsoft.com/careers/job/1970393557027388",
-            is_direct_link=True,
-            source="simplify",
-            pay_range="",
-            has_written_questions=None,
-        ),
-        JobCard(
-            company="LSEG",
-            title="Senior Associate Product Manager - Enterprise AI",
-            location="NYC",
-            date="Oct 13",
-            apply_url="https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/New-York-City-United-States/Senior-Associate-Product-Manager--Enterprise-AI_R0124288",
-            is_direct_link=True,
-            source="simplify",
-            pay_range="",
-            has_written_questions=None,
-        ),
-        JobCard(
-            company="Natera",
-            title="(Associate) Product Manager, Organ Health",
-            location="Austin, TX",
-            date="Oct 13",
-            apply_url="https://job-boards.greenhouse.io/natera/jobs/6217258004",
-            is_direct_link=True,
-            source="findyourrolefirst",
-            pay_range="",
-            has_written_questions=False,
-        ),
-        JobCard(
-            company="Figma",
-            title="Associate Product Manager",
-            location="SF",
-            date="Oct 7",
-            apply_url="https://boards.greenhouse.io/figma/jobs/6180116004",
-            is_direct_link=True,
-            source="simplify",
-            pay_range="",
-            has_written_questions=False,
-        ),
-    ]
-    
+    from .sample_jobs import sample_job_list, screen_sample_jobs
+
+    jobs = sample_job_list()
+    if screen:
+        jobs, _results = screen_sample_jobs(jobs)
+    sample_jobs = cards_from_jobs(jobs)
+
     html_content = render_html_email(sample_jobs, "New PM Jobs", use_cid=use_cid)
     text_content = render_plain_text_email(sample_jobs, "New PM Jobs")
-    
+
     return html_content, text_content

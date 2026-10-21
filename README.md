@@ -10,7 +10,7 @@ It checks three lists every 10 minutes:
 
 It looks for roles like Associate Product Manager, Product Analyst, and Product Operations. “Senior Associate” titles (Capital One, LSEG, Amex) are kept; “Senior Product Manager”, “Sr PM”, Lead, Principal, and Director are still filtered out. Duplicate postings across sources are merged by apply URL, or by company + title when the URLs differ.
 
-You’ll get an email when there are new matches, with the company, title, location, posted date, source, and a link to each listing. It remembers jobs it has already found, so you won’t keep getting the same list. If there’s nothing new, there’s no email.
+You’ll get an email when there are new matches, with the company, title, location, posted date, source, and a link to each listing. It remembers jobs it has already found, so you won’t keep getting the same list. If there’s nothing new, there’s no email. Before emailing, it checks that the posting is still open and that the required qualifications are not asking for 3+ years of experience (preferred years are ignored). Closed or mid/senior listings are remembered so they are not re-checked every run.
 
 The first run after adding a new source does **not** email the whole backlog: anything already in `seen_jobs.json` stays seen, and listings older than about 3 days from a brand-new source are recorded quietly so the first deploy is not a flood.
 

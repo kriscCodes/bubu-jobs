@@ -30,6 +30,8 @@ A little roadmap for Bubu Jobs. Crossed-out items are finished; open boxes are i
 - [x] ~~Recognize the same job across different sources, even when the links differ.~~ (normalized apply URL, then company + title)
 - [x] ~~Find direct company application links where available.~~ (Greenhouse API resolution for companies with public boards; see `src/resolver.py`)
 - [ ] Retrieve full job descriptions for better matching and resume tailoring.
+- [x] ~~Drop closed postings by checking the live ATS/job page before emailing.~~
+- [x] ~~Drop roles whose required qualifications ask for 3+ years (preferred years ignored).~~
 - [ ] Flag closed or expired listings when the source provides that information.
 
 ## Next: AI matching and a LaTeX resume editor
