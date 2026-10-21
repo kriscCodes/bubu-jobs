@@ -125,11 +125,31 @@ def validate_address(value: str, setting: str) -> str:
     return value
 
 
+def parse_bcc_addresses(value: str | None) -> tuple[str, ...]:
+    """Parse optional comma-separated EMAIL_BCC. Empty/unset is no BCC."""
+    if not value or not str(value).strip():
+        return ()
+    seen: set[str] = set()
+    addresses: list[str] = []
+    for part in str(value).split(","):
+        part = part.strip()
+        if not part:
+            continue
+        address = validate_address(part, "EMAIL_BCC")
+        key = address.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        addresses.append(address)
+    return tuple(addresses)
+
+
 @dataclass(frozen=True, repr=False)
 class GmailClient:
     sender: str
     recipient: str
     password: str
+    bcc: tuple[str, ...] = ()
 
     @classmethod
     def from_environment(cls) -> "GmailClient":
@@ -138,10 +158,21 @@ class GmailClient:
         missing = [name for name, value in zip(names, values) if not value]
         if missing:
             raise ValueError("Missing email settings: " + ", ".join(missing))
-        return cls(validate_address(values[0], names[0]), validate_address(values[1], names[1]),
-                   values[2].replace(" ", ""))
+        return cls(
+            validate_address(values[0], names[0]),
+            validate_address(values[1], names[1]),
+            values[2].replace(" ", ""),
+            parse_bcc_addresses(os.environ.get("EMAIL_BCC")),
+        )
 
-    def send(self, item: dict, key: str, override_recipient: Optional[str] = None, use_cid: bool = True) -> str:
+    def send(
+        self,
+        item: dict,
+        key: str,
+        override_recipient: Optional[str] = None,
+        use_cid: bool = True,
+        include_bcc: bool = True,
+    ) -> str:
         """Send an email with the panda image as CID inline attachment.
         
         Args:
@@ -150,6 +181,8 @@ class GmailClient:
             override_recipient: Send to this address instead of default recipient
             use_cid: If True, build multipart/related with CID attachment.
                      If False, use simple multipart/alternative.
+            include_bcc: If False (used by --test-to), skip EMAIL_BCC so the
+                     design-test is not duplicated. Real poller sends keep True.
         
         Returns:
             Message-ID of sent email
@@ -191,7 +224,17 @@ class GmailClient:
                                     context=ssl.create_default_context())
             smtp.login(self.sender, self.password)
             sending = True
-            refused = smtp.send_message(message)
+            send_kwargs: dict = {}
+            if include_bcc and not override_recipient and self.bcc:
+                envelope = [recipient]
+                seen = {recipient.casefold()}
+                for address in self.bcc:
+                    if address.casefold() not in seen:
+                        envelope.append(address)
+                        seen.add(address.casefold())
+                if len(envelope) > 1:
+                    send_kwargs["to_addrs"] = envelope
+            refused = smtp.send_message(message, **send_kwargs)
             if refused:
                 raise EmailError("SMTP refused the recipient")
             return message_id
@@ -371,6 +414,8 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     }
     
     LOG.info("Sending test email to %s with CID panda attachment", recipient)
-    message_id = client.send(item, "design-test-v1", override_recipient=recipient, use_cid=True)
+    message_id = client.send(
+        item, "design-test-v1", override_recipient=recipient, use_cid=True, include_bcc=False,
+    )
     LOG.info("Test email sent: %s", message_id)
     return message_id
