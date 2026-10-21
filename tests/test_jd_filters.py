@@ -9,13 +9,17 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from src.entry_level import DROP, KEEP, RuleBasedEntryLevelClassifier, classify_entry_level
-from src.html_email import cards_from_jobs, render_html_email
+from src.entry_level import CONFIRMED, DROP, NOT_STATED, RuleBasedEntryLevelClassifier, classify_entry_level
+from src.html_email import cards_from_results, render_html_email
 from src.http import FetchResult
 from src.listing_filters import (
+    BUCKET_ENTRY,
+    BUCKET_NOT_STATED,
+    BUCKET_TOO_SENIOR,
     DROP_CLOSED,
     DROP_NOT_ENTRY,
     KEEP_UNVERIFIABLE,
+    payloads_from_results,
     screen_candidates,
 )
 from src.main import run
@@ -31,6 +35,7 @@ from src.posting_fetch import (
     fetch_posting,
 )
 from src.sample_jobs import (
+    CAPITAL_ONE_URL,
     FIGMA_URL,
     GOOGLE_URL,
     LSEG_URL,
@@ -85,7 +90,7 @@ class YearAndSectionTests(unittest.TestCase):
             "Minimum qualifications:\nBachelor's degree\n"
             "Preferred qualifications:\n5 years of experience in product management\n"
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, NOT_STATED)
         self.assertEqual(decision.preferred_years, 5)
 
     def test_microsoft_style_preferred_two_years_keeps(self):
@@ -93,7 +98,7 @@ class YearAndSectionTests(unittest.TestCase):
             "Bachelor's Degree or equivalent experience. Bachelor's Degree and 2+ years "
             "experience in product/service/program management or equivalent experience."
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, CONFIRMED)
 
     def test_privacy_footer_years_do_not_disqualify(self):
         decision = self._decide(
@@ -102,14 +107,14 @@ class YearAndSectionTests(unittest.TestCase):
             "We might ask me to renew my consent for the processing after 10 years to "
             "ensure it follows my intent."
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, CONFIRMED)
 
     def test_company_history_not_treated_as_experience(self):
         decision = self._decide(
             "LSEG has contributed to communities globally for more than 300 years.\n"
             "WHAT YOU'LL BRING:\nBachelor's degree\nEarly career experience (internships and graduate schemes considered).\n"
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, CONFIRMED)
 
     def test_mid_tag_drops_even_without_years(self):
         decision = self._decide("A product role.", tags=("Mid",))
@@ -122,21 +127,56 @@ class YearAndSectionTests(unittest.TestCase):
             title="Senior Associate Product Manager",
             tags=("Senior Associate",),
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, CONFIRMED)
 
     def test_titles_alone_do_not_decide(self):
         decision = self._decide(
             "WHAT YOU'LL BRING:\nBachelor's degree\n",
             title="Senior Associate Product Manager - Enterprise AI",
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, NOT_STATED)
 
     def test_early_career_program_kept(self):
         decision = self._decide(
             "Early Career, Associate Product Manager\nJoin our rotation program.\n",
             title="Associate Product Manager",
         )
-        self.assertEqual(decision.verdict, KEEP)
+        self.assertEqual(decision.verdict, CONFIRMED)
+
+    def test_required_zero_to_two_years_is_confirmed(self):
+        for text in (
+            "Minimum qualifications:\n0-1 years of experience\n",
+            "Minimum qualifications:\n0-2 years of experience\n",
+            "Required qualifications:\n1+ years of experience\n",
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(self._decide(text).verdict, CONFIRMED)
+
+    def test_positive_program_signals_are_confirmed(self):
+        for text in (
+            "Join our graduate program this fall.",
+            "This APM program rotates new hires across teams.",
+            "Class of 2026 start dates.",
+            "Class of 2027 new graduate cohort.",
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(self._decide(text).verdict, CONFIRMED)
+
+    def test_microsoft_ic2_tag_is_confirmed(self):
+        decision = self._decide("A product role with no years listed.", tags=("IC2",))
+        self.assertEqual(decision.verdict, CONFIRMED)
+        self.assertIn("IC2", decision.reason)
+
+    def test_google_early_tag_is_confirmed(self):
+        decision = self._decide("A product role with no years listed.", tags=("Early",))
+        self.assertEqual(decision.verdict, CONFIRMED)
+
+    def test_no_years_no_signals_is_not_stated(self):
+        decision = self._decide(
+            "WHAT YOU'LL BRING:\nBachelor's degree or equivalent practical experience.\n"
+            "Comfort working with engineers, designers, and stakeholders.\n"
+        )
+        self.assertEqual(decision.verdict, NOT_STATED)
 
 
 class AcceptanceFixtureTests(unittest.TestCase):
@@ -152,6 +192,7 @@ class AcceptanceFixtureTests(unittest.TestCase):
         job = _job("Figma", "Associate Product Manager", FIGMA_URL)
         result = decide_from_snapshot(job, snap)
         self.assertEqual(result.action, "keep")
+        self.assertEqual(result.bucket, BUCKET_ENTRY)
 
     def test_lseg_senior_associate_keep(self):
         data = json.loads((FIXTURES / "lseg_workday.json").read_text())
@@ -165,16 +206,32 @@ class AcceptanceFixtureTests(unittest.TestCase):
         job = _job("LSEG", "Senior Associate Product Manager - Enterprise AI", LSEG_URL)
         result = decide_from_snapshot(job, snap)
         self.assertEqual(result.action, "keep")
+        self.assertEqual(result.bucket, BUCKET_ENTRY)
 
-    def test_microsoft_preferred_two_years_keep(self):
+    def test_microsoft_ic2_confirmed(self):
         html = (FIXTURES / "microsoft_jsonld.html").read_text()
         client = PostingClient()
         client.request = lambda *args, **kwargs: _raw(200, MICROSOFT_URL, html, headers={"content-type": "text/html"})
         snap = fetch_posting(MICROSOFT_URL, client=client)
         self.assertEqual(snap.openness, OPEN)
+        self.assertIn("IC2", snap.seniority_tags)
         job = _job("Microsoft", "Product Manager", MICROSOFT_URL)
         result = decide_from_snapshot(job, snap)
         self.assertEqual(result.action, "keep")
+        self.assertEqual(result.bucket, BUCKET_ENTRY)
+
+    def test_no_signal_fixture_is_not_stated(self):
+        html = (FIXTURES / "no_signal.html").read_text()
+        client = PostingClient()
+        url = "https://example.com/jobs/no-signal"
+        client.request = lambda *args, **kwargs: _raw(200, url, html, headers={"content-type": "text/html"})
+        snap = fetch_posting(url, client=client)
+        self.assertEqual(snap.openness, OPEN)
+        self.assertEqual(snap.seniority_tags, ())
+        job = _job("Example Corp", "Product Manager", url)
+        result = decide_from_snapshot(job, snap)
+        self.assertEqual(result.action, "keep")
+        self.assertEqual(result.bucket, BUCKET_NOT_STATED)
 
     def test_google_three_years_mid_drop(self):
         html = (FIXTURES / "google.html").read_text()
@@ -185,6 +242,7 @@ class AcceptanceFixtureTests(unittest.TestCase):
         job = _job("Google", "Product Manager I, Ads Sellside Apps", GOOGLE_URL)
         result = decide_from_snapshot(job, snap)
         self.assertEqual(result.action, DROP_NOT_ENTRY)
+        self.assertEqual(result.bucket, BUCKET_TOO_SENIOR)
 
     def test_natera_closed_drop(self):
         payload = (FIXTURES / "natera_greenhouse_404.json").read_text()
@@ -292,6 +350,17 @@ class ScreenPipelineTests(unittest.TestCase):
         self.assertEqual(stats.dropped_closed, 1)
         self.assertEqual(stats.dropped_not_entry_level, 1)
         self.assertEqual(stats.unverifiable_kept, 1)
+        self.assertEqual(stats.confirmed_entry_level, 1)
+        self.assertEqual(stats.not_stated, 1)
+        buckets = {item.job.company: item.bucket for item in results}
+        self.assertEqual(buckets["KeepCo"], BUCKET_ENTRY)
+        self.assertEqual(buckets["WrapCo"], BUCKET_NOT_STATED)
+        self.assertEqual(buckets["MidCo"], BUCKET_TOO_SENIOR)
+        payloads = payloads_from_results(results)
+        self.assertEqual(
+            [(row["company"], row["entry_level"]) for row in payloads],
+            [("KeepCo", BUCKET_ENTRY), ("WrapCo", BUCKET_NOT_STATED)],
+        )
 
     def test_sample_email_omits_google_and_natera(self):
         def fake_fetch(url, client=None):
@@ -303,7 +372,8 @@ class ScreenPipelineTests(unittest.TestCase):
                 ),
                 MICROSOFT_URL: PostingSnapshot(
                     url=url, openness=OPEN,
-                    text="Bachelor's Degree or equivalent experience. 2+ years experience preferred.",
+                    text="Career level: IC2. Bachelor's Degree or equivalent experience.",
+                    seniority_tags=("IC2",),
                 ),
                 GOOGLE_URL: PostingSnapshot(
                     url=url, openness=OPEN,
@@ -311,19 +381,28 @@ class ScreenPipelineTests(unittest.TestCase):
                     seniority_tags=("Mid",),
                 ),
                 NATERA_URL: PostingSnapshot(url=url, openness=CLOSED, reason="Job not found"),
+                CAPITAL_ONE_URL: PostingSnapshot(url=url, openness=UNVERIFIABLE, reason="jobright wrapper"),
             }
             return mapping[url]
 
         with patch("src.listing_filters.fetch_posting", side_effect=fake_fetch):
             kept, results = screen_sample_jobs(sample_job_list(), use_fallback=False)
         companies = [job.company for job in kept]
-        self.assertEqual(companies, ["Microsoft", "LSEG", "Figma"])
+        self.assertEqual(companies, ["Microsoft", "LSEG", "Figma", "Capital One"])
         self.assertNotIn("Google", companies)
         self.assertNotIn("Natera", companies)
-        html = render_html_email(cards_from_jobs(kept), "New PM Jobs")
+        buckets = {item.job.company: item.bucket for item in results if item.job.company in companies}
+        self.assertEqual(buckets["Microsoft"], BUCKET_ENTRY)
+        self.assertEqual(buckets["LSEG"], BUCKET_ENTRY)
+        self.assertEqual(buckets["Figma"], BUCKET_ENTRY)
+        self.assertEqual(buckets["Capital One"], BUCKET_NOT_STATED)
+        html = render_html_email(cards_from_results(results), "New PM Jobs")
         self.assertIn("Figma", html)
         self.assertIn("Microsoft", html)
         self.assertIn("LSEG", html)
+        self.assertIn("Capital One", html)
+        self.assertIn("Entry level", html)
+        self.assertIn("Level not stated", html)
         self.assertNotIn("Google", html)
         self.assertNotIn("Natera", html)
 

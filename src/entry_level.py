@@ -1,9 +1,12 @@
 """Deterministic entry-level classifier for job descriptions.
 
-Drops a posting when required/minimum/basic qualifications ask for 3+ years,
-or when the ATS tags the role Mid/Senior (not Senior Associate). Preferred /
-nice-to-have years do not disqualify. Explicit early-career programs are kept
-when they do not also require 3+ years.
+Three buckets:
+- confirmed: positive JD/ATS signals (new grad, early career, entry level,
+  graduate/rotation/APM program, class of 20xx, required max 0-2 years,
+  ATS tags such as Google Early or Microsoft IC1/IC2)
+- drop / too-senior: Mid/Senior ATS tags (not Senior Associate) or required
+  3+ years. Preferred / nice-to-have years do not disqualify.
+- not-stated: no positive signal and no disqualifier; keep these.
 
 An optional LLM classifier can be injected later behind a secret; none is
 required, and none is called unless provided.
@@ -21,8 +24,10 @@ from .posting_fetch import PostingSnapshot
 
 LOG = logging.getLogger(__name__)
 
-KEEP = "keep"
 DROP = "drop"
+TOO_SENIOR = DROP
+CONFIRMED = "confirmed"
+NOT_STATED = "not-stated"
 
 YEAR_WORDS = {
     "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
@@ -65,10 +70,16 @@ DROP_LEVEL_RE = re.compile(
 )
 SENIOR_ASSOCIATE_RE = re.compile(r"(?i)senior\s+associate|sr\s+associate")
 EARLY_CAREER_RE = re.compile(
-    r"(?i)early[\s-]?career|new\s+grad(?:uate)?s?|graduate\s+(?:scheme|program|programme|role)|"
-    r"rotation\s+program|associate\s+product\s+manager|\bapm\b|internships?\s+and\s+graduate|"
-    r"graduate\s+schemes?\s+considered|university\s+grad"
+    r"(?i)new\s+grad(?:uate)?s?|early[\s-]?career|entry[\s-]?level|"
+    r"graduate\s+(?:scheme|program|programme)|rotation\s+program|"
+    r"apm\s+program|class\s+of\s+20\d{2}|"
+    r"internships?\s+and\s+graduate\s+schemes?"
 )
+CONFIRMED_LEVEL_RE = re.compile(
+    r"(?i)(?<![a-z])(?:early(?:[\s-]?career)?|entry[\s-]?level|intern(?:ship)?s?|"
+    r"ic\s*[12]|new\s+grad)(?![a-z0-9])"
+)
+IC_TAG_RE = re.compile(r"(?i)(?<![a-z0-9])IC\s*([12])(?![0-9])")
 LLM_KEY_NAMES = ("ENTRY_LEVEL_LLM_API_KEY", "OPENAI_API_KEY")
 
 
@@ -116,7 +127,7 @@ def _parse_year(token: str | None) -> int | None:
         value = YEAR_WORDS.get(token)
     if value is None:
         return None
-    if value < 1 or value > PLAUSIBLE_EXPERIENCE_YEARS_MAX:
+    if value < 0 or value > PLAUSIBLE_EXPERIENCE_YEARS_MAX:
         return None
     return value
 
@@ -211,6 +222,28 @@ def _drop_seniority_tags(tags: tuple[str, ...], title: str, text: str) -> str | 
     return None
 
 
+def _confirmed_level_tag(tags: tuple[str, ...], title: str, text: str) -> str | None:
+    haystack = " | ".join((title, text, *tags))
+    ic = IC_TAG_RE.search(haystack)
+    if ic:
+        return f"IC{ic.group(1)}"
+    match = CONFIRMED_LEVEL_RE.search(" | ".join(tags))
+    if match:
+        return match.group(0)
+    return None
+
+
+def _positive_entry_signal(title: str, text: str, tags: tuple[str, ...]) -> str | None:
+    tag = _confirmed_level_tag(tags, title, text)
+    if tag:
+        return f"ATS level tagged {tag}"
+    combined = f"{title}\n{text}"
+    match = EARLY_CAREER_RE.search(combined)
+    if match:
+        return f"entry-level signal: {match.group(0)}"
+    return None
+
+
 class RuleBasedEntryLevelClassifier:
     def decide(self, snapshot: PostingSnapshot, title: str = "") -> EntryLevelDecision:
         text = snapshot.text or ""
@@ -237,12 +270,21 @@ class RuleBasedEntryLevelClassifier:
                 seniority_tags=tags,
             )
 
-        reason = "no 3+ year required-experience bar"
-        combined = f"{title}\n{text}"
-        if EARLY_CAREER_RE.search(combined):
-            reason = "explicit early-career / new-grad / APM / rotation signal"
+        signal = _positive_entry_signal(title, text, tags)
+        if signal:
+            return EntryLevelDecision(
+                CONFIRMED, signal,
+                required_years=required_years, preferred_years=preferred_years,
+                seniority_tags=tags,
+            )
+        if required_years is not None and required_years <= threshold:
+            return EntryLevelDecision(
+                CONFIRMED, f"required experience max is {required_years}+ years",
+                required_years=required_years, preferred_years=preferred_years,
+                seniority_tags=tags,
+            )
         return EntryLevelDecision(
-            KEEP, reason,
+            NOT_STATED, "no entry-level signal and no seniority disqualifier",
             required_years=required_years, preferred_years=preferred_years,
             seniority_tags=tags,
         )

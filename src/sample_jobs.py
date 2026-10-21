@@ -6,9 +6,12 @@ so Google (3 years + Mid) and Natera (closed) stay dropped.
 """
 from __future__ import annotations
 
-from .config import SOURCE_FYRF, SOURCE_SIMPLIFY
-from .entry_level import DROP, classify_entry_level
+from .config import SOURCE_FYRF, SOURCE_JOBRIGHT, SOURCE_SIMPLIFY
+from .entry_level import CONFIRMED, DROP
 from .listing_filters import (
+    BUCKET_ENTRY,
+    BUCKET_NOT_STATED,
+    BUCKET_TOO_SENIOR,
     DROP_CLOSED,
     DROP_NOT_ENTRY,
     KEEP,
@@ -18,7 +21,7 @@ from .listing_filters import (
     screen_candidates,
 )
 from .models import Job, build_job
-from .posting_fetch import CLOSED, OPEN, PostingClient, PostingSnapshot, UNVERIFIABLE
+from .posting_fetch import CLOSED, OPEN, PostingClient, PostingSnapshot
 
 FIGMA_URL = "https://boards.greenhouse.io/figma/jobs/6180116004"
 LSEG_URL = (
@@ -28,6 +31,7 @@ LSEG_URL = (
 MICROSOFT_URL = "https://apply.careers.microsoft.com/careers/job/1970393557027388"
 GOOGLE_URL = "https://www.google.com/about/careers/applications/jobs/results/98591892920246982"
 NATERA_URL = "https://job-boards.greenhouse.io/natera/jobs/6217258004"
+CAPITAL_ONE_URL = "https://jobright.ai/jobs/info/6ac7ebb1a444ac5d36f869fe"
 
 FIGMA_FALLBACK = PostingSnapshot(
     url=FIGMA_URL,
@@ -70,11 +74,13 @@ MICROSOFT_FALLBACK = PostingSnapshot(
     reason="bundled microsoft snapshot",
     text=(
         "Product Manager, CoreAI\n"
+        "Career level: IC2\n"
         "Bachelor's Degree or equivalent experience. Bachelor's Degree and 2+ years "
         "experience in product/service/program management or software development or "
         "equivalent experience. 1+ year(s) experience improving product metrics for a "
         "product, feature, or experience in a market."
     ),
+    seniority_tags=("IC2",),
 )
 GOOGLE_FALLBACK = PostingSnapshot(
     url=GOOGLE_URL,
@@ -154,18 +160,32 @@ def sample_job_list() -> list[Job]:
             url=FIGMA_URL,
             source=SOURCE_SIMPLIFY,
         ),
+        build_job(
+            company="Capital One",
+            title="Senior Associate, Product Manager - Business Cards & Payments",
+            location="New York, NY, United States",
+            date_posted="Oct 20",
+            url=CAPITAL_ONE_URL,
+            source=SOURCE_JOBRIGHT,
+            canonical=False,
+        ),
     ]
 
 
 def decide_from_snapshot(job: Job, snapshot: PostingSnapshot) -> ScreenResult:
+    from .entry_level import classify_entry_level
+    from .posting_fetch import CLOSED, UNVERIFIABLE
+
     if snapshot.openness == UNVERIFIABLE:
-        return ScreenResult(job, KEEP_UNVERIFIABLE, snapshot.reason)
+        return ScreenResult(job, KEEP_UNVERIFIABLE, snapshot.reason, BUCKET_NOT_STATED)
     if snapshot.openness == CLOSED:
-        return ScreenResult(job, DROP_CLOSED, snapshot.reason)
+        return ScreenResult(job, DROP_CLOSED, snapshot.reason, "")
     decision = classify_entry_level(snapshot, title=job.title)
     if decision.verdict == DROP:
-        return ScreenResult(job, DROP_NOT_ENTRY, decision.reason)
-    return ScreenResult(job, KEEP, decision.reason)
+        return ScreenResult(job, DROP_NOT_ENTRY, decision.reason, BUCKET_TOO_SENIOR)
+    if decision.verdict == CONFIRMED:
+        return ScreenResult(job, KEEP, decision.reason, BUCKET_ENTRY)
+    return ScreenResult(job, KEEP, decision.reason, BUCKET_NOT_STATED)
 
 
 def screen_sample_jobs(

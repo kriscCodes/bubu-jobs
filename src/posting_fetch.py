@@ -222,11 +222,15 @@ def _greenhouse_ids(url: str) -> tuple[str, str] | None:
 def _seniority_from_google_html(html: str) -> tuple[str, ...]:
     tags = []
     match = re.search(
-        r'aria-label="(Mid|Senior|Internship|Entry.?level)[^"]*experience filters',
+        r'aria-label="(Mid|Senior|Internship|Entry.?level|Early)[^"]*experience filters',
         html, re.I,
     )
     if match:
         tags.append(match.group(1).casefold())
+    # Scan visible copy only so font URLs like ".../ic2.woff2" are not tags.
+    visible = _html_to_text(html)
+    for ic in re.finditer(r"(?i)(?<![a-z0-9])IC\s*([1-8])(?![0-9])", visible):
+        tags.append(f"IC{ic.group(1)}")
     return tuple(tags)
 
 
@@ -236,7 +240,7 @@ def _seniority_from_json(data: dict[str, Any] | None) -> tuple[str, ...]:
     tags: list[str] = []
     keys = (
         "seniority", "jobLevel", "job_level", "experienceLevel", "experience_level",
-        "careerStage", "career_stage", "level",
+        "careerStage", "career_stage", "level", "occupationalCategory",
     )
     stack: list[Any] = [data]
     seen = 0

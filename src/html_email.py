@@ -45,6 +45,7 @@ class JobCard:
     pay_source: str = ""
     questions_source: str = ""
     source: str = ""
+    entry_level: str = ""
 
 
 COLORS = {
@@ -94,14 +95,36 @@ def _is_jobright_url(url: str) -> bool:
     return host == "jobright.ai" or host.endswith(".jobright.ai")
 
 
+def _level_badge(entry_level: str) -> str:
+    """Compact entry-level badge. Green like Direct; grey like Unknown."""
+    base = (
+        "display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;"
+        "font-weight:600;margin-left:6px;white-space:nowrap;"
+    )
+    if entry_level == "entry-level":
+        return (
+            f'<span class="job-badge" style="{base}text-transform:uppercase;'
+            f'background-color:{COLORS["success_light"]};'
+            f'color:{COLORS["success"]};">Entry level</span>'
+        )
+    if entry_level == "not-stated":
+        return (
+            f'<span class="job-badge" style="{base}'
+            f'background-color:{COLORS["gray_200"]};'
+            f'color:{COLORS["gray_700"]};">Level not stated</span>'
+        )
+    return ""
+
+
 def _render_job_row(job: JobCard) -> str:
     """Render a single job as a full-width row."""
-    direct_badge = f'<span style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;background-color:{COLORS["success_light"]};color:{COLORS["success"]};text-transform:uppercase;margin-left:8px;">DIRECT</span>' if job.is_direct_link else ''
+    direct_badge = f'<span class="job-badge" style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;background-color:{COLORS["success_light"]};color:{COLORS["success"]};text-transform:uppercase;margin-left:6px;">DIRECT</span>' if job.is_direct_link else ''
+    level_badge = _level_badge(job.entry_level)
     source_label = _source_label(job.source)
     source_badge = (
-        f'<span style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;'
+        f'<span class="job-badge" style="display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;'
         f'background-color:{COLORS["primary_light"]};color:{COLORS["primary_dark"]};text-transform:uppercase;'
-        f'margin-left:8px;">{_escape(source_label)}</span>'
+        f'margin-left:6px;">{_escape(source_label)}</span>'
         if source_label else ""
     )
     posted = _escape(job.date) if job.date else ""
@@ -117,13 +140,14 @@ def _render_job_row(job: JobCard) -> str:
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{COLORS['white']};border:1px solid {COLORS['gray_200']};border-radius:12px;">
             <tr>
                 <td style="padding:16px;">
-                    <!-- Row 1: Company + source / Direct badges -->
+                    <!-- Row 1: Company + source / Direct / level badges -->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td>
                                 <span style="font-size:12px;color:{COLORS['gray_500']};text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">{_escape(job.company)}</span>
                                 {source_badge}
                                 {direct_badge}
+                                {level_badge}
                             </td>
                         </tr>
                     </table>
@@ -206,6 +230,7 @@ def render_html_email(jobs: list[JobCard], subject: str = "New PM Jobs", use_cid
             .wrapper {{ padding: 12px !important; }}
             .hero-cell {{ padding: 20px 16px !important; }}
             .content-cell {{ padding: 16px !important; }}
+            .job-badge {{ margin-left: 4px !important; padding: 2px 6px !important; font-size: 9px !important; }}
         }}
     </style>
 </head>
@@ -319,7 +344,13 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
             q_status = "Quick apply"
         else:
             q_status = "Questions: Unknown"
-        
+        if job.entry_level == "entry-level":
+            level_status = "Entry level"
+        elif job.entry_level == "not-stated":
+            level_status = "Level not stated"
+        else:
+            level_status = ""
+
         lines.extend([
             f"{i}. {job.company}",
             f"   Title: {job.title}",
@@ -329,6 +360,8 @@ def render_plain_text_email(jobs: list[JobCard], subject: str = "New PM Jobs") -
             f"   Link type: {link_type}",
             f"   Source: {source_label}",
         ])
+        if level_status:
+            lines.append(f"   Level: {level_status}")
         if job.work_model:
             lines.append(f"   Work model: {job.work_model}")
         if job.ats:
@@ -381,16 +414,22 @@ def create_job_cards_from_jobs(jobs: list[dict]) -> list[JobCard]:
             pay_range=pay_range,
             has_written_questions=has_written_questions,
             source=source,
+            entry_level=job.get("entry_level", ""),
         ))
     
     return cards
 
 
-def cards_from_jobs(jobs) -> list[JobCard]:
+def cards_from_jobs(jobs, entry_levels: list[str] | None = None) -> list[JobCard]:
     """Build email cards from Job dataclasses (used by the screened sample)."""
     cards: list[JobCard] = []
-    for job in jobs:
+    for index, job in enumerate(jobs):
         url = getattr(job, "canonical_apply_url", None) or getattr(job, "source_url", "")
+        level = ""
+        if entry_levels is not None and index < len(entry_levels):
+            level = entry_levels[index]
+        else:
+            level = getattr(job, "entry_level", "") or ""
         cards.append(JobCard(
             company=job.company,
             title=job.title,
@@ -401,8 +440,15 @@ def cards_from_jobs(jobs) -> list[JobCard]:
             source=job.source,
             work_model=job.work_model,
             ats=job.ats,
+            entry_level=level,
         ))
     return cards
+
+
+def cards_from_results(results) -> list[JobCard]:
+    from .listing_filters import KEEP, KEEP_UNVERIFIABLE
+    kept = [item for item in results if item.action in {KEEP, KEEP_UNVERIFIABLE}]
+    return cards_from_jobs([item.job for item in kept], [item.bucket for item in kept])
 
 
 def render_sample_email_for_preview(use_cid: bool = False, screen: bool = False) -> tuple[str, str]:
@@ -416,8 +462,10 @@ def render_sample_email_for_preview(use_cid: bool = False, screen: bool = False)
 
     jobs = sample_job_list()
     if screen:
-        jobs, _results = screen_sample_jobs(jobs)
-    sample_jobs = cards_from_jobs(jobs)
+        jobs, results = screen_sample_jobs(jobs)
+        sample_jobs = cards_from_results(results)
+    else:
+        sample_jobs = cards_from_jobs(jobs)
 
     html_content = render_html_email(sample_jobs, "New PM Jobs", use_cid=use_cid)
     text_content = render_plain_text_email(sample_jobs, "New PM Jobs")

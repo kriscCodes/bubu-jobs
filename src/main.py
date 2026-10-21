@@ -28,7 +28,7 @@ from .dedupe import (
 )
 from .filters import is_relevant
 from .http import FetchResult
-from .listing_filters import KEEP_UNVERIFIABLE, apply_url, screen_candidates
+from .listing_filters import KEEP_UNVERIFIABLE, apply_url, payloads_from_results, screen_candidates
 from .models import Job
 from .sample_jobs import FALLBACKS, decide_from_snapshot, sample_job_list
 from .notifications import TwilioClient, SmsError, load_dotenv, enqueue, deliver
@@ -245,7 +245,7 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
         new, already_seen, seeded = classify_jobs(titled, state, clock, first_run_sources)
         for name in downloaded_new_sources:
             _source_slot(state, name)["seeded"] = True
-        kept, jd_stats, _jd_results = screen_candidates(new)
+        kept, jd_stats, jd_results = screen_candidates(new)
         by_source: dict[str, int] = {}
         for job in relevant:
             by_source[job.source] = by_source.get(job.source, 0) + 1
@@ -257,11 +257,15 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
                  f"Already seen {already_seen}",
                  f"First-run seeded {seeded}",
                  *jd_stats.summary_lines(), "", "NEW MATCHES:"]
+        result_by_id = {item.job.job_id: item for item in jd_results}
         for job in kept:
+            item = result_by_id.get(job.job_id)
+            level = (item.bucket if item else "") or ""
             lines.extend(["", "[NEW]", f"Company: {job.company}", f"Title: {job.title}",
                           f"Location: {job.location}", f"Work Model: {job.work_model}",
                           f"Date Posted: {job.date_posted}", f"ATS: {job.ats}",
                           f"Source: {SOURCE_LABELS.get(job.source, job.source)}",
+                          f"Level: {level or 'not-stated'}",
                           f"Apply: {job.canonical_apply_url or job.source_url}"])
         if not kept:
             lines.append("None.")
@@ -273,9 +277,9 @@ def run(state_path: Path, force: bool = False, client: TwilioClient | None = Non
             LOG.info("Dry run: skipped email/SMS and did not write seen_jobs.json")
             return
         if client:
-            enqueue(state, [asdict(job) for job in kept])
+            enqueue(state, payloads_from_results(jd_results))
         if email_enabled:
-            enqueue_email(state, [asdict(job) for job in kept])
+            enqueue_email(state, payloads_from_results(jd_results))
         save_state(state_path, state)
         if email_client:
             deliver_email(state, state_path, email_client)

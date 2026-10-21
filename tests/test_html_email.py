@@ -103,6 +103,39 @@ class RenderHtmlEmailTests(unittest.TestCase):
     def test_contains_direct_badge(self):
         html = render_html_email(self.test_cards, "Test")
         self.assertIn("Direct", html)
+
+    def test_entry_level_badge_is_green(self):
+        card = JobCard(
+            company="Figma",
+            title="Associate Product Manager",
+            location="SF",
+            date="Oct 7",
+            apply_url="https://boards.greenhouse.io/figma/jobs/1",
+            is_direct_link=True,
+            entry_level="entry-level",
+        )
+        html = render_html_email([card], "Test")
+        self.assertIn("Entry level", html)
+        self.assertIn("#d1fae5", html)
+        text = render_plain_text_email([card], "Test")
+        self.assertIn("Level: Entry level", text)
+
+    def test_not_stated_badge_is_grey(self):
+        card = JobCard(
+            company="Capital One",
+            title="Senior Associate, Product Manager",
+            location="NYC",
+            date="Oct 20",
+            apply_url="https://jobright.ai/jobs/info/abc",
+            is_direct_link=False,
+            entry_level="not-stated",
+        )
+        html = render_html_email([card], "Test")
+        self.assertIn("Level not stated", html)
+        self.assertRegex(html, r"background-color:#e5e7eb;color:#374151;\">Level not stated")
+        self.assertNotIn("Entry level", html)
+        text = render_plain_text_email([card], "Test")
+        self.assertIn("Level: Level not stated", text)
     
     def test_contains_jobright_badge(self):
         html = render_html_email(self.test_cards, "Test")
@@ -205,6 +238,20 @@ class CreateJobCardsTests(unittest.TestCase):
         ]
         cards = create_job_cards_from_jobs(jobs)
         self.assertEqual(cards[0].apply_url, "https://jobright.ai/456")
+
+    def test_passes_entry_level_through(self):
+        jobs = [
+            {
+                "company": "Figma",
+                "title": "APM",
+                "location": "SF",
+                "date": "Today",
+                "source_url": "https://boards.greenhouse.io/figma/jobs/1",
+                "entry_level": "entry-level",
+            }
+        ]
+        cards = create_job_cards_from_jobs(jobs)
+        self.assertEqual(cards[0].entry_level, "entry-level")
 
 
 if __name__ == "__main__":

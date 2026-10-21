@@ -265,6 +265,7 @@ def render_digest(jobs: list[dict], test: bool = False) -> tuple[str, str, str]:
             pay_range=pay_range,
             has_written_questions=has_written_questions,
             source=source,
+            entry_level=job.get("entry_level", ""),
         ))
     
     text_body = render_plain_text_email(cards, subject)
@@ -346,7 +347,7 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
     Raises:
         EmailError: If sending fails
     """
-    from .html_email import cards_from_jobs, render_html_email, render_plain_text_email
+    from .html_email import cards_from_results, render_html_email, render_plain_text_email
     from .sample_jobs import sample_job_list, screen_sample_jobs
 
     validate_address(recipient, "test recipient")
@@ -357,8 +358,8 @@ def send_test_email_to(recipient: str, client: GmailClient) -> str:
         ", ".join(f"{job.company} ({job.title})" for job in kept) or "none",
     )
     for item in results:
-        LOG.info("Sample %s: %s (%s)", item.job.company, item.action, item.reason)
-    cards = cards_from_jobs(kept)
+        LOG.info("Sample %s: %s (%s) bucket=%s", item.job.company, item.action, item.reason, item.bucket)
+    cards = cards_from_results(results)
     html_body_cid = render_html_email(cards, "New PM Jobs", use_cid=True)
     html_body_hosted = render_html_email(cards, "New PM Jobs", use_cid=False)
     text_body = render_plain_text_email(cards, "New PM Jobs")
