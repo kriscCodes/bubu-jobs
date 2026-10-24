@@ -5313,6 +5313,19 @@
       "title": "Software Product Manager (FAB Field - DEWALT)",
       "work_model": "Remote"
     },
+    "9eb6c0dbba74bb037fe375ebacf5461de58274f0ada63d28a3a73325c22d0920": {
+      "ats": "Workday",
+      "canonical_apply_url": "https://trustage.wd1.myworkdayjobs.com/TruStage/job/Madison-WI/Annuity-Product-Analyst_R-012250-1",
+      "company": "TruStage",
+      "date_posted": "Oct 23",
+      "date_posted_ts": 1792713600,
+      "job_id": "9eb6c0dbba74bb037fe375ebacf5461de58274f0ada63d28a3a73325c22d0920",
+      "location": "Madison, WI",
+      "source": "simplify",
+      "source_url": "https://trustage.wd1.myworkdayjobs.com/TruStage/job/Madison-WI/Annuity-Product-Analyst_R-012250-1",
+      "title": "Annuity Product Analyst",
+      "work_model": ""
+    },
     "9f2ff073219062dab8e534773972268684c036468f8c8e34ccc927932e84e776": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -7330,7 +7343,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"0a769d376c9daa8432e1bc6e2a7a9dfe15c925048655c17bdd5da92e76d7cd77\"",
+    "etag": "\"b8bdfb3c9d4cfafb2da28f1bd0536ebc808df5ff210f517f4ba113ac9efbf573\"",
     "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
@@ -7341,12 +7354,12 @@
       "url": "https://findyourrolefirst.click/api/public/entry-level"
     },
     "jobright": {
-      "etag": "\"0a769d376c9daa8432e1bc6e2a7a9dfe15c925048655c17bdd5da92e76d7cd77\"",
+      "etag": "\"b8bdfb3c9d4cfafb2da28f1bd0536ebc808df5ff210f517f4ba113ac9efbf573\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
     },
     "simplify": {
-      "etag": "\"add12c839523944efd9a243b049a53baa57cb5ee77f6a3009bb8e9f2220abd73\"",
+      "etag": "\"f868832c3597fa8e6f6f232bc58a0d6db131716060f7d339c89054f25e33f1ec\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "seeded": true,
       "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json"
