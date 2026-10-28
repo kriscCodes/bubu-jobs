@@ -2821,6 +2821,19 @@
       "title": "Product Manager- Data Domain (P4410)",
       "work_model": "On Site"
     },
+    "2be6aaec3c55f91358645f70bcc3752959c209b40563ee6e4954004533d1ce65": {
+      "ats": "Workday",
+      "canonical_apply_url": "https://abbott.wd5.myworkdayjobs.com/abbottcareers/job/United-States--Madison--1-Exact-Lane/Associate-Product-Manager_31165697-1",
+      "company": "Abbott",
+      "date_posted": "Oct 27",
+      "date_posted_ts": 1793059200,
+      "job_id": "2be6aaec3c55f91358645f70bcc3752959c209b40563ee6e4954004533d1ce65",
+      "location": "Madison, WI",
+      "source": "simplify",
+      "source_url": "https://abbott.wd5.myworkdayjobs.com/abbottcareers/job/United-States--Madison--1-Exact-Lane/Associate-Product-Manager_31165697-1",
+      "title": "Associate Product Manager",
+      "work_model": ""
+    },
     "2c04ac4a10b139f9f6fe8686e8b0dbfd50d23210f519c5eb4ff410239c75144c": {
       "ats": "Unknown",
       "canonical_apply_url": null,
@@ -7617,7 +7630,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"e2b5daeeaa1ec92955fb977ebfa210bd2740b2070228c009ccf01e52f9715bf1\"",
+    "etag": "\"b2d22590ca50c224f808d751e6c5fad0bbeb2a99cd205f7e86adf43251ecfc7f\"",
     "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
@@ -7628,12 +7641,12 @@
       "url": "https://findyourrolefirst.click/api/public/entry-level"
     },
     "jobright": {
-      "etag": "\"e2b5daeeaa1ec92955fb977ebfa210bd2740b2070228c009ccf01e52f9715bf1\"",
+      "etag": "\"b2d22590ca50c224f808d751e6c5fad0bbeb2a99cd205f7e86adf43251ecfc7f\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
     },
     "simplify": {
-      "etag": "\"d78b01f9340e965f836e82b0249ed8872a53de20afe1d0af12decc703db77855\"",
+      "etag": "\"fc0d27c78d9ae958f3f76dce6b94514eed9c4edba43654a5b53b6857378f6c35\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "seeded": true,
       "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json"
