@@ -9404,7 +9404,7 @@
   },
   "sms_paused": "Twilio 30034: sender needs US A2P 10DLC registration",
   "source": {
-    "etag": "\"0bfbf1f43fb5e1c77913abce7e4479ebe2c5576d293896dd5297fd9eef92882d\"",
+    "etag": "\"acadc6cbfaece4400ead3426b6e3818a9278eeb7241844935b5303de4ba912cd\"",
     "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
     "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
   },
@@ -9415,12 +9415,12 @@
       "url": "https://findyourrolefirst.click/api/public/entry-level"
     },
     "jobright": {
-      "etag": "\"0bfbf1f43fb5e1c77913abce7e4479ebe2c5576d293896dd5297fd9eef92882d\"",
+      "etag": "\"acadc6cbfaece4400ead3426b6e3818a9278eeb7241844935b5303de4ba912cd\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "url": "https://raw.githubusercontent.com/jobright-ai/2026-Product-Management-New-Grad/master/README.md"
     },
     "simplify": {
-      "etag": "\"06fee54c2424eca225bdc882451af900dd6fe80a665e3198b53df13e6262b606\"",
+      "etag": "\"e0bfdfd4d6d5194faa8c207d8d606a07774fd110d4ad7df684e4ff72e0129f72\"",
       "policy": "6a85c544be4cb2e0d81b946fb4f9bf6358de419d034a885d548f0d4d5bc834d5",
       "seeded": true,
       "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json"
